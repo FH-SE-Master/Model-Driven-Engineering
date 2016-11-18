@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<swml:WeApp
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:swml="http://www.example.org/swml"
+    xsi:schemaLocation="http://www.example.org/swml swml.ecore">
+  <entities
+      name="Person"
+      id="//@entities.0/@attributes.0">
+    <attributes
+        name="ID"/>
+    <relations
+        roleName="personHasStudy"
+        lowerMultiplicity="1"
+        upperMultiplicity="-1"
+        entities="//@entities.1"/>
+  </entities>
+  <entities
+      name="Study"
+      id="//@entities.0/@attributes.0">
+    <relations
+        roleName="studyHasPersons"
+        lowerMultiplicity="-1"
+        upperMultiplicity="1"
+        entities="//@entities.0"/>
+  </entities>
+  <indexPage
+      name="Index"
+      title="Index"
+      relativeUrl="index.html">
+    <entityIndexPageLinks
+        name="indexToPersonsLink"
+        linkType="NON_CONTEXTUAL"
+        entityIndexPage="//@dynamicEntityIndexPages.0"/>
+  </indexPage>
+  <dynamicEntityIndexPages
+      name="Persons"
+      title="Persons"
+      relativeUrl="persons.html"
+      icon="person.png"
+      entity="//@entities.0">
+    <entityPageLinks
+        name="indexToPersonEditLink"
+        entityPage="//@dynamicEntityPages.0"/>
+    <entityPageLinks
+        name="indexToPersonDeleteLink"
+        entityPage="//@dynamicEntityPages.1"/>
+  </dynamicEntityIndexPages>
+  <dynamicEntityPages
+      name="Person Edit"
+      title="Edit Person"
+      relativeUrl="person-edit.html"
+      icon="person-edit.png"
+      entity="//@entities.0"
+      pageType="UPDATE">
+    <innerPage
+        name="Person Info"
+        title="Info Person"
+        relativeUrl="person-info.html"
+        icon="person-info.png"
+        entity="//@entities.0"/>
+  </dynamicEntityPages>
+  <dynamicEntityPages
+      name="Person Delete"
+      title="Delete Person"
+      relativeUrl="person-delete.html"
+      icon="person-delete.png"
+      entity="//@entities.0"
+      pageType="DELETE"/>
+</swml:WeApp>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/at.fh-hagenberg.swml.solution/src" editDirectory="/at.fh-hagenberg.swml.solution.edit/src"
+    editorDirectory="/at.fh-hagenberg.swml.solution.editor/src" modelPluginID="at.fh-hagenberg.swml.solution"
+    modelName="Solution" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0" copyrightFields="false"
+    editPluginID="at.fh-hagenberg.swml.solution.edit" editorPluginID="at.fh-hagenberg.swml.solution.editor"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>solution.ecore</foreignModel>
+  <genPackages prefix="Solution" disposableProviderFactory="true" contentTypeIdentifier=""
+      ecorePackage="solution.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="solution.ecore#//DataType">
+      <genEnumLiterals ecoreEnumLiteral="solution.ecore#//DataType/String"/>
+      <genEnumLiterals ecoreEnumLiteral="solution.ecore#//DataType/Float"/>
+      <genEnumLiterals ecoreEnumLiteral="solution.ecore#//DataType/Integer"/>
+      <genEnumLiterals ecoreEnumLiteral="solution.ecore#//DataType/Boolean"/>
+    </genEnums>
+    <genClasses ecoreClass="solution.ecore#//WebApplication">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute solution.ecore#//WebApplication/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference solution.ecore#//WebApplication/entities"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference solution.ecore#//WebApplication/webpages"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference solution.ecore#//WebApplication/homePage"/>
+    </genClasses>
+    <genClasses ecoreClass="solution.ecore#//Entity">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute solution.ecore#//Entity/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference solution.ecore#//Entity/attributes"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference solution.ecore#//Entity/id"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference solution.ecore#//Entity/relationships"/>
+    </genClasses>
+    <genClasses ecoreClass="solution.ecore#//Attribute">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute solution.ecore#//Attribute/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute solution.ecore#//Attribute/dataType"/>
+    </genClasses>
+    <genClasses ecoreClass="solution.ecore#//Relationship">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference solution.ecore#//Relationship/source"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference solution.ecore#//Relationship/target"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference solution.ecore#//Relationship/opposite"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute solution.ecore#//Relationship/roleName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute solution.ecore#//Relationship/lowerBound"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute solution.ecore#//Relationship/upperBound"/>
+    </genClasses>
+    <genClasses ecoreClass="solution.ecore#//WebPage">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute solution.ecore#//WebPage/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute solution.ecore#//WebPage/relativeUrl"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference solution.ecore#//WebPage/links"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference solution.ecore#//WebPage/homeLink"/>
+    </genClasses>
+    <genClasses ecoreClass="solution.ecore#//StaticPage"/>
+    <genClasses ecoreClass="solution.ecore#//DynamicPage">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference solution.ecore#//DynamicPage/entity"/>
+    </genClasses>
+    <genClasses ecoreClass="solution.ecore#//EntityPage">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference solution.ecore#//EntityPage/innerPages"/>
+    </genClasses>
+    <genClasses ecoreClass="solution.ecore#//IndexPage"/>
+    <genClasses ecoreClass="solution.ecore#//CreatePage"/>
+    <genClasses ecoreClass="solution.ecore#//UpdatePage"/>
+    <genClasses ecoreClass="solution.ecore#//DeletePage"/>
+    <genClasses ecoreClass="solution.ecore#//Link">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute solution.ecore#//Link/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference solution.ecore#//Link/target"/>
+    </genClasses>
+    <genClasses ecoreClass="solution.ecore#//NonContextualLink"/>
+    <genClasses ecoreClass="solution.ecore#//ContextualLink">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference solution.ecore#//ContextualLink/information"/>
+    </genClasses>
+    <genClasses ecoreClass="solution.ecore#//EditablePage">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference solution.ecore#//EditablePage/returnPage"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

@@ -7,9 +7,9 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="indexPage" lowerBound="1"
         eType="#//StaticWebpage" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="dynamicEntityIndexPages"
-        eType="#//EntityIndexPage" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="dynamicEntityPages" eType="#//EntityPage"
-        containment="true"/>
+        upperBound="-1" eType="#//EntityIndexPage" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dynamicEntityPages" upperBound="-1"
+        eType="#//EntityPage" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Entity">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -17,7 +17,7 @@
         upperBound="-1" eType="#//Attribute" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="id" lowerBound="1" eType="#//Attribute"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="relations" upperBound="-1"
-        eType="#//Realtionship"/>
+        eType="#//Realtionship" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="AttributeType">
     <eLiterals name="String"/>
@@ -47,7 +47,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="StaticWebpage" eSuperTypes="#//Webpage">
     <eStructuralFeatures xsi:type="ecore:EReference" name="entityIndexPageLinks" upperBound="-1"
-        eType="#//EntityIndexPageLink"/>
+        eType="#//EntityIndexPageLink" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DynamicWebpage" abstract="true" eSuperTypes="#//Webpage">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="icon" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -61,13 +61,13 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="EntityIndexPage" eSuperTypes="#//DynamicWebpage">
     <eStructuralFeatures xsi:type="ecore:EReference" name="entityPageLinks" lowerBound="1"
-        eType="#//EntityPageLink" containment="true"/>
+        upperBound="-1" eType="#//EntityPageLink" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="EntityPage" eSuperTypes="#//DynamicWebpage">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="pageType" lowerBound="1"
         eType="#//EntityPageType"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="entityInnerPages" lowerBound="1"
-        upperBound="-1" eType="#//EntityInnerPage" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="innerPage" lowerBound="1"
+        eType="#//EntityInnerPage" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="EntityIndexPageLink" eSuperTypes="#//WebpageLink">
     <eStructuralFeatures xsi:type="ecore:EReference" name="entityIndexPage" lowerBound="1"
@@ -82,10 +82,7 @@
     <eLiterals name="UPDATE" value="1" literal="UPDATE"/>
     <eLiterals name="DELETE" value="2" literal="DELETE"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="EntityInnerPage" eSuperTypes="#//DynamicWebpage">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="entityPage" lowerBound="1"
-        eType="#//EntityPage"/>
-  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EntityInnerPage" eSuperTypes="#//DynamicWebpage"/>
   <eClassifiers xsi:type="ecore:EEnum" name="WebpageLinkType">
     <eLiterals name="CONTEXTUAL" literal="CONTEXTUAL"/>
     <eLiterals name="NON_CONTEXTUAL" value="1" literal="NON_CONTEXTUAL"/>

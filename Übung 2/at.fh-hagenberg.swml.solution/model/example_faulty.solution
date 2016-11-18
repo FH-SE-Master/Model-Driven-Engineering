@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<solution:WebApplication xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:solution="http://www.example.org/solution" xsi:schemaLocation="http://www.example.org/solution solution.ecore" name="App" homePage="//@webpages.0" creationDate="2015-11-26T00:00:00.000+0100" goLiveDate="2016-01-01T00:00:00.000+0100">
+  <entities name="E1" id="//@entities.0/@attributes.0">
+    <attributes name="EMail"/>
+    <attributes name="Name"/>
+    <attributes name="Name"/>
+    <relationships target="//@entities.1" roleName="lvas"/>
+  </entities>
+  <entities name="E1" id="//@entities.1/@attributes.1">
+    <attributes name="Name"/>
+    <attributes name="Nummer"/>
+    <attributes name="Beschreibung"/>
+    <relationships target="//@entities.0" opposite="//@entities.0/@relationships.0" roleName="prof" lowerBound="1" upperBound="1"/>
+    <relationships target="//@entities.2" roleName="pruefungen"/>
+  </entities>
+  <entities name="Pruefung" id="//@entities.2/@attributes.0">
+    <attributes name="Id" dataType="Integer"/>
+    <attributes name="Datum"/>
+    <attributes name="Uhrzeit"/>
+    <attributes name="Dauer"/>
+    <relationships target="//@entities.1" opposite="//@entities.1/@relationships.1" roleName="gepruefteLVA" lowerBound="1" upperBound="1"/>
+  </entities>
+  <entities name="Test" id="//@entities.3/@attributes.0">
+    <attributes name="a1"/>
+  </entities>
+  <webpages xsi:type="solution:StaticPage" name="Institut" relativeUrl="index">
+    <homeLink name="home" target="//@webpages.0"/>
+  </webpages>
+  <webpages xsi:type="solution:IndexPage" name="PersonalIndex" relativeUrl="profindex" entity="//@entities.0">
+    <homeLink name="personalHome" target="//@webpages.4"/>
+  </webpages>
+  <webpages xsi:type="solution:IndexPage" name="LVAIndex" relativeUrl="lvaindex" entity="//@entities.1">
+    <homeLink name="lvaHome" target="//@webpages.0"/>
+  </webpages>
+  <webpages xsi:type="solution:EntityPage" name="LVA" relativeUrl="lva" entity="//@entities.1">
+    <links xsi:type="solution:ContextualLink" name="createPruefungLink" target="//@webpages.4" information="//@entities.2"/>
+    <links xsi:type="solution:ContextualLink" name="updatePruefungLink" target="//@webpages.5" information="//@entities.2"/>
+    <links xsi:type="solution:ContextualLink" name="deletePruefungLink" target="//@webpages.6" information="//@entities.2"/>
+    <homeLink name="lvaHome" target="//@webpages.0"/>
+    <innerPages xsi:type="solution:EntityPage" name="LVALeitung" relativeUrl="prof" entity="//@entities.0">
+      <homeLink name="home" target="//@webpages.0"/>
+    </innerPages>
+    <innerPages xsi:type="solution:IndexPage" name="LVAPruefungen" relativeUrl="pruefindex" entity="//@entities.2">
+      <homeLink name="home" target="//@webpages.0"/>
+    </innerPages>
+  </webpages>
+  <webpages xsi:type="solution:CreatePage" name="PruefungErstellen" relativeUrl="createPruefung" entity="//@entities.2" returnPage="//@webpages.3">
+    <homeLink name="home" target="//@webpages.0"/>
+  </webpages>
+  <webpages xsi:type="solution:UpdatePage" name="PruefungBearbeiten" relativeUrl="updatePruefung" entity="//@entities.2" returnPage="//@webpages.3">
+    <homeLink name="home" target="//@webpages.0"/>
+  </webpages>
+  <webpages xsi:type="solution:DeletePage" name="PruefungLoeschen" relativeUrl="deletePruefung" entity="//@entities.2" returnPage="//@webpages.3">
+    <homeLink name="home" target="//@webpages.0"/>
+  </webpages>
+</solution:WebApplication>

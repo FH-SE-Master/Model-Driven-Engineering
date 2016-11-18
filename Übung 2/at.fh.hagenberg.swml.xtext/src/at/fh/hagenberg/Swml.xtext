@@ -1,0 +1,24 @@
+grammar at.fh.hagenberg.Swml with org.eclipse.xtext.common.Terminals
+
+generate swml "http://www.fh.at/hagenberg/Swml"
+ 
+WebApplication:
+	'webapp' name=ID '('
+		'entities' '(' entities+=Entity* ')'
+	')';
+	
+Entity:
+	'entity' name=ID '('
+		'id' '('idAttribute=Attribute ')'
+		'attributes' '('attributes=Attribute ')'
+	')';
+
+Attribute:
+	'attribute' name=ID '('
+		'type' '(' type=Type ')'
+		'name' '(' value=ID ')'
+	')';
+
+Type:
+	"string" | Entity
+;

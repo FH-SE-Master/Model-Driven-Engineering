@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<solution:WebApplication
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:solution="http://www.example.org/solution"
+    xsi:schemaLocation="http://www.example.org/solution solution.ecore"
+    creationDate="2015-11-26T00:00:00.000+0100"
+    goLiveDate="2016-01-01T00:00:00.000+0100"/>
