@@ -1,0 +1,93 @@
+<idea-plugin version="2">
+	<extensions defaultExtensionNs="org.eclipse.xtext.idea">
+		<package
+			uri="http://www.ooe.at/fh/mdm/herzog/dsl/proj/ProjectGenerator"
+			class="at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.ProjectGeneratorPackage"
+		/>
+		<resourceFactory 
+			type="projdsl"
+			class="org.eclipse.xtext.resource.IResourceFactory"
+			factoryClass="at.ooe.fh.mdm.herzog.dsl.proj.idea.ProjectGeneratorExtensionFactory"
+		/>
+		<resourceServiceProvider
+			uriExtension="projdsl"
+			class="org.eclipse.xtext.idea.resource.IResourceIdeaServiceProvider"
+			factoryClass="at.ooe.fh.mdm.herzog.dsl.proj.idea.ProjectGeneratorExtensionFactory"
+		/>
+
+		<lang.setup
+			language="at.ooe.fh.mdm.herzog.dsl.proj.ProjectGenerator"
+			implementationClass="at.ooe.fh.mdm.herzog.dsl.proj.idea.ProjectGeneratorIdeaSetup"
+		/>
+	</extensions>
+
+	<extensions defaultExtensionNs="com.intellij">
+		<psi.treeChangePreprocessor implementation="at.ooe.fh.mdm.herzog.dsl.proj.idea.lang.psi.ProjectGeneratorCodeBlockModificationListener"/>
+
+		<fileTypeFactory implementation="at.ooe.fh.mdm.herzog.dsl.proj.idea.lang.ProjectGeneratorFileTypeFactory"/>
+		<stubElementTypeHolder class="at.ooe.fh.mdm.herzog.dsl.proj.idea.lang.ProjectGeneratorElementTypeProvider"/>
+		<lang.ast.factory 
+			language="at.ooe.fh.mdm.herzog.dsl.proj.ProjectGenerator"
+			factoryClass="at.ooe.fh.mdm.herzog.dsl.proj.idea.ProjectGeneratorExtensionFactory"
+			implementationClass="org.eclipse.xtext.idea.lang.BaseXtextASTFactory"
+		/>
+		<lang.parserDefinition 
+			language="at.ooe.fh.mdm.herzog.dsl.proj.ProjectGenerator"
+			factoryClass="at.ooe.fh.mdm.herzog.dsl.proj.idea.ProjectGeneratorExtensionFactory"
+			implementationClass="at.ooe.fh.mdm.herzog.dsl.proj.idea.lang.parser.ProjectGeneratorParserDefinition"
+		/>
+		<lang.findUsagesProvider 
+			language="at.ooe.fh.mdm.herzog.dsl.proj.ProjectGenerator"
+			factoryClass="at.ooe.fh.mdm.herzog.dsl.proj.idea.ProjectGeneratorExtensionFactory"
+			implementationClass="org.eclipse.xtext.idea.findusages.BaseXtextFindUsageProvider"
+		/>
+		<lang.refactoringSupport 
+			language="at.ooe.fh.mdm.herzog.dsl.proj.ProjectGenerator"
+			factoryClass="at.ooe.fh.mdm.herzog.dsl.proj.idea.ProjectGeneratorExtensionFactory"
+			implementationClass="org.eclipse.xtext.idea.refactoring.BaseXtextRefactoringSupportProvider"
+		/>
+		<lang.namesValidator 
+			language="at.ooe.fh.mdm.herzog.dsl.proj.ProjectGenerator"
+			factoryClass="at.ooe.fh.mdm.herzog.dsl.proj.idea.ProjectGeneratorExtensionFactory"
+			implementationClass="com.intellij.lang.refactoring.NamesValidator"
+		/>
+		<lang.syntaxHighlighterFactory key="at.ooe.fh.mdm.herzog.dsl.proj.ProjectGenerator" implementationClass="at.ooe.fh.mdm.herzog.dsl.proj.idea.highlighting.ProjectGeneratorSyntaxHighlighterFactory" />
+		<lang.braceMatcher 
+			language="at.ooe.fh.mdm.herzog.dsl.proj.ProjectGenerator"
+			factoryClass="at.ooe.fh.mdm.herzog.dsl.proj.idea.ProjectGeneratorExtensionFactory"
+			implementationClass="com.intellij.lang.PairedBraceMatcher"
+		/>
+		<annotator 
+			language="at.ooe.fh.mdm.herzog.dsl.proj.ProjectGenerator"
+			factoryClass="at.ooe.fh.mdm.herzog.dsl.proj.idea.ProjectGeneratorExtensionFactory"
+			implementationClass="org.eclipse.xtext.idea.annotation.IssueAnnotator"
+		/>
+		<completion.contributor language="at.ooe.fh.mdm.herzog.dsl.proj.ProjectGenerator" implementationClass="at.ooe.fh.mdm.herzog.dsl.proj.idea.completion.ProjectGeneratorCompletionContributor"/>
+		<pom.declarationSearcher implementation="at.ooe.fh.mdm.herzog.dsl.proj.idea.lang.pom.ProjectGeneratorPomDeclarationSearcher"/>
+
+		<lang.psiStructureViewFactory 
+			language="at.ooe.fh.mdm.herzog.dsl.proj.ProjectGenerator"
+			factoryClass="at.ooe.fh.mdm.herzog.dsl.proj.idea.ProjectGeneratorExtensionFactory"
+			implementationClass="com.intellij.lang.PsiStructureViewFactory"
+		/>
+		<facetType implementation="at.ooe.fh.mdm.herzog.dsl.proj.idea.facet.ProjectGeneratorFacetType"/>
+      	<lang.documentationProvider 
+      		language="at.ooe.fh.mdm.herzog.dsl.proj.ProjectGenerator"
+      		factoryClass="at.ooe.fh.mdm.herzog.dsl.proj.idea.ProjectGeneratorExtensionFactory"
+      		implementationClass="org.eclipse.xtext.idea.documentation.IdeaDocumentationProvider"
+      	/>
+		<colorSettingsPage implementation="at.ooe.fh.mdm.herzog.dsl.proj.idea.highlighting.ProjectGeneratorColorSettingsPage"/>
+		<highlightVisitor implementation="at.ooe.fh.mdm.herzog.dsl.proj.idea.highlighting.ProjectGeneratorSemanticHighlightVisitor"/>
+
+		<lang.formatter 
+			language="at.ooe.fh.mdm.herzog.dsl.proj.ProjectGenerator"
+			factoryClass="at.ooe.fh.mdm.herzog.dsl.proj.idea.ProjectGeneratorExtensionFactory"
+			implementationClass="com.intellij.formatting.FormattingModelBuilder"
+		/>
+		<lang.commenter 
+			language="at.ooe.fh.mdm.herzog.dsl.proj.ProjectGenerator"
+			factoryClass="at.ooe.fh.mdm.herzog.dsl.proj.idea.ProjectGeneratorExtensionFactory"
+			implementationClass="com.intellij.lang.CodeDocumentationAwareCommenter"
+		/>
+	</extensions>
+</idea-plugin>

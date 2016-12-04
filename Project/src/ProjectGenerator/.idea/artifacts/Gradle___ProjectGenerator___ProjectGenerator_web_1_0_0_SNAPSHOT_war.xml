@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="Gradle : ProjectGenerator : ProjectGenerator.web-1.0.0-SNAPSHOT.war">
+    <output-path>$PROJECT_DIR$/ProjectGenerator.parent/ProjectGenerator.web/build/libs</output-path>
+    <properties id="gradle-properties">
+      <options external-project-path="$PROJECT_DIR$/ProjectGenerator.parent" />
+    </properties>
+    <root id="archive" name="ProjectGenerator.web-1.0.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="Gradle : ProjectGenerator : ProjectGenerator.web-1.0.0-SNAPSHOT.war (exploded)" />
+    </root>
+  </artifact>
+</component>

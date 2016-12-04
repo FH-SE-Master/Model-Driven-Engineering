@@ -1,0 +1,29 @@
+# Module Project Structure Generator
+
+This project was made for the FH-Master studies at the UAS Upper Austria for the course "Model Driven Development" and the term project. +
+
+## Description
+This project is for describing an application module via a DSL and then generating a project structure, configuration files and common classes for this module which will integrate this module in an existing application project structure. +
+
+*Project Structure:* +
+
+* messages
+* model
+** jpa
+*** api
+*** impl
+* service
+** api
+** impl
+* report
+** api
+** impl
+* integration
+** <MODULE_NAME>
+** ...
++ 
++ 
+
+# Useful information
+https://blogs.itemis.com/en/get-started-with-xtext-and-intellij-idea-in-5-minutes +
+http://www.eclipse.org/Xtext/download.html

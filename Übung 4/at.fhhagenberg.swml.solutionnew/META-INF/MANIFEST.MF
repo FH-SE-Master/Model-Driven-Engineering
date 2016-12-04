@@ -1,0 +1,30 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: at.fhhagenberg.swml.solutionnew
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: at.fhhagenberg.swml.solutionnew; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.xtext,
+ org.eclipse.xtext.xbase,
+ org.eclipse.equinox.common;bundle-version="3.5.0",
+ org.eclipse.emf.ecore,
+ org.eclipse.xtext.xbase.lib,
+ org.antlr.runtime,
+ org.eclipse.xtext.util,
+ org.eclipse.xtend.lib,
+ org.eclipse.emf.common
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: at.fhhagenberg.swml.xtext.solution.solution.util,
+ at.fhhagenberg.swml.xtext.solution.parser.antlr,
+ at.fhhagenberg.swml.xtext.solution.generator,
+ at.fhhagenberg.swml.xtext.solution.solution,
+ at.fhhagenberg.swml.xtext.solution.services,
+ at.fhhagenberg.swml.xtext.solution.parser.antlr.internal,
+ at.fhhagenberg.swml.xtext.solution.validation,
+ at.fhhagenberg.swml.xtext.solution,
+ at.fhhagenberg.swml.xtext.solution.scoping,
+ at.fhhagenberg.swml.xtext.solution.serializer,
+ at.fhhagenberg.swml.xtext.solution.solution.impl,
+ at.fhhagenberg.swml.xtext.solution.formatting2
+Import-Package: org.apache.log4j

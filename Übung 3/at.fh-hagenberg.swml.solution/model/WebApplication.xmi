@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<solution:WebApplication
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:solution="http://www.example.org/solution"
+    xsi:schemaLocation="http://www.example.org/solution solution.ecore">
+  <entities
+      name="LVA"
+      id="//@entities.0/@attributes.0">
+    <attributes
+        name="id"/>
+    <attributes
+        name="name"/>
+  </entities>
+</solution:WebApplication>

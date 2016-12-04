@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/ProjectGenerator.parent" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/ProjectGenerator.parent" />
+            <option value="$PROJECT_DIR$/ProjectGenerator.parent/ProjectGenerator" />
+            <option value="$PROJECT_DIR$/ProjectGenerator.parent/ProjectGenerator.ide" />
+            <option value="$PROJECT_DIR$/ProjectGenerator.parent/ProjectGenerator.idea" />
+            <option value="$PROJECT_DIR$/ProjectGenerator.parent/ProjectGenerator.web" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>

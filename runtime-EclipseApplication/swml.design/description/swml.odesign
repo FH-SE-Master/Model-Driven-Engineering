@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" name="swml" version="11.0.0.201601261200">
+  <ownedViewpoints name="WebApplication" label="WebApplication">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" domainClass="solution.WebApplication" enablePopupBars="true">
+      <defaultLayer name="Default">
+        <nodeMappings name="StaticPage" label="StaticPage" domainClass="solution.StaticPage">
+          <style xsi:type="style:NoteDescription" tooltipExpression="Do not mis anything" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='yellow']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="Entity" domainClass="solution.Entity">
+          <borderedNodeMappings name="Attribute" label="Attribute" semanticCandidatesExpression="feature:eAllContents" domainClass="Attribute"/>
+        </nodeMappings>
+      </defaultLayer>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

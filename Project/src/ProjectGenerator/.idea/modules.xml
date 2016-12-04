@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ProjectGenerator/ProjectGenerator.iml" filepath="$PROJECT_DIR$/.idea/modules/ProjectGenerator/ProjectGenerator.iml" group="ProjectGenerator" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ProjectGenerator.ide/ProjectGenerator.ide.iml" filepath="$PROJECT_DIR$/.idea/modules/ProjectGenerator.ide/ProjectGenerator.ide.iml" group="ProjectGenerator.ide" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ProjectGenerator.ide/ProjectGenerator.ide_main.iml" filepath="$PROJECT_DIR$/.idea/modules/ProjectGenerator.ide/ProjectGenerator.ide_main.iml" group="ProjectGenerator.ide" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ProjectGenerator.ide/ProjectGenerator.ide_test.iml" filepath="$PROJECT_DIR$/.idea/modules/ProjectGenerator.ide/ProjectGenerator.ide_test.iml" group="ProjectGenerator.ide" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ProjectGenerator.idea/ProjectGenerator.idea.iml" filepath="$PROJECT_DIR$/.idea/modules/ProjectGenerator.idea/ProjectGenerator.idea.iml" group="ProjectGenerator.idea" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ProjectGenerator.idea/ProjectGenerator.idea_main.iml" filepath="$PROJECT_DIR$/.idea/modules/ProjectGenerator.idea/ProjectGenerator.idea_main.iml" group="ProjectGenerator.idea" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ProjectGenerator.idea/ProjectGenerator.idea_test.iml" filepath="$PROJECT_DIR$/.idea/modules/ProjectGenerator.idea/ProjectGenerator.idea_test.iml" group="ProjectGenerator.idea" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ProjectGenerator.parent.iml" filepath="$PROJECT_DIR$/.idea/modules/ProjectGenerator.parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ProjectGenerator.web/ProjectGenerator.web.iml" filepath="$PROJECT_DIR$/.idea/modules/ProjectGenerator.web/ProjectGenerator.web.iml" group="ProjectGenerator.web" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ProjectGenerator.web/ProjectGenerator.web_main.iml" filepath="$PROJECT_DIR$/.idea/modules/ProjectGenerator.web/ProjectGenerator.web_main.iml" group="ProjectGenerator.web" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ProjectGenerator.web/ProjectGenerator.web_test.iml" filepath="$PROJECT_DIR$/.idea/modules/ProjectGenerator.web/ProjectGenerator.web_test.iml" group="ProjectGenerator.web" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ProjectGenerator/ProjectGenerator_main.iml" filepath="$PROJECT_DIR$/.idea/modules/ProjectGenerator/ProjectGenerator_main.iml" group="ProjectGenerator" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ProjectGenerator/ProjectGenerator_test.iml" filepath="$PROJECT_DIR$/.idea/modules/ProjectGenerator/ProjectGenerator_test.iml" group="ProjectGenerator" />
+    </modules>
+  </component>
+</project>

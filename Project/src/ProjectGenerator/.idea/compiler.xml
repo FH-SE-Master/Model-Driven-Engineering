@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <bytecodeTargetLevel>
+      <module name="ProjectGenerator.ide_main" target="1.8" />
+      <module name="ProjectGenerator.ide_test" target="1.8" />
+      <module name="ProjectGenerator.idea_main" target="1.8" />
+      <module name="ProjectGenerator.idea_test" target="1.8" />
+      <module name="ProjectGenerator.web_main" target="1.8" />
+      <module name="ProjectGenerator.web_test" target="1.8" />
+      <module name="ProjectGenerator_main" target="1.8" />
+      <module name="ProjectGenerator_test" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

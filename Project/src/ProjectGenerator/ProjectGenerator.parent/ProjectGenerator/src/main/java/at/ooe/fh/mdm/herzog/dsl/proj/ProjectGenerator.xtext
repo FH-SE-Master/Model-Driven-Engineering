@@ -1,0 +1,9 @@
+grammar at.ooe.fh.mdm.herzog.dsl.proj.ProjectGenerator with org.eclipse.xtext.common.Terminals
+
+generate projectGenerator "http://www.ooe.at/fh/mdm/herzog/dsl/proj/ProjectGenerator"
+
+Model:
+	greetings+=Greeting*;
+	
+Greeting:
+	'Hello' name=ID '!';

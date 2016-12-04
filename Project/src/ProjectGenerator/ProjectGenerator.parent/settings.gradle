@@ -1,0 +1,4 @@
+include 'ProjectGenerator'
+include 'ProjectGenerator.ide'
+include 'ProjectGenerator.idea'
+include 'ProjectGenerator.web'

@@ -1,0 +1,125 @@
+grammar at.fhhagenberg.swml.xtext.solution.Solution with org.eclipse.xtext.common.Terminals
+
+generate solution "http://www.fhhagenberg.at/swml/xtext/solution/Solution"
+
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+
+WebApplication:
+    'webApp' name = ID '{'
+	  entities+=Entity*
+	  relationships+=Relationship*
+	  webPages+=WebPage*
+	  'homePage' homepage=[StaticPage]';'
+	  'creationDate' creationDate=Timestamp';'
+	'}'
+;
+
+Timestamp returns ecore::EDate : STRING ;
+
+WebPage:
+	(DynamicPage | StaticPage) 
+;
+	
+StaticPage:
+	'staticPage' name=ID '{'
+		'relativeURL=' relativeURL = ID
+		source+=Link*
+		'home' home=[NonContextualLink]
+	'}'
+;
+
+DynamicPage:
+	(EntityPage | IndexPage | EditablePage)
+;
+
+EntityPage:
+	'entityPage' name=ID '{'
+		source+=Link*
+		'home' home=[NonContextualLink]
+		('innerPages' webPages+=DynamicPage*)?
+		'entity' entity=[Entity]	
+		'}'
+;
+
+EditablePage:
+	(CreatePage | UpdatePage | DeletePage)
+;
+
+CreatePage:
+	'createPage' name=ID '{'
+		source+=Link*
+		'home' home=[NonContextualLink]
+		'entity' entity=[Entity]
+		('innerPages' webPages+=DynamicPage*)?
+		'back' back=ContextualLink
+	'}'	
+;
+
+UpdatePage:
+	'updatePage' name=ID '{'
+		source+=Link*
+		'home' home=[NonContextualLink]
+		'entity' entity=[Entity]
+		('innerPages' webPages+=DynamicPage*)?
+		'back' back=ContextualLink
+	'}'	
+;
+
+DeletePage:
+	'deletePage' name=ID '{'
+		source+=Link*
+		'home' home=[NonContextualLink]
+		'entity' entity=[Entity]
+		('innerPages' webPages+=DynamicPage*)?
+		'back' back=ContextualLink
+	'}'	
+;
+
+IndexPage:
+	'indexPage' name=ID '{'
+		source+=Link*
+		'home' home=[NonContextualLink]
+		'entity' entity=[Entity]
+		('innerPages' webPages+=DynamicPage*)?
+		'back' back=ContextualLink
+	'}'
+;
+
+
+Entity:
+	'entity' name=ID '{'
+	  attributes+=Attribute*
+	  'id' id=[Attribute]';'
+	'}'
+;
+
+Attribute:
+	'attribute' name=ID ':' type=Datatype';'
+;
+
+enum Datatype: STRING='String' | FLOAT='float' | INTEGER='int' | BOOLEAN='bool'; 
+
+Relationship:
+	'relationship' name=ID '{'
+	  'lowerBound' lower=RoleNumber';'
+	  'upperBound' upper=RoleNumber';'
+	  'source' source=[Entity]';'
+	  'target' target=[Entity]';'
+	  ('opposite' ref=[Relationship]';')?
+	'}'
+;
+
+RoleNumber returns ecore::EIntegerObject:  INT | '-1' | '*' ;
+
+Link :
+	(NonContextualLink | ContextualLink) 
+;
+
+NonContextualLink:
+	'link' name=ID 'target' target=[WebPage]';'
+;
+
+ContextualLink:
+	'contextualLink' name=ID 'target' target=[WebPage] 'information' information=[Entity]';'
+;
+
