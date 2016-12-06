@@ -6,11 +6,61 @@
     complianceLevel="6.0" copyrightFields="false" runtimeVersion="2.11">
   <genPackages prefix="ProjectGenerator" basePackage="at.ooe.fh.mdm.herzog.dsl.proj"
       disposableProviderFactory="true" fileExtensions="projdsl" ecorePackage="ProjectGenerator.ecore#/">
-    <genClasses ecoreClass="ProjectGenerator.ecore#//Model">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ProjectGenerator.ecore#//Model/greetings"/>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ProjectGenerator.ecore#//Locale">
+      <genEnumLiterals ecoreEnumLiteral="ProjectGenerator.ecore#//Locale/DE_DE"/>
+      <genEnumLiterals ecoreEnumLiteral="ProjectGenerator.ecore#//Locale/EN_US"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ProjectGenerator.ecore#//DbType">
+      <genEnumLiterals ecoreEnumLiteral="ProjectGenerator.ecore#//DbType/VARCHAR"/>
+      <genEnumLiterals ecoreEnumLiteral="ProjectGenerator.ecore#//DbType/CLOB"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ProjectGenerator.ecore#//Boolean">
+      <genEnumLiterals ecoreEnumLiteral="ProjectGenerator.ecore#//Boolean/TRUE"/>
+      <genEnumLiterals ecoreEnumLiteral="ProjectGenerator.ecore#//Boolean/FALSE"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ProjectGenerator.ecore#//During">
+      <genEnumLiterals ecoreEnumLiteral="ProjectGenerator.ecore#//During/IN_PROG"/>
+      <genEnumLiterals ecoreEnumLiteral="ProjectGenerator.ecore#//During/AFTER_COMPLETION"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ProjectGenerator.ecore#//Notify">
+      <genEnumLiterals ecoreEnumLiteral="ProjectGenerator.ecore#//Notify/ALWAYS"/>
+      <genEnumLiterals ecoreEnumLiteral="ProjectGenerator.ecore#//Notify/EXISTS"/>
+    </genEnums>
+    <genClasses ecoreClass="ProjectGenerator.ecore#//Module">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProjectGenerator.ecore#//Module/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProjectGenerator.ecore#//Module/key"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProjectGenerator.ecore#//Module/cdiEnabled"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ProjectGenerator.ecore#//Module/jpaConfig"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ProjectGenerator.ecore#//Module/serviceConfig"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ProjectGenerator.ecore#//Module/messageBundles"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ProjectGenerator.ecore#//Module/messages"/>
     </genClasses>
-    <genClasses ecoreClass="ProjectGenerator.ecore#//Greeting">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProjectGenerator.ecore#//Greeting/name"/>
+    <genClasses ecoreClass="ProjectGenerator.ecore#//ServiceConfig">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ProjectGenerator.ecore#//ServiceConfig/observers"/>
+    </genClasses>
+    <genClasses ecoreClass="ProjectGenerator.ecore#//Observer">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProjectGenerator.ecore#//Observer/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProjectGenerator.ecore#//Observer/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProjectGenerator.ecore#//Observer/during"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProjectGenerator.ecore#//Observer/notify"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProjectGenerator.ecore#//Observer/className"/>
+    </genClasses>
+    <genClasses ecoreClass="ProjectGenerator.ecore#//JpaConfig">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ProjectGenerator.ecore#//JpaConfig/localizedEnums"/>
+    </genClasses>
+    <genClasses ecoreClass="ProjectGenerator.ecore#//Localized">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProjectGenerator.ecore#//Localized/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProjectGenerator.ecore#//Localized/locales"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ProjectGenerator.ecore#//Localized/values"/>
+    </genClasses>
+    <genClasses ecoreClass="ProjectGenerator.ecore#//LocalizedEntry">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProjectGenerator.ecore#//LocalizedEntry/locale"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ProjectGenerator.ecore#//LocalizedEntry/entry"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ProjectGenerator.ecore#//LocalizedEntry/arguments"/>
+    </genClasses>
+    <genClasses ecoreClass="ProjectGenerator.ecore#//KeyValuePair">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProjectGenerator.ecore#//KeyValuePair/key"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProjectGenerator.ecore#//KeyValuePair/value"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

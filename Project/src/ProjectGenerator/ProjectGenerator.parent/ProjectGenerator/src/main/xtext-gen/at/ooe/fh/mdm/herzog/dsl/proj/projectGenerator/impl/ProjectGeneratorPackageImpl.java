@@ -3,13 +3,23 @@
  */
 package at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.impl;
 
-import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Greeting;
-import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Model;
+import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.DbType;
+import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.During;
+import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.JpaConfig;
+import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.KeyValuePair;
+import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Locale;
+import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Localized;
+import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.LocalizedEntry;
+import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Module;
+import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Notify;
+import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Observer;
 import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.ProjectGeneratorFactory;
 import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.ProjectGeneratorPackage;
+import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.ServiceConfig;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -28,14 +38,84 @@ public class ProjectGeneratorPackageImpl extends EPackageImpl implements Project
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass modelEClass = null;
+  private EClass moduleEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass greetingEClass = null;
+  private EClass serviceConfigEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass observerEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass jpaConfigEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass localizedEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass localizedEntryEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass keyValuePairEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum localeEEnum = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum dbTypeEEnum = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum booleanEEnum = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum duringEEnum = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum notifyEEnum = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -105,9 +185,9 @@ public class ProjectGeneratorPackageImpl extends EPackageImpl implements Project
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getModel()
+  public EClass getModule()
   {
-    return modelEClass;
+    return moduleEClass;
   }
 
   /**
@@ -115,9 +195,9 @@ public class ProjectGeneratorPackageImpl extends EPackageImpl implements Project
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getModel_Greetings()
+  public EAttribute getModule_Name()
   {
-    return (EReference)modelEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)moduleEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -125,9 +205,9 @@ public class ProjectGeneratorPackageImpl extends EPackageImpl implements Project
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getGreeting()
+  public EAttribute getModule_Key()
   {
-    return greetingEClass;
+    return (EAttribute)moduleEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -135,9 +215,309 @@ public class ProjectGeneratorPackageImpl extends EPackageImpl implements Project
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getGreeting_Name()
+  public EAttribute getModule_CdiEnabled()
   {
-    return (EAttribute)greetingEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)moduleEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getModule_JpaConfig()
+  {
+    return (EReference)moduleEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getModule_ServiceConfig()
+  {
+    return (EReference)moduleEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getModule_MessageBundles()
+  {
+    return (EReference)moduleEClass.getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getModule_Messages()
+  {
+    return (EReference)moduleEClass.getEStructuralFeatures().get(6);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getServiceConfig()
+  {
+    return serviceConfigEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getServiceConfig_Observers()
+  {
+    return (EReference)serviceConfigEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getObserver()
+  {
+    return observerEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getObserver_Name()
+  {
+    return (EAttribute)observerEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getObserver_Type()
+  {
+    return (EAttribute)observerEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getObserver_During()
+  {
+    return (EAttribute)observerEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getObserver_Notify()
+  {
+    return (EAttribute)observerEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getObserver_ClassName()
+  {
+    return (EAttribute)observerEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getJpaConfig()
+  {
+    return jpaConfigEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getJpaConfig_LocalizedEnums()
+  {
+    return (EReference)jpaConfigEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getLocalized()
+  {
+    return localizedEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getLocalized_Name()
+  {
+    return (EAttribute)localizedEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getLocalized_Locales()
+  {
+    return (EAttribute)localizedEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getLocalized_Values()
+  {
+    return (EReference)localizedEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getLocalizedEntry()
+  {
+    return localizedEntryEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getLocalizedEntry_Locale()
+  {
+    return (EAttribute)localizedEntryEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getLocalizedEntry_Entry()
+  {
+    return (EReference)localizedEntryEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getLocalizedEntry_Arguments()
+  {
+    return (EReference)localizedEntryEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getKeyValuePair()
+  {
+    return keyValuePairEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getKeyValuePair_Key()
+  {
+    return (EAttribute)keyValuePairEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getKeyValuePair_Value()
+  {
+    return (EAttribute)keyValuePairEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EEnum getLocale()
+  {
+    return localeEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EEnum getDbType()
+  {
+    return dbTypeEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EEnum getBoolean()
+  {
+    return booleanEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EEnum getDuring()
+  {
+    return duringEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EEnum getNotify()
+  {
+    return notifyEEnum;
   }
 
   /**
@@ -170,11 +550,48 @@ public class ProjectGeneratorPackageImpl extends EPackageImpl implements Project
     isCreated = true;
 
     // Create classes and their features
-    modelEClass = createEClass(MODEL);
-    createEReference(modelEClass, MODEL__GREETINGS);
+    moduleEClass = createEClass(MODULE);
+    createEAttribute(moduleEClass, MODULE__NAME);
+    createEAttribute(moduleEClass, MODULE__KEY);
+    createEAttribute(moduleEClass, MODULE__CDI_ENABLED);
+    createEReference(moduleEClass, MODULE__JPA_CONFIG);
+    createEReference(moduleEClass, MODULE__SERVICE_CONFIG);
+    createEReference(moduleEClass, MODULE__MESSAGE_BUNDLES);
+    createEReference(moduleEClass, MODULE__MESSAGES);
 
-    greetingEClass = createEClass(GREETING);
-    createEAttribute(greetingEClass, GREETING__NAME);
+    serviceConfigEClass = createEClass(SERVICE_CONFIG);
+    createEReference(serviceConfigEClass, SERVICE_CONFIG__OBSERVERS);
+
+    observerEClass = createEClass(OBSERVER);
+    createEAttribute(observerEClass, OBSERVER__NAME);
+    createEAttribute(observerEClass, OBSERVER__TYPE);
+    createEAttribute(observerEClass, OBSERVER__DURING);
+    createEAttribute(observerEClass, OBSERVER__NOTIFY);
+    createEAttribute(observerEClass, OBSERVER__CLASS_NAME);
+
+    jpaConfigEClass = createEClass(JPA_CONFIG);
+    createEReference(jpaConfigEClass, JPA_CONFIG__LOCALIZED_ENUMS);
+
+    localizedEClass = createEClass(LOCALIZED);
+    createEAttribute(localizedEClass, LOCALIZED__NAME);
+    createEAttribute(localizedEClass, LOCALIZED__LOCALES);
+    createEReference(localizedEClass, LOCALIZED__VALUES);
+
+    localizedEntryEClass = createEClass(LOCALIZED_ENTRY);
+    createEAttribute(localizedEntryEClass, LOCALIZED_ENTRY__LOCALE);
+    createEReference(localizedEntryEClass, LOCALIZED_ENTRY__ENTRY);
+    createEReference(localizedEntryEClass, LOCALIZED_ENTRY__ARGUMENTS);
+
+    keyValuePairEClass = createEClass(KEY_VALUE_PAIR);
+    createEAttribute(keyValuePairEClass, KEY_VALUE_PAIR__KEY);
+    createEAttribute(keyValuePairEClass, KEY_VALUE_PAIR__VALUE);
+
+    // Create enums
+    localeEEnum = createEEnum(LOCALE);
+    dbTypeEEnum = createEEnum(DB_TYPE);
+    booleanEEnum = createEEnum(BOOLEAN);
+    duringEEnum = createEEnum(DURING);
+    notifyEEnum = createEEnum(NOTIFY);
   }
 
   /**
@@ -208,11 +625,62 @@ public class ProjectGeneratorPackageImpl extends EPackageImpl implements Project
     // Add supertypes to classes
 
     // Initialize classes and features; add operations and parameters
-    initEClass(modelEClass, Model.class, "Model", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getModel_Greetings(), this.getGreeting(), null, "greetings", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(moduleEClass, Module.class, "Module", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getModule_Name(), ecorePackage.getEString(), "name", null, 0, 1, Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getModule_Key(), ecorePackage.getEString(), "key", null, 0, 1, Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getModule_CdiEnabled(), this.getBoolean(), "cdiEnabled", null, 0, 1, Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getModule_JpaConfig(), this.getJpaConfig(), null, "jpaConfig", null, 0, 1, Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getModule_ServiceConfig(), this.getServiceConfig(), null, "serviceConfig", null, 0, 1, Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getModule_MessageBundles(), this.getLocalized(), null, "messageBundles", null, 0, -1, Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getModule_Messages(), this.getLocalized(), null, "messages", null, 0, 1, Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(greetingEClass, Greeting.class, "Greeting", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getGreeting_Name(), ecorePackage.getEString(), "name", null, 0, 1, Greeting.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(serviceConfigEClass, ServiceConfig.class, "ServiceConfig", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getServiceConfig_Observers(), this.getObserver(), null, "observers", null, 0, -1, ServiceConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(observerEClass, Observer.class, "Observer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getObserver_Name(), ecorePackage.getEString(), "name", null, 0, 1, Observer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getObserver_Type(), ecorePackage.getEString(), "type", null, 0, 1, Observer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getObserver_During(), this.getDuring(), "during", null, 0, 1, Observer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getObserver_Notify(), this.getNotify(), "notify", null, 0, 1, Observer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getObserver_ClassName(), ecorePackage.getEString(), "className", null, 0, 1, Observer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(jpaConfigEClass, JpaConfig.class, "JpaConfig", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getJpaConfig_LocalizedEnums(), this.getLocalized(), null, "localizedEnums", null, 0, -1, JpaConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(localizedEClass, Localized.class, "Localized", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getLocalized_Name(), ecorePackage.getEString(), "name", null, 0, 1, Localized.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getLocalized_Locales(), this.getLocale(), "locales", null, 0, -1, Localized.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getLocalized_Values(), this.getLocalizedEntry(), null, "values", null, 0, -1, Localized.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(localizedEntryEClass, LocalizedEntry.class, "LocalizedEntry", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getLocalizedEntry_Locale(), this.getLocale(), "locale", null, 0, 1, LocalizedEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getLocalizedEntry_Entry(), this.getKeyValuePair(), null, "entry", null, 0, 1, LocalizedEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getLocalizedEntry_Arguments(), this.getKeyValuePair(), null, "arguments", null, 0, -1, LocalizedEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(keyValuePairEClass, KeyValuePair.class, "KeyValuePair", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getKeyValuePair_Key(), ecorePackage.getEString(), "key", null, 0, 1, KeyValuePair.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getKeyValuePair_Value(), ecorePackage.getEString(), "value", null, 0, 1, KeyValuePair.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    // Initialize enums and add enum literals
+    initEEnum(localeEEnum, Locale.class, "Locale");
+    addEEnumLiteral(localeEEnum, Locale.DE_DE);
+    addEEnumLiteral(localeEEnum, Locale.EN_US);
+
+    initEEnum(dbTypeEEnum, DbType.class, "DbType");
+    addEEnumLiteral(dbTypeEEnum, DbType.VARCHAR);
+    addEEnumLiteral(dbTypeEEnum, DbType.CLOB);
+
+    initEEnum(booleanEEnum, at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Boolean.class, "Boolean");
+    addEEnumLiteral(booleanEEnum, at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Boolean.TRUE);
+    addEEnumLiteral(booleanEEnum, at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Boolean.FALSE);
+
+    initEEnum(duringEEnum, During.class, "During");
+    addEEnumLiteral(duringEEnum, During.IN_PROG);
+    addEEnumLiteral(duringEEnum, During.AFTER_COMPLETION);
+
+    initEEnum(notifyEEnum, Notify.class, "Notify");
+    addEEnumLiteral(notifyEEnum, Notify.ALWAYS);
+    addEEnumLiteral(notifyEEnum, Notify.EXISTS);
 
     // Create resource
     createResource(eNS_URI);

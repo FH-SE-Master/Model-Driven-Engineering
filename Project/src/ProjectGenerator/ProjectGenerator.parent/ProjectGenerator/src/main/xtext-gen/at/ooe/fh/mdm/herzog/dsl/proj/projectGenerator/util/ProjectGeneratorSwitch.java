@@ -3,7 +3,14 @@
  */
 package at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.util;
 
-import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.*;
+import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.JpaConfig;
+import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.KeyValuePair;
+import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Localized;
+import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.LocalizedEntry;
+import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Module;
+import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Observer;
+import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.ProjectGeneratorPackage;
+import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.ServiceConfig;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -73,17 +80,52 @@ public class ProjectGeneratorSwitch<T> extends Switch<T>
   {
     switch (classifierID)
     {
-      case ProjectGeneratorPackage.MODEL:
+      case ProjectGeneratorPackage.MODULE:
       {
-        Model model = (Model)theEObject;
-        T result = caseModel(model);
+        Module module = (Module)theEObject;
+        T result = caseModule(module);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case ProjectGeneratorPackage.GREETING:
+      case ProjectGeneratorPackage.SERVICE_CONFIG:
       {
-        Greeting greeting = (Greeting)theEObject;
-        T result = caseGreeting(greeting);
+        ServiceConfig serviceConfig = (ServiceConfig)theEObject;
+        T result = caseServiceConfig(serviceConfig);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ProjectGeneratorPackage.OBSERVER:
+      {
+        Observer observer = (Observer)theEObject;
+        T result = caseObserver(observer);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ProjectGeneratorPackage.JPA_CONFIG:
+      {
+        JpaConfig jpaConfig = (JpaConfig)theEObject;
+        T result = caseJpaConfig(jpaConfig);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ProjectGeneratorPackage.LOCALIZED:
+      {
+        Localized localized = (Localized)theEObject;
+        T result = caseLocalized(localized);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ProjectGeneratorPackage.LOCALIZED_ENTRY:
+      {
+        LocalizedEntry localizedEntry = (LocalizedEntry)theEObject;
+        T result = caseLocalizedEntry(localizedEntry);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ProjectGeneratorPackage.KEY_VALUE_PAIR:
+      {
+        KeyValuePair keyValuePair = (KeyValuePair)theEObject;
+        T result = caseKeyValuePair(keyValuePair);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -92,33 +134,113 @@ public class ProjectGeneratorSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Model</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Module</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Model</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Module</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseModel(Model object)
+  public T caseModule(Module object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Greeting</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Service Config</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Greeting</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Service Config</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseGreeting(Greeting object)
+  public T caseServiceConfig(ServiceConfig object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Observer</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Observer</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseObserver(Observer object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Jpa Config</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Jpa Config</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseJpaConfig(JpaConfig object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Localized</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Localized</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseLocalized(Localized object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Localized Entry</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Localized Entry</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseLocalizedEntry(LocalizedEntry object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Key Value Pair</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Key Value Pair</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseKeyValuePair(KeyValuePair object)
   {
     return null;
   }

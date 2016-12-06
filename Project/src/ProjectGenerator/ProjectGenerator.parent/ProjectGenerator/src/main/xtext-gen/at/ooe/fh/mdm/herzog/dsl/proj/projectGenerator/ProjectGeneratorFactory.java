@@ -24,22 +24,67 @@ public interface ProjectGeneratorFactory extends EFactory
   ProjectGeneratorFactory eINSTANCE = at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.impl.ProjectGeneratorFactoryImpl.init();
 
   /**
-   * Returns a new object of class '<em>Model</em>'.
+   * Returns a new object of class '<em>Module</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Model</em>'.
+   * @return a new object of class '<em>Module</em>'.
    * @generated
    */
-  Model createModel();
+  Module createModule();
 
   /**
-   * Returns a new object of class '<em>Greeting</em>'.
+   * Returns a new object of class '<em>Service Config</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Greeting</em>'.
+   * @return a new object of class '<em>Service Config</em>'.
    * @generated
    */
-  Greeting createGreeting();
+  ServiceConfig createServiceConfig();
+
+  /**
+   * Returns a new object of class '<em>Observer</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Observer</em>'.
+   * @generated
+   */
+  Observer createObserver();
+
+  /**
+   * Returns a new object of class '<em>Jpa Config</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Jpa Config</em>'.
+   * @generated
+   */
+  JpaConfig createJpaConfig();
+
+  /**
+   * Returns a new object of class '<em>Localized</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Localized</em>'.
+   * @generated
+   */
+  Localized createLocalized();
+
+  /**
+   * Returns a new object of class '<em>Localized Entry</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Localized Entry</em>'.
+   * @generated
+   */
+  LocalizedEntry createLocalizedEntry();
+
+  /**
+   * Returns a new object of class '<em>Key Value Pair</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Key Value Pair</em>'.
+   * @generated
+   */
+  KeyValuePair createKeyValuePair();
 
   /**
    * Returns the package supported by this factory.

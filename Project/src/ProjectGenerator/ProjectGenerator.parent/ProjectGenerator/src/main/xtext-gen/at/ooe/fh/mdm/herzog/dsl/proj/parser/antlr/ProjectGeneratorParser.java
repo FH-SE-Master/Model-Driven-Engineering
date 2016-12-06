@@ -27,7 +27,7 @@ public class ProjectGeneratorParser extends AbstractAntlrParser {
 
 	@Override 
 	protected String getDefaultRuleName() {
-		return "Model";
+		return "Module";
 	}
 
 	public ProjectGeneratorGrammarAccess getGrammarAccess() {

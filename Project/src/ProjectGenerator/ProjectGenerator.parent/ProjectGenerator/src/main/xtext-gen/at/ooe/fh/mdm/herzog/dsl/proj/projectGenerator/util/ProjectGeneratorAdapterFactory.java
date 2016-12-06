@@ -3,7 +3,14 @@
  */
 package at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.util;
 
-import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.*;
+import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.JpaConfig;
+import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.KeyValuePair;
+import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Localized;
+import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.LocalizedEntry;
+import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Module;
+import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Observer;
+import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.ProjectGeneratorPackage;
+import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.ServiceConfig;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
@@ -76,14 +83,39 @@ public class ProjectGeneratorAdapterFactory extends AdapterFactoryImpl
     new ProjectGeneratorSwitch<Adapter>()
     {
       @Override
-      public Adapter caseModel(Model object)
+      public Adapter caseModule(Module object)
       {
-        return createModelAdapter();
+        return createModuleAdapter();
       }
       @Override
-      public Adapter caseGreeting(Greeting object)
+      public Adapter caseServiceConfig(ServiceConfig object)
       {
-        return createGreetingAdapter();
+        return createServiceConfigAdapter();
+      }
+      @Override
+      public Adapter caseObserver(Observer object)
+      {
+        return createObserverAdapter();
+      }
+      @Override
+      public Adapter caseJpaConfig(JpaConfig object)
+      {
+        return createJpaConfigAdapter();
+      }
+      @Override
+      public Adapter caseLocalized(Localized object)
+      {
+        return createLocalizedAdapter();
+      }
+      @Override
+      public Adapter caseLocalizedEntry(LocalizedEntry object)
+      {
+        return createLocalizedEntryAdapter();
+      }
+      @Override
+      public Adapter caseKeyValuePair(KeyValuePair object)
+      {
+        return createKeyValuePairAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -108,31 +140,106 @@ public class ProjectGeneratorAdapterFactory extends AdapterFactoryImpl
 
 
   /**
-   * Creates a new adapter for an object of class '{@link at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Model <em>Model</em>}'.
+   * Creates a new adapter for an object of class '{@link at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Module <em>Module</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Model
+   * @see at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Module
    * @generated
    */
-  public Adapter createModelAdapter()
+  public Adapter createModuleAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Greeting <em>Greeting</em>}'.
+   * Creates a new adapter for an object of class '{@link at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.ServiceConfig <em>Service Config</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Greeting
+   * @see at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.ServiceConfig
    * @generated
    */
-  public Adapter createGreetingAdapter()
+  public Adapter createServiceConfigAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Observer <em>Observer</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Observer
+   * @generated
+   */
+  public Adapter createObserverAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.JpaConfig <em>Jpa Config</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.JpaConfig
+   * @generated
+   */
+  public Adapter createJpaConfigAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Localized <em>Localized</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Localized
+   * @generated
+   */
+  public Adapter createLocalizedAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.LocalizedEntry <em>Localized Entry</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.LocalizedEntry
+   * @generated
+   */
+  public Adapter createLocalizedEntryAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.KeyValuePair <em>Key Value Pair</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.KeyValuePair
+   * @generated
+   */
+  public Adapter createKeyValuePairAdapter()
   {
     return null;
   }

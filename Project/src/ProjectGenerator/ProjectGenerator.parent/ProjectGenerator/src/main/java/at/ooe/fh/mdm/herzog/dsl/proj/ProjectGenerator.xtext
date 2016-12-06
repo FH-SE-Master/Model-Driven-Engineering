@@ -2,8 +2,60 @@ grammar at.ooe.fh.mdm.herzog.dsl.proj.ProjectGenerator with org.eclipse.xtext.co
 
 generate projectGenerator "http://www.ooe.at/fh/mdm/herzog/dsl/proj/ProjectGenerator"
 
-Model:
-	greetings+=Greeting*;
-	
-Greeting:
-	'Hello' name=ID '!';
+Module:
+    'module' name=ID '{'
+        'key' key=STRING';'
+        'cdiEnabled' cdiEnabled=Boolean';'
+        'jpaConfig' jpaConfig=JpaConfig';'
+        'serviceConfig' serviceConfig=ServiceConfig';'
+        ('messageBundles' '{' messageBundles+=Localized+ '}'(',')*)?
+        ('messages' messages=Localized+)?
+    '}';
+
+// Service configuration
+ServiceConfig: '{'
+        ('observers' observers+=Observer+)?
+    '}';
+
+Observer:
+    'observer' name=ID '{'
+        'type' type=STRING';'
+        'during' during=During';'
+        'notify' notify=Notify';'
+        'delegate' className=ClassName '#' MethodName';'
+    '}';
+
+// Jpa configuration
+JpaConfig: '{'
+        ('localizedEnums' localizedEnums+=Localized+)?
+    '}';
+
+// Common
+Localized:
+    'localized' name=ID '{'
+        'name' name=STRING';'
+        'locales' locales+=Locale+';'
+        ('values' values+=LocalizedEntry+';')?
+    '}';
+
+LocalizedEntry: '{'
+        'locale' locale=Locale';'
+        'entry' entry=KeyValuePair';'
+        ('argumtes' arguments+=KeyValuePair+)?
+    '}';
+
+KeyValuePair: '{'
+        'key' key=STRING';'
+        'value' value=STRING';'
+    '}';
+
+
+// Constants
+enum Locale: DE_DE='de_DE' | EN_US='en_US';
+enum DbType: VARCHAR='Varchar' | CLOB='Clob';
+enum Boolean: TRUE='true' | FALSE='false';
+enum During: IN_PROG='InProgress' | AFTER_COMPLETION='AfterCompleition';
+enum Notify: ALWAYS='Always' | EXISTS='Exists';
+terminal ClassName: ('a'..'f')+ (('0'..'9'|'A'..'Z'|'a'..'z')+ '.')+ ('a'..'f')+ ('0'..'9'|'A'..'Z'|'a'..'z')+;
+terminal MethodName: ('a'..'f')+ ('0'..'9'|'A'..'Z'|'a'..'z')+;
+

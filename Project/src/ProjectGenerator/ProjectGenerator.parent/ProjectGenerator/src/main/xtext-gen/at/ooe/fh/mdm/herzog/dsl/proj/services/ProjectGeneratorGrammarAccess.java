@@ -6,7 +6,10 @@ package at.ooe.fh.mdm.herzog.dsl.proj.services;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import java.util.List;
+import org.eclipse.xtext.Alternatives;
 import org.eclipse.xtext.Assignment;
+import org.eclipse.xtext.EnumLiteralDeclaration;
+import org.eclipse.xtext.EnumRule;
 import org.eclipse.xtext.Grammar;
 import org.eclipse.xtext.GrammarUtil;
 import org.eclipse.xtext.Group;
@@ -15,44 +18,66 @@ import org.eclipse.xtext.ParserRule;
 import org.eclipse.xtext.RuleCall;
 import org.eclipse.xtext.TerminalRule;
 import org.eclipse.xtext.common.services.TerminalsGrammarAccess;
+import org.eclipse.xtext.service.AbstractElementFinder.AbstractEnumRuleElementFinder;
 import org.eclipse.xtext.service.AbstractElementFinder.AbstractGrammarElementFinder;
 import org.eclipse.xtext.service.GrammarProvider;
 
 @Singleton
 public class ProjectGeneratorGrammarAccess extends AbstractGrammarElementFinder {
 	
-	public class ModelElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "at.ooe.fh.mdm.herzog.dsl.proj.ProjectGenerator.Model");
-		private final Assignment cGreetingsAssignment = (Assignment)rule.eContents().get(1);
-		private final RuleCall cGreetingsGreetingParserRuleCall_0 = (RuleCall)cGreetingsAssignment.eContents().get(0);
-		
-		//Model:
-		//	greetings+=Greeting*;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//greetings+=Greeting*
-		public Assignment getGreetingsAssignment() { return cGreetingsAssignment; }
-		
-		//Greeting
-		public RuleCall getGreetingsGreetingParserRuleCall_0() { return cGreetingsGreetingParserRuleCall_0; }
-	}
-	public class GreetingElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "at.ooe.fh.mdm.herzog.dsl.proj.ProjectGenerator.Greeting");
+	public class ModuleElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "at.ooe.fh.mdm.herzog.dsl.proj.ProjectGenerator.Module");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cHelloKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cModuleKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final Keyword cExclamationMarkKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Keyword cKeyKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cKeyAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cKeySTRINGTerminalRuleCall_4_0 = (RuleCall)cKeyAssignment_4.eContents().get(0);
+		private final Keyword cSemicolonKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Keyword cCdiEnabledKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Assignment cCdiEnabledAssignment_7 = (Assignment)cGroup.eContents().get(7);
+		private final RuleCall cCdiEnabledBooleanEnumRuleCall_7_0 = (RuleCall)cCdiEnabledAssignment_7.eContents().get(0);
+		private final Keyword cSemicolonKeyword_8 = (Keyword)cGroup.eContents().get(8);
+		private final Keyword cJpaConfigKeyword_9 = (Keyword)cGroup.eContents().get(9);
+		private final Assignment cJpaConfigAssignment_10 = (Assignment)cGroup.eContents().get(10);
+		private final RuleCall cJpaConfigJpaConfigParserRuleCall_10_0 = (RuleCall)cJpaConfigAssignment_10.eContents().get(0);
+		private final Keyword cSemicolonKeyword_11 = (Keyword)cGroup.eContents().get(11);
+		private final Keyword cServiceConfigKeyword_12 = (Keyword)cGroup.eContents().get(12);
+		private final Assignment cServiceConfigAssignment_13 = (Assignment)cGroup.eContents().get(13);
+		private final RuleCall cServiceConfigServiceConfigParserRuleCall_13_0 = (RuleCall)cServiceConfigAssignment_13.eContents().get(0);
+		private final Keyword cSemicolonKeyword_14 = (Keyword)cGroup.eContents().get(14);
+		private final Group cGroup_15 = (Group)cGroup.eContents().get(15);
+		private final Keyword cMessageBundlesKeyword_15_0 = (Keyword)cGroup_15.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_15_1 = (Keyword)cGroup_15.eContents().get(1);
+		private final Assignment cMessageBundlesAssignment_15_2 = (Assignment)cGroup_15.eContents().get(2);
+		private final RuleCall cMessageBundlesLocalizedParserRuleCall_15_2_0 = (RuleCall)cMessageBundlesAssignment_15_2.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_15_3 = (Keyword)cGroup_15.eContents().get(3);
+		private final Keyword cCommaKeyword_15_4 = (Keyword)cGroup_15.eContents().get(4);
+		private final Group cGroup_16 = (Group)cGroup.eContents().get(16);
+		private final Keyword cMessagesKeyword_16_0 = (Keyword)cGroup_16.eContents().get(0);
+		private final Assignment cMessagesAssignment_16_1 = (Assignment)cGroup_16.eContents().get(1);
+		private final RuleCall cMessagesLocalizedParserRuleCall_16_1_0 = (RuleCall)cMessagesAssignment_16_1.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_17 = (Keyword)cGroup.eContents().get(17);
 		
-		//Greeting:
-		//	'Hello' name=ID '!';
+		//Module:
+		//	'module' name=ID '{'
+		//	'key' key=STRING ';'
+		//	'cdiEnabled' cdiEnabled=Boolean ';'
+		//	'jpaConfig' jpaConfig=JpaConfig ';'
+		//	'serviceConfig' serviceConfig=ServiceConfig ';' ('messageBundles' '{' messageBundles+=Localized+ '}' ','*)?
+		//	('messages' messages=Localized+)?
+		//	'}';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'Hello' name=ID '!'
+		//'module' name=ID '{' 'key' key=STRING ';' 'cdiEnabled' cdiEnabled=Boolean ';' 'jpaConfig' jpaConfig=JpaConfig ';'
+		//'serviceConfig' serviceConfig=ServiceConfig ';' ('messageBundles' '{' messageBundles+=Localized+ '}' ','*)?
+		//('messages' messages=Localized+)? '}'
 		public Group getGroup() { return cGroup; }
 		
-		//'Hello'
-		public Keyword getHelloKeyword_0() { return cHelloKeyword_0; }
+		//'module'
+		public Keyword getModuleKeyword_0() { return cModuleKeyword_0; }
 		
 		//name=ID
 		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
@@ -60,13 +85,639 @@ public class ProjectGeneratorGrammarAccess extends AbstractGrammarElementFinder 
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
 		
-		//'!'
-		public Keyword getExclamationMarkKeyword_2() { return cExclamationMarkKeyword_2; }
+		//'{'
+		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
+		
+		//'key'
+		public Keyword getKeyKeyword_3() { return cKeyKeyword_3; }
+		
+		//key=STRING
+		public Assignment getKeyAssignment_4() { return cKeyAssignment_4; }
+		
+		//STRING
+		public RuleCall getKeySTRINGTerminalRuleCall_4_0() { return cKeySTRINGTerminalRuleCall_4_0; }
+		
+		//';'
+		public Keyword getSemicolonKeyword_5() { return cSemicolonKeyword_5; }
+		
+		//'cdiEnabled'
+		public Keyword getCdiEnabledKeyword_6() { return cCdiEnabledKeyword_6; }
+		
+		//cdiEnabled=Boolean
+		public Assignment getCdiEnabledAssignment_7() { return cCdiEnabledAssignment_7; }
+		
+		//Boolean
+		public RuleCall getCdiEnabledBooleanEnumRuleCall_7_0() { return cCdiEnabledBooleanEnumRuleCall_7_0; }
+		
+		//';'
+		public Keyword getSemicolonKeyword_8() { return cSemicolonKeyword_8; }
+		
+		//'jpaConfig'
+		public Keyword getJpaConfigKeyword_9() { return cJpaConfigKeyword_9; }
+		
+		//jpaConfig=JpaConfig
+		public Assignment getJpaConfigAssignment_10() { return cJpaConfigAssignment_10; }
+		
+		//JpaConfig
+		public RuleCall getJpaConfigJpaConfigParserRuleCall_10_0() { return cJpaConfigJpaConfigParserRuleCall_10_0; }
+		
+		//';'
+		public Keyword getSemicolonKeyword_11() { return cSemicolonKeyword_11; }
+		
+		//'serviceConfig'
+		public Keyword getServiceConfigKeyword_12() { return cServiceConfigKeyword_12; }
+		
+		//serviceConfig=ServiceConfig
+		public Assignment getServiceConfigAssignment_13() { return cServiceConfigAssignment_13; }
+		
+		//ServiceConfig
+		public RuleCall getServiceConfigServiceConfigParserRuleCall_13_0() { return cServiceConfigServiceConfigParserRuleCall_13_0; }
+		
+		//';'
+		public Keyword getSemicolonKeyword_14() { return cSemicolonKeyword_14; }
+		
+		//('messageBundles' '{' messageBundles+=Localized+ '}' ','*)?
+		public Group getGroup_15() { return cGroup_15; }
+		
+		//'messageBundles'
+		public Keyword getMessageBundlesKeyword_15_0() { return cMessageBundlesKeyword_15_0; }
+		
+		//'{'
+		public Keyword getLeftCurlyBracketKeyword_15_1() { return cLeftCurlyBracketKeyword_15_1; }
+		
+		//messageBundles+=Localized+
+		public Assignment getMessageBundlesAssignment_15_2() { return cMessageBundlesAssignment_15_2; }
+		
+		//Localized
+		public RuleCall getMessageBundlesLocalizedParserRuleCall_15_2_0() { return cMessageBundlesLocalizedParserRuleCall_15_2_0; }
+		
+		//'}'
+		public Keyword getRightCurlyBracketKeyword_15_3() { return cRightCurlyBracketKeyword_15_3; }
+		
+		//','*
+		public Keyword getCommaKeyword_15_4() { return cCommaKeyword_15_4; }
+		
+		//('messages' messages=Localized+)?
+		public Group getGroup_16() { return cGroup_16; }
+		
+		//'messages'
+		public Keyword getMessagesKeyword_16_0() { return cMessagesKeyword_16_0; }
+		
+		//messages=Localized+
+		public Assignment getMessagesAssignment_16_1() { return cMessagesAssignment_16_1; }
+		
+		//Localized
+		public RuleCall getMessagesLocalizedParserRuleCall_16_1_0() { return cMessagesLocalizedParserRuleCall_16_1_0; }
+		
+		//'}'
+		public Keyword getRightCurlyBracketKeyword_17() { return cRightCurlyBracketKeyword_17; }
+	}
+	public class ServiceConfigElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "at.ooe.fh.mdm.herzog.dsl.proj.ProjectGenerator.ServiceConfig");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cLeftCurlyBracketKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Keyword cObserversKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
+		private final Assignment cObserversAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final RuleCall cObserversObserverParserRuleCall_1_1_0 = (RuleCall)cObserversAssignment_1_1.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		
+		//// Service configuration
+		//ServiceConfig:
+		//	'{' ('observers' observers+=Observer+)?
+		//	'}';
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'{' ('observers' observers+=Observer+)? '}'
+		public Group getGroup() { return cGroup; }
+		
+		//'{'
+		public Keyword getLeftCurlyBracketKeyword_0() { return cLeftCurlyBracketKeyword_0; }
+		
+		//('observers' observers+=Observer+)?
+		public Group getGroup_1() { return cGroup_1; }
+		
+		//'observers'
+		public Keyword getObserversKeyword_1_0() { return cObserversKeyword_1_0; }
+		
+		//observers+=Observer+
+		public Assignment getObserversAssignment_1_1() { return cObserversAssignment_1_1; }
+		
+		//Observer
+		public RuleCall getObserversObserverParserRuleCall_1_1_0() { return cObserversObserverParserRuleCall_1_1_0; }
+		
+		//'}'
+		public Keyword getRightCurlyBracketKeyword_2() { return cRightCurlyBracketKeyword_2; }
+	}
+	public class ObserverElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "at.ooe.fh.mdm.herzog.dsl.proj.ProjectGenerator.Observer");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cObserverKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Keyword cTypeKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cTypeAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cTypeSTRINGTerminalRuleCall_4_0 = (RuleCall)cTypeAssignment_4.eContents().get(0);
+		private final Keyword cSemicolonKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Keyword cDuringKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Assignment cDuringAssignment_7 = (Assignment)cGroup.eContents().get(7);
+		private final RuleCall cDuringDuringEnumRuleCall_7_0 = (RuleCall)cDuringAssignment_7.eContents().get(0);
+		private final Keyword cSemicolonKeyword_8 = (Keyword)cGroup.eContents().get(8);
+		private final Keyword cNotifyKeyword_9 = (Keyword)cGroup.eContents().get(9);
+		private final Assignment cNotifyAssignment_10 = (Assignment)cGroup.eContents().get(10);
+		private final RuleCall cNotifyNotifyEnumRuleCall_10_0 = (RuleCall)cNotifyAssignment_10.eContents().get(0);
+		private final Keyword cSemicolonKeyword_11 = (Keyword)cGroup.eContents().get(11);
+		private final Keyword cDelegateKeyword_12 = (Keyword)cGroup.eContents().get(12);
+		private final Assignment cClassNameAssignment_13 = (Assignment)cGroup.eContents().get(13);
+		private final RuleCall cClassNameClassNameTerminalRuleCall_13_0 = (RuleCall)cClassNameAssignment_13.eContents().get(0);
+		private final Keyword cNumberSignKeyword_14 = (Keyword)cGroup.eContents().get(14);
+		private final RuleCall cMethodNameTerminalRuleCall_15 = (RuleCall)cGroup.eContents().get(15);
+		private final Keyword cSemicolonKeyword_16 = (Keyword)cGroup.eContents().get(16);
+		private final Keyword cRightCurlyBracketKeyword_17 = (Keyword)cGroup.eContents().get(17);
+		
+		//Observer:
+		//	'observer' name=ID '{'
+		//	'type' type=STRING ';'
+		//	'during' during=During ';'
+		//	'notify' notify=Notify ';'
+		//	'delegate' className=ClassName '#' MethodName ';'
+		//	'}';
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'observer' name=ID '{' 'type' type=STRING ';' 'during' during=During ';' 'notify' notify=Notify ';' 'delegate'
+		//className=ClassName '#' MethodName ';' '}'
+		public Group getGroup() { return cGroup; }
+		
+		//'observer'
+		public Keyword getObserverKeyword_0() { return cObserverKeyword_0; }
+		
+		//name=ID
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+		
+		//'{'
+		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
+		
+		//'type'
+		public Keyword getTypeKeyword_3() { return cTypeKeyword_3; }
+		
+		//type=STRING
+		public Assignment getTypeAssignment_4() { return cTypeAssignment_4; }
+		
+		//STRING
+		public RuleCall getTypeSTRINGTerminalRuleCall_4_0() { return cTypeSTRINGTerminalRuleCall_4_0; }
+		
+		//';'
+		public Keyword getSemicolonKeyword_5() { return cSemicolonKeyword_5; }
+		
+		//'during'
+		public Keyword getDuringKeyword_6() { return cDuringKeyword_6; }
+		
+		//during=During
+		public Assignment getDuringAssignment_7() { return cDuringAssignment_7; }
+		
+		//During
+		public RuleCall getDuringDuringEnumRuleCall_7_0() { return cDuringDuringEnumRuleCall_7_0; }
+		
+		//';'
+		public Keyword getSemicolonKeyword_8() { return cSemicolonKeyword_8; }
+		
+		//'notify'
+		public Keyword getNotifyKeyword_9() { return cNotifyKeyword_9; }
+		
+		//notify=Notify
+		public Assignment getNotifyAssignment_10() { return cNotifyAssignment_10; }
+		
+		//Notify
+		public RuleCall getNotifyNotifyEnumRuleCall_10_0() { return cNotifyNotifyEnumRuleCall_10_0; }
+		
+		//';'
+		public Keyword getSemicolonKeyword_11() { return cSemicolonKeyword_11; }
+		
+		//'delegate'
+		public Keyword getDelegateKeyword_12() { return cDelegateKeyword_12; }
+		
+		//className=ClassName
+		public Assignment getClassNameAssignment_13() { return cClassNameAssignment_13; }
+		
+		//ClassName
+		public RuleCall getClassNameClassNameTerminalRuleCall_13_0() { return cClassNameClassNameTerminalRuleCall_13_0; }
+		
+		//'#'
+		public Keyword getNumberSignKeyword_14() { return cNumberSignKeyword_14; }
+		
+		//MethodName
+		public RuleCall getMethodNameTerminalRuleCall_15() { return cMethodNameTerminalRuleCall_15; }
+		
+		//';'
+		public Keyword getSemicolonKeyword_16() { return cSemicolonKeyword_16; }
+		
+		//'}'
+		public Keyword getRightCurlyBracketKeyword_17() { return cRightCurlyBracketKeyword_17; }
+	}
+	public class JpaConfigElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "at.ooe.fh.mdm.herzog.dsl.proj.ProjectGenerator.JpaConfig");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cLeftCurlyBracketKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Keyword cLocalizedEnumsKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
+		private final Assignment cLocalizedEnumsAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final RuleCall cLocalizedEnumsLocalizedParserRuleCall_1_1_0 = (RuleCall)cLocalizedEnumsAssignment_1_1.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		
+		//// Jpa configuration
+		//JpaConfig:
+		//	'{' ('localizedEnums' localizedEnums+=Localized+)?
+		//	'}';
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'{' ('localizedEnums' localizedEnums+=Localized+)? '}'
+		public Group getGroup() { return cGroup; }
+		
+		//'{'
+		public Keyword getLeftCurlyBracketKeyword_0() { return cLeftCurlyBracketKeyword_0; }
+		
+		//('localizedEnums' localizedEnums+=Localized+)?
+		public Group getGroup_1() { return cGroup_1; }
+		
+		//'localizedEnums'
+		public Keyword getLocalizedEnumsKeyword_1_0() { return cLocalizedEnumsKeyword_1_0; }
+		
+		//localizedEnums+=Localized+
+		public Assignment getLocalizedEnumsAssignment_1_1() { return cLocalizedEnumsAssignment_1_1; }
+		
+		//Localized
+		public RuleCall getLocalizedEnumsLocalizedParserRuleCall_1_1_0() { return cLocalizedEnumsLocalizedParserRuleCall_1_1_0; }
+		
+		//'}'
+		public Keyword getRightCurlyBracketKeyword_2() { return cRightCurlyBracketKeyword_2; }
+	}
+	public class LocalizedElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "at.ooe.fh.mdm.herzog.dsl.proj.ProjectGenerator.Localized");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cLocalizedKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Keyword cNameKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cNameAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cNameSTRINGTerminalRuleCall_4_0 = (RuleCall)cNameAssignment_4.eContents().get(0);
+		private final Keyword cSemicolonKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Keyword cLocalesKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Assignment cLocalesAssignment_7 = (Assignment)cGroup.eContents().get(7);
+		private final RuleCall cLocalesLocaleEnumRuleCall_7_0 = (RuleCall)cLocalesAssignment_7.eContents().get(0);
+		private final Keyword cSemicolonKeyword_8 = (Keyword)cGroup.eContents().get(8);
+		private final Group cGroup_9 = (Group)cGroup.eContents().get(9);
+		private final Keyword cValuesKeyword_9_0 = (Keyword)cGroup_9.eContents().get(0);
+		private final Assignment cValuesAssignment_9_1 = (Assignment)cGroup_9.eContents().get(1);
+		private final RuleCall cValuesLocalizedEntryParserRuleCall_9_1_0 = (RuleCall)cValuesAssignment_9_1.eContents().get(0);
+		private final Keyword cSemicolonKeyword_9_2 = (Keyword)cGroup_9.eContents().get(2);
+		private final Keyword cRightCurlyBracketKeyword_10 = (Keyword)cGroup.eContents().get(10);
+		
+		//// Common
+		//Localized:
+		//	'localized' name=ID '{'
+		//	'name' name=STRING ';'
+		//	'locales' locales+=Locale+ ';' ('values' values+=LocalizedEntry+ ';')?
+		//	'}';
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'localized' name=ID '{' 'name' name=STRING ';' 'locales' locales+=Locale+ ';' ('values' values+=LocalizedEntry+ ';')?
+		//'}'
+		public Group getGroup() { return cGroup; }
+		
+		//'localized'
+		public Keyword getLocalizedKeyword_0() { return cLocalizedKeyword_0; }
+		
+		//name=ID
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+		
+		//'{'
+		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
+		
+		//'name'
+		public Keyword getNameKeyword_3() { return cNameKeyword_3; }
+		
+		//name=STRING
+		public Assignment getNameAssignment_4() { return cNameAssignment_4; }
+		
+		//STRING
+		public RuleCall getNameSTRINGTerminalRuleCall_4_0() { return cNameSTRINGTerminalRuleCall_4_0; }
+		
+		//';'
+		public Keyword getSemicolonKeyword_5() { return cSemicolonKeyword_5; }
+		
+		//'locales'
+		public Keyword getLocalesKeyword_6() { return cLocalesKeyword_6; }
+		
+		//locales+=Locale+
+		public Assignment getLocalesAssignment_7() { return cLocalesAssignment_7; }
+		
+		//Locale
+		public RuleCall getLocalesLocaleEnumRuleCall_7_0() { return cLocalesLocaleEnumRuleCall_7_0; }
+		
+		//';'
+		public Keyword getSemicolonKeyword_8() { return cSemicolonKeyword_8; }
+		
+		//('values' values+=LocalizedEntry+ ';')?
+		public Group getGroup_9() { return cGroup_9; }
+		
+		//'values'
+		public Keyword getValuesKeyword_9_0() { return cValuesKeyword_9_0; }
+		
+		//values+=LocalizedEntry+
+		public Assignment getValuesAssignment_9_1() { return cValuesAssignment_9_1; }
+		
+		//LocalizedEntry
+		public RuleCall getValuesLocalizedEntryParserRuleCall_9_1_0() { return cValuesLocalizedEntryParserRuleCall_9_1_0; }
+		
+		//';'
+		public Keyword getSemicolonKeyword_9_2() { return cSemicolonKeyword_9_2; }
+		
+		//'}'
+		public Keyword getRightCurlyBracketKeyword_10() { return cRightCurlyBracketKeyword_10; }
+	}
+	public class LocalizedEntryElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "at.ooe.fh.mdm.herzog.dsl.proj.ProjectGenerator.LocalizedEntry");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cLeftCurlyBracketKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cLocaleKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cLocaleAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cLocaleLocaleEnumRuleCall_2_0 = (RuleCall)cLocaleAssignment_2.eContents().get(0);
+		private final Keyword cSemicolonKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Keyword cEntryKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Assignment cEntryAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cEntryKeyValuePairParserRuleCall_5_0 = (RuleCall)cEntryAssignment_5.eContents().get(0);
+		private final Keyword cSemicolonKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Group cGroup_7 = (Group)cGroup.eContents().get(7);
+		private final Keyword cArgumtesKeyword_7_0 = (Keyword)cGroup_7.eContents().get(0);
+		private final Assignment cArgumentsAssignment_7_1 = (Assignment)cGroup_7.eContents().get(1);
+		private final RuleCall cArgumentsKeyValuePairParserRuleCall_7_1_0 = (RuleCall)cArgumentsAssignment_7_1.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_8 = (Keyword)cGroup.eContents().get(8);
+		
+		//LocalizedEntry:
+		//	'{'
+		//	'locale' locale=Locale ';'
+		//	'entry' entry=KeyValuePair ';' ('argumtes' arguments+=KeyValuePair+)?
+		//	'}';
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'{' 'locale' locale=Locale ';' 'entry' entry=KeyValuePair ';' ('argumtes' arguments+=KeyValuePair+)? '}'
+		public Group getGroup() { return cGroup; }
+		
+		//'{'
+		public Keyword getLeftCurlyBracketKeyword_0() { return cLeftCurlyBracketKeyword_0; }
+		
+		//'locale'
+		public Keyword getLocaleKeyword_1() { return cLocaleKeyword_1; }
+		
+		//locale=Locale
+		public Assignment getLocaleAssignment_2() { return cLocaleAssignment_2; }
+		
+		//Locale
+		public RuleCall getLocaleLocaleEnumRuleCall_2_0() { return cLocaleLocaleEnumRuleCall_2_0; }
+		
+		//';'
+		public Keyword getSemicolonKeyword_3() { return cSemicolonKeyword_3; }
+		
+		//'entry'
+		public Keyword getEntryKeyword_4() { return cEntryKeyword_4; }
+		
+		//entry=KeyValuePair
+		public Assignment getEntryAssignment_5() { return cEntryAssignment_5; }
+		
+		//KeyValuePair
+		public RuleCall getEntryKeyValuePairParserRuleCall_5_0() { return cEntryKeyValuePairParserRuleCall_5_0; }
+		
+		//';'
+		public Keyword getSemicolonKeyword_6() { return cSemicolonKeyword_6; }
+		
+		//('argumtes' arguments+=KeyValuePair+)?
+		public Group getGroup_7() { return cGroup_7; }
+		
+		//'argumtes'
+		public Keyword getArgumtesKeyword_7_0() { return cArgumtesKeyword_7_0; }
+		
+		//arguments+=KeyValuePair+
+		public Assignment getArgumentsAssignment_7_1() { return cArgumentsAssignment_7_1; }
+		
+		//KeyValuePair
+		public RuleCall getArgumentsKeyValuePairParserRuleCall_7_1_0() { return cArgumentsKeyValuePairParserRuleCall_7_1_0; }
+		
+		//'}'
+		public Keyword getRightCurlyBracketKeyword_8() { return cRightCurlyBracketKeyword_8; }
+	}
+	public class KeyValuePairElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "at.ooe.fh.mdm.herzog.dsl.proj.ProjectGenerator.KeyValuePair");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cLeftCurlyBracketKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cKeyKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cKeyAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cKeySTRINGTerminalRuleCall_2_0 = (RuleCall)cKeyAssignment_2.eContents().get(0);
+		private final Keyword cSemicolonKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Keyword cValueKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Assignment cValueAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cValueSTRINGTerminalRuleCall_5_0 = (RuleCall)cValueAssignment_5.eContents().get(0);
+		private final Keyword cSemicolonKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Keyword cRightCurlyBracketKeyword_7 = (Keyword)cGroup.eContents().get(7);
+		
+		//KeyValuePair:
+		//	'{'
+		//	'key' key=STRING ';'
+		//	'value' value=STRING ';'
+		//	'}';
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'{' 'key' key=STRING ';' 'value' value=STRING ';' '}'
+		public Group getGroup() { return cGroup; }
+		
+		//'{'
+		public Keyword getLeftCurlyBracketKeyword_0() { return cLeftCurlyBracketKeyword_0; }
+		
+		//'key'
+		public Keyword getKeyKeyword_1() { return cKeyKeyword_1; }
+		
+		//key=STRING
+		public Assignment getKeyAssignment_2() { return cKeyAssignment_2; }
+		
+		//STRING
+		public RuleCall getKeySTRINGTerminalRuleCall_2_0() { return cKeySTRINGTerminalRuleCall_2_0; }
+		
+		//';'
+		public Keyword getSemicolonKeyword_3() { return cSemicolonKeyword_3; }
+		
+		//'value'
+		public Keyword getValueKeyword_4() { return cValueKeyword_4; }
+		
+		//value=STRING
+		public Assignment getValueAssignment_5() { return cValueAssignment_5; }
+		
+		//STRING
+		public RuleCall getValueSTRINGTerminalRuleCall_5_0() { return cValueSTRINGTerminalRuleCall_5_0; }
+		
+		//';'
+		public Keyword getSemicolonKeyword_6() { return cSemicolonKeyword_6; }
+		
+		//'}'
+		public Keyword getRightCurlyBracketKeyword_7() { return cRightCurlyBracketKeyword_7; }
 	}
 	
+	public class LocaleElements extends AbstractEnumRuleElementFinder {
+		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "at.ooe.fh.mdm.herzog.dsl.proj.ProjectGenerator.Locale");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final EnumLiteralDeclaration cDE_DEEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
+		private final Keyword cDE_DEDe_DEKeyword_0_0 = (Keyword)cDE_DEEnumLiteralDeclaration_0.eContents().get(0);
+		private final EnumLiteralDeclaration cEN_USEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
+		private final Keyword cEN_USEn_USKeyword_1_0 = (Keyword)cEN_USEnumLiteralDeclaration_1.eContents().get(0);
+		
+		//enum Locale:
+		//	DE_DE='de_DE' | EN_US='en_US';
+		public EnumRule getRule() { return rule; }
+		
+		//DE_DE='de_DE' | EN_US='en_US'
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//DE_DE='de_DE'
+		public EnumLiteralDeclaration getDE_DEEnumLiteralDeclaration_0() { return cDE_DEEnumLiteralDeclaration_0; }
+		
+		//'de_DE'
+		public Keyword getDE_DEDe_DEKeyword_0_0() { return cDE_DEDe_DEKeyword_0_0; }
+		
+		//EN_US='en_US'
+		public EnumLiteralDeclaration getEN_USEnumLiteralDeclaration_1() { return cEN_USEnumLiteralDeclaration_1; }
+		
+		//'en_US'
+		public Keyword getEN_USEn_USKeyword_1_0() { return cEN_USEn_USKeyword_1_0; }
+	}
+	public class DbTypeElements extends AbstractEnumRuleElementFinder {
+		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "at.ooe.fh.mdm.herzog.dsl.proj.ProjectGenerator.DbType");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final EnumLiteralDeclaration cVARCHAREnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
+		private final Keyword cVARCHARVarcharKeyword_0_0 = (Keyword)cVARCHAREnumLiteralDeclaration_0.eContents().get(0);
+		private final EnumLiteralDeclaration cCLOBEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
+		private final Keyword cCLOBClobKeyword_1_0 = (Keyword)cCLOBEnumLiteralDeclaration_1.eContents().get(0);
+		
+		//enum DbType:
+		//	VARCHAR='Varchar' | CLOB='Clob';
+		public EnumRule getRule() { return rule; }
+		
+		//VARCHAR='Varchar' | CLOB='Clob'
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//VARCHAR='Varchar'
+		public EnumLiteralDeclaration getVARCHAREnumLiteralDeclaration_0() { return cVARCHAREnumLiteralDeclaration_0; }
+		
+		//'Varchar'
+		public Keyword getVARCHARVarcharKeyword_0_0() { return cVARCHARVarcharKeyword_0_0; }
+		
+		//CLOB='Clob'
+		public EnumLiteralDeclaration getCLOBEnumLiteralDeclaration_1() { return cCLOBEnumLiteralDeclaration_1; }
+		
+		//'Clob'
+		public Keyword getCLOBClobKeyword_1_0() { return cCLOBClobKeyword_1_0; }
+	}
+	public class BooleanElements extends AbstractEnumRuleElementFinder {
+		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "at.ooe.fh.mdm.herzog.dsl.proj.ProjectGenerator.Boolean");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final EnumLiteralDeclaration cTRUEEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
+		private final Keyword cTRUETrueKeyword_0_0 = (Keyword)cTRUEEnumLiteralDeclaration_0.eContents().get(0);
+		private final EnumLiteralDeclaration cFALSEEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
+		private final Keyword cFALSEFalseKeyword_1_0 = (Keyword)cFALSEEnumLiteralDeclaration_1.eContents().get(0);
+		
+		//enum Boolean:
+		//	TRUE='true' | FALSE='false';
+		public EnumRule getRule() { return rule; }
+		
+		//TRUE='true' | FALSE='false'
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//TRUE='true'
+		public EnumLiteralDeclaration getTRUEEnumLiteralDeclaration_0() { return cTRUEEnumLiteralDeclaration_0; }
+		
+		//'true'
+		public Keyword getTRUETrueKeyword_0_0() { return cTRUETrueKeyword_0_0; }
+		
+		//FALSE='false'
+		public EnumLiteralDeclaration getFALSEEnumLiteralDeclaration_1() { return cFALSEEnumLiteralDeclaration_1; }
+		
+		//'false'
+		public Keyword getFALSEFalseKeyword_1_0() { return cFALSEFalseKeyword_1_0; }
+	}
+	public class DuringElements extends AbstractEnumRuleElementFinder {
+		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "at.ooe.fh.mdm.herzog.dsl.proj.ProjectGenerator.During");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final EnumLiteralDeclaration cIN_PROGEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
+		private final Keyword cIN_PROGInProgressKeyword_0_0 = (Keyword)cIN_PROGEnumLiteralDeclaration_0.eContents().get(0);
+		private final EnumLiteralDeclaration cAFTER_COMPLETIONEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
+		private final Keyword cAFTER_COMPLETIONAfterCompleitionKeyword_1_0 = (Keyword)cAFTER_COMPLETIONEnumLiteralDeclaration_1.eContents().get(0);
+		
+		//enum During:
+		//	IN_PROG='InProgress' | AFTER_COMPLETION='AfterCompleition';
+		public EnumRule getRule() { return rule; }
+		
+		//IN_PROG='InProgress' | AFTER_COMPLETION='AfterCompleition'
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//IN_PROG='InProgress'
+		public EnumLiteralDeclaration getIN_PROGEnumLiteralDeclaration_0() { return cIN_PROGEnumLiteralDeclaration_0; }
+		
+		//'InProgress'
+		public Keyword getIN_PROGInProgressKeyword_0_0() { return cIN_PROGInProgressKeyword_0_0; }
+		
+		//AFTER_COMPLETION='AfterCompleition'
+		public EnumLiteralDeclaration getAFTER_COMPLETIONEnumLiteralDeclaration_1() { return cAFTER_COMPLETIONEnumLiteralDeclaration_1; }
+		
+		//'AfterCompleition'
+		public Keyword getAFTER_COMPLETIONAfterCompleitionKeyword_1_0() { return cAFTER_COMPLETIONAfterCompleitionKeyword_1_0; }
+	}
+	public class NotifyElements extends AbstractEnumRuleElementFinder {
+		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "at.ooe.fh.mdm.herzog.dsl.proj.ProjectGenerator.Notify");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final EnumLiteralDeclaration cALWAYSEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
+		private final Keyword cALWAYSAlwaysKeyword_0_0 = (Keyword)cALWAYSEnumLiteralDeclaration_0.eContents().get(0);
+		private final EnumLiteralDeclaration cEXISTSEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
+		private final Keyword cEXISTSExistsKeyword_1_0 = (Keyword)cEXISTSEnumLiteralDeclaration_1.eContents().get(0);
+		
+		//enum Notify:
+		//	ALWAYS='Always' | EXISTS='Exists';
+		public EnumRule getRule() { return rule; }
+		
+		//ALWAYS='Always' | EXISTS='Exists'
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//ALWAYS='Always'
+		public EnumLiteralDeclaration getALWAYSEnumLiteralDeclaration_0() { return cALWAYSEnumLiteralDeclaration_0; }
+		
+		//'Always'
+		public Keyword getALWAYSAlwaysKeyword_0_0() { return cALWAYSAlwaysKeyword_0_0; }
+		
+		//EXISTS='Exists'
+		public EnumLiteralDeclaration getEXISTSEnumLiteralDeclaration_1() { return cEXISTSEnumLiteralDeclaration_1; }
+		
+		//'Exists'
+		public Keyword getEXISTSExistsKeyword_1_0() { return cEXISTSExistsKeyword_1_0; }
+	}
 	
-	private final ModelElements pModel;
-	private final GreetingElements pGreeting;
+	private final ModuleElements pModule;
+	private final ServiceConfigElements pServiceConfig;
+	private final ObserverElements pObserver;
+	private final JpaConfigElements pJpaConfig;
+	private final LocalizedElements pLocalized;
+	private final LocalizedEntryElements pLocalizedEntry;
+	private final KeyValuePairElements pKeyValuePair;
+	private final LocaleElements eLocale;
+	private final DbTypeElements eDbType;
+	private final BooleanElements eBoolean;
+	private final DuringElements eDuring;
+	private final NotifyElements eNotify;
+	private final TerminalRule tClassName;
+	private final TerminalRule tMethodName;
 	
 	private final Grammar grammar;
 	
@@ -77,8 +728,20 @@ public class ProjectGeneratorGrammarAccess extends AbstractGrammarElementFinder 
 			TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
 		this.gaTerminals = gaTerminals;
-		this.pModel = new ModelElements();
-		this.pGreeting = new GreetingElements();
+		this.pModule = new ModuleElements();
+		this.pServiceConfig = new ServiceConfigElements();
+		this.pObserver = new ObserverElements();
+		this.pJpaConfig = new JpaConfigElements();
+		this.pLocalized = new LocalizedElements();
+		this.pLocalizedEntry = new LocalizedEntryElements();
+		this.pKeyValuePair = new KeyValuePairElements();
+		this.eLocale = new LocaleElements();
+		this.eDbType = new DbTypeElements();
+		this.eBoolean = new BooleanElements();
+		this.eDuring = new DuringElements();
+		this.eNotify = new NotifyElements();
+		this.tClassName = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "at.ooe.fh.mdm.herzog.dsl.proj.ProjectGenerator.ClassName");
+		this.tMethodName = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "at.ooe.fh.mdm.herzog.dsl.proj.ProjectGenerator.MethodName");
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -108,24 +771,161 @@ public class ProjectGeneratorGrammarAccess extends AbstractGrammarElementFinder 
 	}
 
 	
-	//Model:
-	//	greetings+=Greeting*;
-	public ModelElements getModelAccess() {
-		return pModel;
+	//Module:
+	//	'module' name=ID '{'
+	//	'key' key=STRING ';'
+	//	'cdiEnabled' cdiEnabled=Boolean ';'
+	//	'jpaConfig' jpaConfig=JpaConfig ';'
+	//	'serviceConfig' serviceConfig=ServiceConfig ';' ('messageBundles' '{' messageBundles+=Localized+ '}' ','*)?
+	//	('messages' messages=Localized+)?
+	//	'}';
+	public ModuleElements getModuleAccess() {
+		return pModule;
 	}
 	
-	public ParserRule getModelRule() {
-		return getModelAccess().getRule();
+	public ParserRule getModuleRule() {
+		return getModuleAccess().getRule();
 	}
 	
-	//Greeting:
-	//	'Hello' name=ID '!';
-	public GreetingElements getGreetingAccess() {
-		return pGreeting;
+	//// Service configuration
+	//ServiceConfig:
+	//	'{' ('observers' observers+=Observer+)?
+	//	'}';
+	public ServiceConfigElements getServiceConfigAccess() {
+		return pServiceConfig;
 	}
 	
-	public ParserRule getGreetingRule() {
-		return getGreetingAccess().getRule();
+	public ParserRule getServiceConfigRule() {
+		return getServiceConfigAccess().getRule();
+	}
+	
+	//Observer:
+	//	'observer' name=ID '{'
+	//	'type' type=STRING ';'
+	//	'during' during=During ';'
+	//	'notify' notify=Notify ';'
+	//	'delegate' className=ClassName '#' MethodName ';'
+	//	'}';
+	public ObserverElements getObserverAccess() {
+		return pObserver;
+	}
+	
+	public ParserRule getObserverRule() {
+		return getObserverAccess().getRule();
+	}
+	
+	//// Jpa configuration
+	//JpaConfig:
+	//	'{' ('localizedEnums' localizedEnums+=Localized+)?
+	//	'}';
+	public JpaConfigElements getJpaConfigAccess() {
+		return pJpaConfig;
+	}
+	
+	public ParserRule getJpaConfigRule() {
+		return getJpaConfigAccess().getRule();
+	}
+	
+	//// Common
+	//Localized:
+	//	'localized' name=ID '{'
+	//	'name' name=STRING ';'
+	//	'locales' locales+=Locale+ ';' ('values' values+=LocalizedEntry+ ';')?
+	//	'}';
+	public LocalizedElements getLocalizedAccess() {
+		return pLocalized;
+	}
+	
+	public ParserRule getLocalizedRule() {
+		return getLocalizedAccess().getRule();
+	}
+	
+	//LocalizedEntry:
+	//	'{'
+	//	'locale' locale=Locale ';'
+	//	'entry' entry=KeyValuePair ';' ('argumtes' arguments+=KeyValuePair+)?
+	//	'}';
+	public LocalizedEntryElements getLocalizedEntryAccess() {
+		return pLocalizedEntry;
+	}
+	
+	public ParserRule getLocalizedEntryRule() {
+		return getLocalizedEntryAccess().getRule();
+	}
+	
+	//KeyValuePair:
+	//	'{'
+	//	'key' key=STRING ';'
+	//	'value' value=STRING ';'
+	//	'}';
+	public KeyValuePairElements getKeyValuePairAccess() {
+		return pKeyValuePair;
+	}
+	
+	public ParserRule getKeyValuePairRule() {
+		return getKeyValuePairAccess().getRule();
+	}
+	
+	//enum Locale:
+	//	DE_DE='de_DE' | EN_US='en_US';
+	public LocaleElements getLocaleAccess() {
+		return eLocale;
+	}
+	
+	public EnumRule getLocaleRule() {
+		return getLocaleAccess().getRule();
+	}
+	
+	//enum DbType:
+	//	VARCHAR='Varchar' | CLOB='Clob';
+	public DbTypeElements getDbTypeAccess() {
+		return eDbType;
+	}
+	
+	public EnumRule getDbTypeRule() {
+		return getDbTypeAccess().getRule();
+	}
+	
+	//enum Boolean:
+	//	TRUE='true' | FALSE='false';
+	public BooleanElements getBooleanAccess() {
+		return eBoolean;
+	}
+	
+	public EnumRule getBooleanRule() {
+		return getBooleanAccess().getRule();
+	}
+	
+	//enum During:
+	//	IN_PROG='InProgress' | AFTER_COMPLETION='AfterCompleition';
+	public DuringElements getDuringAccess() {
+		return eDuring;
+	}
+	
+	public EnumRule getDuringRule() {
+		return getDuringAccess().getRule();
+	}
+	
+	//enum Notify:
+	//	ALWAYS='Always' | EXISTS='Exists';
+	public NotifyElements getNotifyAccess() {
+		return eNotify;
+	}
+	
+	public EnumRule getNotifyRule() {
+		return getNotifyAccess().getRule();
+	}
+	
+	//terminal ClassName:
+	//	'a'..'f'+ (('0'..'9' | 'A'..'Z' | 'a'..'z')+ '.')+ 'a'..'f'+ ('0'..'9' | 'A'..'Z' | 'a'..'z')+;
+	public TerminalRule getClassNameRule() {
+		return tClassName;
+	}
+	
+	//terminal MethodName:
+	//	'a'..'f'+ ('0'..'9' | 'A'..'Z' | 'a'..'z')+;
+	public TerminalRule getMethodNameRule() {
+		return tMethodName;
 	}
 	
 	//terminal ID:
