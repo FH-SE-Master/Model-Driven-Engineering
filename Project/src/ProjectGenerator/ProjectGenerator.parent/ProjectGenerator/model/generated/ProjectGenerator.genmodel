@@ -30,13 +30,14 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProjectGenerator.ecore#//Module/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProjectGenerator.ecore#//Module/key"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProjectGenerator.ecore#//Module/cdiEnabled"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ProjectGenerator.ecore#//Module/messageBundles"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ProjectGenerator.ecore#//Module/observers"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ProjectGenerator.ecore#//Module/jpaConfig"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ProjectGenerator.ecore#//Module/serviceConfig"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ProjectGenerator.ecore#//Module/messageBundles"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ProjectGenerator.ecore#//Module/messages"/>
     </genClasses>
     <genClasses ecoreClass="ProjectGenerator.ecore#//ServiceConfig">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ProjectGenerator.ecore#//ServiceConfig/observers"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ProjectGenerator.ecore#//ServiceConfig/messageBundles"/>
     </genClasses>
     <genClasses ecoreClass="ProjectGenerator.ecore#//Observer">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProjectGenerator.ecore#//Observer/name"/>
@@ -44,23 +45,23 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProjectGenerator.ecore#//Observer/during"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProjectGenerator.ecore#//Observer/notify"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProjectGenerator.ecore#//Observer/className"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProjectGenerator.ecore#//Observer/qualifier"/>
     </genClasses>
     <genClasses ecoreClass="ProjectGenerator.ecore#//JpaConfig">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ProjectGenerator.ecore#//JpaConfig/localizedEnums"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ProjectGenerator.ecore#//JpaConfig/localizedEnums"/>
     </genClasses>
     <genClasses ecoreClass="ProjectGenerator.ecore#//Localized">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProjectGenerator.ecore#//Localized/name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProjectGenerator.ecore#//Localized/locales"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ProjectGenerator.ecore#//Localized/values"/>
     </genClasses>
     <genClasses ecoreClass="ProjectGenerator.ecore#//LocalizedEntry">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProjectGenerator.ecore#//LocalizedEntry/locale"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ProjectGenerator.ecore#//LocalizedEntry/entry"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ProjectGenerator.ecore#//LocalizedEntry/arguments"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProjectGenerator.ecore#//LocalizedEntry/localizedKey"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ProjectGenerator.ecore#//LocalizedEntry/values"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProjectGenerator.ecore#//LocalizedEntry/args"/>
     </genClasses>
-    <genClasses ecoreClass="ProjectGenerator.ecore#//KeyValuePair">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProjectGenerator.ecore#//KeyValuePair/key"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProjectGenerator.ecore#//KeyValuePair/value"/>
+    <genClasses ecoreClass="ProjectGenerator.ecore#//LocalizedValue">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProjectGenerator.ecore#//LocalizedValue/locale"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProjectGenerator.ecore#//LocalizedValue/values"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

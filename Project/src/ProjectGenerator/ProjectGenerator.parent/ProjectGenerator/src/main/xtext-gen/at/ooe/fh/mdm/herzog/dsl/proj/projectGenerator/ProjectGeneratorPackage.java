@@ -96,13 +96,31 @@ public interface ProjectGeneratorPackage extends EPackage
   int MODULE__CDI_ENABLED = 2;
 
   /**
+   * The feature id for the '<em><b>Message Bundles</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MODULE__MESSAGE_BUNDLES = 3;
+
+  /**
+   * The feature id for the '<em><b>Observers</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MODULE__OBSERVERS = 4;
+
+  /**
    * The feature id for the '<em><b>Jpa Config</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MODULE__JPA_CONFIG = 3;
+  int MODULE__JPA_CONFIG = 5;
 
   /**
    * The feature id for the '<em><b>Service Config</b></em>' containment reference.
@@ -111,25 +129,7 @@ public interface ProjectGeneratorPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MODULE__SERVICE_CONFIG = 4;
-
-  /**
-   * The feature id for the '<em><b>Message Bundles</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int MODULE__MESSAGE_BUNDLES = 5;
-
-  /**
-   * The feature id for the '<em><b>Messages</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int MODULE__MESSAGES = 6;
+  int MODULE__SERVICE_CONFIG = 6;
 
   /**
    * The number of structural features of the '<em>Module</em>' class.
@@ -160,13 +160,22 @@ public interface ProjectGeneratorPackage extends EPackage
   int SERVICE_CONFIG__OBSERVERS = 0;
 
   /**
+   * The feature id for the '<em><b>Message Bundles</b></em>' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SERVICE_CONFIG__MESSAGE_BUNDLES = 1;
+
+  /**
    * The number of structural features of the '<em>Service Config</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int SERVICE_CONFIG_FEATURE_COUNT = 1;
+  int SERVICE_CONFIG_FEATURE_COUNT = 2;
 
   /**
    * The meta object id for the '{@link at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.impl.ObserverImpl <em>Observer</em>}' class.
@@ -224,13 +233,22 @@ public interface ProjectGeneratorPackage extends EPackage
   int OBSERVER__CLASS_NAME = 4;
 
   /**
+   * The feature id for the '<em><b>Qualifier</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int OBSERVER__QUALIFIER = 5;
+
+  /**
    * The number of structural features of the '<em>Observer</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int OBSERVER_FEATURE_COUNT = 5;
+  int OBSERVER_FEATURE_COUNT = 6;
 
   /**
    * The meta object id for the '{@link at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.impl.JpaConfigImpl <em>Jpa Config</em>}' class.
@@ -243,7 +261,7 @@ public interface ProjectGeneratorPackage extends EPackage
   int JPA_CONFIG = 3;
 
   /**
-   * The feature id for the '<em><b>Localized Enums</b></em>' containment reference list.
+   * The feature id for the '<em><b>Localized Enums</b></em>' reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -280,22 +298,13 @@ public interface ProjectGeneratorPackage extends EPackage
   int LOCALIZED__NAME = 0;
 
   /**
-   * The feature id for the '<em><b>Locales</b></em>' attribute list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LOCALIZED__LOCALES = 1;
-
-  /**
    * The feature id for the '<em><b>Values</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int LOCALIZED__VALUES = 2;
+  int LOCALIZED__VALUES = 1;
 
   /**
    * The number of structural features of the '<em>Localized</em>' class.
@@ -304,7 +313,7 @@ public interface ProjectGeneratorPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LOCALIZED_FEATURE_COUNT = 3;
+  int LOCALIZED_FEATURE_COUNT = 2;
 
   /**
    * The meta object id for the '{@link at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.impl.LocalizedEntryImpl <em>Localized Entry</em>}' class.
@@ -317,31 +326,31 @@ public interface ProjectGeneratorPackage extends EPackage
   int LOCALIZED_ENTRY = 5;
 
   /**
-   * The feature id for the '<em><b>Locale</b></em>' attribute.
+   * The feature id for the '<em><b>Localized Key</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int LOCALIZED_ENTRY__LOCALE = 0;
+  int LOCALIZED_ENTRY__LOCALIZED_KEY = 0;
 
   /**
-   * The feature id for the '<em><b>Entry</b></em>' containment reference.
+   * The feature id for the '<em><b>Values</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int LOCALIZED_ENTRY__ENTRY = 1;
+  int LOCALIZED_ENTRY__VALUES = 1;
 
   /**
-   * The feature id for the '<em><b>Arguments</b></em>' containment reference list.
+   * The feature id for the '<em><b>Args</b></em>' attribute list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int LOCALIZED_ENTRY__ARGUMENTS = 2;
+  int LOCALIZED_ENTRY__ARGS = 2;
 
   /**
    * The number of structural features of the '<em>Localized Entry</em>' class.
@@ -353,41 +362,41 @@ public interface ProjectGeneratorPackage extends EPackage
   int LOCALIZED_ENTRY_FEATURE_COUNT = 3;
 
   /**
-   * The meta object id for the '{@link at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.impl.KeyValuePairImpl <em>Key Value Pair</em>}' class.
+   * The meta object id for the '{@link at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.impl.LocalizedValueImpl <em>Localized Value</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.impl.KeyValuePairImpl
-   * @see at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.impl.ProjectGeneratorPackageImpl#getKeyValuePair()
+   * @see at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.impl.LocalizedValueImpl
+   * @see at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.impl.ProjectGeneratorPackageImpl#getLocalizedValue()
    * @generated
    */
-  int KEY_VALUE_PAIR = 6;
+  int LOCALIZED_VALUE = 6;
 
   /**
-   * The feature id for the '<em><b>Key</b></em>' attribute.
+   * The feature id for the '<em><b>Locale</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int KEY_VALUE_PAIR__KEY = 0;
+  int LOCALIZED_VALUE__LOCALE = 0;
 
   /**
-   * The feature id for the '<em><b>Value</b></em>' attribute.
+   * The feature id for the '<em><b>Values</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int KEY_VALUE_PAIR__VALUE = 1;
+  int LOCALIZED_VALUE__VALUES = 1;
 
   /**
-   * The number of structural features of the '<em>Key Value Pair</em>' class.
+   * The number of structural features of the '<em>Localized Value</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int KEY_VALUE_PAIR_FEATURE_COUNT = 2;
+  int LOCALIZED_VALUE_FEATURE_COUNT = 2;
 
   /**
    * The meta object id for the '{@link at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Locale <em>Locale</em>}' enum.
@@ -484,6 +493,28 @@ public interface ProjectGeneratorPackage extends EPackage
   EAttribute getModule_CdiEnabled();
 
   /**
+   * Returns the meta object for the containment reference list '{@link at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Module#getMessageBundles <em>Message Bundles</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Message Bundles</em>'.
+   * @see at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Module#getMessageBundles()
+   * @see #getModule()
+   * @generated
+   */
+  EReference getModule_MessageBundles();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Module#getObservers <em>Observers</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Observers</em>'.
+   * @see at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Module#getObservers()
+   * @see #getModule()
+   * @generated
+   */
+  EReference getModule_Observers();
+
+  /**
    * Returns the meta object for the containment reference '{@link at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Module#getJpaConfig <em>Jpa Config</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -506,28 +537,6 @@ public interface ProjectGeneratorPackage extends EPackage
   EReference getModule_ServiceConfig();
 
   /**
-   * Returns the meta object for the containment reference list '{@link at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Module#getMessageBundles <em>Message Bundles</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Message Bundles</em>'.
-   * @see at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Module#getMessageBundles()
-   * @see #getModule()
-   * @generated
-   */
-  EReference getModule_MessageBundles();
-
-  /**
-   * Returns the meta object for the containment reference '{@link at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Module#getMessages <em>Messages</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Messages</em>'.
-   * @see at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Module#getMessages()
-   * @see #getModule()
-   * @generated
-   */
-  EReference getModule_Messages();
-
-  /**
    * Returns the meta object for class '{@link at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.ServiceConfig <em>Service Config</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -547,6 +556,17 @@ public interface ProjectGeneratorPackage extends EPackage
    * @generated
    */
   EReference getServiceConfig_Observers();
+
+  /**
+   * Returns the meta object for the reference list '{@link at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.ServiceConfig#getMessageBundles <em>Message Bundles</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference list '<em>Message Bundles</em>'.
+   * @see at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.ServiceConfig#getMessageBundles()
+   * @see #getServiceConfig()
+   * @generated
+   */
+  EReference getServiceConfig_MessageBundles();
 
   /**
    * Returns the meta object for class '{@link at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Observer <em>Observer</em>}'.
@@ -614,6 +634,17 @@ public interface ProjectGeneratorPackage extends EPackage
   EAttribute getObserver_ClassName();
 
   /**
+   * Returns the meta object for the attribute '{@link at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Observer#getQualifier <em>Qualifier</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Qualifier</em>'.
+   * @see at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Observer#getQualifier()
+   * @see #getObserver()
+   * @generated
+   */
+  EAttribute getObserver_Qualifier();
+
+  /**
    * Returns the meta object for class '{@link at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.JpaConfig <em>Jpa Config</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -624,10 +655,10 @@ public interface ProjectGeneratorPackage extends EPackage
   EClass getJpaConfig();
 
   /**
-   * Returns the meta object for the containment reference list '{@link at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.JpaConfig#getLocalizedEnums <em>Localized Enums</em>}'.
+   * Returns the meta object for the reference list '{@link at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.JpaConfig#getLocalizedEnums <em>Localized Enums</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Localized Enums</em>'.
+   * @return the meta object for the reference list '<em>Localized Enums</em>'.
    * @see at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.JpaConfig#getLocalizedEnums()
    * @see #getJpaConfig()
    * @generated
@@ -656,17 +687,6 @@ public interface ProjectGeneratorPackage extends EPackage
   EAttribute getLocalized_Name();
 
   /**
-   * Returns the meta object for the attribute list '{@link at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Localized#getLocales <em>Locales</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute list '<em>Locales</em>'.
-   * @see at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Localized#getLocales()
-   * @see #getLocalized()
-   * @generated
-   */
-  EAttribute getLocalized_Locales();
-
-  /**
    * Returns the meta object for the containment reference list '{@link at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Localized#getValues <em>Values</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -688,69 +708,69 @@ public interface ProjectGeneratorPackage extends EPackage
   EClass getLocalizedEntry();
 
   /**
-   * Returns the meta object for the attribute '{@link at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.LocalizedEntry#getLocale <em>Locale</em>}'.
+   * Returns the meta object for the attribute '{@link at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.LocalizedEntry#getLocalizedKey <em>Localized Key</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Localized Key</em>'.
+   * @see at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.LocalizedEntry#getLocalizedKey()
+   * @see #getLocalizedEntry()
+   * @generated
+   */
+  EAttribute getLocalizedEntry_LocalizedKey();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.LocalizedEntry#getValues <em>Values</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Values</em>'.
+   * @see at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.LocalizedEntry#getValues()
+   * @see #getLocalizedEntry()
+   * @generated
+   */
+  EReference getLocalizedEntry_Values();
+
+  /**
+   * Returns the meta object for the attribute list '{@link at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.LocalizedEntry#getArgs <em>Args</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute list '<em>Args</em>'.
+   * @see at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.LocalizedEntry#getArgs()
+   * @see #getLocalizedEntry()
+   * @generated
+   */
+  EAttribute getLocalizedEntry_Args();
+
+  /**
+   * Returns the meta object for class '{@link at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.LocalizedValue <em>Localized Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Localized Value</em>'.
+   * @see at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.LocalizedValue
+   * @generated
+   */
+  EClass getLocalizedValue();
+
+  /**
+   * Returns the meta object for the attribute '{@link at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.LocalizedValue#getLocale <em>Locale</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Locale</em>'.
-   * @see at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.LocalizedEntry#getLocale()
-   * @see #getLocalizedEntry()
+   * @see at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.LocalizedValue#getLocale()
+   * @see #getLocalizedValue()
    * @generated
    */
-  EAttribute getLocalizedEntry_Locale();
+  EAttribute getLocalizedValue_Locale();
 
   /**
-   * Returns the meta object for the containment reference '{@link at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.LocalizedEntry#getEntry <em>Entry</em>}'.
+   * Returns the meta object for the attribute '{@link at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.LocalizedValue#getValues <em>Values</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Entry</em>'.
-   * @see at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.LocalizedEntry#getEntry()
-   * @see #getLocalizedEntry()
+   * @return the meta object for the attribute '<em>Values</em>'.
+   * @see at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.LocalizedValue#getValues()
+   * @see #getLocalizedValue()
    * @generated
    */
-  EReference getLocalizedEntry_Entry();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.LocalizedEntry#getArguments <em>Arguments</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Arguments</em>'.
-   * @see at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.LocalizedEntry#getArguments()
-   * @see #getLocalizedEntry()
-   * @generated
-   */
-  EReference getLocalizedEntry_Arguments();
-
-  /**
-   * Returns the meta object for class '{@link at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.KeyValuePair <em>Key Value Pair</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Key Value Pair</em>'.
-   * @see at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.KeyValuePair
-   * @generated
-   */
-  EClass getKeyValuePair();
-
-  /**
-   * Returns the meta object for the attribute '{@link at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.KeyValuePair#getKey <em>Key</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Key</em>'.
-   * @see at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.KeyValuePair#getKey()
-   * @see #getKeyValuePair()
-   * @generated
-   */
-  EAttribute getKeyValuePair_Key();
-
-  /**
-   * Returns the meta object for the attribute '{@link at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.KeyValuePair#getValue <em>Value</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Value</em>'.
-   * @see at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.KeyValuePair#getValue()
-   * @see #getKeyValuePair()
-   * @generated
-   */
-  EAttribute getKeyValuePair_Value();
+  EAttribute getLocalizedValue_Values();
 
   /**
    * Returns the meta object for enum '{@link at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Locale <em>Locale</em>}'.
@@ -860,6 +880,22 @@ public interface ProjectGeneratorPackage extends EPackage
     EAttribute MODULE__CDI_ENABLED = eINSTANCE.getModule_CdiEnabled();
 
     /**
+     * The meta object literal for the '<em><b>Message Bundles</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference MODULE__MESSAGE_BUNDLES = eINSTANCE.getModule_MessageBundles();
+
+    /**
+     * The meta object literal for the '<em><b>Observers</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference MODULE__OBSERVERS = eINSTANCE.getModule_Observers();
+
+    /**
      * The meta object literal for the '<em><b>Jpa Config</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -874,22 +910,6 @@ public interface ProjectGeneratorPackage extends EPackage
      * @generated
      */
     EReference MODULE__SERVICE_CONFIG = eINSTANCE.getModule_ServiceConfig();
-
-    /**
-     * The meta object literal for the '<em><b>Message Bundles</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference MODULE__MESSAGE_BUNDLES = eINSTANCE.getModule_MessageBundles();
-
-    /**
-     * The meta object literal for the '<em><b>Messages</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference MODULE__MESSAGES = eINSTANCE.getModule_Messages();
 
     /**
      * The meta object literal for the '{@link at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.impl.ServiceConfigImpl <em>Service Config</em>}' class.
@@ -908,6 +928,14 @@ public interface ProjectGeneratorPackage extends EPackage
      * @generated
      */
     EReference SERVICE_CONFIG__OBSERVERS = eINSTANCE.getServiceConfig_Observers();
+
+    /**
+     * The meta object literal for the '<em><b>Message Bundles</b></em>' reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference SERVICE_CONFIG__MESSAGE_BUNDLES = eINSTANCE.getServiceConfig_MessageBundles();
 
     /**
      * The meta object literal for the '{@link at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.impl.ObserverImpl <em>Observer</em>}' class.
@@ -960,6 +988,14 @@ public interface ProjectGeneratorPackage extends EPackage
     EAttribute OBSERVER__CLASS_NAME = eINSTANCE.getObserver_ClassName();
 
     /**
+     * The meta object literal for the '<em><b>Qualifier</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute OBSERVER__QUALIFIER = eINSTANCE.getObserver_Qualifier();
+
+    /**
      * The meta object literal for the '{@link at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.impl.JpaConfigImpl <em>Jpa Config</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -970,7 +1006,7 @@ public interface ProjectGeneratorPackage extends EPackage
     EClass JPA_CONFIG = eINSTANCE.getJpaConfig();
 
     /**
-     * The meta object literal for the '<em><b>Localized Enums</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Localized Enums</b></em>' reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -996,14 +1032,6 @@ public interface ProjectGeneratorPackage extends EPackage
     EAttribute LOCALIZED__NAME = eINSTANCE.getLocalized_Name();
 
     /**
-     * The meta object literal for the '<em><b>Locales</b></em>' attribute list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute LOCALIZED__LOCALES = eINSTANCE.getLocalized_Locales();
-
-    /**
      * The meta object literal for the '<em><b>Values</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1022,54 +1050,54 @@ public interface ProjectGeneratorPackage extends EPackage
     EClass LOCALIZED_ENTRY = eINSTANCE.getLocalizedEntry();
 
     /**
+     * The meta object literal for the '<em><b>Localized Key</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute LOCALIZED_ENTRY__LOCALIZED_KEY = eINSTANCE.getLocalizedEntry_LocalizedKey();
+
+    /**
+     * The meta object literal for the '<em><b>Values</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference LOCALIZED_ENTRY__VALUES = eINSTANCE.getLocalizedEntry_Values();
+
+    /**
+     * The meta object literal for the '<em><b>Args</b></em>' attribute list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute LOCALIZED_ENTRY__ARGS = eINSTANCE.getLocalizedEntry_Args();
+
+    /**
+     * The meta object literal for the '{@link at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.impl.LocalizedValueImpl <em>Localized Value</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.impl.LocalizedValueImpl
+     * @see at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.impl.ProjectGeneratorPackageImpl#getLocalizedValue()
+     * @generated
+     */
+    EClass LOCALIZED_VALUE = eINSTANCE.getLocalizedValue();
+
+    /**
      * The meta object literal for the '<em><b>Locale</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute LOCALIZED_ENTRY__LOCALE = eINSTANCE.getLocalizedEntry_Locale();
+    EAttribute LOCALIZED_VALUE__LOCALE = eINSTANCE.getLocalizedValue_Locale();
 
     /**
-     * The meta object literal for the '<em><b>Entry</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Values</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference LOCALIZED_ENTRY__ENTRY = eINSTANCE.getLocalizedEntry_Entry();
-
-    /**
-     * The meta object literal for the '<em><b>Arguments</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference LOCALIZED_ENTRY__ARGUMENTS = eINSTANCE.getLocalizedEntry_Arguments();
-
-    /**
-     * The meta object literal for the '{@link at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.impl.KeyValuePairImpl <em>Key Value Pair</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.impl.KeyValuePairImpl
-     * @see at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.impl.ProjectGeneratorPackageImpl#getKeyValuePair()
-     * @generated
-     */
-    EClass KEY_VALUE_PAIR = eINSTANCE.getKeyValuePair();
-
-    /**
-     * The meta object literal for the '<em><b>Key</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute KEY_VALUE_PAIR__KEY = eINSTANCE.getKeyValuePair_Key();
-
-    /**
-     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute KEY_VALUE_PAIR__VALUE = eINSTANCE.getKeyValuePair_Value();
+    EAttribute LOCALIZED_VALUE__VALUES = eINSTANCE.getLocalizedValue_Values();
 
     /**
      * The meta object literal for the '{@link at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Locale <em>Locale</em>}' enum.

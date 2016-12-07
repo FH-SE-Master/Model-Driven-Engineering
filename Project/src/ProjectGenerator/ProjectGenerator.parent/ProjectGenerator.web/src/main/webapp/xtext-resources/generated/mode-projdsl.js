@@ -1,6 +1,6 @@
 define(["ace/lib/oop", "ace/mode/text", "ace/mode/text_highlight_rules"], function(oop, mText, mTextHighlightRules) {
 	var HighlightRules = function() {
-		var keywords = "AfterCompleition|Always|Clob|Exists|InProgress|Varchar|argumtes|cdiEnabled|de_DE|delegate|during|en_US|entry|false|jpaConfig|key|locale|locales|localized|localizedEnums|messageBundles|messages|module|name|notify|observer|observers|serviceConfig|true|type|value|values";
+		var keywords = "AfterCompleition|Always|Clob|Exists|InProgress|Varchar|args|cdiEnabled|de_DE|delegate|during|en_US|false|jpaConfig|key|locale|localizedEnums|messageBundles|module|notify|observers|qualifier|serviceConfig|true|type|value|values";
 		this.$rules = {
 			"start": [
 				{token: "comment", regex: "\\/\\/.*$"},

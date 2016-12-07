@@ -8,6 +8,7 @@ import com.google.inject.Singleton;
 import java.util.List;
 import org.eclipse.xtext.Alternatives;
 import org.eclipse.xtext.Assignment;
+import org.eclipse.xtext.CrossReference;
 import org.eclipse.xtext.EnumLiteralDeclaration;
 import org.eclipse.xtext.EnumRule;
 import org.eclipse.xtext.Grammar;
@@ -40,40 +41,43 @@ public class ProjectGeneratorGrammarAccess extends AbstractGrammarElementFinder 
 		private final Assignment cCdiEnabledAssignment_7 = (Assignment)cGroup.eContents().get(7);
 		private final RuleCall cCdiEnabledBooleanEnumRuleCall_7_0 = (RuleCall)cCdiEnabledAssignment_7.eContents().get(0);
 		private final Keyword cSemicolonKeyword_8 = (Keyword)cGroup.eContents().get(8);
-		private final Keyword cJpaConfigKeyword_9 = (Keyword)cGroup.eContents().get(9);
-		private final Assignment cJpaConfigAssignment_10 = (Assignment)cGroup.eContents().get(10);
-		private final RuleCall cJpaConfigJpaConfigParserRuleCall_10_0 = (RuleCall)cJpaConfigAssignment_10.eContents().get(0);
-		private final Keyword cSemicolonKeyword_11 = (Keyword)cGroup.eContents().get(11);
-		private final Keyword cServiceConfigKeyword_12 = (Keyword)cGroup.eContents().get(12);
-		private final Assignment cServiceConfigAssignment_13 = (Assignment)cGroup.eContents().get(13);
-		private final RuleCall cServiceConfigServiceConfigParserRuleCall_13_0 = (RuleCall)cServiceConfigAssignment_13.eContents().get(0);
-		private final Keyword cSemicolonKeyword_14 = (Keyword)cGroup.eContents().get(14);
-		private final Group cGroup_15 = (Group)cGroup.eContents().get(15);
-		private final Keyword cMessageBundlesKeyword_15_0 = (Keyword)cGroup_15.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_15_1 = (Keyword)cGroup_15.eContents().get(1);
-		private final Assignment cMessageBundlesAssignment_15_2 = (Assignment)cGroup_15.eContents().get(2);
-		private final RuleCall cMessageBundlesLocalizedParserRuleCall_15_2_0 = (RuleCall)cMessageBundlesAssignment_15_2.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_15_3 = (Keyword)cGroup_15.eContents().get(3);
-		private final Keyword cCommaKeyword_15_4 = (Keyword)cGroup_15.eContents().get(4);
-		private final Group cGroup_16 = (Group)cGroup.eContents().get(16);
-		private final Keyword cMessagesKeyword_16_0 = (Keyword)cGroup_16.eContents().get(0);
-		private final Assignment cMessagesAssignment_16_1 = (Assignment)cGroup_16.eContents().get(1);
-		private final RuleCall cMessagesLocalizedParserRuleCall_16_1_0 = (RuleCall)cMessagesAssignment_16_1.eContents().get(0);
+		private final Group cGroup_9 = (Group)cGroup.eContents().get(9);
+		private final Keyword cMessageBundlesKeyword_9_0 = (Keyword)cGroup_9.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_9_1 = (Keyword)cGroup_9.eContents().get(1);
+		private final Assignment cMessageBundlesAssignment_9_2 = (Assignment)cGroup_9.eContents().get(2);
+		private final RuleCall cMessageBundlesLocalizedParserRuleCall_9_2_0 = (RuleCall)cMessageBundlesAssignment_9_2.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_9_3 = (Keyword)cGroup_9.eContents().get(3);
+		private final Keyword cSemicolonKeyword_9_4 = (Keyword)cGroup_9.eContents().get(4);
+		private final Group cGroup_10 = (Group)cGroup.eContents().get(10);
+		private final Keyword cObserversKeyword_10_0 = (Keyword)cGroup_10.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_10_1 = (Keyword)cGroup_10.eContents().get(1);
+		private final Assignment cObserversAssignment_10_2 = (Assignment)cGroup_10.eContents().get(2);
+		private final RuleCall cObserversObserverParserRuleCall_10_2_0 = (RuleCall)cObserversAssignment_10_2.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_10_3 = (Keyword)cGroup_10.eContents().get(3);
+		private final Keyword cSemicolonKeyword_10_4 = (Keyword)cGroup_10.eContents().get(4);
+		private final Keyword cJpaConfigKeyword_11 = (Keyword)cGroup.eContents().get(11);
+		private final Assignment cJpaConfigAssignment_12 = (Assignment)cGroup.eContents().get(12);
+		private final RuleCall cJpaConfigJpaConfigParserRuleCall_12_0 = (RuleCall)cJpaConfigAssignment_12.eContents().get(0);
+		private final Keyword cSemicolonKeyword_13 = (Keyword)cGroup.eContents().get(13);
+		private final Keyword cServiceConfigKeyword_14 = (Keyword)cGroup.eContents().get(14);
+		private final Assignment cServiceConfigAssignment_15 = (Assignment)cGroup.eContents().get(15);
+		private final RuleCall cServiceConfigServiceConfigParserRuleCall_15_0 = (RuleCall)cServiceConfigAssignment_15.eContents().get(0);
+		private final Keyword cSemicolonKeyword_16 = (Keyword)cGroup.eContents().get(16);
 		private final Keyword cRightCurlyBracketKeyword_17 = (Keyword)cGroup.eContents().get(17);
 		
 		//Module:
 		//	'module' name=ID '{'
 		//	'key' key=STRING ';'
-		//	'cdiEnabled' cdiEnabled=Boolean ';'
+		//	'cdiEnabled' cdiEnabled=Boolean ';' ('messageBundles' '{' messageBundles+=Localized+ '}' ';')? ('observers' '{'
+		//	observers+=Observer+ '}' ';')?
 		//	'jpaConfig' jpaConfig=JpaConfig ';'
-		//	'serviceConfig' serviceConfig=ServiceConfig ';' ('messageBundles' '{' messageBundles+=Localized+ '}' ','*)?
-		//	('messages' messages=Localized+)?
+		//	'serviceConfig' serviceConfig=ServiceConfig ';'
 		//	'}';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'module' name=ID '{' 'key' key=STRING ';' 'cdiEnabled' cdiEnabled=Boolean ';' 'jpaConfig' jpaConfig=JpaConfig ';'
-		//'serviceConfig' serviceConfig=ServiceConfig ';' ('messageBundles' '{' messageBundles+=Localized+ '}' ','*)?
-		//('messages' messages=Localized+)? '}'
+		//'module' name=ID '{' 'key' key=STRING ';' 'cdiEnabled' cdiEnabled=Boolean ';' ('messageBundles' '{'
+		//messageBundles+=Localized+ '}' ';')? ('observers' '{' observers+=Observer+ '}' ';')? 'jpaConfig' jpaConfig=JpaConfig
+		//';' 'serviceConfig' serviceConfig=ServiceConfig ';' '}'
 		public Group getGroup() { return cGroup; }
 		
 		//'module'
@@ -112,62 +116,71 @@ public class ProjectGeneratorGrammarAccess extends AbstractGrammarElementFinder 
 		//';'
 		public Keyword getSemicolonKeyword_8() { return cSemicolonKeyword_8; }
 		
-		//'jpaConfig'
-		public Keyword getJpaConfigKeyword_9() { return cJpaConfigKeyword_9; }
-		
-		//jpaConfig=JpaConfig
-		public Assignment getJpaConfigAssignment_10() { return cJpaConfigAssignment_10; }
-		
-		//JpaConfig
-		public RuleCall getJpaConfigJpaConfigParserRuleCall_10_0() { return cJpaConfigJpaConfigParserRuleCall_10_0; }
-		
-		//';'
-		public Keyword getSemicolonKeyword_11() { return cSemicolonKeyword_11; }
-		
-		//'serviceConfig'
-		public Keyword getServiceConfigKeyword_12() { return cServiceConfigKeyword_12; }
-		
-		//serviceConfig=ServiceConfig
-		public Assignment getServiceConfigAssignment_13() { return cServiceConfigAssignment_13; }
-		
-		//ServiceConfig
-		public RuleCall getServiceConfigServiceConfigParserRuleCall_13_0() { return cServiceConfigServiceConfigParserRuleCall_13_0; }
-		
-		//';'
-		public Keyword getSemicolonKeyword_14() { return cSemicolonKeyword_14; }
-		
-		//('messageBundles' '{' messageBundles+=Localized+ '}' ','*)?
-		public Group getGroup_15() { return cGroup_15; }
+		//('messageBundles' '{' messageBundles+=Localized+ '}' ';')?
+		public Group getGroup_9() { return cGroup_9; }
 		
 		//'messageBundles'
-		public Keyword getMessageBundlesKeyword_15_0() { return cMessageBundlesKeyword_15_0; }
+		public Keyword getMessageBundlesKeyword_9_0() { return cMessageBundlesKeyword_9_0; }
 		
 		//'{'
-		public Keyword getLeftCurlyBracketKeyword_15_1() { return cLeftCurlyBracketKeyword_15_1; }
+		public Keyword getLeftCurlyBracketKeyword_9_1() { return cLeftCurlyBracketKeyword_9_1; }
 		
 		//messageBundles+=Localized+
-		public Assignment getMessageBundlesAssignment_15_2() { return cMessageBundlesAssignment_15_2; }
+		public Assignment getMessageBundlesAssignment_9_2() { return cMessageBundlesAssignment_9_2; }
 		
 		//Localized
-		public RuleCall getMessageBundlesLocalizedParserRuleCall_15_2_0() { return cMessageBundlesLocalizedParserRuleCall_15_2_0; }
+		public RuleCall getMessageBundlesLocalizedParserRuleCall_9_2_0() { return cMessageBundlesLocalizedParserRuleCall_9_2_0; }
 		
 		//'}'
-		public Keyword getRightCurlyBracketKeyword_15_3() { return cRightCurlyBracketKeyword_15_3; }
+		public Keyword getRightCurlyBracketKeyword_9_3() { return cRightCurlyBracketKeyword_9_3; }
 		
-		//','*
-		public Keyword getCommaKeyword_15_4() { return cCommaKeyword_15_4; }
+		//';'
+		public Keyword getSemicolonKeyword_9_4() { return cSemicolonKeyword_9_4; }
 		
-		//('messages' messages=Localized+)?
-		public Group getGroup_16() { return cGroup_16; }
+		//('observers' '{' observers+=Observer+ '}' ';')?
+		public Group getGroup_10() { return cGroup_10; }
 		
-		//'messages'
-		public Keyword getMessagesKeyword_16_0() { return cMessagesKeyword_16_0; }
+		//'observers'
+		public Keyword getObserversKeyword_10_0() { return cObserversKeyword_10_0; }
 		
-		//messages=Localized+
-		public Assignment getMessagesAssignment_16_1() { return cMessagesAssignment_16_1; }
+		//'{'
+		public Keyword getLeftCurlyBracketKeyword_10_1() { return cLeftCurlyBracketKeyword_10_1; }
 		
-		//Localized
-		public RuleCall getMessagesLocalizedParserRuleCall_16_1_0() { return cMessagesLocalizedParserRuleCall_16_1_0; }
+		//observers+=Observer+
+		public Assignment getObserversAssignment_10_2() { return cObserversAssignment_10_2; }
+		
+		//Observer
+		public RuleCall getObserversObserverParserRuleCall_10_2_0() { return cObserversObserverParserRuleCall_10_2_0; }
+		
+		//'}'
+		public Keyword getRightCurlyBracketKeyword_10_3() { return cRightCurlyBracketKeyword_10_3; }
+		
+		//';'
+		public Keyword getSemicolonKeyword_10_4() { return cSemicolonKeyword_10_4; }
+		
+		//'jpaConfig'
+		public Keyword getJpaConfigKeyword_11() { return cJpaConfigKeyword_11; }
+		
+		//jpaConfig=JpaConfig
+		public Assignment getJpaConfigAssignment_12() { return cJpaConfigAssignment_12; }
+		
+		//JpaConfig
+		public RuleCall getJpaConfigJpaConfigParserRuleCall_12_0() { return cJpaConfigJpaConfigParserRuleCall_12_0; }
+		
+		//';'
+		public Keyword getSemicolonKeyword_13() { return cSemicolonKeyword_13; }
+		
+		//'serviceConfig'
+		public Keyword getServiceConfigKeyword_14() { return cServiceConfigKeyword_14; }
+		
+		//serviceConfig=ServiceConfig
+		public Assignment getServiceConfigAssignment_15() { return cServiceConfigAssignment_15; }
+		
+		//ServiceConfig
+		public RuleCall getServiceConfigServiceConfigParserRuleCall_15_0() { return cServiceConfigServiceConfigParserRuleCall_15_0; }
+		
+		//';'
+		public Keyword getSemicolonKeyword_16() { return cSemicolonKeyword_16; }
 		
 		//'}'
 		public Keyword getRightCurlyBracketKeyword_17() { return cRightCurlyBracketKeyword_17; }
@@ -180,15 +193,23 @@ public class ProjectGeneratorGrammarAccess extends AbstractGrammarElementFinder 
 		private final Keyword cObserversKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
 		private final Assignment cObserversAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
 		private final RuleCall cObserversObserverParserRuleCall_1_1_0 = (RuleCall)cObserversAssignment_1_1.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
+		private final Keyword cMessageBundlesKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_2_1 = (Keyword)cGroup_2.eContents().get(1);
+		private final Assignment cMessageBundlesAssignment_2_2 = (Assignment)cGroup_2.eContents().get(2);
+		private final CrossReference cMessageBundlesLocalizedCrossReference_2_2_0 = (CrossReference)cMessageBundlesAssignment_2_2.eContents().get(0);
+		private final RuleCall cMessageBundlesLocalizedIDTerminalRuleCall_2_2_0_1 = (RuleCall)cMessageBundlesLocalizedCrossReference_2_2_0.eContents().get(1);
+		private final Keyword cRightCurlyBracketKeyword_2_3 = (Keyword)cGroup_2.eContents().get(3);
+		private final Keyword cSemicolonKeyword_2_4 = (Keyword)cGroup_2.eContents().get(4);
+		private final Keyword cRightCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
 		//// Service configuration
 		//ServiceConfig:
-		//	'{' ('observers' observers+=Observer+)?
+		//	'{' ('observers' observers+=Observer+)? ('messageBundles' '{' messageBundles+=[Localized]+ '}' ';')?
 		//	'}';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'{' ('observers' observers+=Observer+)? '}'
+		//'{' ('observers' observers+=Observer+)? ('messageBundles' '{' messageBundles+=[Localized]+ '}' ';')? '}'
 		public Group getGroup() { return cGroup; }
 		
 		//'{'
@@ -206,117 +227,149 @@ public class ProjectGeneratorGrammarAccess extends AbstractGrammarElementFinder 
 		//Observer
 		public RuleCall getObserversObserverParserRuleCall_1_1_0() { return cObserversObserverParserRuleCall_1_1_0; }
 		
+		//('messageBundles' '{' messageBundles+=[Localized]+ '}' ';')?
+		public Group getGroup_2() { return cGroup_2; }
+		
+		//'messageBundles'
+		public Keyword getMessageBundlesKeyword_2_0() { return cMessageBundlesKeyword_2_0; }
+		
+		//'{'
+		public Keyword getLeftCurlyBracketKeyword_2_1() { return cLeftCurlyBracketKeyword_2_1; }
+		
+		//messageBundles+=[Localized]+
+		public Assignment getMessageBundlesAssignment_2_2() { return cMessageBundlesAssignment_2_2; }
+		
+		//[Localized]
+		public CrossReference getMessageBundlesLocalizedCrossReference_2_2_0() { return cMessageBundlesLocalizedCrossReference_2_2_0; }
+		
+		//ID
+		public RuleCall getMessageBundlesLocalizedIDTerminalRuleCall_2_2_0_1() { return cMessageBundlesLocalizedIDTerminalRuleCall_2_2_0_1; }
+		
 		//'}'
-		public Keyword getRightCurlyBracketKeyword_2() { return cRightCurlyBracketKeyword_2; }
+		public Keyword getRightCurlyBracketKeyword_2_3() { return cRightCurlyBracketKeyword_2_3; }
+		
+		//';'
+		public Keyword getSemicolonKeyword_2_4() { return cSemicolonKeyword_2_4; }
+		
+		//'}'
+		public Keyword getRightCurlyBracketKeyword_3() { return cRightCurlyBracketKeyword_3; }
 	}
 	public class ObserverElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "at.ooe.fh.mdm.herzog.dsl.proj.ProjectGenerator.Observer");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cObserverKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Keyword cTypeKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Assignment cTypeAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cTypeSTRINGTerminalRuleCall_4_0 = (RuleCall)cTypeAssignment_4.eContents().get(0);
-		private final Keyword cSemicolonKeyword_5 = (Keyword)cGroup.eContents().get(5);
-		private final Keyword cDuringKeyword_6 = (Keyword)cGroup.eContents().get(6);
-		private final Assignment cDuringAssignment_7 = (Assignment)cGroup.eContents().get(7);
-		private final RuleCall cDuringDuringEnumRuleCall_7_0 = (RuleCall)cDuringAssignment_7.eContents().get(0);
-		private final Keyword cSemicolonKeyword_8 = (Keyword)cGroup.eContents().get(8);
-		private final Keyword cNotifyKeyword_9 = (Keyword)cGroup.eContents().get(9);
-		private final Assignment cNotifyAssignment_10 = (Assignment)cGroup.eContents().get(10);
-		private final RuleCall cNotifyNotifyEnumRuleCall_10_0 = (RuleCall)cNotifyAssignment_10.eContents().get(0);
-		private final Keyword cSemicolonKeyword_11 = (Keyword)cGroup.eContents().get(11);
-		private final Keyword cDelegateKeyword_12 = (Keyword)cGroup.eContents().get(12);
-		private final Assignment cClassNameAssignment_13 = (Assignment)cGroup.eContents().get(13);
-		private final RuleCall cClassNameClassNameTerminalRuleCall_13_0 = (RuleCall)cClassNameAssignment_13.eContents().get(0);
-		private final Keyword cNumberSignKeyword_14 = (Keyword)cGroup.eContents().get(14);
-		private final RuleCall cMethodNameTerminalRuleCall_15 = (RuleCall)cGroup.eContents().get(15);
-		private final Keyword cSemicolonKeyword_16 = (Keyword)cGroup.eContents().get(16);
-		private final Keyword cRightCurlyBracketKeyword_17 = (Keyword)cGroup.eContents().get(17);
+		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cNameIDTerminalRuleCall_0_0 = (RuleCall)cNameAssignment_0.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Keyword cTypeKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cTypeAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cTypeClassNameTerminalRuleCall_3_0 = (RuleCall)cTypeAssignment_3.eContents().get(0);
+		private final Keyword cSemicolonKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Keyword cDuringKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Assignment cDuringAssignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final RuleCall cDuringDuringEnumRuleCall_6_0 = (RuleCall)cDuringAssignment_6.eContents().get(0);
+		private final Keyword cSemicolonKeyword_7 = (Keyword)cGroup.eContents().get(7);
+		private final Keyword cNotifyKeyword_8 = (Keyword)cGroup.eContents().get(8);
+		private final Assignment cNotifyAssignment_9 = (Assignment)cGroup.eContents().get(9);
+		private final RuleCall cNotifyNotifyEnumRuleCall_9_0 = (RuleCall)cNotifyAssignment_9.eContents().get(0);
+		private final Keyword cSemicolonKeyword_10 = (Keyword)cGroup.eContents().get(10);
+		private final Keyword cDelegateKeyword_11 = (Keyword)cGroup.eContents().get(11);
+		private final Assignment cClassNameAssignment_12 = (Assignment)cGroup.eContents().get(12);
+		private final RuleCall cClassNameClassNameTerminalRuleCall_12_0 = (RuleCall)cClassNameAssignment_12.eContents().get(0);
+		private final Keyword cSemicolonKeyword_13 = (Keyword)cGroup.eContents().get(13);
+		private final Group cGroup_14 = (Group)cGroup.eContents().get(14);
+		private final Keyword cQualifierKeyword_14_0 = (Keyword)cGroup_14.eContents().get(0);
+		private final Assignment cQualifierAssignment_14_1 = (Assignment)cGroup_14.eContents().get(1);
+		private final RuleCall cQualifierClassNameTerminalRuleCall_14_1_0 = (RuleCall)cQualifierAssignment_14_1.eContents().get(0);
+		private final Keyword cSemicolonKeyword_14_2 = (Keyword)cGroup_14.eContents().get(2);
+		private final Keyword cRightCurlyBracketKeyword_15 = (Keyword)cGroup.eContents().get(15);
 		
 		//Observer:
-		//	'observer' name=ID '{'
-		//	'type' type=STRING ';'
+		//	name=ID '{'
+		//	'type' type=ClassName ';'
 		//	'during' during=During ';'
 		//	'notify' notify=Notify ';'
-		//	'delegate' className=ClassName '#' MethodName ';'
+		//	'delegate' className=ClassName ';' ('qualifier' qualifier=ClassName ';')?
 		//	'}';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'observer' name=ID '{' 'type' type=STRING ';' 'during' during=During ';' 'notify' notify=Notify ';' 'delegate'
-		//className=ClassName '#' MethodName ';' '}'
+		//name=ID '{' 'type' type=ClassName ';' 'during' during=During ';' 'notify' notify=Notify ';' 'delegate'
+		//className=ClassName ';' ('qualifier' qualifier=ClassName ';')? '}'
 		public Group getGroup() { return cGroup; }
 		
-		//'observer'
-		public Keyword getObserverKeyword_0() { return cObserverKeyword_0; }
-		
 		//name=ID
-		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
 		
 		//ID
-		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+		public RuleCall getNameIDTerminalRuleCall_0_0() { return cNameIDTerminalRuleCall_0_0; }
 		
 		//'{'
-		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
+		public Keyword getLeftCurlyBracketKeyword_1() { return cLeftCurlyBracketKeyword_1; }
 		
 		//'type'
-		public Keyword getTypeKeyword_3() { return cTypeKeyword_3; }
+		public Keyword getTypeKeyword_2() { return cTypeKeyword_2; }
 		
-		//type=STRING
-		public Assignment getTypeAssignment_4() { return cTypeAssignment_4; }
-		
-		//STRING
-		public RuleCall getTypeSTRINGTerminalRuleCall_4_0() { return cTypeSTRINGTerminalRuleCall_4_0; }
-		
-		//';'
-		public Keyword getSemicolonKeyword_5() { return cSemicolonKeyword_5; }
-		
-		//'during'
-		public Keyword getDuringKeyword_6() { return cDuringKeyword_6; }
-		
-		//during=During
-		public Assignment getDuringAssignment_7() { return cDuringAssignment_7; }
-		
-		//During
-		public RuleCall getDuringDuringEnumRuleCall_7_0() { return cDuringDuringEnumRuleCall_7_0; }
-		
-		//';'
-		public Keyword getSemicolonKeyword_8() { return cSemicolonKeyword_8; }
-		
-		//'notify'
-		public Keyword getNotifyKeyword_9() { return cNotifyKeyword_9; }
-		
-		//notify=Notify
-		public Assignment getNotifyAssignment_10() { return cNotifyAssignment_10; }
-		
-		//Notify
-		public RuleCall getNotifyNotifyEnumRuleCall_10_0() { return cNotifyNotifyEnumRuleCall_10_0; }
-		
-		//';'
-		public Keyword getSemicolonKeyword_11() { return cSemicolonKeyword_11; }
-		
-		//'delegate'
-		public Keyword getDelegateKeyword_12() { return cDelegateKeyword_12; }
-		
-		//className=ClassName
-		public Assignment getClassNameAssignment_13() { return cClassNameAssignment_13; }
+		//type=ClassName
+		public Assignment getTypeAssignment_3() { return cTypeAssignment_3; }
 		
 		//ClassName
-		public RuleCall getClassNameClassNameTerminalRuleCall_13_0() { return cClassNameClassNameTerminalRuleCall_13_0; }
-		
-		//'#'
-		public Keyword getNumberSignKeyword_14() { return cNumberSignKeyword_14; }
-		
-		//MethodName
-		public RuleCall getMethodNameTerminalRuleCall_15() { return cMethodNameTerminalRuleCall_15; }
+		public RuleCall getTypeClassNameTerminalRuleCall_3_0() { return cTypeClassNameTerminalRuleCall_3_0; }
 		
 		//';'
-		public Keyword getSemicolonKeyword_16() { return cSemicolonKeyword_16; }
+		public Keyword getSemicolonKeyword_4() { return cSemicolonKeyword_4; }
+		
+		//'during'
+		public Keyword getDuringKeyword_5() { return cDuringKeyword_5; }
+		
+		//during=During
+		public Assignment getDuringAssignment_6() { return cDuringAssignment_6; }
+		
+		//During
+		public RuleCall getDuringDuringEnumRuleCall_6_0() { return cDuringDuringEnumRuleCall_6_0; }
+		
+		//';'
+		public Keyword getSemicolonKeyword_7() { return cSemicolonKeyword_7; }
+		
+		//'notify'
+		public Keyword getNotifyKeyword_8() { return cNotifyKeyword_8; }
+		
+		//notify=Notify
+		public Assignment getNotifyAssignment_9() { return cNotifyAssignment_9; }
+		
+		//Notify
+		public RuleCall getNotifyNotifyEnumRuleCall_9_0() { return cNotifyNotifyEnumRuleCall_9_0; }
+		
+		//';'
+		public Keyword getSemicolonKeyword_10() { return cSemicolonKeyword_10; }
+		
+		//'delegate'
+		public Keyword getDelegateKeyword_11() { return cDelegateKeyword_11; }
+		
+		//className=ClassName
+		public Assignment getClassNameAssignment_12() { return cClassNameAssignment_12; }
+		
+		//ClassName
+		public RuleCall getClassNameClassNameTerminalRuleCall_12_0() { return cClassNameClassNameTerminalRuleCall_12_0; }
+		
+		//';'
+		public Keyword getSemicolonKeyword_13() { return cSemicolonKeyword_13; }
+		
+		//('qualifier' qualifier=ClassName ';')?
+		public Group getGroup_14() { return cGroup_14; }
+		
+		//'qualifier'
+		public Keyword getQualifierKeyword_14_0() { return cQualifierKeyword_14_0; }
+		
+		//qualifier=ClassName
+		public Assignment getQualifierAssignment_14_1() { return cQualifierAssignment_14_1; }
+		
+		//ClassName
+		public RuleCall getQualifierClassNameTerminalRuleCall_14_1_0() { return cQualifierClassNameTerminalRuleCall_14_1_0; }
+		
+		//';'
+		public Keyword getSemicolonKeyword_14_2() { return cSemicolonKeyword_14_2; }
 		
 		//'}'
-		public Keyword getRightCurlyBracketKeyword_17() { return cRightCurlyBracketKeyword_17; }
+		public Keyword getRightCurlyBracketKeyword_15() { return cRightCurlyBracketKeyword_15; }
 	}
 	public class JpaConfigElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "at.ooe.fh.mdm.herzog.dsl.proj.ProjectGenerator.JpaConfig");
@@ -324,33 +377,49 @@ public class ProjectGeneratorGrammarAccess extends AbstractGrammarElementFinder 
 		private final Keyword cLeftCurlyBracketKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
 		private final Keyword cLocalizedEnumsKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
-		private final Assignment cLocalizedEnumsAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
-		private final RuleCall cLocalizedEnumsLocalizedParserRuleCall_1_1_0 = (RuleCall)cLocalizedEnumsAssignment_1_1.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
+		private final Assignment cLocalizedEnumsAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
+		private final CrossReference cLocalizedEnumsLocalizedCrossReference_1_2_0 = (CrossReference)cLocalizedEnumsAssignment_1_2.eContents().get(0);
+		private final RuleCall cLocalizedEnumsLocalizedIDTerminalRuleCall_1_2_0_1 = (RuleCall)cLocalizedEnumsLocalizedCrossReference_1_2_0.eContents().get(1);
+		private final Keyword cRightCurlyBracketKeyword_1_3 = (Keyword)cGroup_1.eContents().get(3);
+		private final Keyword cSemicolonKeyword_1_4 = (Keyword)cGroup_1.eContents().get(4);
 		private final Keyword cRightCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		
 		//// Jpa configuration
 		//JpaConfig:
-		//	'{' ('localizedEnums' localizedEnums+=Localized+)?
+		//	'{' ('localizedEnums' '{' localizedEnums+=[Localized]+ '}' ';')?
 		//	'}';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'{' ('localizedEnums' localizedEnums+=Localized+)? '}'
+		//'{' ('localizedEnums' '{' localizedEnums+=[Localized]+ '}' ';')? '}'
 		public Group getGroup() { return cGroup; }
 		
 		//'{'
 		public Keyword getLeftCurlyBracketKeyword_0() { return cLeftCurlyBracketKeyword_0; }
 		
-		//('localizedEnums' localizedEnums+=Localized+)?
+		//('localizedEnums' '{' localizedEnums+=[Localized]+ '}' ';')?
 		public Group getGroup_1() { return cGroup_1; }
 		
 		//'localizedEnums'
 		public Keyword getLocalizedEnumsKeyword_1_0() { return cLocalizedEnumsKeyword_1_0; }
 		
-		//localizedEnums+=Localized+
-		public Assignment getLocalizedEnumsAssignment_1_1() { return cLocalizedEnumsAssignment_1_1; }
+		//'{'
+		public Keyword getLeftCurlyBracketKeyword_1_1() { return cLeftCurlyBracketKeyword_1_1; }
 		
-		//Localized
-		public RuleCall getLocalizedEnumsLocalizedParserRuleCall_1_1_0() { return cLocalizedEnumsLocalizedParserRuleCall_1_1_0; }
+		//localizedEnums+=[Localized]+
+		public Assignment getLocalizedEnumsAssignment_1_2() { return cLocalizedEnumsAssignment_1_2; }
+		
+		//[Localized]
+		public CrossReference getLocalizedEnumsLocalizedCrossReference_1_2_0() { return cLocalizedEnumsLocalizedCrossReference_1_2_0; }
+		
+		//ID
+		public RuleCall getLocalizedEnumsLocalizedIDTerminalRuleCall_1_2_0_1() { return cLocalizedEnumsLocalizedIDTerminalRuleCall_1_2_0_1; }
+		
+		//'}'
+		public Keyword getRightCurlyBracketKeyword_1_3() { return cRightCurlyBracketKeyword_1_3; }
+		
+		//';'
+		public Keyword getSemicolonKeyword_1_4() { return cSemicolonKeyword_1_4; }
 		
 		//'}'
 		public Keyword getRightCurlyBracketKeyword_2() { return cRightCurlyBracketKeyword_2; }
@@ -358,117 +427,173 @@ public class ProjectGeneratorGrammarAccess extends AbstractGrammarElementFinder 
 	public class LocalizedElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "at.ooe.fh.mdm.herzog.dsl.proj.ProjectGenerator.Localized");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cLocalizedKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Keyword cNameKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Assignment cNameAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cNameSTRINGTerminalRuleCall_4_0 = (RuleCall)cNameAssignment_4.eContents().get(0);
-		private final Keyword cSemicolonKeyword_5 = (Keyword)cGroup.eContents().get(5);
-		private final Keyword cLocalesKeyword_6 = (Keyword)cGroup.eContents().get(6);
-		private final Assignment cLocalesAssignment_7 = (Assignment)cGroup.eContents().get(7);
-		private final RuleCall cLocalesLocaleEnumRuleCall_7_0 = (RuleCall)cLocalesAssignment_7.eContents().get(0);
-		private final Keyword cSemicolonKeyword_8 = (Keyword)cGroup.eContents().get(8);
-		private final Group cGroup_9 = (Group)cGroup.eContents().get(9);
-		private final Keyword cValuesKeyword_9_0 = (Keyword)cGroup_9.eContents().get(0);
-		private final Assignment cValuesAssignment_9_1 = (Assignment)cGroup_9.eContents().get(1);
-		private final RuleCall cValuesLocalizedEntryParserRuleCall_9_1_0 = (RuleCall)cValuesAssignment_9_1.eContents().get(0);
-		private final Keyword cSemicolonKeyword_9_2 = (Keyword)cGroup_9.eContents().get(2);
-		private final Keyword cRightCurlyBracketKeyword_10 = (Keyword)cGroup.eContents().get(10);
+		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cNameIDTerminalRuleCall_0_0 = (RuleCall)cNameAssignment_0.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
+		private final Keyword cValuesKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_2_1 = (Keyword)cGroup_2.eContents().get(1);
+		private final Assignment cValuesAssignment_2_2 = (Assignment)cGroup_2.eContents().get(2);
+		private final RuleCall cValuesLocalizedEntryParserRuleCall_2_2_0 = (RuleCall)cValuesAssignment_2_2.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_2_3 = (Keyword)cGroup_2.eContents().get(3);
+		private final Keyword cSemicolonKeyword_2_4 = (Keyword)cGroup_2.eContents().get(4);
+		private final Keyword cRightCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
 		//// Common
 		//Localized:
-		//	'localized' name=ID '{'
-		//	'name' name=STRING ';'
-		//	'locales' locales+=Locale+ ';' ('values' values+=LocalizedEntry+ ';')?
+		//	name=ID '{' ('values' '{' values+=LocalizedEntry+ '}' ';')?
 		//	'}';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'localized' name=ID '{' 'name' name=STRING ';' 'locales' locales+=Locale+ ';' ('values' values+=LocalizedEntry+ ';')?
+		//name=ID '{' ('values' '{' values+=LocalizedEntry+ '}' ';')? '}'
+		public Group getGroup() { return cGroup; }
+		
+		//name=ID
+		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
+		
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_0_0() { return cNameIDTerminalRuleCall_0_0; }
+		
+		//'{'
+		public Keyword getLeftCurlyBracketKeyword_1() { return cLeftCurlyBracketKeyword_1; }
+		
+		//('values' '{' values+=LocalizedEntry+ '}' ';')?
+		public Group getGroup_2() { return cGroup_2; }
+		
+		//'values'
+		public Keyword getValuesKeyword_2_0() { return cValuesKeyword_2_0; }
+		
+		//'{'
+		public Keyword getLeftCurlyBracketKeyword_2_1() { return cLeftCurlyBracketKeyword_2_1; }
+		
+		//values+=LocalizedEntry+
+		public Assignment getValuesAssignment_2_2() { return cValuesAssignment_2_2; }
+		
+		//LocalizedEntry
+		public RuleCall getValuesLocalizedEntryParserRuleCall_2_2_0() { return cValuesLocalizedEntryParserRuleCall_2_2_0; }
+		
+		//'}'
+		public Keyword getRightCurlyBracketKeyword_2_3() { return cRightCurlyBracketKeyword_2_3; }
+		
+		//';'
+		public Keyword getSemicolonKeyword_2_4() { return cSemicolonKeyword_2_4; }
+		
+		//'}'
+		public Keyword getRightCurlyBracketKeyword_3() { return cRightCurlyBracketKeyword_3; }
+	}
+	public class LocalizedEntryElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "at.ooe.fh.mdm.herzog.dsl.proj.ProjectGenerator.LocalizedEntry");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cLeftCurlyBracketKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cKeyKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cLocalizedKeyAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cLocalizedKeyLocalizedKeyTerminalRuleCall_2_0 = (RuleCall)cLocalizedKeyAssignment_2.eContents().get(0);
+		private final Keyword cSemicolonKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Keyword cValuesKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Keyword cLeftCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Assignment cValuesAssignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final RuleCall cValuesLocalizedValueParserRuleCall_6_0 = (RuleCall)cValuesAssignment_6.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_7 = (Keyword)cGroup.eContents().get(7);
+		private final Keyword cSemicolonKeyword_8 = (Keyword)cGroup.eContents().get(8);
+		private final Group cGroup_9 = (Group)cGroup.eContents().get(9);
+		private final Keyword cArgsKeyword_9_0 = (Keyword)cGroup_9.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_9_1 = (Keyword)cGroup_9.eContents().get(1);
+		private final Assignment cArgsAssignment_9_2 = (Assignment)cGroup_9.eContents().get(2);
+		private final RuleCall cArgsSTRINGTerminalRuleCall_9_2_0 = (RuleCall)cArgsAssignment_9_2.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_9_3 = (Keyword)cGroup_9.eContents().get(3);
+		private final Keyword cSemicolonKeyword_9_4 = (Keyword)cGroup_9.eContents().get(4);
+		private final Keyword cRightCurlyBracketKeyword_10 = (Keyword)cGroup.eContents().get(10);
+		
+		//LocalizedEntry:
+		//	'{'
+		//	'key' localizedKey=LocalizedKey ';'
+		//	'values' '{' values+=LocalizedValue+ '}' ';' ('args' '{' args+=STRING+ '}' ';')?
+		//	'}';
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'{' 'key' localizedKey=LocalizedKey ';' 'values' '{' values+=LocalizedValue+ '}' ';' ('args' '{' args+=STRING+ '}' ';')?
 		//'}'
 		public Group getGroup() { return cGroup; }
 		
-		//'localized'
-		public Keyword getLocalizedKeyword_0() { return cLocalizedKeyword_0; }
-		
-		//name=ID
-		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
-		
-		//ID
-		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
-		
 		//'{'
-		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
+		public Keyword getLeftCurlyBracketKeyword_0() { return cLeftCurlyBracketKeyword_0; }
 		
-		//'name'
-		public Keyword getNameKeyword_3() { return cNameKeyword_3; }
+		//'key'
+		public Keyword getKeyKeyword_1() { return cKeyKeyword_1; }
 		
-		//name=STRING
-		public Assignment getNameAssignment_4() { return cNameAssignment_4; }
+		//localizedKey=LocalizedKey
+		public Assignment getLocalizedKeyAssignment_2() { return cLocalizedKeyAssignment_2; }
 		
-		//STRING
-		public RuleCall getNameSTRINGTerminalRuleCall_4_0() { return cNameSTRINGTerminalRuleCall_4_0; }
+		//LocalizedKey
+		public RuleCall getLocalizedKeyLocalizedKeyTerminalRuleCall_2_0() { return cLocalizedKeyLocalizedKeyTerminalRuleCall_2_0; }
 		
 		//';'
-		public Keyword getSemicolonKeyword_5() { return cSemicolonKeyword_5; }
+		public Keyword getSemicolonKeyword_3() { return cSemicolonKeyword_3; }
 		
-		//'locales'
-		public Keyword getLocalesKeyword_6() { return cLocalesKeyword_6; }
+		//'values'
+		public Keyword getValuesKeyword_4() { return cValuesKeyword_4; }
 		
-		//locales+=Locale+
-		public Assignment getLocalesAssignment_7() { return cLocalesAssignment_7; }
+		//'{'
+		public Keyword getLeftCurlyBracketKeyword_5() { return cLeftCurlyBracketKeyword_5; }
 		
-		//Locale
-		public RuleCall getLocalesLocaleEnumRuleCall_7_0() { return cLocalesLocaleEnumRuleCall_7_0; }
+		//values+=LocalizedValue+
+		public Assignment getValuesAssignment_6() { return cValuesAssignment_6; }
+		
+		//LocalizedValue
+		public RuleCall getValuesLocalizedValueParserRuleCall_6_0() { return cValuesLocalizedValueParserRuleCall_6_0; }
+		
+		//'}'
+		public Keyword getRightCurlyBracketKeyword_7() { return cRightCurlyBracketKeyword_7; }
 		
 		//';'
 		public Keyword getSemicolonKeyword_8() { return cSemicolonKeyword_8; }
 		
-		//('values' values+=LocalizedEntry+ ';')?
+		//('args' '{' args+=STRING+ '}' ';')?
 		public Group getGroup_9() { return cGroup_9; }
 		
-		//'values'
-		public Keyword getValuesKeyword_9_0() { return cValuesKeyword_9_0; }
+		//'args'
+		public Keyword getArgsKeyword_9_0() { return cArgsKeyword_9_0; }
 		
-		//values+=LocalizedEntry+
-		public Assignment getValuesAssignment_9_1() { return cValuesAssignment_9_1; }
+		//'{'
+		public Keyword getLeftCurlyBracketKeyword_9_1() { return cLeftCurlyBracketKeyword_9_1; }
 		
-		//LocalizedEntry
-		public RuleCall getValuesLocalizedEntryParserRuleCall_9_1_0() { return cValuesLocalizedEntryParserRuleCall_9_1_0; }
+		//args+=STRING+
+		public Assignment getArgsAssignment_9_2() { return cArgsAssignment_9_2; }
+		
+		//STRING
+		public RuleCall getArgsSTRINGTerminalRuleCall_9_2_0() { return cArgsSTRINGTerminalRuleCall_9_2_0; }
+		
+		//'}'
+		public Keyword getRightCurlyBracketKeyword_9_3() { return cRightCurlyBracketKeyword_9_3; }
 		
 		//';'
-		public Keyword getSemicolonKeyword_9_2() { return cSemicolonKeyword_9_2; }
+		public Keyword getSemicolonKeyword_9_4() { return cSemicolonKeyword_9_4; }
 		
 		//'}'
 		public Keyword getRightCurlyBracketKeyword_10() { return cRightCurlyBracketKeyword_10; }
 	}
-	public class LocalizedEntryElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "at.ooe.fh.mdm.herzog.dsl.proj.ProjectGenerator.LocalizedEntry");
+	public class LocalizedValueElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "at.ooe.fh.mdm.herzog.dsl.proj.ProjectGenerator.LocalizedValue");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cLeftCurlyBracketKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Keyword cLocaleKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cLocaleAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cLocaleLocaleEnumRuleCall_2_0 = (RuleCall)cLocaleAssignment_2.eContents().get(0);
 		private final Keyword cSemicolonKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Keyword cEntryKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		private final Assignment cEntryAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final RuleCall cEntryKeyValuePairParserRuleCall_5_0 = (RuleCall)cEntryAssignment_5.eContents().get(0);
+		private final Keyword cValueKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Assignment cValuesAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cValuesSTRINGTerminalRuleCall_5_0 = (RuleCall)cValuesAssignment_5.eContents().get(0);
 		private final Keyword cSemicolonKeyword_6 = (Keyword)cGroup.eContents().get(6);
-		private final Group cGroup_7 = (Group)cGroup.eContents().get(7);
-		private final Keyword cArgumtesKeyword_7_0 = (Keyword)cGroup_7.eContents().get(0);
-		private final Assignment cArgumentsAssignment_7_1 = (Assignment)cGroup_7.eContents().get(1);
-		private final RuleCall cArgumentsKeyValuePairParserRuleCall_7_1_0 = (RuleCall)cArgumentsAssignment_7_1.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_8 = (Keyword)cGroup.eContents().get(8);
+		private final Keyword cRightCurlyBracketKeyword_7 = (Keyword)cGroup.eContents().get(7);
 		
-		//LocalizedEntry:
+		//LocalizedValue:
 		//	'{'
 		//	'locale' locale=Locale ';'
-		//	'entry' entry=KeyValuePair ';' ('argumtes' arguments+=KeyValuePair+)?
+		//	'value' values=STRING ';'
 		//	'}';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'{' 'locale' locale=Locale ';' 'entry' entry=KeyValuePair ';' ('argumtes' arguments+=KeyValuePair+)? '}'
+		//'{' 'locale' locale=Locale ';' 'value' values=STRING ';' '}'
 		public Group getGroup() { return cGroup; }
 		
 		//'{'
@@ -486,80 +611,14 @@ public class ProjectGeneratorGrammarAccess extends AbstractGrammarElementFinder 
 		//';'
 		public Keyword getSemicolonKeyword_3() { return cSemicolonKeyword_3; }
 		
-		//'entry'
-		public Keyword getEntryKeyword_4() { return cEntryKeyword_4; }
-		
-		//entry=KeyValuePair
-		public Assignment getEntryAssignment_5() { return cEntryAssignment_5; }
-		
-		//KeyValuePair
-		public RuleCall getEntryKeyValuePairParserRuleCall_5_0() { return cEntryKeyValuePairParserRuleCall_5_0; }
-		
-		//';'
-		public Keyword getSemicolonKeyword_6() { return cSemicolonKeyword_6; }
-		
-		//('argumtes' arguments+=KeyValuePair+)?
-		public Group getGroup_7() { return cGroup_7; }
-		
-		//'argumtes'
-		public Keyword getArgumtesKeyword_7_0() { return cArgumtesKeyword_7_0; }
-		
-		//arguments+=KeyValuePair+
-		public Assignment getArgumentsAssignment_7_1() { return cArgumentsAssignment_7_1; }
-		
-		//KeyValuePair
-		public RuleCall getArgumentsKeyValuePairParserRuleCall_7_1_0() { return cArgumentsKeyValuePairParserRuleCall_7_1_0; }
-		
-		//'}'
-		public Keyword getRightCurlyBracketKeyword_8() { return cRightCurlyBracketKeyword_8; }
-	}
-	public class KeyValuePairElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "at.ooe.fh.mdm.herzog.dsl.proj.ProjectGenerator.KeyValuePair");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cLeftCurlyBracketKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Keyword cKeyKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cKeyAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cKeySTRINGTerminalRuleCall_2_0 = (RuleCall)cKeyAssignment_2.eContents().get(0);
-		private final Keyword cSemicolonKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Keyword cValueKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		private final Assignment cValueAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final RuleCall cValueSTRINGTerminalRuleCall_5_0 = (RuleCall)cValueAssignment_5.eContents().get(0);
-		private final Keyword cSemicolonKeyword_6 = (Keyword)cGroup.eContents().get(6);
-		private final Keyword cRightCurlyBracketKeyword_7 = (Keyword)cGroup.eContents().get(7);
-		
-		//KeyValuePair:
-		//	'{'
-		//	'key' key=STRING ';'
-		//	'value' value=STRING ';'
-		//	'}';
-		@Override public ParserRule getRule() { return rule; }
-		
-		//'{' 'key' key=STRING ';' 'value' value=STRING ';' '}'
-		public Group getGroup() { return cGroup; }
-		
-		//'{'
-		public Keyword getLeftCurlyBracketKeyword_0() { return cLeftCurlyBracketKeyword_0; }
-		
-		//'key'
-		public Keyword getKeyKeyword_1() { return cKeyKeyword_1; }
-		
-		//key=STRING
-		public Assignment getKeyAssignment_2() { return cKeyAssignment_2; }
-		
-		//STRING
-		public RuleCall getKeySTRINGTerminalRuleCall_2_0() { return cKeySTRINGTerminalRuleCall_2_0; }
-		
-		//';'
-		public Keyword getSemicolonKeyword_3() { return cSemicolonKeyword_3; }
-		
 		//'value'
 		public Keyword getValueKeyword_4() { return cValueKeyword_4; }
 		
-		//value=STRING
-		public Assignment getValueAssignment_5() { return cValueAssignment_5; }
+		//values=STRING
+		public Assignment getValuesAssignment_5() { return cValuesAssignment_5; }
 		
 		//STRING
-		public RuleCall getValueSTRINGTerminalRuleCall_5_0() { return cValueSTRINGTerminalRuleCall_5_0; }
+		public RuleCall getValuesSTRINGTerminalRuleCall_5_0() { return cValuesSTRINGTerminalRuleCall_5_0; }
 		
 		//';'
 		public Keyword getSemicolonKeyword_6() { return cSemicolonKeyword_6; }
@@ -710,7 +769,7 @@ public class ProjectGeneratorGrammarAccess extends AbstractGrammarElementFinder 
 	private final JpaConfigElements pJpaConfig;
 	private final LocalizedElements pLocalized;
 	private final LocalizedEntryElements pLocalizedEntry;
-	private final KeyValuePairElements pKeyValuePair;
+	private final LocalizedValueElements pLocalizedValue;
 	private final LocaleElements eLocale;
 	private final DbTypeElements eDbType;
 	private final BooleanElements eBoolean;
@@ -718,6 +777,7 @@ public class ProjectGeneratorGrammarAccess extends AbstractGrammarElementFinder 
 	private final NotifyElements eNotify;
 	private final TerminalRule tClassName;
 	private final TerminalRule tMethodName;
+	private final TerminalRule tLocalizedKey;
 	
 	private final Grammar grammar;
 	
@@ -734,7 +794,7 @@ public class ProjectGeneratorGrammarAccess extends AbstractGrammarElementFinder 
 		this.pJpaConfig = new JpaConfigElements();
 		this.pLocalized = new LocalizedElements();
 		this.pLocalizedEntry = new LocalizedEntryElements();
-		this.pKeyValuePair = new KeyValuePairElements();
+		this.pLocalizedValue = new LocalizedValueElements();
 		this.eLocale = new LocaleElements();
 		this.eDbType = new DbTypeElements();
 		this.eBoolean = new BooleanElements();
@@ -742,6 +802,7 @@ public class ProjectGeneratorGrammarAccess extends AbstractGrammarElementFinder 
 		this.eNotify = new NotifyElements();
 		this.tClassName = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "at.ooe.fh.mdm.herzog.dsl.proj.ProjectGenerator.ClassName");
 		this.tMethodName = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "at.ooe.fh.mdm.herzog.dsl.proj.ProjectGenerator.MethodName");
+		this.tLocalizedKey = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "at.ooe.fh.mdm.herzog.dsl.proj.ProjectGenerator.LocalizedKey");
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -774,10 +835,10 @@ public class ProjectGeneratorGrammarAccess extends AbstractGrammarElementFinder 
 	//Module:
 	//	'module' name=ID '{'
 	//	'key' key=STRING ';'
-	//	'cdiEnabled' cdiEnabled=Boolean ';'
+	//	'cdiEnabled' cdiEnabled=Boolean ';' ('messageBundles' '{' messageBundles+=Localized+ '}' ';')? ('observers' '{'
+	//	observers+=Observer+ '}' ';')?
 	//	'jpaConfig' jpaConfig=JpaConfig ';'
-	//	'serviceConfig' serviceConfig=ServiceConfig ';' ('messageBundles' '{' messageBundles+=Localized+ '}' ','*)?
-	//	('messages' messages=Localized+)?
+	//	'serviceConfig' serviceConfig=ServiceConfig ';'
 	//	'}';
 	public ModuleElements getModuleAccess() {
 		return pModule;
@@ -789,7 +850,7 @@ public class ProjectGeneratorGrammarAccess extends AbstractGrammarElementFinder 
 	
 	//// Service configuration
 	//ServiceConfig:
-	//	'{' ('observers' observers+=Observer+)?
+	//	'{' ('observers' observers+=Observer+)? ('messageBundles' '{' messageBundles+=[Localized]+ '}' ';')?
 	//	'}';
 	public ServiceConfigElements getServiceConfigAccess() {
 		return pServiceConfig;
@@ -800,11 +861,11 @@ public class ProjectGeneratorGrammarAccess extends AbstractGrammarElementFinder 
 	}
 	
 	//Observer:
-	//	'observer' name=ID '{'
-	//	'type' type=STRING ';'
+	//	name=ID '{'
+	//	'type' type=ClassName ';'
 	//	'during' during=During ';'
 	//	'notify' notify=Notify ';'
-	//	'delegate' className=ClassName '#' MethodName ';'
+	//	'delegate' className=ClassName ';' ('qualifier' qualifier=ClassName ';')?
 	//	'}';
 	public ObserverElements getObserverAccess() {
 		return pObserver;
@@ -816,7 +877,7 @@ public class ProjectGeneratorGrammarAccess extends AbstractGrammarElementFinder 
 	
 	//// Jpa configuration
 	//JpaConfig:
-	//	'{' ('localizedEnums' localizedEnums+=Localized+)?
+	//	'{' ('localizedEnums' '{' localizedEnums+=[Localized]+ '}' ';')?
 	//	'}';
 	public JpaConfigElements getJpaConfigAccess() {
 		return pJpaConfig;
@@ -828,9 +889,7 @@ public class ProjectGeneratorGrammarAccess extends AbstractGrammarElementFinder 
 	
 	//// Common
 	//Localized:
-	//	'localized' name=ID '{'
-	//	'name' name=STRING ';'
-	//	'locales' locales+=Locale+ ';' ('values' values+=LocalizedEntry+ ';')?
+	//	name=ID '{' ('values' '{' values+=LocalizedEntry+ '}' ';')?
 	//	'}';
 	public LocalizedElements getLocalizedAccess() {
 		return pLocalized;
@@ -842,8 +901,8 @@ public class ProjectGeneratorGrammarAccess extends AbstractGrammarElementFinder 
 	
 	//LocalizedEntry:
 	//	'{'
-	//	'locale' locale=Locale ';'
-	//	'entry' entry=KeyValuePair ';' ('argumtes' arguments+=KeyValuePair+)?
+	//	'key' localizedKey=LocalizedKey ';'
+	//	'values' '{' values+=LocalizedValue+ '}' ';' ('args' '{' args+=STRING+ '}' ';')?
 	//	'}';
 	public LocalizedEntryElements getLocalizedEntryAccess() {
 		return pLocalizedEntry;
@@ -853,17 +912,17 @@ public class ProjectGeneratorGrammarAccess extends AbstractGrammarElementFinder 
 		return getLocalizedEntryAccess().getRule();
 	}
 	
-	//KeyValuePair:
+	//LocalizedValue:
 	//	'{'
-	//	'key' key=STRING ';'
-	//	'value' value=STRING ';'
+	//	'locale' locale=Locale ';'
+	//	'value' values=STRING ';'
 	//	'}';
-	public KeyValuePairElements getKeyValuePairAccess() {
-		return pKeyValuePair;
+	public LocalizedValueElements getLocalizedValueAccess() {
+		return pLocalizedValue;
 	}
 	
-	public ParserRule getKeyValuePairRule() {
-		return getKeyValuePairAccess().getRule();
+	public ParserRule getLocalizedValueRule() {
+		return getLocalizedValueAccess().getRule();
 	}
 	
 	//enum Locale:
@@ -917,7 +976,7 @@ public class ProjectGeneratorGrammarAccess extends AbstractGrammarElementFinder 
 	}
 	
 	//terminal ClassName:
-	//	'a'..'f'+ (('0'..'9' | 'A'..'Z' | 'a'..'z')+ '.')+ 'a'..'f'+ ('0'..'9' | 'A'..'Z' | 'a'..'z')+;
+	//	'a'..'f'+ (('0'..'9' | 'A'..'Z' | 'a'..'z')+ '.')+ 'A'..'Z'+ ('0'..'9' | 'A'..'Z' | 'a'..'z')+;
 	public TerminalRule getClassNameRule() {
 		return tClassName;
 	}
@@ -926,6 +985,12 @@ public class ProjectGeneratorGrammarAccess extends AbstractGrammarElementFinder 
 	//	'a'..'f'+ ('0'..'9' | 'A'..'Z' | 'a'..'z')+;
 	public TerminalRule getMethodNameRule() {
 		return tMethodName;
+	}
+	
+	//terminal LocalizedKey:
+	//	('A'..'Z' | '0'..'9')+ ('_' ('A'..'Z' | '0'..'9'))*;
+	public TerminalRule getLocalizedKeyRule() {
+		return tLocalizedKey;
 	}
 	
 	//terminal ID:
