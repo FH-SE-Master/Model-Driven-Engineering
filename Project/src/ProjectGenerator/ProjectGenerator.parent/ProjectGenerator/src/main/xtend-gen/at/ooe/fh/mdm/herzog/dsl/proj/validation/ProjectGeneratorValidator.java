@@ -97,7 +97,7 @@ public class ProjectGeneratorValidator extends AbstractProjectGeneratorValidator
     EList<LocalizedEntry> _values = localized.getValues();
     boolean _isEmpty = _values.isEmpty();
     if (_isEmpty) {
-      this.error("At least one localized values must be given", ProjectGeneratorPackage.Literals.LOCALIZED__VALUES);
+      this.error("If attribute \'values\' is defined, then at least one localized values must be given", ProjectGeneratorPackage.Literals.LOCALIZED__VALUES);
     }
   }
   

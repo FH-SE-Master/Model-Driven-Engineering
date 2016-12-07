@@ -573,40 +573,38 @@ ruleJpaConfig returns [EObject current=null]
 		{
 			newLeafNode(otherlv_0, grammarAccess.getJpaConfigAccess().getLeftCurlyBracketKeyword_0());
 		}
+		otherlv_1='localizedEnums'
+		{
+			newLeafNode(otherlv_1, grammarAccess.getJpaConfigAccess().getLocalizedEnumsKeyword_1());
+		}
+		otherlv_2='{'
+		{
+			newLeafNode(otherlv_2, grammarAccess.getJpaConfigAccess().getLeftCurlyBracketKeyword_2());
+		}
 		(
-			otherlv_1='localizedEnums'
-			{
-				newLeafNode(otherlv_1, grammarAccess.getJpaConfigAccess().getLocalizedEnumsKeyword_1_0());
-			}
-			otherlv_2='{'
-			{
-				newLeafNode(otherlv_2, grammarAccess.getJpaConfigAccess().getLeftCurlyBracketKeyword_1_1());
-			}
 			(
-				(
-					{
-						if ($current==null) {
-							$current = createModelElement(grammarAccess.getJpaConfigRule());
-						}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getJpaConfigRule());
 					}
-					otherlv_3=RULE_ID
-					{
-						newLeafNode(otherlv_3, grammarAccess.getJpaConfigAccess().getLocalizedEnumsLocalizedCrossReference_1_2_0());
-					}
-				)
-			)+
-			otherlv_4='}'
-			{
-				newLeafNode(otherlv_4, grammarAccess.getJpaConfigAccess().getRightCurlyBracketKeyword_1_3());
-			}
-			otherlv_5=';'
-			{
-				newLeafNode(otherlv_5, grammarAccess.getJpaConfigAccess().getSemicolonKeyword_1_4());
-			}
-		)?
+				}
+				otherlv_3=RULE_ID
+				{
+					newLeafNode(otherlv_3, grammarAccess.getJpaConfigAccess().getLocalizedEnumsLocalizedCrossReference_3_0());
+				}
+			)
+		)+
+		otherlv_4='}'
+		{
+			newLeafNode(otherlv_4, grammarAccess.getJpaConfigAccess().getRightCurlyBracketKeyword_4());
+		}
+		otherlv_5=';'
+		{
+			newLeafNode(otherlv_5, grammarAccess.getJpaConfigAccess().getSemicolonKeyword_5());
+		}
 		otherlv_6='}'
 		{
-			newLeafNode(otherlv_6, grammarAccess.getJpaConfigAccess().getRightCurlyBracketKeyword_2());
+			newLeafNode(otherlv_6, grammarAccess.getJpaConfigAccess().getRightCurlyBracketKeyword_6());
 		}
 	)
 ;

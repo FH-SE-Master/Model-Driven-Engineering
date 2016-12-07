@@ -655,10 +655,10 @@ public class InternalProjectGeneratorLexer extends Lexer {
         try {
             int _type = RULE_CLASSNAME;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalProjectGenerator.g:1008:16: ( ( 'a' .. 'f' )+ ( ( '0' .. '9' | 'A' .. 'Z' | 'a' .. 'z' )+ '.' )+ ( 'A' .. 'Z' )+ ( '0' .. '9' | 'A' .. 'Z' | 'a' .. 'z' )+ )
-            // InternalProjectGenerator.g:1008:18: ( 'a' .. 'f' )+ ( ( '0' .. '9' | 'A' .. 'Z' | 'a' .. 'z' )+ '.' )+ ( 'A' .. 'Z' )+ ( '0' .. '9' | 'A' .. 'Z' | 'a' .. 'z' )+
+            // InternalProjectGenerator.g:1006:16: ( ( 'a' .. 'f' )+ ( ( '0' .. '9' | 'A' .. 'Z' | 'a' .. 'z' )+ '.' )+ ( 'A' .. 'Z' )+ ( '0' .. '9' | 'A' .. 'Z' | 'a' .. 'z' )+ )
+            // InternalProjectGenerator.g:1006:18: ( 'a' .. 'f' )+ ( ( '0' .. '9' | 'A' .. 'Z' | 'a' .. 'z' )+ '.' )+ ( 'A' .. 'Z' )+ ( '0' .. '9' | 'A' .. 'Z' | 'a' .. 'z' )+
             {
-            // InternalProjectGenerator.g:1008:18: ( 'a' .. 'f' )+
+            // InternalProjectGenerator.g:1006:18: ( 'a' .. 'f' )+
             int cnt1=0;
             loop1:
             do {
@@ -672,7 +672,7 @@ public class InternalProjectGeneratorLexer extends Lexer {
 
                 switch (alt1) {
             	case 1 :
-            	    // InternalProjectGenerator.g:1008:19: 'a' .. 'f'
+            	    // InternalProjectGenerator.g:1006:19: 'a' .. 'f'
             	    {
             	    matchRange('a','f'); 
 
@@ -688,7 +688,7 @@ public class InternalProjectGeneratorLexer extends Lexer {
                 cnt1++;
             } while (true);
 
-            // InternalProjectGenerator.g:1008:30: ( ( '0' .. '9' | 'A' .. 'Z' | 'a' .. 'z' )+ '.' )+
+            // InternalProjectGenerator.g:1006:30: ( ( '0' .. '9' | 'A' .. 'Z' | 'a' .. 'z' )+ '.' )+
             int cnt3=0;
             loop3:
             do {
@@ -696,9 +696,9 @@ public class InternalProjectGeneratorLexer extends Lexer {
                 alt3 = dfa3.predict(input);
                 switch (alt3) {
             	case 1 :
-            	    // InternalProjectGenerator.g:1008:31: ( '0' .. '9' | 'A' .. 'Z' | 'a' .. 'z' )+ '.'
+            	    // InternalProjectGenerator.g:1006:31: ( '0' .. '9' | 'A' .. 'Z' | 'a' .. 'z' )+ '.'
             	    {
-            	    // InternalProjectGenerator.g:1008:31: ( '0' .. '9' | 'A' .. 'Z' | 'a' .. 'z' )+
+            	    // InternalProjectGenerator.g:1006:31: ( '0' .. '9' | 'A' .. 'Z' | 'a' .. 'z' )+
             	    int cnt2=0;
             	    loop2:
             	    do {
@@ -750,7 +750,7 @@ public class InternalProjectGeneratorLexer extends Lexer {
                 cnt3++;
             } while (true);
 
-            // InternalProjectGenerator.g:1008:67: ( 'A' .. 'Z' )+
+            // InternalProjectGenerator.g:1006:67: ( 'A' .. 'Z' )+
             int cnt4=0;
             loop4:
             do {
@@ -764,7 +764,7 @@ public class InternalProjectGeneratorLexer extends Lexer {
 
                 switch (alt4) {
             	case 1 :
-            	    // InternalProjectGenerator.g:1008:68: 'A' .. 'Z'
+            	    // InternalProjectGenerator.g:1006:68: 'A' .. 'Z'
             	    {
             	    matchRange('A','Z'); 
 
@@ -780,7 +780,7 @@ public class InternalProjectGeneratorLexer extends Lexer {
                 cnt4++;
             } while (true);
 
-            // InternalProjectGenerator.g:1008:79: ( '0' .. '9' | 'A' .. 'Z' | 'a' .. 'z' )+
+            // InternalProjectGenerator.g:1006:79: ( '0' .. '9' | 'A' .. 'Z' | 'a' .. 'z' )+
             int cnt5=0;
             loop5:
             do {
@@ -834,10 +834,10 @@ public class InternalProjectGeneratorLexer extends Lexer {
         try {
             int _type = RULE_METHODNAME;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalProjectGenerator.g:1010:17: ( ( 'a' .. 'f' )+ ( '0' .. '9' | 'A' .. 'Z' | 'a' .. 'z' )+ )
-            // InternalProjectGenerator.g:1010:19: ( 'a' .. 'f' )+ ( '0' .. '9' | 'A' .. 'Z' | 'a' .. 'z' )+
+            // InternalProjectGenerator.g:1008:17: ( ( 'a' .. 'f' )+ ( '0' .. '9' | 'A' .. 'Z' | 'a' .. 'z' )+ )
+            // InternalProjectGenerator.g:1008:19: ( 'a' .. 'f' )+ ( '0' .. '9' | 'A' .. 'Z' | 'a' .. 'z' )+
             {
-            // InternalProjectGenerator.g:1010:19: ( 'a' .. 'f' )+
+            // InternalProjectGenerator.g:1008:19: ( 'a' .. 'f' )+
             int cnt6=0;
             loop6:
             do {
@@ -851,7 +851,7 @@ public class InternalProjectGeneratorLexer extends Lexer {
 
                 switch (alt6) {
             	case 1 :
-            	    // InternalProjectGenerator.g:1010:20: 'a' .. 'f'
+            	    // InternalProjectGenerator.g:1008:20: 'a' .. 'f'
             	    {
             	    matchRange('a','f'); 
 
@@ -867,7 +867,7 @@ public class InternalProjectGeneratorLexer extends Lexer {
                 cnt6++;
             } while (true);
 
-            // InternalProjectGenerator.g:1010:31: ( '0' .. '9' | 'A' .. 'Z' | 'a' .. 'z' )+
+            // InternalProjectGenerator.g:1008:31: ( '0' .. '9' | 'A' .. 'Z' | 'a' .. 'z' )+
             int cnt7=0;
             loop7:
             do {
@@ -921,10 +921,10 @@ public class InternalProjectGeneratorLexer extends Lexer {
         try {
             int _type = RULE_LOCALIZEDKEY;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalProjectGenerator.g:1012:19: ( ( 'A' .. 'Z' | '0' .. '9' )+ ( '_' ( 'A' .. 'Z' | '0' .. '9' ) )* )
-            // InternalProjectGenerator.g:1012:21: ( 'A' .. 'Z' | '0' .. '9' )+ ( '_' ( 'A' .. 'Z' | '0' .. '9' ) )*
+            // InternalProjectGenerator.g:1010:19: ( ( 'A' .. 'Z' | '0' .. '9' )+ ( '_' ( 'A' .. 'Z' | '0' .. '9' ) )* )
+            // InternalProjectGenerator.g:1010:21: ( 'A' .. 'Z' | '0' .. '9' )+ ( '_' ( 'A' .. 'Z' | '0' .. '9' ) )*
             {
-            // InternalProjectGenerator.g:1012:21: ( 'A' .. 'Z' | '0' .. '9' )+
+            // InternalProjectGenerator.g:1010:21: ( 'A' .. 'Z' | '0' .. '9' )+
             int cnt8=0;
             loop8:
             do {
@@ -962,7 +962,7 @@ public class InternalProjectGeneratorLexer extends Lexer {
                 cnt8++;
             } while (true);
 
-            // InternalProjectGenerator.g:1012:42: ( '_' ( 'A' .. 'Z' | '0' .. '9' ) )*
+            // InternalProjectGenerator.g:1010:42: ( '_' ( 'A' .. 'Z' | '0' .. '9' ) )*
             loop9:
             do {
                 int alt9=2;
@@ -975,7 +975,7 @@ public class InternalProjectGeneratorLexer extends Lexer {
 
                 switch (alt9) {
             	case 1 :
-            	    // InternalProjectGenerator.g:1012:43: '_' ( 'A' .. 'Z' | '0' .. '9' )
+            	    // InternalProjectGenerator.g:1010:43: '_' ( 'A' .. 'Z' | '0' .. '9' )
             	    {
             	    match('_'); 
             	    if ( (input.LA(1)>='0' && input.LA(1)<='9')||(input.LA(1)>='A' && input.LA(1)<='Z') ) {
@@ -1012,10 +1012,10 @@ public class InternalProjectGeneratorLexer extends Lexer {
         try {
             int _type = RULE_ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalProjectGenerator.g:1014:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
-            // InternalProjectGenerator.g:1014:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // InternalProjectGenerator.g:1012:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
+            // InternalProjectGenerator.g:1012:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             {
-            // InternalProjectGenerator.g:1014:11: ( '^' )?
+            // InternalProjectGenerator.g:1012:11: ( '^' )?
             int alt10=2;
             int LA10_0 = input.LA(1);
 
@@ -1024,7 +1024,7 @@ public class InternalProjectGeneratorLexer extends Lexer {
             }
             switch (alt10) {
                 case 1 :
-                    // InternalProjectGenerator.g:1014:11: '^'
+                    // InternalProjectGenerator.g:1012:11: '^'
                     {
                     match('^'); 
 
@@ -1042,7 +1042,7 @@ public class InternalProjectGeneratorLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // InternalProjectGenerator.g:1014:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // InternalProjectGenerator.g:1012:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             loop11:
             do {
                 int alt11=2;
@@ -1091,10 +1091,10 @@ public class InternalProjectGeneratorLexer extends Lexer {
         try {
             int _type = RULE_INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalProjectGenerator.g:1016:10: ( ( '0' .. '9' )+ )
-            // InternalProjectGenerator.g:1016:12: ( '0' .. '9' )+
+            // InternalProjectGenerator.g:1014:10: ( ( '0' .. '9' )+ )
+            // InternalProjectGenerator.g:1014:12: ( '0' .. '9' )+
             {
-            // InternalProjectGenerator.g:1016:12: ( '0' .. '9' )+
+            // InternalProjectGenerator.g:1014:12: ( '0' .. '9' )+
             int cnt12=0;
             loop12:
             do {
@@ -1108,7 +1108,7 @@ public class InternalProjectGeneratorLexer extends Lexer {
 
                 switch (alt12) {
             	case 1 :
-            	    // InternalProjectGenerator.g:1016:13: '0' .. '9'
+            	    // InternalProjectGenerator.g:1014:13: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -1140,10 +1140,10 @@ public class InternalProjectGeneratorLexer extends Lexer {
         try {
             int _type = RULE_STRING;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalProjectGenerator.g:1018:13: ( ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
-            // InternalProjectGenerator.g:1018:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // InternalProjectGenerator.g:1016:13: ( ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
+            // InternalProjectGenerator.g:1016:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             {
-            // InternalProjectGenerator.g:1018:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // InternalProjectGenerator.g:1016:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             int alt15=2;
             int LA15_0 = input.LA(1);
 
@@ -1161,10 +1161,10 @@ public class InternalProjectGeneratorLexer extends Lexer {
             }
             switch (alt15) {
                 case 1 :
-                    // InternalProjectGenerator.g:1018:16: '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
+                    // InternalProjectGenerator.g:1016:16: '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
                     {
                     match('\"'); 
-                    // InternalProjectGenerator.g:1018:20: ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )*
+                    // InternalProjectGenerator.g:1016:20: ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )*
                     loop13:
                     do {
                         int alt13=3;
@@ -1180,7 +1180,7 @@ public class InternalProjectGeneratorLexer extends Lexer {
 
                         switch (alt13) {
                     	case 1 :
-                    	    // InternalProjectGenerator.g:1018:21: '\\\\' .
+                    	    // InternalProjectGenerator.g:1016:21: '\\\\' .
                     	    {
                     	    match('\\'); 
                     	    matchAny(); 
@@ -1188,7 +1188,7 @@ public class InternalProjectGeneratorLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // InternalProjectGenerator.g:1018:28: ~ ( ( '\\\\' | '\"' ) )
+                    	    // InternalProjectGenerator.g:1016:28: ~ ( ( '\\\\' | '\"' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -1213,10 +1213,10 @@ public class InternalProjectGeneratorLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // InternalProjectGenerator.g:1018:48: '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
+                    // InternalProjectGenerator.g:1016:48: '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
                     {
                     match('\''); 
-                    // InternalProjectGenerator.g:1018:53: ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )*
+                    // InternalProjectGenerator.g:1016:53: ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )*
                     loop14:
                     do {
                         int alt14=3;
@@ -1232,7 +1232,7 @@ public class InternalProjectGeneratorLexer extends Lexer {
 
                         switch (alt14) {
                     	case 1 :
-                    	    // InternalProjectGenerator.g:1018:54: '\\\\' .
+                    	    // InternalProjectGenerator.g:1016:54: '\\\\' .
                     	    {
                     	    match('\\'); 
                     	    matchAny(); 
@@ -1240,7 +1240,7 @@ public class InternalProjectGeneratorLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // InternalProjectGenerator.g:1018:61: ~ ( ( '\\\\' | '\\'' ) )
+                    	    // InternalProjectGenerator.g:1016:61: ~ ( ( '\\\\' | '\\'' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -1283,12 +1283,12 @@ public class InternalProjectGeneratorLexer extends Lexer {
         try {
             int _type = RULE_ML_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalProjectGenerator.g:1020:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
-            // InternalProjectGenerator.g:1020:19: '/*' ( options {greedy=false; } : . )* '*/'
+            // InternalProjectGenerator.g:1018:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
+            // InternalProjectGenerator.g:1018:19: '/*' ( options {greedy=false; } : . )* '*/'
             {
             match("/*"); 
 
-            // InternalProjectGenerator.g:1020:24: ( options {greedy=false; } : . )*
+            // InternalProjectGenerator.g:1018:24: ( options {greedy=false; } : . )*
             loop16:
             do {
                 int alt16=2;
@@ -1313,7 +1313,7 @@ public class InternalProjectGeneratorLexer extends Lexer {
 
                 switch (alt16) {
             	case 1 :
-            	    // InternalProjectGenerator.g:1020:52: .
+            	    // InternalProjectGenerator.g:1018:52: .
             	    {
             	    matchAny(); 
 
@@ -1343,12 +1343,12 @@ public class InternalProjectGeneratorLexer extends Lexer {
         try {
             int _type = RULE_SL_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalProjectGenerator.g:1022:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
-            // InternalProjectGenerator.g:1022:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
+            // InternalProjectGenerator.g:1020:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
+            // InternalProjectGenerator.g:1020:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
             {
             match("//"); 
 
-            // InternalProjectGenerator.g:1022:24: (~ ( ( '\\n' | '\\r' ) ) )*
+            // InternalProjectGenerator.g:1020:24: (~ ( ( '\\n' | '\\r' ) ) )*
             loop17:
             do {
                 int alt17=2;
@@ -1361,7 +1361,7 @@ public class InternalProjectGeneratorLexer extends Lexer {
 
                 switch (alt17) {
             	case 1 :
-            	    // InternalProjectGenerator.g:1022:24: ~ ( ( '\\n' | '\\r' ) )
+            	    // InternalProjectGenerator.g:1020:24: ~ ( ( '\\n' | '\\r' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -1381,7 +1381,7 @@ public class InternalProjectGeneratorLexer extends Lexer {
                 }
             } while (true);
 
-            // InternalProjectGenerator.g:1022:40: ( ( '\\r' )? '\\n' )?
+            // InternalProjectGenerator.g:1020:40: ( ( '\\r' )? '\\n' )?
             int alt19=2;
             int LA19_0 = input.LA(1);
 
@@ -1390,9 +1390,9 @@ public class InternalProjectGeneratorLexer extends Lexer {
             }
             switch (alt19) {
                 case 1 :
-                    // InternalProjectGenerator.g:1022:41: ( '\\r' )? '\\n'
+                    // InternalProjectGenerator.g:1020:41: ( '\\r' )? '\\n'
                     {
-                    // InternalProjectGenerator.g:1022:41: ( '\\r' )?
+                    // InternalProjectGenerator.g:1020:41: ( '\\r' )?
                     int alt18=2;
                     int LA18_0 = input.LA(1);
 
@@ -1401,7 +1401,7 @@ public class InternalProjectGeneratorLexer extends Lexer {
                     }
                     switch (alt18) {
                         case 1 :
-                            // InternalProjectGenerator.g:1022:41: '\\r'
+                            // InternalProjectGenerator.g:1020:41: '\\r'
                             {
                             match('\r'); 
 
@@ -1433,10 +1433,10 @@ public class InternalProjectGeneratorLexer extends Lexer {
         try {
             int _type = RULE_WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalProjectGenerator.g:1024:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
-            // InternalProjectGenerator.g:1024:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // InternalProjectGenerator.g:1022:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
+            // InternalProjectGenerator.g:1022:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             {
-            // InternalProjectGenerator.g:1024:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // InternalProjectGenerator.g:1022:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             int cnt20=0;
             loop20:
             do {
@@ -1490,8 +1490,8 @@ public class InternalProjectGeneratorLexer extends Lexer {
         try {
             int _type = RULE_ANY_OTHER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalProjectGenerator.g:1026:16: ( . )
-            // InternalProjectGenerator.g:1026:18: .
+            // InternalProjectGenerator.g:1024:16: ( . )
+            // InternalProjectGenerator.g:1024:18: .
             {
             matchAny(); 
 
@@ -1835,7 +1835,7 @@ public class InternalProjectGeneratorLexer extends Lexer {
             this.transition = DFA3_transition;
         }
         public String getDescription() {
-            return "()+ loopback of 1008:30: ( ( '0' .. '9' | 'A' .. 'Z' | 'a' .. 'z' )+ '.' )+";
+            return "()+ loopback of 1006:30: ( ( '0' .. '9' | 'A' .. 'Z' | 'a' .. 'z' )+ '.' )+";
         }
     }
     static final String DFA21_eotS =

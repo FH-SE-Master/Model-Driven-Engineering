@@ -446,32 +446,29 @@ public class ProjectGeneratorElementTypeProvider implements IElementTypeProvider
 		public static IGrammarAwareElementType createJpaConfig_LeftCurlyBracketKeyword_0ElementType() {
 			return new IGrammarAwareElementType("JpaConfig_LeftCurlyBracketKeyword_0_ELEMENT_TYPE", ProjectGeneratorLanguage.INSTANCE, GRAMMAR_ACCESS.getJpaConfigAccess().getLeftCurlyBracketKeyword_0());
 		}
-		public static IGrammarAwareElementType createJpaConfig_Group_1ElementType() {
-			return new IGrammarAwareElementType("JpaConfig_Group_1_ELEMENT_TYPE", ProjectGeneratorLanguage.INSTANCE, GRAMMAR_ACCESS.getJpaConfigAccess().getGroup_1());
+		public static IGrammarAwareElementType createJpaConfig_LocalizedEnumsKeyword_1ElementType() {
+			return new IGrammarAwareElementType("JpaConfig_LocalizedEnumsKeyword_1_ELEMENT_TYPE", ProjectGeneratorLanguage.INSTANCE, GRAMMAR_ACCESS.getJpaConfigAccess().getLocalizedEnumsKeyword_1());
 		}
-		public static IGrammarAwareElementType createJpaConfig_LocalizedEnumsKeyword_1_0ElementType() {
-			return new IGrammarAwareElementType("JpaConfig_LocalizedEnumsKeyword_1_0_ELEMENT_TYPE", ProjectGeneratorLanguage.INSTANCE, GRAMMAR_ACCESS.getJpaConfigAccess().getLocalizedEnumsKeyword_1_0());
+		public static IGrammarAwareElementType createJpaConfig_LeftCurlyBracketKeyword_2ElementType() {
+			return new IGrammarAwareElementType("JpaConfig_LeftCurlyBracketKeyword_2_ELEMENT_TYPE", ProjectGeneratorLanguage.INSTANCE, GRAMMAR_ACCESS.getJpaConfigAccess().getLeftCurlyBracketKeyword_2());
 		}
-		public static IGrammarAwareElementType createJpaConfig_LeftCurlyBracketKeyword_1_1ElementType() {
-			return new IGrammarAwareElementType("JpaConfig_LeftCurlyBracketKeyword_1_1_ELEMENT_TYPE", ProjectGeneratorLanguage.INSTANCE, GRAMMAR_ACCESS.getJpaConfigAccess().getLeftCurlyBracketKeyword_1_1());
+		public static IGrammarAwareElementType createJpaConfig_LocalizedEnumsAssignment_3ElementType() {
+			return new IGrammarAwareElementType("JpaConfig_LocalizedEnumsAssignment_3_ELEMENT_TYPE", ProjectGeneratorLanguage.INSTANCE, GRAMMAR_ACCESS.getJpaConfigAccess().getLocalizedEnumsAssignment_3());
 		}
-		public static IGrammarAwareElementType createJpaConfig_LocalizedEnumsAssignment_1_2ElementType() {
-			return new IGrammarAwareElementType("JpaConfig_LocalizedEnumsAssignment_1_2_ELEMENT_TYPE", ProjectGeneratorLanguage.INSTANCE, GRAMMAR_ACCESS.getJpaConfigAccess().getLocalizedEnumsAssignment_1_2());
+		public static IGrammarAwareElementType createJpaConfig_LocalizedEnumsLocalizedCrossReference_3_0ElementType() {
+			return new IGrammarAwareElementType("JpaConfig_LocalizedEnumsLocalizedCrossReference_3_0_ELEMENT_TYPE", ProjectGeneratorLanguage.INSTANCE, GRAMMAR_ACCESS.getJpaConfigAccess().getLocalizedEnumsLocalizedCrossReference_3_0());
 		}
-		public static IGrammarAwareElementType createJpaConfig_LocalizedEnumsLocalizedCrossReference_1_2_0ElementType() {
-			return new IGrammarAwareElementType("JpaConfig_LocalizedEnumsLocalizedCrossReference_1_2_0_ELEMENT_TYPE", ProjectGeneratorLanguage.INSTANCE, GRAMMAR_ACCESS.getJpaConfigAccess().getLocalizedEnumsLocalizedCrossReference_1_2_0());
+		public static IGrammarAwareElementType createJpaConfig_LocalizedEnumsLocalizedIDTerminalRuleCall_3_0_1ElementType() {
+			return new IGrammarAwareElementType("JpaConfig_LocalizedEnumsLocalizedIDTerminalRuleCall_3_0_1_ELEMENT_TYPE", ProjectGeneratorLanguage.INSTANCE, GRAMMAR_ACCESS.getJpaConfigAccess().getLocalizedEnumsLocalizedIDTerminalRuleCall_3_0_1());
 		}
-		public static IGrammarAwareElementType createJpaConfig_LocalizedEnumsLocalizedIDTerminalRuleCall_1_2_0_1ElementType() {
-			return new IGrammarAwareElementType("JpaConfig_LocalizedEnumsLocalizedIDTerminalRuleCall_1_2_0_1_ELEMENT_TYPE", ProjectGeneratorLanguage.INSTANCE, GRAMMAR_ACCESS.getJpaConfigAccess().getLocalizedEnumsLocalizedIDTerminalRuleCall_1_2_0_1());
+		public static IGrammarAwareElementType createJpaConfig_RightCurlyBracketKeyword_4ElementType() {
+			return new IGrammarAwareElementType("JpaConfig_RightCurlyBracketKeyword_4_ELEMENT_TYPE", ProjectGeneratorLanguage.INSTANCE, GRAMMAR_ACCESS.getJpaConfigAccess().getRightCurlyBracketKeyword_4());
 		}
-		public static IGrammarAwareElementType createJpaConfig_RightCurlyBracketKeyword_1_3ElementType() {
-			return new IGrammarAwareElementType("JpaConfig_RightCurlyBracketKeyword_1_3_ELEMENT_TYPE", ProjectGeneratorLanguage.INSTANCE, GRAMMAR_ACCESS.getJpaConfigAccess().getRightCurlyBracketKeyword_1_3());
+		public static IGrammarAwareElementType createJpaConfig_SemicolonKeyword_5ElementType() {
+			return new IGrammarAwareElementType("JpaConfig_SemicolonKeyword_5_ELEMENT_TYPE", ProjectGeneratorLanguage.INSTANCE, GRAMMAR_ACCESS.getJpaConfigAccess().getSemicolonKeyword_5());
 		}
-		public static IGrammarAwareElementType createJpaConfig_SemicolonKeyword_1_4ElementType() {
-			return new IGrammarAwareElementType("JpaConfig_SemicolonKeyword_1_4_ELEMENT_TYPE", ProjectGeneratorLanguage.INSTANCE, GRAMMAR_ACCESS.getJpaConfigAccess().getSemicolonKeyword_1_4());
-		}
-		public static IGrammarAwareElementType createJpaConfig_RightCurlyBracketKeyword_2ElementType() {
-			return new IGrammarAwareElementType("JpaConfig_RightCurlyBracketKeyword_2_ELEMENT_TYPE", ProjectGeneratorLanguage.INSTANCE, GRAMMAR_ACCESS.getJpaConfigAccess().getRightCurlyBracketKeyword_2());
+		public static IGrammarAwareElementType createJpaConfig_RightCurlyBracketKeyword_6ElementType() {
+			return new IGrammarAwareElementType("JpaConfig_RightCurlyBracketKeyword_6_ELEMENT_TYPE", ProjectGeneratorLanguage.INSTANCE, GRAMMAR_ACCESS.getJpaConfigAccess().getRightCurlyBracketKeyword_6());
 		}
 	}
 
@@ -481,23 +478,21 @@ public class ProjectGeneratorElementTypeProvider implements IElementTypeProvider
 
 	public static final IGrammarAwareElementType JpaConfig_LeftCurlyBracketKeyword_0_ELEMENT_TYPE = associate(JpaConfigFactory.createJpaConfig_LeftCurlyBracketKeyword_0ElementType());
 
-	public static final IGrammarAwareElementType JpaConfig_Group_1_ELEMENT_TYPE = associate(JpaConfigFactory.createJpaConfig_Group_1ElementType());
+	public static final IGrammarAwareElementType JpaConfig_LocalizedEnumsKeyword_1_ELEMENT_TYPE = associate(JpaConfigFactory.createJpaConfig_LocalizedEnumsKeyword_1ElementType());
 
-	public static final IGrammarAwareElementType JpaConfig_LocalizedEnumsKeyword_1_0_ELEMENT_TYPE = associate(JpaConfigFactory.createJpaConfig_LocalizedEnumsKeyword_1_0ElementType());
+	public static final IGrammarAwareElementType JpaConfig_LeftCurlyBracketKeyword_2_ELEMENT_TYPE = associate(JpaConfigFactory.createJpaConfig_LeftCurlyBracketKeyword_2ElementType());
 
-	public static final IGrammarAwareElementType JpaConfig_LeftCurlyBracketKeyword_1_1_ELEMENT_TYPE = associate(JpaConfigFactory.createJpaConfig_LeftCurlyBracketKeyword_1_1ElementType());
+	public static final IGrammarAwareElementType JpaConfig_LocalizedEnumsAssignment_3_ELEMENT_TYPE = associate(JpaConfigFactory.createJpaConfig_LocalizedEnumsAssignment_3ElementType());
 
-	public static final IGrammarAwareElementType JpaConfig_LocalizedEnumsAssignment_1_2_ELEMENT_TYPE = associate(JpaConfigFactory.createJpaConfig_LocalizedEnumsAssignment_1_2ElementType());
+	public static final IGrammarAwareElementType JpaConfig_LocalizedEnumsLocalizedCrossReference_3_0_ELEMENT_TYPE = associate(JpaConfigFactory.createJpaConfig_LocalizedEnumsLocalizedCrossReference_3_0ElementType());
 
-	public static final IGrammarAwareElementType JpaConfig_LocalizedEnumsLocalizedCrossReference_1_2_0_ELEMENT_TYPE = associate(JpaConfigFactory.createJpaConfig_LocalizedEnumsLocalizedCrossReference_1_2_0ElementType());
+	public static final IGrammarAwareElementType JpaConfig_LocalizedEnumsLocalizedIDTerminalRuleCall_3_0_1_ELEMENT_TYPE = associate(JpaConfigFactory.createJpaConfig_LocalizedEnumsLocalizedIDTerminalRuleCall_3_0_1ElementType());
 
-	public static final IGrammarAwareElementType JpaConfig_LocalizedEnumsLocalizedIDTerminalRuleCall_1_2_0_1_ELEMENT_TYPE = associate(JpaConfigFactory.createJpaConfig_LocalizedEnumsLocalizedIDTerminalRuleCall_1_2_0_1ElementType());
+	public static final IGrammarAwareElementType JpaConfig_RightCurlyBracketKeyword_4_ELEMENT_TYPE = associate(JpaConfigFactory.createJpaConfig_RightCurlyBracketKeyword_4ElementType());
 
-	public static final IGrammarAwareElementType JpaConfig_RightCurlyBracketKeyword_1_3_ELEMENT_TYPE = associate(JpaConfigFactory.createJpaConfig_RightCurlyBracketKeyword_1_3ElementType());
+	public static final IGrammarAwareElementType JpaConfig_SemicolonKeyword_5_ELEMENT_TYPE = associate(JpaConfigFactory.createJpaConfig_SemicolonKeyword_5ElementType());
 
-	public static final IGrammarAwareElementType JpaConfig_SemicolonKeyword_1_4_ELEMENT_TYPE = associate(JpaConfigFactory.createJpaConfig_SemicolonKeyword_1_4ElementType());
-
-	public static final IGrammarAwareElementType JpaConfig_RightCurlyBracketKeyword_2_ELEMENT_TYPE = associate(JpaConfigFactory.createJpaConfig_RightCurlyBracketKeyword_2ElementType());
+	public static final IGrammarAwareElementType JpaConfig_RightCurlyBracketKeyword_6_ELEMENT_TYPE = associate(JpaConfigFactory.createJpaConfig_RightCurlyBracketKeyword_6ElementType());
 
 	private static class LocalizedFactory {
 		public static IGrammarAwareElementType createLocalizedElementType() {
@@ -1245,40 +1240,36 @@ public class ProjectGeneratorElementTypeProvider implements IElementTypeProvider
 		return JpaConfig_LeftCurlyBracketKeyword_0_ELEMENT_TYPE;
 	}
 	
-	public IGrammarAwareElementType getJpaConfig_Group_1ElementType() {
-		return JpaConfig_Group_1_ELEMENT_TYPE;
+	public IGrammarAwareElementType getJpaConfig_LocalizedEnumsKeyword_1ElementType() {
+		return JpaConfig_LocalizedEnumsKeyword_1_ELEMENT_TYPE;
 	}
 	
-	public IGrammarAwareElementType getJpaConfig_LocalizedEnumsKeyword_1_0ElementType() {
-		return JpaConfig_LocalizedEnumsKeyword_1_0_ELEMENT_TYPE;
+	public IGrammarAwareElementType getJpaConfig_LeftCurlyBracketKeyword_2ElementType() {
+		return JpaConfig_LeftCurlyBracketKeyword_2_ELEMENT_TYPE;
 	}
 	
-	public IGrammarAwareElementType getJpaConfig_LeftCurlyBracketKeyword_1_1ElementType() {
-		return JpaConfig_LeftCurlyBracketKeyword_1_1_ELEMENT_TYPE;
+	public IGrammarAwareElementType getJpaConfig_LocalizedEnumsAssignment_3ElementType() {
+		return JpaConfig_LocalizedEnumsAssignment_3_ELEMENT_TYPE;
 	}
 	
-	public IGrammarAwareElementType getJpaConfig_LocalizedEnumsAssignment_1_2ElementType() {
-		return JpaConfig_LocalizedEnumsAssignment_1_2_ELEMENT_TYPE;
+	public IGrammarAwareElementType getJpaConfig_LocalizedEnumsLocalizedCrossReference_3_0ElementType() {
+		return JpaConfig_LocalizedEnumsLocalizedCrossReference_3_0_ELEMENT_TYPE;
 	}
 	
-	public IGrammarAwareElementType getJpaConfig_LocalizedEnumsLocalizedCrossReference_1_2_0ElementType() {
-		return JpaConfig_LocalizedEnumsLocalizedCrossReference_1_2_0_ELEMENT_TYPE;
+	public IGrammarAwareElementType getJpaConfig_LocalizedEnumsLocalizedIDTerminalRuleCall_3_0_1ElementType() {
+		return JpaConfig_LocalizedEnumsLocalizedIDTerminalRuleCall_3_0_1_ELEMENT_TYPE;
 	}
 	
-	public IGrammarAwareElementType getJpaConfig_LocalizedEnumsLocalizedIDTerminalRuleCall_1_2_0_1ElementType() {
-		return JpaConfig_LocalizedEnumsLocalizedIDTerminalRuleCall_1_2_0_1_ELEMENT_TYPE;
+	public IGrammarAwareElementType getJpaConfig_RightCurlyBracketKeyword_4ElementType() {
+		return JpaConfig_RightCurlyBracketKeyword_4_ELEMENT_TYPE;
 	}
 	
-	public IGrammarAwareElementType getJpaConfig_RightCurlyBracketKeyword_1_3ElementType() {
-		return JpaConfig_RightCurlyBracketKeyword_1_3_ELEMENT_TYPE;
+	public IGrammarAwareElementType getJpaConfig_SemicolonKeyword_5ElementType() {
+		return JpaConfig_SemicolonKeyword_5_ELEMENT_TYPE;
 	}
 	
-	public IGrammarAwareElementType getJpaConfig_SemicolonKeyword_1_4ElementType() {
-		return JpaConfig_SemicolonKeyword_1_4_ELEMENT_TYPE;
-	}
-	
-	public IGrammarAwareElementType getJpaConfig_RightCurlyBracketKeyword_2ElementType() {
-		return JpaConfig_RightCurlyBracketKeyword_2_ELEMENT_TYPE;
+	public IGrammarAwareElementType getJpaConfig_RightCurlyBracketKeyword_6ElementType() {
+		return JpaConfig_RightCurlyBracketKeyword_6_ELEMENT_TYPE;
 	}
 	
 	public IGrammarAwareElementType getLocalizedElementType() {

@@ -375,54 +375,51 @@ public class ProjectGeneratorGrammarAccess extends AbstractGrammarElementFinder 
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "at.ooe.fh.mdm.herzog.dsl.proj.ProjectGenerator.JpaConfig");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cLeftCurlyBracketKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
-		private final Keyword cLocalizedEnumsKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
-		private final Assignment cLocalizedEnumsAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
-		private final CrossReference cLocalizedEnumsLocalizedCrossReference_1_2_0 = (CrossReference)cLocalizedEnumsAssignment_1_2.eContents().get(0);
-		private final RuleCall cLocalizedEnumsLocalizedIDTerminalRuleCall_1_2_0_1 = (RuleCall)cLocalizedEnumsLocalizedCrossReference_1_2_0.eContents().get(1);
-		private final Keyword cRightCurlyBracketKeyword_1_3 = (Keyword)cGroup_1.eContents().get(3);
-		private final Keyword cSemicolonKeyword_1_4 = (Keyword)cGroup_1.eContents().get(4);
-		private final Keyword cRightCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Keyword cLocalizedEnumsKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cLocalizedEnumsAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final CrossReference cLocalizedEnumsLocalizedCrossReference_3_0 = (CrossReference)cLocalizedEnumsAssignment_3.eContents().get(0);
+		private final RuleCall cLocalizedEnumsLocalizedIDTerminalRuleCall_3_0_1 = (RuleCall)cLocalizedEnumsLocalizedCrossReference_3_0.eContents().get(1);
+		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Keyword cSemicolonKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Keyword cRightCurlyBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
 		
 		//// Jpa configuration
 		//JpaConfig:
-		//	'{' ('localizedEnums' '{' localizedEnums+=[Localized]+ '}' ';')?
+		//	'{'
+		//	'localizedEnums' '{' localizedEnums+=[Localized]+ '}' ';'
 		//	'}';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'{' ('localizedEnums' '{' localizedEnums+=[Localized]+ '}' ';')? '}'
+		//'{' 'localizedEnums' '{' localizedEnums+=[Localized]+ '}' ';' '}'
 		public Group getGroup() { return cGroup; }
 		
 		//'{'
 		public Keyword getLeftCurlyBracketKeyword_0() { return cLeftCurlyBracketKeyword_0; }
 		
-		//('localizedEnums' '{' localizedEnums+=[Localized]+ '}' ';')?
-		public Group getGroup_1() { return cGroup_1; }
-		
 		//'localizedEnums'
-		public Keyword getLocalizedEnumsKeyword_1_0() { return cLocalizedEnumsKeyword_1_0; }
+		public Keyword getLocalizedEnumsKeyword_1() { return cLocalizedEnumsKeyword_1; }
 		
 		//'{'
-		public Keyword getLeftCurlyBracketKeyword_1_1() { return cLeftCurlyBracketKeyword_1_1; }
+		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
 		
 		//localizedEnums+=[Localized]+
-		public Assignment getLocalizedEnumsAssignment_1_2() { return cLocalizedEnumsAssignment_1_2; }
+		public Assignment getLocalizedEnumsAssignment_3() { return cLocalizedEnumsAssignment_3; }
 		
 		//[Localized]
-		public CrossReference getLocalizedEnumsLocalizedCrossReference_1_2_0() { return cLocalizedEnumsLocalizedCrossReference_1_2_0; }
+		public CrossReference getLocalizedEnumsLocalizedCrossReference_3_0() { return cLocalizedEnumsLocalizedCrossReference_3_0; }
 		
 		//ID
-		public RuleCall getLocalizedEnumsLocalizedIDTerminalRuleCall_1_2_0_1() { return cLocalizedEnumsLocalizedIDTerminalRuleCall_1_2_0_1; }
+		public RuleCall getLocalizedEnumsLocalizedIDTerminalRuleCall_3_0_1() { return cLocalizedEnumsLocalizedIDTerminalRuleCall_3_0_1; }
 		
 		//'}'
-		public Keyword getRightCurlyBracketKeyword_1_3() { return cRightCurlyBracketKeyword_1_3; }
+		public Keyword getRightCurlyBracketKeyword_4() { return cRightCurlyBracketKeyword_4; }
 		
 		//';'
-		public Keyword getSemicolonKeyword_1_4() { return cSemicolonKeyword_1_4; }
+		public Keyword getSemicolonKeyword_5() { return cSemicolonKeyword_5; }
 		
 		//'}'
-		public Keyword getRightCurlyBracketKeyword_2() { return cRightCurlyBracketKeyword_2; }
+		public Keyword getRightCurlyBracketKeyword_6() { return cRightCurlyBracketKeyword_6; }
 	}
 	public class LocalizedElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "at.ooe.fh.mdm.herzog.dsl.proj.ProjectGenerator.Localized");
@@ -877,7 +874,8 @@ public class ProjectGeneratorGrammarAccess extends AbstractGrammarElementFinder 
 	
 	//// Jpa configuration
 	//JpaConfig:
-	//	'{' ('localizedEnums' '{' localizedEnums+=[Localized]+ '}' ';')?
+	//	'{'
+	//	'localizedEnums' '{' localizedEnums+=[Localized]+ '}' ';'
 	//	'}';
 	public JpaConfigElements getJpaConfigAccess() {
 		return pJpaConfig;

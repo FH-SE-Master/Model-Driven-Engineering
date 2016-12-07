@@ -623,55 +623,53 @@ ruleJpaConfig returns [Boolean current=false]
 		{
 			doneLeaf(otherlv_0);
 		}
-		(
-			{
-				markLeaf(elementTypeProvider.getJpaConfig_LocalizedEnumsKeyword_1_0ElementType());
-			}
-			otherlv_1='localizedEnums'
-			{
-				doneLeaf(otherlv_1);
-			}
-			{
-				markLeaf(elementTypeProvider.getJpaConfig_LeftCurlyBracketKeyword_1_1ElementType());
-			}
-			otherlv_2='{'
-			{
-				doneLeaf(otherlv_2);
-			}
-			(
-				(
-					{
-						if (!$current) {
-							associateWithSemanticElement();
-							$current = true;
-						}
-					}
-					{
-						markLeaf(elementTypeProvider.getJpaConfig_LocalizedEnumsLocalizedCrossReference_1_2_0ElementType());
-					}
-					otherlv_3=RULE_ID
-					{
-						doneLeaf(otherlv_3);
-					}
-				)
-			)+
-			{
-				markLeaf(elementTypeProvider.getJpaConfig_RightCurlyBracketKeyword_1_3ElementType());
-			}
-			otherlv_4='}'
-			{
-				doneLeaf(otherlv_4);
-			}
-			{
-				markLeaf(elementTypeProvider.getJpaConfig_SemicolonKeyword_1_4ElementType());
-			}
-			otherlv_5=';'
-			{
-				doneLeaf(otherlv_5);
-			}
-		)?
 		{
-			markLeaf(elementTypeProvider.getJpaConfig_RightCurlyBracketKeyword_2ElementType());
+			markLeaf(elementTypeProvider.getJpaConfig_LocalizedEnumsKeyword_1ElementType());
+		}
+		otherlv_1='localizedEnums'
+		{
+			doneLeaf(otherlv_1);
+		}
+		{
+			markLeaf(elementTypeProvider.getJpaConfig_LeftCurlyBracketKeyword_2ElementType());
+		}
+		otherlv_2='{'
+		{
+			doneLeaf(otherlv_2);
+		}
+		(
+			(
+				{
+					if (!$current) {
+						associateWithSemanticElement();
+						$current = true;
+					}
+				}
+				{
+					markLeaf(elementTypeProvider.getJpaConfig_LocalizedEnumsLocalizedCrossReference_3_0ElementType());
+				}
+				otherlv_3=RULE_ID
+				{
+					doneLeaf(otherlv_3);
+				}
+			)
+		)+
+		{
+			markLeaf(elementTypeProvider.getJpaConfig_RightCurlyBracketKeyword_4ElementType());
+		}
+		otherlv_4='}'
+		{
+			doneLeaf(otherlv_4);
+		}
+		{
+			markLeaf(elementTypeProvider.getJpaConfig_SemicolonKeyword_5ElementType());
+		}
+		otherlv_5=';'
+		{
+			doneLeaf(otherlv_5);
+		}
+		{
+			markLeaf(elementTypeProvider.getJpaConfig_RightCurlyBracketKeyword_6ElementType());
 		}
 		otherlv_6='}'
 		{
