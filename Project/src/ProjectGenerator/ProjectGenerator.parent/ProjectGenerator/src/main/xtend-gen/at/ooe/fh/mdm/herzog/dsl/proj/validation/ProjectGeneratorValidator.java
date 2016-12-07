@@ -3,7 +3,25 @@
  */
 package at.ooe.fh.mdm.herzog.dsl.proj.validation;
 
+import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Locale;
+import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Localized;
+import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.LocalizedEntry;
+import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.LocalizedValue;
+import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Module;
+import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.ProjectGeneratorPackage;
 import at.ooe.fh.mdm.herzog.dsl.proj.validation.AbstractProjectGeneratorValidator;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.xtext.validation.Check;
+import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 
 /**
  * This class contains custom validation rules.
@@ -12,4 +30,82 @@ import at.ooe.fh.mdm.herzog.dsl.proj.validation.AbstractProjectGeneratorValidato
  */
 @SuppressWarnings("all")
 public class ProjectGeneratorValidator extends AbstractProjectGeneratorValidator {
+  @Check
+  public void checkForDuplicateLocaleEntries(final LocalizedEntry _localizedEntry) {
+    EList<LocalizedValue> _values = _localizedEntry.getValues();
+    final int count = _values.size();
+    EList<LocalizedValue> _values_1 = _localizedEntry.getValues();
+    Stream<LocalizedValue> _stream = _values_1.stream();
+    final Function<LocalizedValue, Locale> _function = new Function<LocalizedValue, Locale>() {
+      @Override
+      public Locale apply(final LocalizedValue it) {
+        return it.getLocale();
+      }
+    };
+    Stream<Locale> _map = _stream.<Locale>map(_function);
+    Stream<Locale> _distinct = _map.distinct();
+    final long localeCount = _distinct.count();
+    EList<LocalizedValue> _values_2 = _localizedEntry.getValues();
+    Stream<LocalizedValue> _stream_1 = _values_2.stream();
+    final Function<LocalizedValue, Locale> _function_1 = new Function<LocalizedValue, Locale>() {
+      @Override
+      public Locale apply(final LocalizedValue it) {
+        return it.getLocale();
+      }
+    };
+    Collector<LocalizedValue, ?, Map<Locale, List<LocalizedValue>>> _groupingBy = Collectors.<LocalizedValue, Locale>groupingBy(_function_1);
+    Map<Locale, List<LocalizedValue>> _collect = _stream_1.collect(_groupingBy);
+    Set<Map.Entry<Locale, List<LocalizedValue>>> _entrySet = _collect.entrySet();
+    Stream<Map.Entry<Locale, List<LocalizedValue>>> _stream_2 = _entrySet.stream();
+    final Predicate<Map.Entry<Locale, List<LocalizedValue>>> _function_2 = new Predicate<Map.Entry<Locale, List<LocalizedValue>>>() {
+      @Override
+      public boolean test(final Map.Entry<Locale, List<LocalizedValue>> it) {
+        List<LocalizedValue> _value = it.getValue();
+        int _size = _value.size();
+        return (_size > 1);
+      }
+    };
+    Stream<Map.Entry<Locale, List<LocalizedValue>>> _filter = _stream_2.filter(_function_2);
+    final Function<Map.Entry<Locale, List<LocalizedValue>>, Locale> _function_3 = new Function<Map.Entry<Locale, List<LocalizedValue>>, Locale>() {
+      @Override
+      public Locale apply(final Map.Entry<Locale, List<LocalizedValue>> it) {
+        return it.getKey();
+      }
+    };
+    Stream<Locale> _map_1 = _filter.<Locale>map(_function_3);
+    Stream<Locale> _distinct_1 = _map_1.distinct();
+    Collector<Locale, ?, List<Locale>> _list = Collectors.<Locale>toList();
+    final List<Locale> duplicateLocales = _distinct_1.collect(_list);
+    if ((count != localeCount)) {
+      Stream<Locale> _stream_3 = duplicateLocales.stream();
+      final Function<Locale, String> _function_4 = new Function<Locale, String>() {
+        @Override
+        public String apply(final Locale it) {
+          return it.toString();
+        }
+      };
+      Stream<String> _map_2 = _stream_3.<String>map(_function_4);
+      Collector<CharSequence, ?, String> _joining = Collectors.joining(",", "[", "]");
+      String _collect_1 = _map_2.collect(_joining);
+      final String errorMsg = ("Duplicate locale entries found. " + _collect_1);
+      this.error(errorMsg, ProjectGeneratorPackage.Literals.LOCALIZED_ENTRY__VALUES);
+    }
+  }
+  
+  @Check
+  public void checkForDefinedLocaleEntries(final Localized localized) {
+    EList<LocalizedEntry> _values = localized.getValues();
+    boolean _isEmpty = _values.isEmpty();
+    if (_isEmpty) {
+      this.error("At least one localized values must be given", ProjectGeneratorPackage.Literals.LOCALIZED__VALUES);
+    }
+  }
+  
+  @Check
+  public void checkLocalizedConsistent(final Module module) {
+    final HashMap<Object, Object> localeToValidMap = CollectionLiterals.<Object, Object>newHashMap();
+    EList<Localized> _messageBundles = module.getMessageBundles();
+    for (final Localized loc : _messageBundles) {
+    }
+  }
 }

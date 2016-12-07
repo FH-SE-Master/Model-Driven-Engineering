@@ -78,13 +78,13 @@ public interface ProjectGeneratorFactory extends EFactory
   LocalizedEntry createLocalizedEntry();
 
   /**
-   * Returns a new object of class '<em>Key Value Pair</em>'.
+   * Returns a new object of class '<em>Localized Value</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Key Value Pair</em>'.
+   * @return a new object of class '<em>Localized Value</em>'.
    * @generated
    */
-  KeyValuePair createKeyValuePair();
+  LocalizedValue createLocalizedValue();
 
   /**
    * Returns the package supported by this factory.

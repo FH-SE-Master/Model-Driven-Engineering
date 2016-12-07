@@ -32,14 +32,47 @@ public class ProjectGeneratorParserDefinition extends AbstractXtextParserDefinit
 		Boolean hasSemanticElement = node.getUserData(IASTNodeAwareNodeModelBuilder.HAS_SEMANTIC_ELEMENT_KEY);
 		if (hasSemanticElement != null && hasSemanticElement) {
 			IElementType elementType = node.getElementType();
-			if (elementType == elementTypeProvider.getModelElementType()) {
+			if (elementType == elementTypeProvider.getModuleElementType()) {
+				return new PsiNamedEObjectImpl(node) {};
+			}
+			if (elementType == elementTypeProvider.getModule_MessageBundlesLocalizedParserRuleCall_9_2_0ElementType()) {
+				return new PsiNamedEObjectImpl(node) {};
+			}
+			if (elementType == elementTypeProvider.getModule_ObserversObserverParserRuleCall_10_2_0ElementType()) {
+				return new PsiNamedEObjectImpl(node) {};
+			}
+			if (elementType == elementTypeProvider.getModule_JpaConfigJpaConfigParserRuleCall_12_0ElementType()) {
 				return new PsiEObjectImpl(node) {};
 			}
-			if (elementType == elementTypeProvider.getModel_GreetingsGreetingParserRuleCall_0ElementType()) {
+			if (elementType == elementTypeProvider.getModule_ServiceConfigServiceConfigParserRuleCall_15_0ElementType()) {
+				return new PsiEObjectImpl(node) {};
+			}
+			if (elementType == elementTypeProvider.getServiceConfigElementType()) {
+				return new PsiEObjectImpl(node) {};
+			}
+			if (elementType == elementTypeProvider.getServiceConfig_ObserversObserverParserRuleCall_1_1_0ElementType()) {
 				return new PsiNamedEObjectImpl(node) {};
 			}
-			if (elementType == elementTypeProvider.getGreetingElementType()) {
+			if (elementType == elementTypeProvider.getObserverElementType()) {
 				return new PsiNamedEObjectImpl(node) {};
+			}
+			if (elementType == elementTypeProvider.getJpaConfigElementType()) {
+				return new PsiEObjectImpl(node) {};
+			}
+			if (elementType == elementTypeProvider.getLocalizedElementType()) {
+				return new PsiNamedEObjectImpl(node) {};
+			}
+			if (elementType == elementTypeProvider.getLocalized_ValuesLocalizedEntryParserRuleCall_2_2_0ElementType()) {
+				return new PsiEObjectImpl(node) {};
+			}
+			if (elementType == elementTypeProvider.getLocalizedEntryElementType()) {
+				return new PsiEObjectImpl(node) {};
+			}
+			if (elementType == elementTypeProvider.getLocalizedEntry_ValuesLocalizedValueParserRuleCall_6_0ElementType()) {
+				return new PsiEObjectImpl(node) {};
+			}
+			if (elementType == elementTypeProvider.getLocalizedValueElementType()) {
+				return new PsiEObjectImpl(node) {};
 			}
 			throw new IllegalStateException("Unexpected element type: " + elementType);
 		}

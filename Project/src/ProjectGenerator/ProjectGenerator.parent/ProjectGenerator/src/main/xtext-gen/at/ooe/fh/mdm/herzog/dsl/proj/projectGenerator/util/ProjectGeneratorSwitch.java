@@ -4,9 +4,9 @@
 package at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.util;
 
 import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.JpaConfig;
-import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.KeyValuePair;
 import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Localized;
 import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.LocalizedEntry;
+import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.LocalizedValue;
 import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Module;
 import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Observer;
 import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.ProjectGeneratorPackage;
@@ -122,10 +122,10 @@ public class ProjectGeneratorSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case ProjectGeneratorPackage.KEY_VALUE_PAIR:
+      case ProjectGeneratorPackage.LOCALIZED_VALUE:
       {
-        KeyValuePair keyValuePair = (KeyValuePair)theEObject;
-        T result = caseKeyValuePair(keyValuePair);
+        LocalizedValue localizedValue = (LocalizedValue)theEObject;
+        T result = caseLocalizedValue(localizedValue);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -230,17 +230,17 @@ public class ProjectGeneratorSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Key Value Pair</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Localized Value</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Key Value Pair</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Localized Value</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseKeyValuePair(KeyValuePair object)
+  public T caseLocalizedValue(LocalizedValue object)
   {
     return null;
   }

@@ -11,8 +11,6 @@ import org.eclipse.xtext.IGrammarAccess;
 import org.eclipse.xtext.RuleCall;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.serializer.analysis.GrammarAlias.AbstractElementAlias;
-import org.eclipse.xtext.serializer.analysis.GrammarAlias.TokenAlias;
-import org.eclipse.xtext.serializer.analysis.ISyntacticSequencerPDAProvider.ISynNavigable;
 import org.eclipse.xtext.serializer.analysis.ISyntacticSequencerPDAProvider.ISynTransition;
 import org.eclipse.xtext.serializer.sequencer.AbstractSyntacticSequencer;
 
@@ -20,29 +18,17 @@ import org.eclipse.xtext.serializer.sequencer.AbstractSyntacticSequencer;
 public class ProjectGeneratorSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected ProjectGeneratorGrammarAccess grammarAccess;
-	protected AbstractElementAlias match_Module_CommaKeyword_15_4_a;
 	
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (ProjectGeneratorGrammarAccess) access;
-		match_Module_CommaKeyword_15_4_a = new TokenAlias(true, true, grammarAccess.getModuleAccess().getCommaKeyword_15_4());
 	}
 	
 	@Override
 	protected String getUnassignedRuleCallToken(EObject semanticObject, RuleCall ruleCall, INode node) {
-		if (ruleCall.getRule() == grammarAccess.getMethodNameRule())
-			return getMethodNameToken(semanticObject, ruleCall, node);
 		return "";
 	}
 	
-	/**
-	 * terminal MethodName: ('a'..'f')+ ('0'..'9'|'A'..'Z'|'a'..'z')+;
-	 */
-	protected String getMethodNameToken(EObject semanticObject, RuleCall ruleCall, INode node) {
-		if (node != null)
-			return getTokenText(node);
-		return "";
-	}
 	
 	@Override
 	protected void emitUnassignedTokens(EObject semanticObject, ISynTransition transition, INode fromNode, INode toNode) {
@@ -50,22 +36,8 @@ public class ProjectGeneratorSyntacticSequencer extends AbstractSyntacticSequenc
 		List<INode> transitionNodes = collectNodes(fromNode, toNode);
 		for (AbstractElementAlias syntax : transition.getAmbiguousSyntaxes()) {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
-			if (match_Module_CommaKeyword_15_4_a.equals(syntax))
-				emit_Module_CommaKeyword_15_4_a(semanticObject, getLastNavigableState(), syntaxNodes);
-			else acceptNodes(getLastNavigableState(), syntaxNodes);
+			acceptNodes(getLastNavigableState(), syntaxNodes);
 		}
 	}
 
-	/**
-	 * Ambiguous syntax:
-	 *     ','*
-	 *
-	 * This ambiguous syntax occurs at:
-	 *     messageBundles+=Localized '}' (ambiguity) 'messages' messages=Localized
-	 *     messageBundles+=Localized '}' (ambiguity) '}' (rule end)
-	 */
-	protected void emit_Module_CommaKeyword_15_4_a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
 }

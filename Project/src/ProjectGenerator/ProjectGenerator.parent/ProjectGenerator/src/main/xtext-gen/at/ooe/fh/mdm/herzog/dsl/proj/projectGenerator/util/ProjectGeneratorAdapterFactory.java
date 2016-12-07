@@ -4,9 +4,9 @@
 package at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.util;
 
 import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.JpaConfig;
-import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.KeyValuePair;
 import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Localized;
 import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.LocalizedEntry;
+import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.LocalizedValue;
 import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Module;
 import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Observer;
 import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.ProjectGeneratorPackage;
@@ -113,9 +113,9 @@ public class ProjectGeneratorAdapterFactory extends AdapterFactoryImpl
         return createLocalizedEntryAdapter();
       }
       @Override
-      public Adapter caseKeyValuePair(KeyValuePair object)
+      public Adapter caseLocalizedValue(LocalizedValue object)
       {
-        return createKeyValuePairAdapter();
+        return createLocalizedValueAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -230,16 +230,16 @@ public class ProjectGeneratorAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.KeyValuePair <em>Key Value Pair</em>}'.
+   * Creates a new adapter for an object of class '{@link at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.LocalizedValue <em>Localized Value</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.KeyValuePair
+   * @see at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.LocalizedValue
    * @generated
    */
-  public Adapter createKeyValuePairAdapter()
+  public Adapter createLocalizedValueAdapter()
   {
     return null;
   }

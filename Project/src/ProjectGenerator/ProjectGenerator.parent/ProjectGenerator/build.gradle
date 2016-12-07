@@ -1,6 +1,7 @@
 dependencies {
 	compile "org.eclipse.xtext:org.eclipse.xtext:${xtextVersion}"
 	compile "org.eclipse.xtext:org.eclipse.xtext.xbase:${xtextVersion}"
+	compile "org.apache.commons:commons-lang3:3.5"
 }
 configurations {
 	mwe2 {
@@ -11,6 +12,7 @@ configurations {
 dependencies {
 	mwe2 "org.eclipse.emf:org.eclipse.emf.mwe2.launch:2.8.3"
 	mwe2 "org.eclipse.xtext:org.eclipse.xtext.xtext.generator:${xtextVersion}"
+    mwe2 "org.apache.commons:commons-lang3:3.5"
 }
 
 task generateXtextLanguage(type: JavaExec) {

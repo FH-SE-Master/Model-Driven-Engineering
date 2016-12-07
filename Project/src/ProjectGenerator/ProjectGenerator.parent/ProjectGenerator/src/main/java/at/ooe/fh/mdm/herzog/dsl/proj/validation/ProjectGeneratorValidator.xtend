@@ -3,6 +3,14 @@
  */
 package at.ooe.fh.mdm.herzog.dsl.proj.validation
 
+import org.eclipse.xtext.validation.Check
+import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Localized
+import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.LocalizedEntry
+import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Locale
+import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Module
+import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.ProjectGeneratorPackage
+import static java.util.stream.Collectors.*;
+import java.util.StringJoiner
 
 /**
  * This class contains custom validation rules. 
@@ -10,16 +18,34 @@ package at.ooe.fh.mdm.herzog.dsl.proj.validation
  * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#validation
  */
 class ProjectGeneratorValidator extends AbstractProjectGeneratorValidator {
-	
-//  public static val INVALID_NAME = 'invalidName'
-//
-//	@Check
-//	def checkGreetingStartsWithCapital(Greeting greeting) {
-//		if (!Character.isUpperCase(greeting.name.charAt(0))) {
-//			warning('Name should start with a capital', 
-//					ProjectGeneratorPackage.Literals.GREETING__NAME,
-//					INVALID_NAME)
-//		}
-//	}
-	
+
+    // 1. Duplicate locale entries for a localized key not allowed
+    @Check
+    def checkForDuplicateLocaleEntries(LocalizedEntry _localizedEntry){
+        val count = _localizedEntry.values.size;
+        val localeCount = _localizedEntry.values.stream.map[locale].distinct.count;
+        val duplicateLocales = _localizedEntry.values.stream.collect(groupingBy[locale]).entrySet.stream.filter[value.size > 1].map[key].distinct.collect(toList);
+
+        if(count != localeCount) {
+            val errorMsg = "Duplicate locale entries found. " + duplicateLocales.stream.map[toString].collect(joining(",","[","]"));
+            error(errorMsg,ProjectGeneratorPackage.Literals.LOCALIZED_ENTRY__VALUES);
+        }
+    }
+
+    // 2. Localized must contain at least one localized entry
+    @Check
+    def checkForDefinedLocaleEntries(Localized localized){
+        if(localized.values.empty) {
+            error("If attribute 'values' is defined, then at least one localized values must be given", ProjectGeneratorPackage.Literals.LOCALIZED__VALUES);
+        }
+    }
+
+
+
+    @Check
+    def checkLocalizedConsistent(Module module){
+        val localeToValidMap = newHashMap();
+        for(Localized loc : module.messageBundles) {
+        }
+    }
 }

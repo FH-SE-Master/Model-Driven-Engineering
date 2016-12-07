@@ -4,9 +4,9 @@
 package at.ooe.fh.mdm.herzog.dsl.proj.serializer;
 
 import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.JpaConfig;
-import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.KeyValuePair;
 import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Localized;
 import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.LocalizedEntry;
+import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.LocalizedValue;
 import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Module;
 import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Observer;
 import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.ProjectGeneratorPackage;
@@ -41,14 +41,14 @@ public class ProjectGeneratorSemanticSequencer extends AbstractDelegatingSemanti
 			case ProjectGeneratorPackage.JPA_CONFIG:
 				sequence_JpaConfig(context, (JpaConfig) semanticObject); 
 				return; 
-			case ProjectGeneratorPackage.KEY_VALUE_PAIR:
-				sequence_KeyValuePair(context, (KeyValuePair) semanticObject); 
-				return; 
 			case ProjectGeneratorPackage.LOCALIZED:
 				sequence_Localized(context, (Localized) semanticObject); 
 				return; 
 			case ProjectGeneratorPackage.LOCALIZED_ENTRY:
 				sequence_LocalizedEntry(context, (LocalizedEntry) semanticObject); 
+				return; 
+			case ProjectGeneratorPackage.LOCALIZED_VALUE:
+				sequence_LocalizedValue(context, (LocalizedValue) semanticObject); 
 				return; 
 			case ProjectGeneratorPackage.MODULE:
 				sequence_Module(context, (Module) semanticObject); 
@@ -69,7 +69,7 @@ public class ProjectGeneratorSemanticSequencer extends AbstractDelegatingSemanti
 	 *     JpaConfig returns JpaConfig
 	 *
 	 * Constraint:
-	 *     localizedEnums+=Localized+
+	 *     localizedEnums+=[Localized|ID]+
 	 */
 	protected void sequence_JpaConfig(ISerializationContext context, JpaConfig semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -78,31 +78,10 @@ public class ProjectGeneratorSemanticSequencer extends AbstractDelegatingSemanti
 	
 	/**
 	 * Contexts:
-	 *     KeyValuePair returns KeyValuePair
-	 *
-	 * Constraint:
-	 *     (key=STRING value=STRING)
-	 */
-	protected void sequence_KeyValuePair(ISerializationContext context, KeyValuePair semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, ProjectGeneratorPackage.Literals.KEY_VALUE_PAIR__KEY) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ProjectGeneratorPackage.Literals.KEY_VALUE_PAIR__KEY));
-			if (transientValues.isValueTransient(semanticObject, ProjectGeneratorPackage.Literals.KEY_VALUE_PAIR__VALUE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ProjectGeneratorPackage.Literals.KEY_VALUE_PAIR__VALUE));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getKeyValuePairAccess().getKeySTRINGTerminalRuleCall_2_0(), semanticObject.getKey());
-		feeder.accept(grammarAccess.getKeyValuePairAccess().getValueSTRINGTerminalRuleCall_5_0(), semanticObject.getValue());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * Contexts:
 	 *     LocalizedEntry returns LocalizedEntry
 	 *
 	 * Constraint:
-	 *     (locale=Locale entry=KeyValuePair arguments+=KeyValuePair*)
+	 *     (localizedKey=LocalizedKey values+=LocalizedValue+ args+=STRING*)
 	 */
 	protected void sequence_LocalizedEntry(ISerializationContext context, LocalizedEntry semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -111,10 +90,31 @@ public class ProjectGeneratorSemanticSequencer extends AbstractDelegatingSemanti
 	
 	/**
 	 * Contexts:
+	 *     LocalizedValue returns LocalizedValue
+	 *
+	 * Constraint:
+	 *     (locale=Locale values=STRING)
+	 */
+	protected void sequence_LocalizedValue(ISerializationContext context, LocalizedValue semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, ProjectGeneratorPackage.Literals.LOCALIZED_VALUE__LOCALE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ProjectGeneratorPackage.Literals.LOCALIZED_VALUE__LOCALE));
+			if (transientValues.isValueTransient(semanticObject, ProjectGeneratorPackage.Literals.LOCALIZED_VALUE__VALUES) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ProjectGeneratorPackage.Literals.LOCALIZED_VALUE__VALUES));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getLocalizedValueAccess().getLocaleLocaleEnumRuleCall_2_0(), semanticObject.getLocale());
+		feeder.accept(grammarAccess.getLocalizedValueAccess().getValuesSTRINGTerminalRuleCall_5_0(), semanticObject.getValues());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     Localized returns Localized
 	 *
 	 * Constraint:
-	 *     (name=ID name=STRING locales+=Locale+ values+=LocalizedEntry*)
+	 *     (name=ID values+=LocalizedEntry*)
 	 */
 	protected void sequence_Localized(ISerializationContext context, Localized semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -130,10 +130,10 @@ public class ProjectGeneratorSemanticSequencer extends AbstractDelegatingSemanti
 	 *         name=ID 
 	 *         key=STRING 
 	 *         cdiEnabled=Boolean 
-	 *         jpaConfig=JpaConfig 
-	 *         serviceConfig=ServiceConfig 
 	 *         messageBundles+=Localized* 
-	 *         messages=Localized*
+	 *         observers+=Observer* 
+	 *         jpaConfig=JpaConfig 
+	 *         serviceConfig=ServiceConfig
 	 *     )
 	 */
 	protected void sequence_Module(ISerializationContext context, Module semanticObject) {
@@ -146,28 +146,17 @@ public class ProjectGeneratorSemanticSequencer extends AbstractDelegatingSemanti
 	 *     Observer returns Observer
 	 *
 	 * Constraint:
-	 *     (name=ID type=STRING during=During notify=Notify className=ClassName)
+	 *     (
+	 *         name=ID 
+	 *         type=ClassName 
+	 *         during=During 
+	 *         notify=Notify 
+	 *         className=ClassName 
+	 *         qualifier=ClassName?
+	 *     )
 	 */
 	protected void sequence_Observer(ISerializationContext context, Observer semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, ProjectGeneratorPackage.Literals.OBSERVER__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ProjectGeneratorPackage.Literals.OBSERVER__NAME));
-			if (transientValues.isValueTransient(semanticObject, ProjectGeneratorPackage.Literals.OBSERVER__TYPE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ProjectGeneratorPackage.Literals.OBSERVER__TYPE));
-			if (transientValues.isValueTransient(semanticObject, ProjectGeneratorPackage.Literals.OBSERVER__DURING) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ProjectGeneratorPackage.Literals.OBSERVER__DURING));
-			if (transientValues.isValueTransient(semanticObject, ProjectGeneratorPackage.Literals.OBSERVER__NOTIFY) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ProjectGeneratorPackage.Literals.OBSERVER__NOTIFY));
-			if (transientValues.isValueTransient(semanticObject, ProjectGeneratorPackage.Literals.OBSERVER__CLASS_NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ProjectGeneratorPackage.Literals.OBSERVER__CLASS_NAME));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getObserverAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getObserverAccess().getTypeSTRINGTerminalRuleCall_4_0(), semanticObject.getType());
-		feeder.accept(grammarAccess.getObserverAccess().getDuringDuringEnumRuleCall_7_0(), semanticObject.getDuring());
-		feeder.accept(grammarAccess.getObserverAccess().getNotifyNotifyEnumRuleCall_10_0(), semanticObject.getNotify());
-		feeder.accept(grammarAccess.getObserverAccess().getClassNameClassNameTerminalRuleCall_13_0(), semanticObject.getClassName());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -176,7 +165,7 @@ public class ProjectGeneratorSemanticSequencer extends AbstractDelegatingSemanti
 	 *     ServiceConfig returns ServiceConfig
 	 *
 	 * Constraint:
-	 *     observers+=Observer+
+	 *     ((observers+=Observer+ messageBundles+=[Localized|ID]+) | messageBundles+=[Localized|ID]+)?
 	 */
 	protected void sequence_ServiceConfig(ISerializationContext context, ServiceConfig semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

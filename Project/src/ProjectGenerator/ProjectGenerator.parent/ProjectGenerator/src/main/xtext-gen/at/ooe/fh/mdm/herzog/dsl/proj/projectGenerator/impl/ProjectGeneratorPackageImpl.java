@@ -6,10 +6,10 @@ package at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.impl;
 import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.DbType;
 import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.During;
 import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.JpaConfig;
-import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.KeyValuePair;
 import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Locale;
 import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Localized;
 import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.LocalizedEntry;
+import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.LocalizedValue;
 import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Module;
 import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Notify;
 import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Observer;
@@ -80,7 +80,7 @@ public class ProjectGeneratorPackageImpl extends EPackageImpl implements Project
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass keyValuePairEClass = null;
+  private EClass localizedValueEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -225,7 +225,7 @@ public class ProjectGeneratorPackageImpl extends EPackageImpl implements Project
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getModule_JpaConfig()
+  public EReference getModule_MessageBundles()
   {
     return (EReference)moduleEClass.getEStructuralFeatures().get(3);
   }
@@ -235,7 +235,7 @@ public class ProjectGeneratorPackageImpl extends EPackageImpl implements Project
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getModule_ServiceConfig()
+  public EReference getModule_Observers()
   {
     return (EReference)moduleEClass.getEStructuralFeatures().get(4);
   }
@@ -245,7 +245,7 @@ public class ProjectGeneratorPackageImpl extends EPackageImpl implements Project
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getModule_MessageBundles()
+  public EReference getModule_JpaConfig()
   {
     return (EReference)moduleEClass.getEStructuralFeatures().get(5);
   }
@@ -255,7 +255,7 @@ public class ProjectGeneratorPackageImpl extends EPackageImpl implements Project
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getModule_Messages()
+  public EReference getModule_ServiceConfig()
   {
     return (EReference)moduleEClass.getEStructuralFeatures().get(6);
   }
@@ -278,6 +278,16 @@ public class ProjectGeneratorPackageImpl extends EPackageImpl implements Project
   public EReference getServiceConfig_Observers()
   {
     return (EReference)serviceConfigEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getServiceConfig_MessageBundles()
+  {
+    return (EReference)serviceConfigEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -345,6 +355,16 @@ public class ProjectGeneratorPackageImpl extends EPackageImpl implements Project
    * <!-- end-user-doc -->
    * @generated
    */
+  public EAttribute getObserver_Qualifier()
+  {
+    return (EAttribute)observerEClass.getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getJpaConfig()
   {
     return jpaConfigEClass;
@@ -385,19 +405,9 @@ public class ProjectGeneratorPackageImpl extends EPackageImpl implements Project
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getLocalized_Locales()
-  {
-    return (EAttribute)localizedEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EReference getLocalized_Values()
   {
-    return (EReference)localizedEClass.getEStructuralFeatures().get(2);
+    return (EReference)localizedEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -415,7 +425,7 @@ public class ProjectGeneratorPackageImpl extends EPackageImpl implements Project
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getLocalizedEntry_Locale()
+  public EAttribute getLocalizedEntry_LocalizedKey()
   {
     return (EAttribute)localizedEntryEClass.getEStructuralFeatures().get(0);
   }
@@ -425,7 +435,7 @@ public class ProjectGeneratorPackageImpl extends EPackageImpl implements Project
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getLocalizedEntry_Entry()
+  public EReference getLocalizedEntry_Values()
   {
     return (EReference)localizedEntryEClass.getEStructuralFeatures().get(1);
   }
@@ -435,9 +445,9 @@ public class ProjectGeneratorPackageImpl extends EPackageImpl implements Project
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getLocalizedEntry_Arguments()
+  public EAttribute getLocalizedEntry_Args()
   {
-    return (EReference)localizedEntryEClass.getEStructuralFeatures().get(2);
+    return (EAttribute)localizedEntryEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -445,9 +455,9 @@ public class ProjectGeneratorPackageImpl extends EPackageImpl implements Project
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getKeyValuePair()
+  public EClass getLocalizedValue()
   {
-    return keyValuePairEClass;
+    return localizedValueEClass;
   }
 
   /**
@@ -455,9 +465,9 @@ public class ProjectGeneratorPackageImpl extends EPackageImpl implements Project
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getKeyValuePair_Key()
+  public EAttribute getLocalizedValue_Locale()
   {
-    return (EAttribute)keyValuePairEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)localizedValueEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -465,9 +475,9 @@ public class ProjectGeneratorPackageImpl extends EPackageImpl implements Project
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getKeyValuePair_Value()
+  public EAttribute getLocalizedValue_Values()
   {
-    return (EAttribute)keyValuePairEClass.getEStructuralFeatures().get(1);
+    return (EAttribute)localizedValueEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -554,13 +564,14 @@ public class ProjectGeneratorPackageImpl extends EPackageImpl implements Project
     createEAttribute(moduleEClass, MODULE__NAME);
     createEAttribute(moduleEClass, MODULE__KEY);
     createEAttribute(moduleEClass, MODULE__CDI_ENABLED);
+    createEReference(moduleEClass, MODULE__MESSAGE_BUNDLES);
+    createEReference(moduleEClass, MODULE__OBSERVERS);
     createEReference(moduleEClass, MODULE__JPA_CONFIG);
     createEReference(moduleEClass, MODULE__SERVICE_CONFIG);
-    createEReference(moduleEClass, MODULE__MESSAGE_BUNDLES);
-    createEReference(moduleEClass, MODULE__MESSAGES);
 
     serviceConfigEClass = createEClass(SERVICE_CONFIG);
     createEReference(serviceConfigEClass, SERVICE_CONFIG__OBSERVERS);
+    createEReference(serviceConfigEClass, SERVICE_CONFIG__MESSAGE_BUNDLES);
 
     observerEClass = createEClass(OBSERVER);
     createEAttribute(observerEClass, OBSERVER__NAME);
@@ -568,23 +579,23 @@ public class ProjectGeneratorPackageImpl extends EPackageImpl implements Project
     createEAttribute(observerEClass, OBSERVER__DURING);
     createEAttribute(observerEClass, OBSERVER__NOTIFY);
     createEAttribute(observerEClass, OBSERVER__CLASS_NAME);
+    createEAttribute(observerEClass, OBSERVER__QUALIFIER);
 
     jpaConfigEClass = createEClass(JPA_CONFIG);
     createEReference(jpaConfigEClass, JPA_CONFIG__LOCALIZED_ENUMS);
 
     localizedEClass = createEClass(LOCALIZED);
     createEAttribute(localizedEClass, LOCALIZED__NAME);
-    createEAttribute(localizedEClass, LOCALIZED__LOCALES);
     createEReference(localizedEClass, LOCALIZED__VALUES);
 
     localizedEntryEClass = createEClass(LOCALIZED_ENTRY);
-    createEAttribute(localizedEntryEClass, LOCALIZED_ENTRY__LOCALE);
-    createEReference(localizedEntryEClass, LOCALIZED_ENTRY__ENTRY);
-    createEReference(localizedEntryEClass, LOCALIZED_ENTRY__ARGUMENTS);
+    createEAttribute(localizedEntryEClass, LOCALIZED_ENTRY__LOCALIZED_KEY);
+    createEReference(localizedEntryEClass, LOCALIZED_ENTRY__VALUES);
+    createEAttribute(localizedEntryEClass, LOCALIZED_ENTRY__ARGS);
 
-    keyValuePairEClass = createEClass(KEY_VALUE_PAIR);
-    createEAttribute(keyValuePairEClass, KEY_VALUE_PAIR__KEY);
-    createEAttribute(keyValuePairEClass, KEY_VALUE_PAIR__VALUE);
+    localizedValueEClass = createEClass(LOCALIZED_VALUE);
+    createEAttribute(localizedValueEClass, LOCALIZED_VALUE__LOCALE);
+    createEAttribute(localizedValueEClass, LOCALIZED_VALUE__VALUES);
 
     // Create enums
     localeEEnum = createEEnum(LOCALE);
@@ -629,13 +640,14 @@ public class ProjectGeneratorPackageImpl extends EPackageImpl implements Project
     initEAttribute(getModule_Name(), ecorePackage.getEString(), "name", null, 0, 1, Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getModule_Key(), ecorePackage.getEString(), "key", null, 0, 1, Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getModule_CdiEnabled(), this.getBoolean(), "cdiEnabled", null, 0, 1, Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getModule_MessageBundles(), this.getLocalized(), null, "messageBundles", null, 0, -1, Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getModule_Observers(), this.getObserver(), null, "observers", null, 0, -1, Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getModule_JpaConfig(), this.getJpaConfig(), null, "jpaConfig", null, 0, 1, Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getModule_ServiceConfig(), this.getServiceConfig(), null, "serviceConfig", null, 0, 1, Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getModule_MessageBundles(), this.getLocalized(), null, "messageBundles", null, 0, -1, Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getModule_Messages(), this.getLocalized(), null, "messages", null, 0, 1, Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(serviceConfigEClass, ServiceConfig.class, "ServiceConfig", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getServiceConfig_Observers(), this.getObserver(), null, "observers", null, 0, -1, ServiceConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getServiceConfig_MessageBundles(), this.getLocalized(), null, "messageBundles", null, 0, -1, ServiceConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(observerEClass, Observer.class, "Observer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getObserver_Name(), ecorePackage.getEString(), "name", null, 0, 1, Observer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -643,23 +655,23 @@ public class ProjectGeneratorPackageImpl extends EPackageImpl implements Project
     initEAttribute(getObserver_During(), this.getDuring(), "during", null, 0, 1, Observer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getObserver_Notify(), this.getNotify(), "notify", null, 0, 1, Observer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getObserver_ClassName(), ecorePackage.getEString(), "className", null, 0, 1, Observer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getObserver_Qualifier(), ecorePackage.getEString(), "qualifier", null, 0, 1, Observer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(jpaConfigEClass, JpaConfig.class, "JpaConfig", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getJpaConfig_LocalizedEnums(), this.getLocalized(), null, "localizedEnums", null, 0, -1, JpaConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getJpaConfig_LocalizedEnums(), this.getLocalized(), null, "localizedEnums", null, 0, -1, JpaConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(localizedEClass, Localized.class, "Localized", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getLocalized_Name(), ecorePackage.getEString(), "name", null, 0, 1, Localized.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getLocalized_Locales(), this.getLocale(), "locales", null, 0, -1, Localized.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getLocalized_Values(), this.getLocalizedEntry(), null, "values", null, 0, -1, Localized.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(localizedEntryEClass, LocalizedEntry.class, "LocalizedEntry", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getLocalizedEntry_Locale(), this.getLocale(), "locale", null, 0, 1, LocalizedEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getLocalizedEntry_Entry(), this.getKeyValuePair(), null, "entry", null, 0, 1, LocalizedEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getLocalizedEntry_Arguments(), this.getKeyValuePair(), null, "arguments", null, 0, -1, LocalizedEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getLocalizedEntry_LocalizedKey(), ecorePackage.getEString(), "localizedKey", null, 0, 1, LocalizedEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getLocalizedEntry_Values(), this.getLocalizedValue(), null, "values", null, 0, -1, LocalizedEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getLocalizedEntry_Args(), ecorePackage.getEString(), "args", null, 0, -1, LocalizedEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(keyValuePairEClass, KeyValuePair.class, "KeyValuePair", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getKeyValuePair_Key(), ecorePackage.getEString(), "key", null, 0, 1, KeyValuePair.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getKeyValuePair_Value(), ecorePackage.getEString(), "value", null, 0, 1, KeyValuePair.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(localizedValueEClass, LocalizedValue.class, "LocalizedValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getLocalizedValue_Locale(), this.getLocale(), "locale", null, 0, 1, LocalizedValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getLocalizedValue_Values(), ecorePackage.getEString(), "values", null, 0, 1, LocalizedValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Initialize enums and add enum literals
     initEEnum(localeEEnum, Locale.class, "Locale");

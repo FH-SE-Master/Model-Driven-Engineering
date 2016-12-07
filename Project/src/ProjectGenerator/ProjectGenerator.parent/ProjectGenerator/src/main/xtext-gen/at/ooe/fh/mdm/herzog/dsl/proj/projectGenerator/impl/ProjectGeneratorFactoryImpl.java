@@ -6,10 +6,10 @@ package at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.impl;
 import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.DbType;
 import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.During;
 import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.JpaConfig;
-import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.KeyValuePair;
 import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Locale;
 import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Localized;
 import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.LocalizedEntry;
+import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.LocalizedValue;
 import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Module;
 import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Notify;
 import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Observer;
@@ -84,7 +84,7 @@ public class ProjectGeneratorFactoryImpl extends EFactoryImpl implements Project
       case ProjectGeneratorPackage.JPA_CONFIG: return createJpaConfig();
       case ProjectGeneratorPackage.LOCALIZED: return createLocalized();
       case ProjectGeneratorPackage.LOCALIZED_ENTRY: return createLocalizedEntry();
-      case ProjectGeneratorPackage.KEY_VALUE_PAIR: return createKeyValuePair();
+      case ProjectGeneratorPackage.LOCALIZED_VALUE: return createLocalizedValue();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -211,10 +211,10 @@ public class ProjectGeneratorFactoryImpl extends EFactoryImpl implements Project
    * <!-- end-user-doc -->
    * @generated
    */
-  public KeyValuePair createKeyValuePair()
+  public LocalizedValue createLocalizedValue()
   {
-    KeyValuePairImpl keyValuePair = new KeyValuePairImpl();
-    return keyValuePair;
+    LocalizedValueImpl localizedValue = new LocalizedValueImpl();
+    return localizedValue;
   }
 
   /**
