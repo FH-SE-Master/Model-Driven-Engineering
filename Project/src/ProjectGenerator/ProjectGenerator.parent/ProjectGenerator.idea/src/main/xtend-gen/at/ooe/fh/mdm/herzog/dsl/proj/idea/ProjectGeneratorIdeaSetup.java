@@ -10,7 +10,6 @@ import org.eclipse.xtext.idea.extensions.EcoreGlobalRegistries;
 
 @SuppressWarnings("all")
 public class ProjectGeneratorIdeaSetup implements ISetup {
-  @Override
   public Injector createInjectorAndDoEMFRegistration() {
     Injector _xblockexpression = null;
     {

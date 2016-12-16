@@ -1,0 +1,29 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: at.ooe.fh.mdm.herzog.dsl.proj.ProjectGenerator
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: at.ooe.fh.mdm.herzog.dsl.proj.ProjectGenerator; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.xtext,
+ org.eclipse.xtext.xbase,
+ org.eclipse.equinox.common;bundle-version="3.5.0",
+ org.eclipse.emf.ecore,
+ org.eclipse.xtext.xbase.lib,
+ org.antlr.runtime,
+ org.eclipse.xtext.util,
+ org.eclipse.xtend.lib,
+ org.eclipse.emf.common
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: at.ooe.fh.mdm.herzog.dsl.proj.generator,
+ at.ooe.fh.mdm.herzog.dsl.proj.parser.antlr,
+ at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator,
+ at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.util,
+ at.ooe.fh.mdm.herzog.dsl.proj.scoping,
+ at.ooe.fh.mdm.herzog.dsl.proj.services,
+ at.ooe.fh.mdm.herzog.dsl.proj.serializer,
+ at.ooe.fh.mdm.herzog.dsl.proj.parser.antlr.internal,
+ at.ooe.fh.mdm.herzog.dsl.proj,
+ at.ooe.fh.mdm.herzog.dsl.proj.validation,
+ at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.impl
+Import-Package: org.apache.log4j

@@ -13,7 +13,6 @@ import org.eclipse.xtext.util.Modules2;
 
 @SuppressWarnings("all")
 public class ProjectGeneratorStandaloneSetupIdea extends ProjectGeneratorStandaloneSetupGenerated {
-  @Override
   public Injector createInjector() {
     final ProjectGeneratorRuntimeModule runtimeModule = new ProjectGeneratorRuntimeModule();
     final ProjectGeneratorIdeaModule ideaModule = new ProjectGeneratorIdeaModule();

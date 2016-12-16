@@ -10,18 +10,18 @@ import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.LocalizedValue;
 import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Module;
 import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.ProjectGeneratorPackage;
 import at.ooe.fh.mdm.herzog.dsl.proj.validation.AbstractProjectGeneratorValidator;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtext.validation.Check;
-import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 
 /**
  * This class contains custom validation rules.
@@ -30,6 +30,34 @@ import org.eclipse.xtext.xbase.lib.CollectionLiterals;
  */
 @SuppressWarnings("all")
 public class ProjectGeneratorValidator extends AbstractProjectGeneratorValidator {
+  private static Pattern CAMEL_CASE_PATTERN = Pattern.compile("([A-Z]{1}[a-z]+)+");
+  
+  @Check
+  public void checkForCamelCaseModuleName(final Module _module) {
+    String _key = _module.getKey();
+    Matcher _matcher = ProjectGeneratorValidator.CAMEL_CASE_PATTERN.matcher(_key);
+    boolean _matches = _matcher.matches();
+    boolean _not = (!_matches);
+    if (_not) {
+      final String errorMsg = "Module name must be a camel case string";
+      this.error(errorMsg, ProjectGeneratorPackage.Literals.MODULE__NAME);
+    }
+  }
+  
+  @Check
+  public void checkForUpperCaseModuleKey(final Module _module) {
+    String _key = _module.getKey();
+    char[] _charArray = _key.toCharArray();
+    for (final Character c : _charArray) {
+      boolean _isLowerCase = Character.isLowerCase((c).charValue());
+      if (_isLowerCase) {
+        final String errorMsg = "Module key must be upper case";
+        this.error(errorMsg, ProjectGeneratorPackage.Literals.MODULE__KEY);
+        return;
+      }
+    }
+  }
+  
   @Check
   public void checkForDuplicateLocaleEntries(final LocalizedEntry _localizedEntry) {
     EList<LocalizedValue> _values = _localizedEntry.getValues();
@@ -37,7 +65,6 @@ public class ProjectGeneratorValidator extends AbstractProjectGeneratorValidator
     EList<LocalizedValue> _values_1 = _localizedEntry.getValues();
     Stream<LocalizedValue> _stream = _values_1.stream();
     final Function<LocalizedValue, Locale> _function = new Function<LocalizedValue, Locale>() {
-      @Override
       public Locale apply(final LocalizedValue it) {
         return it.getLocale();
       }
@@ -48,7 +75,6 @@ public class ProjectGeneratorValidator extends AbstractProjectGeneratorValidator
     EList<LocalizedValue> _values_2 = _localizedEntry.getValues();
     Stream<LocalizedValue> _stream_1 = _values_2.stream();
     final Function<LocalizedValue, Locale> _function_1 = new Function<LocalizedValue, Locale>() {
-      @Override
       public Locale apply(final LocalizedValue it) {
         return it.getLocale();
       }
@@ -58,7 +84,6 @@ public class ProjectGeneratorValidator extends AbstractProjectGeneratorValidator
     Set<Map.Entry<Locale, List<LocalizedValue>>> _entrySet = _collect.entrySet();
     Stream<Map.Entry<Locale, List<LocalizedValue>>> _stream_2 = _entrySet.stream();
     final Predicate<Map.Entry<Locale, List<LocalizedValue>>> _function_2 = new Predicate<Map.Entry<Locale, List<LocalizedValue>>>() {
-      @Override
       public boolean test(final Map.Entry<Locale, List<LocalizedValue>> it) {
         List<LocalizedValue> _value = it.getValue();
         int _size = _value.size();
@@ -67,7 +92,6 @@ public class ProjectGeneratorValidator extends AbstractProjectGeneratorValidator
     };
     Stream<Map.Entry<Locale, List<LocalizedValue>>> _filter = _stream_2.filter(_function_2);
     final Function<Map.Entry<Locale, List<LocalizedValue>>, Locale> _function_3 = new Function<Map.Entry<Locale, List<LocalizedValue>>, Locale>() {
-      @Override
       public Locale apply(final Map.Entry<Locale, List<LocalizedValue>> it) {
         return it.getKey();
       }
@@ -79,7 +103,6 @@ public class ProjectGeneratorValidator extends AbstractProjectGeneratorValidator
     if ((count != localeCount)) {
       Stream<Locale> _stream_3 = duplicateLocales.stream();
       final Function<Locale, String> _function_4 = new Function<Locale, String>() {
-        @Override
         public String apply(final Locale it) {
           return it.toString();
         }
@@ -98,14 +121,6 @@ public class ProjectGeneratorValidator extends AbstractProjectGeneratorValidator
     boolean _isEmpty = _values.isEmpty();
     if (_isEmpty) {
       this.error("If attribute \'values\' is defined, then at least one localized values must be given", ProjectGeneratorPackage.Literals.LOCALIZED__VALUES);
-    }
-  }
-  
-  @Check
-  public void checkLocalizedConsistent(final Module module) {
-    final HashMap<Object, Object> localeToValidMap = CollectionLiterals.<Object, Object>newHashMap();
-    EList<Localized> _messageBundles = module.getMessageBundles();
-    for (final Localized loc : _messageBundles) {
     }
   }
 }

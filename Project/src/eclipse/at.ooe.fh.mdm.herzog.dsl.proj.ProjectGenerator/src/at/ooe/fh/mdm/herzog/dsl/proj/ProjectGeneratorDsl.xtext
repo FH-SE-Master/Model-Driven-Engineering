@@ -1,0 +1,61 @@
+grammar at.ooe.fh.mdm.herzog.dsl.proj.ProjectGenerator with org.eclipse.xtext.common.Terminals
+
+generate projectGenerator "http://www.ooe.at/fh/mdm/herzog/dsl/proj/ProjectGenerator"
+
+Module:
+    'module' name=ID '{'
+    'key' key=STRING';'
+    'cdiEnabled' cdiEnabled=Boolean';'
+    ('messageBundles' '{' (messageBundles+=Localized+) '}' ';')?
+    ('observers' '{' (observers+=Observer+) '}' ';')?
+    'jpaConfig' jpaConfig=JpaConfig';'
+    'serviceConfig' serviceConfig=ServiceConfig';'
+    '}';
+
+// Service configuration
+ServiceConfig: '{'
+    ('observers' observers+=Observer+)?
+    ('messageBundles' '{' (messageBundles+=[Localized]+) '}' ';')?
+    '}';
+
+Observer:
+    name=ID '{'
+    'type' type=ClassName';'
+    'during' during=During';'
+    'notify' notify=Notify';'
+    'delegate' className=ClassName';'
+    ('qualifier' qualifier=ClassName';')?
+    '}';
+
+// Jpa configuration
+JpaConfig: '{'
+    'localizedEnums' '{' (localizedEnums+=[Localized]+) '}'';'
+    '}';
+
+// Common
+Localized:
+    name=ID '{'
+    ('values' '{' (values+=LocalizedEntry+) '}' ';')?
+    '}';
+
+LocalizedEntry: '{'
+    'key' localizedKey=LocalizedKey';'
+    'values' '{' (values+=LocalizedValue+) '}' ';'
+    ('args' '{' (args+=STRING+) '}' ';')?
+    '}';
+
+LocalizedValue: '{'
+    'locale' locale=Locale';'
+    'value' values=STRING';'
+    '}';
+
+// Constants
+enum Locale: DE_DE='de_DE' | EN_US='en_US';
+enum DbType: VARCHAR='Varchar' | CLOB='Clob';
+enum Boolean: TRUE='true' | FALSE='false';
+enum During: IN_PROG='InProgress' | AFTER_COMPLETION='AfterCompleition';
+enum Notify: ALWAYS='Always' | EXISTS='Exists';
+terminal ClassName: ('a'..'f')+ (('0'..'9'|'A'..'Z'|'a'..'z')+ '.')+ ('A'..'Z')+ ('0'..'9'|'A'..'Z'|'a'..'z')+;
+terminal MethodName: ('a'..'f')+ ('0'..'9'|'A'..'Z'|'a'..'z')+;
+terminal LocalizedKey: ('A'..'Z' | '0'..'9')+ ('_' ('A'..'Z' | '0'..'9'))*;
+

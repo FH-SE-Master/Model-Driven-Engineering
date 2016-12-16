@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module external.linked.project.id=":ProjectGenerator:main" external.linked.project.path="$MODULE_DIR$/../../../ProjectGenerator.parent/ProjectGenerator" external.root.project.path="$MODULE_DIR$/../../../ProjectGenerator.parent" external.system.id="GRADLE" external.system.module.group="ProjectGenerator" external.system.module.type="sourceSet" external.system.module.version="1.0.0-SNAPSHOT" type="JAVA_MODULE" version="4">
+  <component name="FacetManager">
+    <facet type="org.eclipse.xtend.core.Xtend" name="Xtend">
+      <configuration>
+        <option name="activated" value="true" />
+        <option name="createDirectory" value="true" />
+        <option name="deleteGenerated" value="true" />
+        <option name="generateSuppressWarnings" value="true" />
+        <option name="hideLocalSyntheticVariables" value="true" />
+        <option name="outputDirectory" value="$MODULE_DIR$/../../../ProjectGenerator.parent/ProjectGenerator/src/main/xtend-gen" />
+        <option name="overwriteExisting" value="true" />
+        <option name="testOutputDirectory" value="$MODULE_DIR$/../../../ProjectGenerator.parent/ProjectGenerator/src/main/xtend-gen" />
+      </configuration>
+    </facet>
+  </component>
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8" inherit-compiler-output="false">
     <output url="file://$MODULE_DIR$/../../../ProjectGenerator.parent/ProjectGenerator/build/classes/main" />
     <exclude-output />
@@ -13,6 +27,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Gradle: org.eclipse.xtext:org.eclipse.xtext:2.9.2" level="project" />
     <orderEntry type="library" name="Gradle: org.eclipse.xtext:org.eclipse.xtext.xbase:2.9.2" level="project" />
+    <orderEntry type="library" name="Gradle: org.apache.commons:commons-lang3:3.5" level="project" />
     <orderEntry type="library" name="Gradle: org.eclipse.xtext:org.eclipse.xtext.util:2.9.2" level="project" />
     <orderEntry type="library" name="Gradle: org.eclipse.xtend:org.eclipse.xtend.lib:2.9.2" level="project" />
     <orderEntry type="library" name="Gradle: com.google.guava:guava:14.0.1" level="project" />

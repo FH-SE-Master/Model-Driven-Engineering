@@ -1,12 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module external.linked.project.id=":ProjectGenerator.web:main" external.linked.project.path="$MODULE_DIR$/../../../ProjectGenerator.parent/ProjectGenerator.web" external.root.project.path="$MODULE_DIR$/../../../ProjectGenerator.parent" external.system.id="GRADLE" external.system.module.group="ProjectGenerator" external.system.module.type="sourceSet" external.system.module.version="1.0.0-SNAPSHOT" type="JAVA_MODULE" version="4">
   <component name="FacetManager">
+    <facet type="org.eclipse.xtend.core.Xtend" name="Xtend">
+      <configuration>
+        <option name="activated" value="true" />
+        <option name="createDirectory" value="true" />
+        <option name="deleteGenerated" value="true" />
+        <option name="generateSuppressWarnings" value="true" />
+        <option name="hideLocalSyntheticVariables" value="true" />
+        <option name="outputDirectory" value="$MODULE_DIR$/../../../ProjectGenerator.parent/ProjectGenerator.web/src/main/xtend-gen" />
+        <option name="overwriteExisting" value="true" />
+        <option name="testOutputDirectory" value="$MODULE_DIR$/../../../ProjectGenerator.parent/ProjectGenerator.web/src/main/xtend-gen" />
+      </configuration>
+    </facet>
     <facet type="web" name="Web Gradle : ProjectGenerator.web-1.0.0-SNAPSHOT.war">
       <configuration>
         <webroots>
           <root url="file://$MODULE_DIR$/../../../ProjectGenerator.parent/ProjectGenerator.web/src/main/webapp" relative="/" />
         </webroots>
-        <sourceRoots />
       </configuration>
     </facet>
   </component>
@@ -22,7 +33,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="ProjectGenerator_main" />
-    <orderEntry type="library" scope="PROVIDED" name="Gradle: org.ow2.asm:asm-tree:5.0.1" level="project" />
     <orderEntry type="module" module-name="ProjectGenerator.ide_main" />
     <orderEntry type="library" name="Gradle: org.eclipse.xtext:org.eclipse.xtext.xbase.web:2.9.2" level="project" />
     <orderEntry type="library" name="Gradle: org.eclipse.xtext:org.eclipse.xtext.web.servlet:2.9.2" level="project" />
@@ -34,6 +44,7 @@
     <orderEntry type="library" scope="PROVIDED" name="Gradle: org.slf4j:slf4j-simple:1.7.12" level="project" />
     <orderEntry type="library" name="Gradle: org.eclipse.xtext:org.eclipse.xtext:2.9.2" level="project" />
     <orderEntry type="library" name="Gradle: org.eclipse.xtext:org.eclipse.xtext.xbase:2.9.2" level="project" />
+    <orderEntry type="library" name="Gradle: org.apache.commons:commons-lang3:3.5" level="project" />
     <orderEntry type="library" name="Gradle: org.eclipse.xtext:org.eclipse.xtext.ide:2.9.2" level="project" />
     <orderEntry type="library" name="Gradle: org.eclipse.xtext:org.eclipse.xtext.xbase.ide:2.9.2" level="project" />
     <orderEntry type="library" name="Gradle: org.eclipse.xtext:org.eclipse.xtext.web:2.9.2" level="project" />
@@ -59,6 +70,7 @@
     <orderEntry type="library" scope="PROVIDED" name="Gradle: org.eclipse.jetty:jetty-jndi:9.2.11.v20150529" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Gradle: org.eclipse.jetty:jetty-xml:9.2.11.v20150529" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Gradle: org.eclipse.jetty:jetty-servlet:9.2.11.v20150529" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: org.ow2.asm:asm-tree:5.0.1" level="project" />
     <orderEntry type="library" name="Gradle: javax.inject:javax.inject:1" level="project" />
     <orderEntry type="library" name="Gradle: aopalliance:aopalliance:1.0" level="project" />
     <orderEntry type="library" name="Gradle: org.sonatype.sisu.inject:cglib:2.2.1-v20090111" level="project" />

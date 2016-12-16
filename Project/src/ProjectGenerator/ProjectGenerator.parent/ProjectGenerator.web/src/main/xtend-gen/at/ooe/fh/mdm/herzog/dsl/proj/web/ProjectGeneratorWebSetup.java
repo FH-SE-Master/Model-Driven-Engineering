@@ -22,7 +22,6 @@ import org.eclipse.xtend.lib.annotations.FinalFieldsConstructor;
 public class ProjectGeneratorWebSetup extends ProjectGeneratorStandaloneSetup {
   private final Provider<ExecutorService> executorServiceProvider;
   
-  @Override
   public Injector createInjector() {
     final ProjectGeneratorRuntimeModule runtimeModule = new ProjectGeneratorRuntimeModule();
     final ProjectGeneratorWebModule webModule = new ProjectGeneratorWebModule(this.executorServiceProvider);

@@ -6,11 +6,10 @@ package at.ooe.fh.mdm.herzog.dsl.proj.validation
 import org.eclipse.xtext.validation.Check
 import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Localized
 import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.LocalizedEntry
-import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Locale
 import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Module
 import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.ProjectGeneratorPackage
-import static java.util.stream.Collectors.*;
-import java.util.StringJoiner
+import static java.util.stream.Collectors.*
+import java.util.regex.Pattern
 
 /**
  * This class contains custom validation rules. 
@@ -19,7 +18,30 @@ import java.util.StringJoiner
  */
 class ProjectGeneratorValidator extends AbstractProjectGeneratorValidator {
 
-    // 1. Duplicate locale entries for a localized key not allowed
+    static Pattern CAMEL_CASE_PATTERN = Pattern.compile("([A-Z]{1}[a-z]+)+");
+
+    // 1. Module Name must be camel case
+    @Check
+    def checkForCamelCaseModuleName(Module _module){
+        if(!CAMEL_CASE_PATTERN.matcher(_module.key).matches) {
+            val errorMsg = "Module name must be a camel case string";
+            error(errorMsg, ProjectGeneratorPackage.Literals.MODULE__NAME);
+        }
+    }
+
+    // 2. Module Key must be upper case
+    @Check
+    def checkForUpperCaseModuleKey(Module _module){
+        for(Character c:_module.key.toCharArray) {
+            if(Character.isLowerCase(c)) {
+                val errorMsg = "Module key must be upper case";
+                error(errorMsg, ProjectGeneratorPackage.Literals.MODULE__KEY);
+                return;
+            }
+        }
+    }
+
+    // 3. Duplicate locale entries for a localized key not allowed
     @Check
     def checkForDuplicateLocaleEntries(LocalizedEntry _localizedEntry){
         val count = _localizedEntry.values.size;
@@ -32,20 +54,11 @@ class ProjectGeneratorValidator extends AbstractProjectGeneratorValidator {
         }
     }
 
-    // 2. Localized must contain at least one localized entry
+    // 4. Localized must contain at least one localized entry
     @Check
     def checkForDefinedLocaleEntries(Localized localized){
         if(localized.values.empty) {
             error("If attribute 'values' is defined, then at least one localized values must be given", ProjectGeneratorPackage.Literals.LOCALIZED__VALUES);
-        }
-    }
-
-
-
-    @Check
-    def checkLocalizedConsistent(Module module){
-        val localeToValidMap = newHashMap();
-        for(Localized loc : module.messageBundles) {
         }
     }
 }
