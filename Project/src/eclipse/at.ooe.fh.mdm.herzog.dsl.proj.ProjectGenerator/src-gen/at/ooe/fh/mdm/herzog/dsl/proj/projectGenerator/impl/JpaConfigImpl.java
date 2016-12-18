@@ -5,17 +5,23 @@ package at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.impl;
 
 import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.JpaConfig;
 import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Localized;
+import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Observer;
 import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.ProjectGeneratorPackage;
 
 import java.util.Collection;
 
+import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -26,6 +32,7 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  * </p>
  * <ul>
  *   <li>{@link at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.impl.JpaConfigImpl#getLocalizedEnums <em>Localized Enums</em>}</li>
+ *   <li>{@link at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.impl.JpaConfigImpl#getObservers <em>Observers</em>}</li>
  * </ul>
  *
  * @generated
@@ -41,6 +48,16 @@ public class JpaConfigImpl extends MinimalEObjectImpl.Container implements JpaCo
    * @ordered
    */
   protected EList<Localized> localizedEnums;
+
+  /**
+   * The cached value of the '{@link #getObservers() <em>Observers</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getObservers()
+   * @generated
+   * @ordered
+   */
+  protected EList<Observer> observers;
 
   /**
    * <!-- begin-user-doc -->
@@ -82,6 +99,36 @@ public class JpaConfigImpl extends MinimalEObjectImpl.Container implements JpaCo
    * <!-- end-user-doc -->
    * @generated
    */
+  public EList<Observer> getObservers()
+  {
+    if (observers == null)
+    {
+      observers = new EObjectContainmentEList<Observer>(Observer.class, this, ProjectGeneratorPackage.JPA_CONFIG__OBSERVERS);
+    }
+    return observers;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case ProjectGeneratorPackage.JPA_CONFIG__OBSERVERS:
+        return ((InternalEList<?>)getObservers()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
@@ -89,6 +136,8 @@ public class JpaConfigImpl extends MinimalEObjectImpl.Container implements JpaCo
     {
       case ProjectGeneratorPackage.JPA_CONFIG__LOCALIZED_ENUMS:
         return getLocalizedEnums();
+      case ProjectGeneratorPackage.JPA_CONFIG__OBSERVERS:
+        return getObservers();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -108,6 +157,10 @@ public class JpaConfigImpl extends MinimalEObjectImpl.Container implements JpaCo
         getLocalizedEnums().clear();
         getLocalizedEnums().addAll((Collection<? extends Localized>)newValue);
         return;
+      case ProjectGeneratorPackage.JPA_CONFIG__OBSERVERS:
+        getObservers().clear();
+        getObservers().addAll((Collection<? extends Observer>)newValue);
+        return;
     }
     super.eSet(featureID, newValue);
   }
@@ -125,6 +178,9 @@ public class JpaConfigImpl extends MinimalEObjectImpl.Container implements JpaCo
       case ProjectGeneratorPackage.JPA_CONFIG__LOCALIZED_ENUMS:
         getLocalizedEnums().clear();
         return;
+      case ProjectGeneratorPackage.JPA_CONFIG__OBSERVERS:
+        getObservers().clear();
+        return;
     }
     super.eUnset(featureID);
   }
@@ -141,6 +197,8 @@ public class JpaConfigImpl extends MinimalEObjectImpl.Container implements JpaCo
     {
       case ProjectGeneratorPackage.JPA_CONFIG__LOCALIZED_ENUMS:
         return localizedEnums != null && !localizedEnums.isEmpty();
+      case ProjectGeneratorPackage.JPA_CONFIG__OBSERVERS:
+        return observers != null && !observers.isEmpty();
     }
     return super.eIsSet(featureID);
   }

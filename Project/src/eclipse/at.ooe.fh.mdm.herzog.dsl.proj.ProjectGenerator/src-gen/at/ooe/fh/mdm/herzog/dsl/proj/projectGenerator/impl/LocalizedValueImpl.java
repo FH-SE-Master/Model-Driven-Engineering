@@ -23,7 +23,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * </p>
  * <ul>
  *   <li>{@link at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.impl.LocalizedValueImpl#getLocale <em>Locale</em>}</li>
- *   <li>{@link at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.impl.LocalizedValueImpl#getValues <em>Values</em>}</li>
+ *   <li>{@link at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.impl.LocalizedValueImpl#getValue <em>Value</em>}</li>
  * </ul>
  *
  * @generated
@@ -51,24 +51,24 @@ public class LocalizedValueImpl extends MinimalEObjectImpl.Container implements 
   protected Locale locale = LOCALE_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getValues() <em>Values</em>}' attribute.
+   * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getValues()
+   * @see #getValue()
    * @generated
    * @ordered
    */
-  protected static final String VALUES_EDEFAULT = null;
+  protected static final String VALUE_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getValues() <em>Values</em>}' attribute.
+   * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getValues()
+   * @see #getValue()
    * @generated
    * @ordered
    */
-  protected String values = VALUES_EDEFAULT;
+  protected String value = VALUE_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -119,9 +119,9 @@ public class LocalizedValueImpl extends MinimalEObjectImpl.Container implements 
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getValues()
+  public String getValue()
   {
-    return values;
+    return value;
   }
 
   /**
@@ -129,12 +129,12 @@ public class LocalizedValueImpl extends MinimalEObjectImpl.Container implements 
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setValues(String newValues)
+  public void setValue(String newValue)
   {
-    String oldValues = values;
-    values = newValues;
+    String oldValue = value;
+    value = newValue;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ProjectGeneratorPackage.LOCALIZED_VALUE__VALUES, oldValues, values));
+      eNotify(new ENotificationImpl(this, Notification.SET, ProjectGeneratorPackage.LOCALIZED_VALUE__VALUE, oldValue, value));
   }
 
   /**
@@ -149,8 +149,8 @@ public class LocalizedValueImpl extends MinimalEObjectImpl.Container implements 
     {
       case ProjectGeneratorPackage.LOCALIZED_VALUE__LOCALE:
         return getLocale();
-      case ProjectGeneratorPackage.LOCALIZED_VALUE__VALUES:
-        return getValues();
+      case ProjectGeneratorPackage.LOCALIZED_VALUE__VALUE:
+        return getValue();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -168,8 +168,8 @@ public class LocalizedValueImpl extends MinimalEObjectImpl.Container implements 
       case ProjectGeneratorPackage.LOCALIZED_VALUE__LOCALE:
         setLocale((Locale)newValue);
         return;
-      case ProjectGeneratorPackage.LOCALIZED_VALUE__VALUES:
-        setValues((String)newValue);
+      case ProjectGeneratorPackage.LOCALIZED_VALUE__VALUE:
+        setValue((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -188,8 +188,8 @@ public class LocalizedValueImpl extends MinimalEObjectImpl.Container implements 
       case ProjectGeneratorPackage.LOCALIZED_VALUE__LOCALE:
         setLocale(LOCALE_EDEFAULT);
         return;
-      case ProjectGeneratorPackage.LOCALIZED_VALUE__VALUES:
-        setValues(VALUES_EDEFAULT);
+      case ProjectGeneratorPackage.LOCALIZED_VALUE__VALUE:
+        setValue(VALUE_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -207,8 +207,8 @@ public class LocalizedValueImpl extends MinimalEObjectImpl.Container implements 
     {
       case ProjectGeneratorPackage.LOCALIZED_VALUE__LOCALE:
         return locale != LOCALE_EDEFAULT;
-      case ProjectGeneratorPackage.LOCALIZED_VALUE__VALUES:
-        return VALUES_EDEFAULT == null ? values != null : !VALUES_EDEFAULT.equals(values);
+      case ProjectGeneratorPackage.LOCALIZED_VALUE__VALUE:
+        return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
     }
     return super.eIsSet(featureID);
   }
@@ -226,8 +226,8 @@ public class LocalizedValueImpl extends MinimalEObjectImpl.Container implements 
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (locale: ");
     result.append(locale);
-    result.append(", values: ");
-    result.append(values);
+    result.append(", value: ");
+    result.append(value);
     result.append(')');
     return result.toString();
   }

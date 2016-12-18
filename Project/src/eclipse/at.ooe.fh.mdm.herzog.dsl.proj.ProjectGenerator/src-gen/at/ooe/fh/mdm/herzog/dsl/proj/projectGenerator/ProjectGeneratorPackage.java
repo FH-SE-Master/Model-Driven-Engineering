@@ -270,13 +270,22 @@ public interface ProjectGeneratorPackage extends EPackage
   int JPA_CONFIG__LOCALIZED_ENUMS = 0;
 
   /**
+   * The feature id for the '<em><b>Observers</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int JPA_CONFIG__OBSERVERS = 1;
+
+  /**
    * The number of structural features of the '<em>Jpa Config</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int JPA_CONFIG_FEATURE_COUNT = 1;
+  int JPA_CONFIG_FEATURE_COUNT = 2;
 
   /**
    * The meta object id for the '{@link at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.impl.LocalizedImpl <em>Localized</em>}' class.
@@ -381,13 +390,13 @@ public interface ProjectGeneratorPackage extends EPackage
   int LOCALIZED_VALUE__LOCALE = 0;
 
   /**
-   * The feature id for the '<em><b>Values</b></em>' attribute.
+   * The feature id for the '<em><b>Value</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int LOCALIZED_VALUE__VALUES = 1;
+  int LOCALIZED_VALUE__VALUE = 1;
 
   /**
    * The number of structural features of the '<em>Localized Value</em>' class.
@@ -409,16 +418,6 @@ public interface ProjectGeneratorPackage extends EPackage
   int LOCALE = 7;
 
   /**
-   * The meta object id for the '{@link at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.DbType <em>Db Type</em>}' enum.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.DbType
-   * @see at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.impl.ProjectGeneratorPackageImpl#getDbType()
-   * @generated
-   */
-  int DB_TYPE = 8;
-
-  /**
    * The meta object id for the '{@link at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Boolean <em>Boolean</em>}' enum.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -426,7 +425,7 @@ public interface ProjectGeneratorPackage extends EPackage
    * @see at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.impl.ProjectGeneratorPackageImpl#getBoolean()
    * @generated
    */
-  int BOOLEAN = 9;
+  int BOOLEAN = 8;
 
   /**
    * The meta object id for the '{@link at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.During <em>During</em>}' enum.
@@ -436,7 +435,7 @@ public interface ProjectGeneratorPackage extends EPackage
    * @see at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.impl.ProjectGeneratorPackageImpl#getDuring()
    * @generated
    */
-  int DURING = 10;
+  int DURING = 9;
 
   /**
    * The meta object id for the '{@link at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Notify <em>Notify</em>}' enum.
@@ -446,7 +445,7 @@ public interface ProjectGeneratorPackage extends EPackage
    * @see at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.impl.ProjectGeneratorPackageImpl#getNotify()
    * @generated
    */
-  int NOTIFY = 11;
+  int NOTIFY = 10;
 
 
   /**
@@ -666,6 +665,17 @@ public interface ProjectGeneratorPackage extends EPackage
   EReference getJpaConfig_LocalizedEnums();
 
   /**
+   * Returns the meta object for the containment reference list '{@link at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.JpaConfig#getObservers <em>Observers</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Observers</em>'.
+   * @see at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.JpaConfig#getObservers()
+   * @see #getJpaConfig()
+   * @generated
+   */
+  EReference getJpaConfig_Observers();
+
+  /**
    * Returns the meta object for class '{@link at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Localized <em>Localized</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -762,15 +772,15 @@ public interface ProjectGeneratorPackage extends EPackage
   EAttribute getLocalizedValue_Locale();
 
   /**
-   * Returns the meta object for the attribute '{@link at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.LocalizedValue#getValues <em>Values</em>}'.
+   * Returns the meta object for the attribute '{@link at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.LocalizedValue#getValue <em>Value</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Values</em>'.
-   * @see at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.LocalizedValue#getValues()
+   * @return the meta object for the attribute '<em>Value</em>'.
+   * @see at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.LocalizedValue#getValue()
    * @see #getLocalizedValue()
    * @generated
    */
-  EAttribute getLocalizedValue_Values();
+  EAttribute getLocalizedValue_Value();
 
   /**
    * Returns the meta object for enum '{@link at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Locale <em>Locale</em>}'.
@@ -781,16 +791,6 @@ public interface ProjectGeneratorPackage extends EPackage
    * @generated
    */
   EEnum getLocale();
-
-  /**
-   * Returns the meta object for enum '{@link at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.DbType <em>Db Type</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for enum '<em>Db Type</em>'.
-   * @see at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.DbType
-   * @generated
-   */
-  EEnum getDbType();
 
   /**
    * Returns the meta object for enum '{@link at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Boolean <em>Boolean</em>}'.
@@ -1014,6 +1014,14 @@ public interface ProjectGeneratorPackage extends EPackage
     EReference JPA_CONFIG__LOCALIZED_ENUMS = eINSTANCE.getJpaConfig_LocalizedEnums();
 
     /**
+     * The meta object literal for the '<em><b>Observers</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference JPA_CONFIG__OBSERVERS = eINSTANCE.getJpaConfig_Observers();
+
+    /**
      * The meta object literal for the '{@link at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.impl.LocalizedImpl <em>Localized</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1092,12 +1100,12 @@ public interface ProjectGeneratorPackage extends EPackage
     EAttribute LOCALIZED_VALUE__LOCALE = eINSTANCE.getLocalizedValue_Locale();
 
     /**
-     * The meta object literal for the '<em><b>Values</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute LOCALIZED_VALUE__VALUES = eINSTANCE.getLocalizedValue_Values();
+    EAttribute LOCALIZED_VALUE__VALUE = eINSTANCE.getLocalizedValue_Value();
 
     /**
      * The meta object literal for the '{@link at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Locale <em>Locale</em>}' enum.
@@ -1108,16 +1116,6 @@ public interface ProjectGeneratorPackage extends EPackage
      * @generated
      */
     EEnum LOCALE = eINSTANCE.getLocale();
-
-    /**
-     * The meta object literal for the '{@link at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.DbType <em>Db Type</em>}' enum.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.DbType
-     * @see at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.impl.ProjectGeneratorPackageImpl#getDbType()
-     * @generated
-     */
-    EEnum DB_TYPE = eINSTANCE.getDbType();
 
     /**
      * The meta object literal for the '{@link at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Boolean <em>Boolean</em>}' enum.

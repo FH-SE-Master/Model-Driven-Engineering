@@ -3,8 +3,26 @@
  */
 package at.ooe.fh.mdm.herzog.dsl.proj.ui.quickfix;
 
+import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.During;
+import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.JpaConfig;
+import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Locale;
+import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Localized;
+import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.LocalizedEntry;
+import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.LocalizedValue;
 import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Module;
+import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Notify;
+import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Observer;
+import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.ProjectGeneratorFactory;
+import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.ServiceConfig;
 import at.ooe.fh.mdm.herzog.dsl.proj.validation.ProjectGeneratorValidator;
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.function.Predicate;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.ui.editor.model.edit.IModificationContext;
 import org.eclipse.xtext.ui.editor.model.edit.ISemanticModification;
@@ -20,6 +38,70 @@ import org.eclipse.xtext.validation.Issue;
  */
 @SuppressWarnings("all")
 public class ProjectGeneratorQuickfixProvider extends DefaultQuickfixProvider {
+  /**
+   * Generates a default structure.
+   */
+  @Fix(ProjectGeneratorValidator.ValidatorId.MODULE_EMPTY)
+  public void fixModuleInitGeneration(final Issue issue, final IssueResolutionAcceptor acceptor) {
+    final ISemanticModification _function = (EObject element, IModificationContext context) -> {
+      final Module module = ((Module) element);
+      String _name = module.getName();
+      String _upperCase = _name.toUpperCase();
+      module.setKey(_upperCase);
+      module.setCdiEnabled(at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Boolean.TRUE);
+      final Localized localizedJpa = ProjectGeneratorFactory.eINSTANCE.createLocalized();
+      localizedJpa.setName("JpaConstantBundle");
+      final LocalizedEntry localizedJpaEntry = ProjectGeneratorFactory.eINSTANCE.createLocalizedEntry();
+      localizedJpaEntry.setLocalizedKey("KEY_1");
+      final LocalizedValue localizedJpaValue = ProjectGeneratorFactory.eINSTANCE.createLocalizedValue();
+      localizedJpaValue.setLocale(Locale.EN_US);
+      localizedJpaValue.setValue("EN_KEY_1");
+      EList<LocalizedValue> _values = localizedJpaEntry.getValues();
+      _values.add(localizedJpaValue);
+      EList<LocalizedEntry> _values_1 = localizedJpa.getValues();
+      _values_1.add(localizedJpaEntry);
+      final Localized localizedError = ProjectGeneratorFactory.eINSTANCE.createLocalized();
+      localizedError.setName("ErrorMessagebundle");
+      final LocalizedEntry localizedErrorEntry = ProjectGeneratorFactory.eINSTANCE.createLocalizedEntry();
+      localizedErrorEntry.setLocalizedKey("ERROR_1");
+      final LocalizedValue localizedErrorValue = ProjectGeneratorFactory.eINSTANCE.createLocalizedValue();
+      localizedErrorValue.setLocale(Locale.EN_US);
+      localizedErrorValue.setValue("EN_ERROR_1");
+      EList<LocalizedValue> _values_2 = localizedErrorEntry.getValues();
+      _values_2.add(localizedErrorValue);
+      EList<LocalizedEntry> _values_3 = localizedError.getValues();
+      _values_3.add(localizedErrorEntry);
+      final Observer observer = ProjectGeneratorFactory.eINSTANCE.createObserver();
+      observer.setName("YourObserverName");
+      observer.setType("com.clevercure.common.event.StartedEvent");
+      observer.setDuring(During.IN_PROG);
+      observer.setNotify(Notify.ALWAYS);
+      String _key = module.getKey();
+      String _lowerCase = _key.toLowerCase();
+      String _plus = ("com.clevercure." + _lowerCase);
+      String _plus_1 = (_plus + ".event.observer.YourObserverClass");
+      observer.setClassName(_plus_1);
+      final JpaConfig jpaConfig = ProjectGeneratorFactory.eINSTANCE.createJpaConfig();
+      EList<Localized> _localizedEnums = jpaConfig.getLocalizedEnums();
+      _localizedEnums.add(localizedJpa);
+      final ServiceConfig serviceConfig = ProjectGeneratorFactory.eINSTANCE.createServiceConfig();
+      EList<Localized> _messageBundles = serviceConfig.getMessageBundles();
+      _messageBundles.add(localizedError);
+      EList<Localized> _messageBundles_1 = module.getMessageBundles();
+      _messageBundles_1.add(localizedJpa);
+      EList<Localized> _messageBundles_2 = module.getMessageBundles();
+      _messageBundles_2.add(localizedError);
+      EList<Observer> _observers = module.getObservers();
+      _observers.add(observer);
+      module.setJpaConfig(jpaConfig);
+      module.setServiceConfig(serviceConfig);
+    };
+    acceptor.accept(issue, "Initialize default", "Initialize default", "", _function);
+  }
+  
+  /**
+   * Module: Make Module.key upper case
+   */
   @Fix(ProjectGeneratorValidator.ValidatorId.MODULE_KEY_UPPER_CASE)
   public void fixModuleKey(final Issue issue, final IssueResolutionAcceptor acceptor) {
     final ISemanticModification _function = (EObject element, IModificationContext context) -> {
@@ -28,6 +110,219 @@ public class ProjectGeneratorQuickfixProvider extends DefaultQuickfixProvider {
       String _upperCase = _key.toUpperCase();
       module.setKey(_upperCase);
     };
-    acceptor.accept(issue, "Convert to upper case", "Convert to upper case", "upcase.png", _function);
+    acceptor.accept(issue, "Convert to upper case", "Convert to upper case", "", _function);
+  }
+  
+  /**
+   * Localized: Remove or rename duplicate Localized matched by their name.
+   */
+  @Fix(ProjectGeneratorValidator.ValidatorId.LOCALIZED_NAME_DUPLICATE)
+  public void fixDuplicateLocalizedName(final Issue issue, final IssueResolutionAcceptor acceptor) {
+    final ISemanticModification _function = (EObject element, IModificationContext context) -> {
+      final Localized localized = ((Localized) element);
+      Objects.<Localized>requireNonNull(localized, "Element should be Localized instance");
+      EObject _eContainer = localized.eContainer();
+      final Module module = ((Module) _eContainer);
+      Objects.<Module>requireNonNull(module, "eContainer of Localized should be Module instance");
+      EList<Localized> _messageBundles = module.getMessageBundles();
+      _messageBundles.remove(localized);
+    };
+    acceptor.accept(issue, "Remove", "Remove", "", _function);
+    final ISemanticModification _function_1 = (EObject element, IModificationContext context) -> {
+      final Localized localized = ((Localized) element);
+      Objects.<Localized>requireNonNull(localized, "Element should be Localized instance");
+      EObject _eContainer = localized.eContainer();
+      final Module module = ((Module) _eContainer);
+      Objects.<Module>requireNonNull(module, "eContainer of Localized should be Module instance");
+      EList<Localized> _messageBundles = module.getMessageBundles();
+      Stream<Localized> _stream = _messageBundles.stream();
+      final Predicate<Localized> _function_2 = (Localized it) -> {
+        String _name = it.getName();
+        String _name_1 = localized.getName();
+        return _name.equals(_name_1);
+      };
+      Stream<Localized> _filter = _stream.filter(_function_2);
+      Collector<Localized, ?, List<Localized>> _list = Collectors.<Localized>toList();
+      final List<Localized> duplicates = _filter.collect(_list);
+      for (int i = 1; (i <= duplicates.size()); i++) {
+        {
+          final Localized loc = duplicates.get(i);
+          String _name = loc.getName();
+          String _plus = (_name + Integer.valueOf(i));
+          loc.setName(_plus);
+        }
+      }
+    };
+    acceptor.accept(issue, "Rename", "Rename", "", _function_1);
+  }
+  
+  /**
+   * Localized: Remove or rename duplicate LocalizedEntry instances of the given Localized instance.
+   */
+  @Fix(ProjectGeneratorValidator.ValidatorId.LOCALIZED_ENTRY_DUPLICATE)
+  public void fixLocalizedEntryDuplicates(final Issue issue, final IssueResolutionAcceptor acceptor) {
+    final ISemanticModification _function = (EObject element, IModificationContext context) -> {
+      final Localized localized = ((Localized) element);
+      Objects.<Localized>requireNonNull(localized, "Element should be Localized instance");
+      if (((!com.google.common.base.Objects.equal(issue.getData(), null)) && (issue.getData().length > 0))) {
+        String[] _data = issue.getData();
+        for (final String _key : _data) {
+          {
+            EList<LocalizedEntry> _values = localized.getValues();
+            Stream<LocalizedEntry> _stream = _values.stream();
+            final Predicate<LocalizedEntry> _function_1 = (LocalizedEntry it) -> {
+              String _localizedKey = it.getLocalizedKey();
+              return _localizedKey.equals(_key);
+            };
+            Stream<LocalizedEntry> _filter = _stream.filter(_function_1);
+            final Optional<LocalizedEntry> optionalDuplicate = _filter.findFirst();
+            boolean _isPresent = optionalDuplicate.isPresent();
+            if (_isPresent) {
+              EList<LocalizedEntry> _values_1 = localized.getValues();
+              LocalizedEntry _get = optionalDuplicate.get();
+              _values_1.remove(_get);
+            }
+          }
+        }
+      }
+    };
+    acceptor.accept(issue, "Remove", "Remove", "", _function);
+    final ISemanticModification _function_1 = (EObject element, IModificationContext context) -> {
+      final Localized localized = ((Localized) element);
+      Objects.<Localized>requireNonNull(localized, "Element should be Observer instance");
+      if (((!com.google.common.base.Objects.equal(issue.getData(), null)) && (issue.getData().length > 0))) {
+        String[] _data = issue.getData();
+        for (final String _key : _data) {
+          {
+            EList<LocalizedEntry> _values = localized.getValues();
+            Stream<LocalizedEntry> _stream = _values.stream();
+            final Predicate<LocalizedEntry> _function_2 = (LocalizedEntry it) -> {
+              String _localizedKey = it.getLocalizedKey();
+              return _localizedKey.equals(_key);
+            };
+            Stream<LocalizedEntry> _filter = _stream.filter(_function_2);
+            final Optional<LocalizedEntry> optionalDuplicate = _filter.findFirst();
+            boolean _isPresent = optionalDuplicate.isPresent();
+            if (_isPresent) {
+              LocalizedEntry _get = optionalDuplicate.get();
+              LocalizedEntry _get_1 = optionalDuplicate.get();
+              String _localizedKey = _get_1.getLocalizedKey();
+              String _plus = (_localizedKey + "_1");
+              _get.setLocalizedKey(_plus);
+            }
+          }
+        }
+      }
+    };
+    acceptor.accept(issue, "Rename", "Rename", "", _function_1);
+  }
+  
+  /**
+   * Observer: Remove or rename duplicate Observer matched by their name.
+   */
+  @Fix(ProjectGeneratorValidator.ValidatorId.OBSERVER_NAME_DUPLICATE)
+  public void fixDuplicateObserverName(final Issue issue, final IssueResolutionAcceptor acceptor) {
+    final ISemanticModification _function = (EObject element, IModificationContext context) -> {
+      final Observer bserver = ((Observer) element);
+      Objects.<Observer>requireNonNull(bserver, "Element should be Observer instance");
+      EObject _eContainer = bserver.eContainer();
+      final Module module = ((Module) _eContainer);
+      Objects.<Module>requireNonNull(module, "eContainer of Observer should be Module instance");
+      EList<Observer> _observers = module.getObservers();
+      _observers.remove(bserver);
+    };
+    acceptor.accept(issue, "Remove", "Remove", "", _function);
+    final ISemanticModification _function_1 = (EObject element, IModificationContext context) -> {
+      final Observer observer = ((Observer) element);
+      Objects.<Observer>requireNonNull(observer, "Element should be Observer instance");
+      EObject _eContainer = observer.eContainer();
+      final Module module = ((Module) _eContainer);
+      Objects.<Module>requireNonNull(module, "eContainer of Observer should be Module instance");
+      EList<Observer> _observers = module.getObservers();
+      Stream<Observer> _stream = _observers.stream();
+      final Predicate<Observer> _function_2 = (Observer it) -> {
+        String _name = it.getName();
+        String _name_1 = observer.getName();
+        return _name.equals(_name_1);
+      };
+      Stream<Observer> _filter = _stream.filter(_function_2);
+      Collector<Observer, ?, List<Observer>> _list = Collectors.<Observer>toList();
+      final List<Observer> duplicates = _filter.collect(_list);
+      for (int i = 1; (i <= duplicates.size()); i++) {
+        {
+          final Observer obs = duplicates.get((i - 1));
+          String _name = obs.getName();
+          String _plus = (_name + Integer.valueOf(i));
+          obs.setName(_plus);
+        }
+      }
+    };
+    acceptor.accept(issue, "Rename", "Rename", "", _function_1);
+  }
+  
+  /**
+   * ServiceConfig: Remove duplicate mapped message bundle matched by their name
+   */
+  @Fix(ProjectGeneratorValidator.ValidatorId.SERVICE_CONFIG_MESSAGE_BUNDLE_DUPLICATE)
+  public void fixServiceConfigDuplicateMessageBundles(final Issue issue, final IssueResolutionAcceptor acceptor) {
+    final ISemanticModification _function = (EObject element, IModificationContext context) -> {
+      final ServiceConfig config = ((ServiceConfig) element);
+      Objects.<ServiceConfig>requireNonNull(config, "Element should be ServiceConfig instance");
+      if (((!com.google.common.base.Objects.equal(issue.getData(), null)) && (issue.getData().length > 0))) {
+        String[] _data = issue.getData();
+        for (final String _name : _data) {
+          {
+            EList<Localized> _messageBundles = config.getMessageBundles();
+            Stream<Localized> _stream = _messageBundles.stream();
+            final Predicate<Localized> _function_1 = (Localized it) -> {
+              String _name_1 = it.getName();
+              return _name_1.equals(_name);
+            };
+            Stream<Localized> _filter = _stream.filter(_function_1);
+            final Optional<Localized> optionalDuplicate = _filter.findFirst();
+            boolean _isPresent = optionalDuplicate.isPresent();
+            if (_isPresent) {
+              EList<Localized> _messageBundles_1 = config.getMessageBundles();
+              Localized _get = optionalDuplicate.get();
+              _messageBundles_1.remove(_get);
+            }
+          }
+        }
+      }
+    };
+    acceptor.accept(issue, "Remove", "Remove", "", _function);
+  }
+  
+  /**
+   * JpaConfig: Remove duplicate mapped message bundles mapped by their name.
+   */
+  @Fix(ProjectGeneratorValidator.ValidatorId.JPA_LOCALIZED_ENUMS_DUPLICATE)
+  public void fixJpaConfigDuplicateMessageBundles(final Issue issue, final IssueResolutionAcceptor acceptor) {
+    final ISemanticModification _function = (EObject element, IModificationContext context) -> {
+      final JpaConfig config = ((JpaConfig) element);
+      Objects.<JpaConfig>requireNonNull(config, "Element should be JpaConfig instance");
+      if (((!com.google.common.base.Objects.equal(issue.getData(), null)) && (issue.getData().length > 0))) {
+        String[] _data = issue.getData();
+        for (final String _name : _data) {
+          {
+            EList<Localized> _localizedEnums = config.getLocalizedEnums();
+            Stream<Localized> _stream = _localizedEnums.stream();
+            final Predicate<Localized> _function_1 = (Localized it) -> {
+              String _name_1 = it.getName();
+              return _name_1.equals(_name);
+            };
+            Stream<Localized> _filter = _stream.filter(_function_1);
+            final Optional<Localized> optionalDuplicate = _filter.findFirst();
+            boolean _isPresent = optionalDuplicate.isPresent();
+            if (_isPresent) {
+              EList<Localized> _localizedEnums_1 = config.getLocalizedEnums();
+              Localized _get = optionalDuplicate.get();
+              _localizedEnums_1.remove(_get);
+            }
+          }
+        }
+      }
+    };
+    acceptor.accept(issue, "Remove", "Remove", "", _function);
   }
 }

@@ -3,7 +3,6 @@
  */
 package at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.impl;
 
-import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.DbType;
 import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.During;
 import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.JpaConfig;
 import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Locale;
@@ -102,8 +101,6 @@ public class ProjectGeneratorFactoryImpl extends EFactoryImpl implements Project
     {
       case ProjectGeneratorPackage.LOCALE:
         return createLocaleFromString(eDataType, initialValue);
-      case ProjectGeneratorPackage.DB_TYPE:
-        return createDbTypeFromString(eDataType, initialValue);
       case ProjectGeneratorPackage.BOOLEAN:
         return createBooleanFromString(eDataType, initialValue);
       case ProjectGeneratorPackage.DURING:
@@ -127,8 +124,6 @@ public class ProjectGeneratorFactoryImpl extends EFactoryImpl implements Project
     {
       case ProjectGeneratorPackage.LOCALE:
         return convertLocaleToString(eDataType, instanceValue);
-      case ProjectGeneratorPackage.DB_TYPE:
-        return convertDbTypeToString(eDataType, instanceValue);
       case ProjectGeneratorPackage.BOOLEAN:
         return convertBooleanToString(eDataType, instanceValue);
       case ProjectGeneratorPackage.DURING:
@@ -235,28 +230,6 @@ public class ProjectGeneratorFactoryImpl extends EFactoryImpl implements Project
    * @generated
    */
   public String convertLocaleToString(EDataType eDataType, Object instanceValue)
-  {
-    return instanceValue == null ? null : instanceValue.toString();
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public DbType createDbTypeFromString(EDataType eDataType, String initialValue)
-  {
-    DbType result = DbType.get(initialValue);
-    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-    return result;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public String convertDbTypeToString(EDataType eDataType, Object instanceValue)
   {
     return instanceValue == null ? null : instanceValue.toString();
   }

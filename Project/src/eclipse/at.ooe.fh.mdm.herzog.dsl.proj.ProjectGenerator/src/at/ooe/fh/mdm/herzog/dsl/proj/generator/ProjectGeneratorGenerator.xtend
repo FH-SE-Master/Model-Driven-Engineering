@@ -3,6 +3,9 @@
  */
 package at.ooe.fh.mdm.herzog.dsl.proj.generator
 
+import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Module
+import java.util.List
+import java.util.Map
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
@@ -15,11 +18,286 @@ import org.eclipse.xtext.generator.IGeneratorContext
  */
 class ProjectGeneratorGenerator extends AbstractGenerator {
 
+	static val PARENT_ARTIFACT = "parent";
+	static val PARENT_GROUP = "com.clevercure";
+
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
-//		fsa.generateFile('greetings.txt', 'People to greet: ' + 
-//			resource.allContents
-//				.filter(typeof(Greeting))
-//				.map[name]
-//				.join(', '))
+		for (e : resource.allContents.toIterable.filter(typeof(Module))) {
+			generateParentProjectModule(e, resource, fsa, context);
+			generateParentProjectModel(e, resource, fsa, context);
+			generateProjectMessage(e, resource, fsa, context);
+			generateProjectJpa(e, resource, fsa, context);
+			generateParentProjectService(e, resource, fsa, context);
+			generateProjectServiceApi(e, resource, fsa, context);
+			generateProjectServiceImpl(e, resource, fsa, context);
+		}
 	}
+
+	/**
+	 * Generate the parent project for the described module 
+	 */
+	def generateParentProjectModule(Module _module, Resource resource, IFileSystemAccess2 fsa,
+		IGeneratorContext context) {
+		val projectDir = _module.key.toLowerCase + "/";
+		fsa.generateFile(projectDir + "/pom.xml", _module.pomParentModule);
+	}
+
+	/**
+	 * Generate the message project
+	 */
+	def generateProjectMessage(Module _module, Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
+		val projectDir = _module.key.toLowerCase + "/message/";
+		fsa.generateFile(projectDir + "/pom.xml", _module.pomParentModule);
+		for (bundle : _module.messageBundles) {
+			val localeToKeyValueMap = newHashMap();
+			for (entry : bundle.values) {
+				for (value : entry.values) {
+					var keyToValueMap = localeToKeyValueMap.get(value.locale);
+					if (keyToValueMap == null) {
+						localeToKeyValueMap.put(value.locale, newHashMap());
+						keyToValueMap = localeToKeyValueMap.get(value.locale);
+					}
+					keyToValueMap.put(entry.localizedKey, value.value);
+				}
+			}
+			for (entry : localeToKeyValueMap.entrySet) {
+				fsa.generateFile(
+					projectDir + "/src/main/resources/META-INF/resource-bundles/" + bundle.name.toLowerCase + "_" +
+						entry.key.toString + ".properties", messageBundleProperties(entry.value));
+				fsa.generateFile(
+					projectDir + "/src/main/java/com/clevercure/" + _module.key + "/message/" + bundle.name + ".java",
+					messageBundleEnum((PARENT_GROUP + "." + _module.key.toLowerCase + ".message"), bundle.name,
+						newArrayList(entry.value.keySet)));
+			}
+		}
+	}
+
+	/**
+	 * Generate the parent project for the model projects
+	 */
+	def generateParentProjectModel(Module _module, Resource resource, IFileSystemAccess2 fsa,
+		IGeneratorContext context) {
+		val projectDir = _module.key.toLowerCase + "/model/";
+		fsa.generateFile(projectDir + "/pom.xml", _module.pomParentModel);
+	}
+
+	/**
+	 * Generate the jpa project
+	 */
+	def generateProjectJpa(Module _module, Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
+		val projectDir = _module.key.toLowerCase + "/model/jpa/";
+		fsa.generateFile(projectDir + "/pom.xml", _module.pomJpa);
+	}
+
+	/**
+	 * Generate the parent project for the service projects
+	 */
+	def generateParentProjectService(Module _module, Resource resource, IFileSystemAccess2 fsa,
+		IGeneratorContext context) {
+		val projectDir = _module.key.toLowerCase + "/service/";
+		fsa.generateFile(projectDir + "/pom.xml", _module.pomServiceParent);
+	}
+
+	/**
+	 * Generate the service api project
+	 */
+	def generateProjectServiceApi(Module _module, Resource resource, IFileSystemAccess2 fsa,
+		IGeneratorContext context) {
+		val projectDir = _module.key.toLowerCase + "/service/api/";
+		fsa.generateFile(projectDir + "/pom.xml", _module.pomServiceApi);
+	}
+
+	/**
+	 * Generate the service impl project
+	 */
+	def generateProjectServiceImpl(Module _module, Resource resource, IFileSystemAccess2 fsa,
+		IGeneratorContext context) {
+		val projectDir = _module.key.toLowerCase + "/service/impl/";
+		fsa.generateFile(projectDir + "/pom.xml", _module.pomServiceImpl);
+	}
+
+	def messageBundleProperties(Map<String, String> _keyTovalueMap) '''
+		«FOR entry : _keyTovalueMap.entrySet»
+			«entry.key»=«entry.value»
+		«ENDFOR»
+	'''
+
+	def messageBundleEnum(String packageName, String bundleName, List<String> _keys) '''
+		package «packageName».message;
+		  
+		public enum «bundleName» {
+			«_keys.join(',\n,')»;
+		}
+	'''
+
+	def pomParentModule(Module _module) '''
+		<?xml version="1.0" encoding="UTF-8"?>
+		<project xmlns="http://maven.apache.org/POM/4.0.0"
+		         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+		    <parent>
+		        <artifactId>«PARENT_ARTIFACT»</artifactId>
+		        <groupId>«PARENT_GROUP»</groupId>
+		        <version>0.0.1-SNAPSHOT</version>
+		    </parent>
+		    <modelVersion>4.0.0</modelVersion>
+		    <packaging>pom</packaging>
+		    <artifactId>module-«_module.key.toLowerCase»</artifactId>
+		    <name>module-«_module.key.toLowerCase»-message</name>
+		    <description>The parent project holding the module projects</description>
+		
+				
+				  <modules>
+				      <module>message</module>
+				      <module>model</module>
+				      <module>service</module>
+				  </modules>
+		</project>
+	'''
+
+	def pomMessage(Module _module) '''
+		<?xml version="1.0" encoding="UTF-8"?>
+		<project xmlns="http://maven.apache.org/POM/4.0.0"
+		         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+		    <parent>
+		        <artifactId>«PARENT_ARTIFACT»</artifactId>
+		        <groupId>«PARENT_GROUP»</groupId>
+		        <version>0.0.1-SNAPSHOT</version>
+		    </parent>
+		    <modelVersion>4.0.0</modelVersion>
+		    <packaging>pom</packaging>
+		    <artifactId>«_module.key.toLowerCase»-message</artifactId>
+		    <name>«_module.key.toLowerCase»-message</name>
+		    <description>The project holding the localizations</description>
+		    
+		</project>
+	'''
+
+	def pomParentModel(Module _module) '''
+		<?xml version="1.0" encoding="UTF-8"?>
+		<project xmlns="http://maven.apache.org/POM/4.0.0"
+		         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+		    <parent>
+		        <artifactId>«PARENT_ARTIFACT»</artifactId>
+		        <groupId>«PARENT_GROUP»</groupId>
+		        <version>0.0.1-SNAPSHOT</version>
+		    </parent>
+		    <modelVersion>4.0.0</modelVersion>
+		    <packaging>pom</packaging>
+		    <artifactId>module-«_module.key.toLowerCase»-model</artifactId>
+		    <name>«_module.key.toLowerCase»-model</name>
+		    <description>The main project for all model projects</description>
+		
+		    <modules>
+		        <module>jpa</module>
+		    </modules>
+		
+		</project>
+	'''
+
+	def pomJpa(Module _module) '''
+		<?xml version="1.0" encoding="UTF-8"?>
+		<project xmlns="http://maven.apache.org/POM/4.0.0"
+		         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+		    <parent>
+		        <artifactId>«PARENT_ARTIFACT»</artifactId>
+		        <groupId>«PARENT_GROUP»</groupId>
+		        <version>0.0.1-SNAPSHOT</version>
+		    </parent>
+		    <modelVersion>4.0.0</modelVersion>
+		    <packaging>pom</packaging>
+			<artifactId>«_module.key.toLowerCase»-model-jpa</artifactId>
+			<name>«_module.key.toLowerCase»-model-jpa</name>
+			<description>The jpa model project</description>
+						
+			<!-- Dependencies Other projects -->
+			  <dependency>
+			      <groupId>«PARENT_GROUP»</groupId>
+			      <artifactId>«_module.key.toLowerCase»-message</artifactId>
+			      <version>${project.version}</version>
+			  </dependency>
+		
+		</project>
+	'''
+
+	def pomServiceParent(Module _module) '''
+		<?xml version="1.0" encoding="UTF-8"?>
+		<project xmlns="http://maven.apache.org/POM/4.0.0"
+		         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+		    <parent>
+		        <artifactId>«PARENT_ARTIFACT»</artifactId>
+		        <groupId>«PARENT_GROUP»</groupId>
+		        <version>0.0.1-SNAPSHOT</version>
+		    </parent>
+		    <modelVersion>4.0.0</modelVersion>
+		    <packaging>pom</packaging>
+		
+		    <modules>
+		        <module>jpa</module>
+		    </modules>
+		
+		    <artifactId>module-«_module.key.toLowerCase»-service</artifactId>
+		    <name>«_module.key.toLowerCase»-service</name>
+		    <description>The parent project for all service projects</description>
+		
+		</project>
+	'''
+
+	def pomServiceApi(Module _module) '''
+		<?xml version="1.0" encoding="UTF-8"?>
+		<project xmlns="http://maven.apache.org/POM/4.0.0"
+		         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+		    <parent>
+		        <artifactId>«PARENT_ARTIFACT»</artifactId>
+		        <groupId>«PARENT_GROUP»</groupId>
+		        <version>0.0.1-SNAPSHOT</version>
+		    </parent>
+		    <modelVersion>4.0.0</modelVersion>
+		    <packaging>jar</packaging>				    
+		    <artifactId>«_module.key.toLowerCase»-service-api</artifactId>
+		    <name>«_module.key.toLowerCase»-service-api</name>
+		    <description>The api for the service logic operations</description>
+		
+		
+		       <!-- Dependencies Other projects -->
+		       <dependency>
+		           <groupId>«PARENT_GROUP»</groupId>
+		           <artifactId>«_module.key.toLowerCase»-model-jpa</artifactId>
+		           <version>${project.version}</version>
+		       </dependency>
+		      
+		</project>
+	'''
+
+	def pomServiceImpl(Module _module) '''
+		<?xml version="1.0" encoding="UTF-8"?>
+		<project xmlns="http://maven.apache.org/POM/4.0.0"
+		         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+		    <parent>
+		        <artifactId>«PARENT_ARTIFACT»</artifactId>
+		        <groupId>«PARENT_GROUP»</groupId>
+		        <version>0.0.1-SNAPSHOT</version>
+		    </parent>
+		    <modelVersion>4.0.0</modelVersion>
+		    <packaging>jar</packaging>				    
+		    <artifactId>«_module.key.toLowerCase»-service-impl</artifactId>
+		    <name>«_module.key.toLowerCase»-service-impl</name>
+		    <description>The implementation for the service logic operations</description>
+		
+				
+				    <!-- Dependencies Other projects -->
+				    <dependency>
+				        <groupId>«PARENT_GROUP»</groupId>
+				        <artifactId>«_module.key.toLowerCase»-service-api</artifactId>
+				        <version>${project.version}</version>
+				    </dependency>
+				    
+		</project>
+	'''
 }

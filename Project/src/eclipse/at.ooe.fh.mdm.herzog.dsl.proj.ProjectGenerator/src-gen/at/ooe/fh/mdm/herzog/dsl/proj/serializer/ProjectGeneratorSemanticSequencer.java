@@ -69,7 +69,7 @@ public class ProjectGeneratorSemanticSequencer extends AbstractDelegatingSemanti
 	 *     JpaConfig returns JpaConfig
 	 *
 	 * Constraint:
-	 *     localizedEnums+=[Localized|ID]+
+	 *     (localizedEnums+=[Localized|ID]+ observers+=Observer*)
 	 */
 	protected void sequence_JpaConfig(ISerializationContext context, JpaConfig semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -81,7 +81,7 @@ public class ProjectGeneratorSemanticSequencer extends AbstractDelegatingSemanti
 	 *     LocalizedEntry returns LocalizedEntry
 	 *
 	 * Constraint:
-	 *     (localizedKey=LocalizedKey values+=LocalizedValue+ args+=STRING*)
+	 *     (localizedKey=LOCALIZEDKEY values+=LocalizedValue+ args+=STRING*)
 	 */
 	protected void sequence_LocalizedEntry(ISerializationContext context, LocalizedEntry semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -93,18 +93,18 @@ public class ProjectGeneratorSemanticSequencer extends AbstractDelegatingSemanti
 	 *     LocalizedValue returns LocalizedValue
 	 *
 	 * Constraint:
-	 *     (locale=Locale values=STRING)
+	 *     (locale=Locale value=STRING)
 	 */
 	protected void sequence_LocalizedValue(ISerializationContext context, LocalizedValue semanticObject) {
 		if (errorAcceptor != null) {
 			if (transientValues.isValueTransient(semanticObject, ProjectGeneratorPackage.Literals.LOCALIZED_VALUE__LOCALE) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ProjectGeneratorPackage.Literals.LOCALIZED_VALUE__LOCALE));
-			if (transientValues.isValueTransient(semanticObject, ProjectGeneratorPackage.Literals.LOCALIZED_VALUE__VALUES) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ProjectGeneratorPackage.Literals.LOCALIZED_VALUE__VALUES));
+			if (transientValues.isValueTransient(semanticObject, ProjectGeneratorPackage.Literals.LOCALIZED_VALUE__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ProjectGeneratorPackage.Literals.LOCALIZED_VALUE__VALUE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getLocalizedValueAccess().getLocaleLocaleEnumRuleCall_2_0(), semanticObject.getLocale());
-		feeder.accept(grammarAccess.getLocalizedValueAccess().getValuesSTRINGTerminalRuleCall_5_0(), semanticObject.getValues());
+		feeder.accept(grammarAccess.getLocalizedValueAccess().getValueSTRINGTerminalRuleCall_5_0(), semanticObject.getValue());
 		feeder.finish();
 	}
 	
@@ -148,11 +148,11 @@ public class ProjectGeneratorSemanticSequencer extends AbstractDelegatingSemanti
 	 * Constraint:
 	 *     (
 	 *         name=ID 
-	 *         type=ClassName 
+	 *         type=CLASSNAME 
 	 *         during=During 
 	 *         notify=Notify 
-	 *         className=ClassName 
-	 *         qualifier=ClassName?
+	 *         className=CLASSNAME 
+	 *         qualifier=CLASSNAME?
 	 *     )
 	 */
 	protected void sequence_Observer(ISerializationContext context, Observer semanticObject) {
@@ -165,7 +165,7 @@ public class ProjectGeneratorSemanticSequencer extends AbstractDelegatingSemanti
 	 *     ServiceConfig returns ServiceConfig
 	 *
 	 * Constraint:
-	 *     ((observers+=Observer+ messageBundles+=[Localized|ID]+) | messageBundles+=[Localized|ID]+)?
+	 *     (observers+=Observer* messageBundles+=[Localized|ID]+)
 	 */
 	protected void sequence_ServiceConfig(ISerializationContext context, ServiceConfig semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

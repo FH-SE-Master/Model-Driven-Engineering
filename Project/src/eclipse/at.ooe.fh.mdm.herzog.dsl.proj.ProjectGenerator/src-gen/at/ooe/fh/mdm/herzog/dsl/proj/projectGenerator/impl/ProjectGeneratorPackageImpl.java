@@ -3,7 +3,6 @@
  */
 package at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.impl;
 
-import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.DbType;
 import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.During;
 import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.JpaConfig;
 import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Locale;
@@ -88,13 +87,6 @@ public class ProjectGeneratorPackageImpl extends EPackageImpl implements Project
    * @generated
    */
   private EEnum localeEEnum = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EEnum dbTypeEEnum = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -385,6 +377,16 @@ public class ProjectGeneratorPackageImpl extends EPackageImpl implements Project
    * <!-- end-user-doc -->
    * @generated
    */
+  public EReference getJpaConfig_Observers()
+  {
+    return (EReference)jpaConfigEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getLocalized()
   {
     return localizedEClass;
@@ -475,7 +477,7 @@ public class ProjectGeneratorPackageImpl extends EPackageImpl implements Project
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getLocalizedValue_Values()
+  public EAttribute getLocalizedValue_Value()
   {
     return (EAttribute)localizedValueEClass.getEStructuralFeatures().get(1);
   }
@@ -488,16 +490,6 @@ public class ProjectGeneratorPackageImpl extends EPackageImpl implements Project
   public EEnum getLocale()
   {
     return localeEEnum;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EEnum getDbType()
-  {
-    return dbTypeEEnum;
   }
 
   /**
@@ -583,6 +575,7 @@ public class ProjectGeneratorPackageImpl extends EPackageImpl implements Project
 
     jpaConfigEClass = createEClass(JPA_CONFIG);
     createEReference(jpaConfigEClass, JPA_CONFIG__LOCALIZED_ENUMS);
+    createEReference(jpaConfigEClass, JPA_CONFIG__OBSERVERS);
 
     localizedEClass = createEClass(LOCALIZED);
     createEAttribute(localizedEClass, LOCALIZED__NAME);
@@ -595,11 +588,10 @@ public class ProjectGeneratorPackageImpl extends EPackageImpl implements Project
 
     localizedValueEClass = createEClass(LOCALIZED_VALUE);
     createEAttribute(localizedValueEClass, LOCALIZED_VALUE__LOCALE);
-    createEAttribute(localizedValueEClass, LOCALIZED_VALUE__VALUES);
+    createEAttribute(localizedValueEClass, LOCALIZED_VALUE__VALUE);
 
     // Create enums
     localeEEnum = createEEnum(LOCALE);
-    dbTypeEEnum = createEEnum(DB_TYPE);
     booleanEEnum = createEEnum(BOOLEAN);
     duringEEnum = createEEnum(DURING);
     notifyEEnum = createEEnum(NOTIFY);
@@ -659,6 +651,7 @@ public class ProjectGeneratorPackageImpl extends EPackageImpl implements Project
 
     initEClass(jpaConfigEClass, JpaConfig.class, "JpaConfig", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getJpaConfig_LocalizedEnums(), this.getLocalized(), null, "localizedEnums", null, 0, -1, JpaConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getJpaConfig_Observers(), this.getObserver(), null, "observers", null, 0, -1, JpaConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(localizedEClass, Localized.class, "Localized", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getLocalized_Name(), ecorePackage.getEString(), "name", null, 0, 1, Localized.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -671,16 +664,12 @@ public class ProjectGeneratorPackageImpl extends EPackageImpl implements Project
 
     initEClass(localizedValueEClass, LocalizedValue.class, "LocalizedValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getLocalizedValue_Locale(), this.getLocale(), "locale", null, 0, 1, LocalizedValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getLocalizedValue_Values(), ecorePackage.getEString(), "values", null, 0, 1, LocalizedValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getLocalizedValue_Value(), ecorePackage.getEString(), "value", null, 0, 1, LocalizedValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Initialize enums and add enum literals
     initEEnum(localeEEnum, Locale.class, "Locale");
     addEEnumLiteral(localeEEnum, Locale.DE_DE);
     addEEnumLiteral(localeEEnum, Locale.EN_US);
-
-    initEEnum(dbTypeEEnum, DbType.class, "DbType");
-    addEEnumLiteral(dbTypeEEnum, DbType.VARCHAR);
-    addEEnumLiteral(dbTypeEEnum, DbType.CLOB);
 
     initEEnum(booleanEEnum, at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Boolean.class, "Boolean");
     addEEnumLiteral(booleanEEnum, at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Boolean.TRUE);

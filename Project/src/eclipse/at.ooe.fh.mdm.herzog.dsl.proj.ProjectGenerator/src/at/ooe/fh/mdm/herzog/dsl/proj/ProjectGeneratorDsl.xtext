@@ -15,47 +15,48 @@ Module:
 // Service configuration
 ServiceConfig: '{'
     ('observers' observers+=Observer+)?
-    ('messageBundles' '{' (messageBundles+=[Localized]+) '}' ';')?
+    ('messageBundles' '{' (messageBundles+=[Localized]+) '}' ';')
     '}';
 
 Observer:
     name=ID '{'
-    'type' type=ClassName';'
+    'type' type=CLASSNAME';'
     'during' during=During';'
     'notify' notify=Notify';'
-    'delegate' className=ClassName';'
-    ('qualifier' qualifier=ClassName';')?
-    '}';
+    'delegate' className=CLASSNAME';'
+    ('qualifier' qualifier=CLASSNAME';')?
+    '}'';';
 
 // Jpa configuration
 JpaConfig: '{'
     'localizedEnums' '{' (localizedEnums+=[Localized]+) '}'';'
+    ('observers' observers+=Observer+)?
     '}';
 
 // Common
 Localized:
     name=ID '{'
     ('values' '{' (values+=LocalizedEntry+) '}' ';')?
-    '}';
+    '}'';';
 
 LocalizedEntry: '{'
-    'key' localizedKey=LocalizedKey';'
+    'key' localizedKey=LOCALIZEDKEY';'
     'values' '{' (values+=LocalizedValue+) '}' ';'
     ('args' '{' (args+=STRING+) '}' ';')?
-    '}';
+    '}'';';
 
 LocalizedValue: '{'
     'locale' locale=Locale';'
-    'value' values=STRING';'
-    '}';
+    'value' value=STRING';'
+    '}'';';
 
 // Constants
 enum Locale: DE_DE='de_DE' | EN_US='en_US';
-enum DbType: VARCHAR='Varchar' | CLOB='Clob';
 enum Boolean: TRUE='true' | FALSE='false';
 enum During: IN_PROG='InProgress' | AFTER_COMPLETION='AfterCompleition';
 enum Notify: ALWAYS='Always' | EXISTS='Exists';
-terminal ClassName: ('a'..'f')+ (('0'..'9'|'A'..'Z'|'a'..'z')+ '.')+ ('A'..'Z')+ ('0'..'9'|'A'..'Z'|'a'..'z')+;
-terminal MethodName: ('a'..'f')+ ('0'..'9'|'A'..'Z'|'a'..'z')+;
-terminal LocalizedKey: ('A'..'Z' | '0'..'9')+ ('_' ('A'..'Z' | '0'..'9'))*;
-
+terminal fragment UAZ: 'A'..'Z';  
+terminal fragment LAZ: 'a'..'z';
+terminal fragment UAZN: 'A'..'Z'|'0'..'9';  
+terminal CLASSNAME: (LAZ+ '.')+ (UAZ LAZ*)+;
+terminal LOCALIZEDKEY: UAZN+ ('_' UAZN)*;

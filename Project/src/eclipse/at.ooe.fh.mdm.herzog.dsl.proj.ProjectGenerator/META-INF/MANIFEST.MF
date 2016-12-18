@@ -25,5 +25,6 @@ Export-Package: at.ooe.fh.mdm.herzog.dsl.proj.generator,
  at.ooe.fh.mdm.herzog.dsl.proj.parser.antlr.internal,
  at.ooe.fh.mdm.herzog.dsl.proj,
  at.ooe.fh.mdm.herzog.dsl.proj.validation,
- at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.impl
+ at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.impl,
+ at.ooe.fh.mdm.herzog.dsl.proj.formatting2
 Import-Package: org.apache.log4j

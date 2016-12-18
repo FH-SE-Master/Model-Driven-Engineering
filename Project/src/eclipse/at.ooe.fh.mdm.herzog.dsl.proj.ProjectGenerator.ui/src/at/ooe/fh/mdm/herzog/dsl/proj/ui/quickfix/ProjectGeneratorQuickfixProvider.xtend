@@ -3,25 +3,233 @@
  */
 package at.ooe.fh.mdm.herzog.dsl.proj.ui.quickfix
 
+import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Boolean
+import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.During
+import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.JpaConfig
+import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Locale
+import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Localized
+import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Module
+import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Notify
+import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Observer
+import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.ProjectGeneratorFactory
+import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.ServiceConfig
 import at.ooe.fh.mdm.herzog.dsl.proj.validation.ProjectGeneratorValidator.ValidatorId
+import java.util.Objects
+import java.util.stream.Collectors
 import org.eclipse.xtext.ui.editor.quickfix.DefaultQuickfixProvider
 import org.eclipse.xtext.ui.editor.quickfix.Fix
 import org.eclipse.xtext.ui.editor.quickfix.IssueResolutionAcceptor
 import org.eclipse.xtext.validation.Issue
-import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Module
 
 /**
- * Custom quickfixes.
+ * Custom quickfixes.	
  * 
  * See https://www.eclipse.org/Xtext/documentation/310_eclipse_support.html#quick-fixes
  */
 class ProjectGeneratorQuickfixProvider extends DefaultQuickfixProvider {
-	
+
+	/**
+	 * Generates a default structure. 
+	 */
+	@Fix(ValidatorId.MODULE_EMPTY)
+	def fixModuleInitGeneration(Issue issue, IssueResolutionAcceptor acceptor) {
+		acceptor.accept(issue, 'Initialize default', 'Initialize default', '') [ element, context |
+			val module = (element as Module);
+			module.key = module.name.toUpperCase;
+			module.cdiEnabled = Boolean.TRUE;
+
+			// Default jpa Localized
+			val localizedJpa = ProjectGeneratorFactory.eINSTANCE.createLocalized;
+			localizedJpa.name = "JpaConstantBundle";
+			val localizedJpaEntry = ProjectGeneratorFactory.eINSTANCE.createLocalizedEntry;
+			localizedJpaEntry.localizedKey = "KEY_1";
+			val localizedJpaValue = ProjectGeneratorFactory.eINSTANCE.createLocalizedValue;
+			localizedJpaValue.locale = Locale.EN_US;
+			localizedJpaValue.value = "EN_KEY_1";
+
+			localizedJpaEntry.values.add(localizedJpaValue);
+			localizedJpa.values.add(localizedJpaEntry);
+
+			// Default service Localized
+			val localizedError = ProjectGeneratorFactory.eINSTANCE.createLocalized;
+			localizedError.name = "ErrorMessagebundle";
+			val localizedErrorEntry = ProjectGeneratorFactory.eINSTANCE.createLocalizedEntry;
+			localizedErrorEntry.localizedKey = "ERROR_1";
+			val localizedErrorValue = ProjectGeneratorFactory.eINSTANCE.createLocalizedValue;
+			localizedErrorValue.locale = Locale.EN_US;
+			localizedErrorValue.value = "EN_ERROR_1";
+
+			localizedErrorEntry.values.add(localizedErrorValue);
+			localizedError.values.add(localizedErrorEntry);
+  
+			// Default Observer
+			val observer = ProjectGeneratorFactory.eINSTANCE.createObserver;
+			observer.name = "YourObserverName";
+			observer.type = "com.clevercure.common.event.StartedEvent";
+			observer.during = During.IN_PROG;
+			observer.notify = Notify.ALWAYS;
+			observer.className = "com.clevercure." + module.key.toLowerCase + ".event.observer.YourObserverClass";
+
+			// Default jpaConfig
+			val jpaConfig = ProjectGeneratorFactory.eINSTANCE.createJpaConfig;
+			jpaConfig.localizedEnums.add(localizedJpa);
+
+			// Default serviceConfig
+			val serviceConfig = ProjectGeneratorFactory.eINSTANCE.createServiceConfig;
+			serviceConfig.messageBundles.add(localizedError);
+
+			module.messageBundles.add(localizedJpa);
+			module.messageBundles.add(localizedError);
+			module.observers.add(observer);
+			module.jpaConfig = jpaConfig;
+			module.serviceConfig = serviceConfig;
+		]
+	}
+
+	/**
+	 * Module: Make Module.key upper case 
+	 */
 	@Fix(ValidatorId.MODULE_KEY_UPPER_CASE)
 	def fixModuleKey(Issue issue, IssueResolutionAcceptor acceptor) {
-		acceptor.accept(issue, 'Convert to upper case', 'Convert to upper case', 'upcase.png') [ element, context |
-			val module = (element as  Module);
+		acceptor.accept(issue, 'Convert to upper case', 'Convert to upper case', '') [ element, context |
+			val module = (element as Module);
 			module.key = module.key.toUpperCase;
+		]
+	}
+
+	/**
+	 * Localized: Remove or rename duplicate Localized matched by their name.
+	 */
+	@Fix(ValidatorId.LOCALIZED_NAME_DUPLICATE)
+	def fixDuplicateLocalizedName(Issue issue, IssueResolutionAcceptor acceptor) {
+		// Remove entry
+		acceptor.accept(issue, 'Remove', 'Remove', '') [ element, context |
+			val localized = (element as Localized);
+			Objects.requireNonNull(localized, "Element should be Localized instance");
+			val module = (localized.eContainer as Module);
+			Objects.requireNonNull(module, "eContainer of Localized should be Module instance");
+
+			module.messageBundles.remove(localized);
+		]
+		// Rename entry
+		acceptor.accept(issue, 'Rename', 'Rename', '') [ element, context |
+			val localized = (element as Localized);
+			Objects.requireNonNull(localized, "Element should be Localized instance");
+			val module = (localized.eContainer as Module);
+			Objects.requireNonNull(module, "eContainer of Localized should be Module instance");
+
+			val duplicates = module.messageBundles.stream.filter[name.equals(localized.name)].collect(
+				Collectors.toList);
+			for (var i = 1; i <= duplicates.size; i++) {
+				val loc = duplicates.get(i);
+				loc.name = loc.name + i;
+			}
+		]
+	}
+
+	/**
+	 * Localized: Remove or rename duplicate LocalizedEntry instances of the given Localized instance. 
+	 */
+	@Fix(ValidatorId.LOCALIZED_ENTRY_DUPLICATE)
+	def fixLocalizedEntryDuplicates(Issue issue, IssueResolutionAcceptor acceptor) {
+		// Remove entry
+		acceptor.accept(issue, 'Remove', 'Remove', '') [ element, context |
+			val localized = (element as Localized);
+			Objects.requireNonNull(localized, "Element should be Localized instance");
+
+			if ((issue.data != null) && (issue.data.length > 0)) {
+				for (_key : issue.data) {
+					val optionalDuplicate = localized.values.stream.filter[localizedKey.equals(_key)].findFirst;
+					if (optionalDuplicate.isPresent) {
+						localized.values.remove(optionalDuplicate.get);
+					}
+				}
+			}
+		]
+		// Rename entry
+		acceptor.accept(issue, 'Rename', 'Rename', '') [ element, context |
+			val localized = (element as Localized);
+			Objects.requireNonNull(localized, "Element should be Observer instance");
+
+			if ((issue.data != null) && (issue.data.length > 0)) {
+				for (_key : issue.data) {
+					val optionalDuplicate = localized.values.stream.filter[localizedKey.equals(_key)].findFirst;
+					if (optionalDuplicate.isPresent) {
+						optionalDuplicate.get.localizedKey = optionalDuplicate.get.localizedKey + "_1";
+					}
+				}
+			}
+		]
+	}
+
+	/**
+	 * Observer: Remove or rename duplicate Observer matched by their name. 
+	 */
+	@Fix(ValidatorId.OBSERVER_NAME_DUPLICATE)
+	def fixDuplicateObserverName(Issue issue, IssueResolutionAcceptor acceptor) {
+		// Remove entry
+		acceptor.accept(issue, 'Remove', 'Remove', '') [ element, context |
+			val bserver = (element as Observer);
+			Objects.requireNonNull(bserver, "Element should be Observer instance");
+			val module = (bserver.eContainer as Module);
+			Objects.requireNonNull(module, "eContainer of Observer should be Module instance");
+
+			module.observers.remove(bserver);
+		]
+		// Rename entry
+		acceptor.accept(issue, 'Rename', 'Rename', '') [ element, context |
+			val observer = (element as Observer);
+			Objects.requireNonNull(observer, "Element should be Observer instance");
+			val module = (observer.eContainer as Module);
+			Objects.requireNonNull(module, "eContainer of Observer should be Module instance");
+
+			val duplicates = module.observers.stream.filter[name.equals(observer.name)].collect(Collectors.toList);
+			for (var i = 1; i <= duplicates.size; i++) {
+				val obs = duplicates.get((i - 1));
+				obs.setName(obs.getName() + i);
+			}
+		]
+	}
+
+	/**
+	 * ServiceConfig: Remove duplicate mapped message bundle matched by their name 
+	 */
+	@Fix(ValidatorId.SERVICE_CONFIG_MESSAGE_BUNDLE_DUPLICATE)
+	def fixServiceConfigDuplicateMessageBundles(Issue issue, IssueResolutionAcceptor acceptor) {
+		// Remove entry
+		acceptor.accept(issue, 'Remove', 'Remove', '') [ element, context |
+			val config = (element as ServiceConfig);
+			Objects.requireNonNull(config, "Element should be ServiceConfig instance");
+
+			if ((issue.data != null) && (issue.data.length > 0)) {
+				for (_name : issue.data) {
+					val optionalDuplicate = config.messageBundles.stream.filter[name.equals(_name)].findFirst;
+					if (optionalDuplicate.isPresent) {
+						config.messageBundles.remove(optionalDuplicate.get);
+					}
+				}
+			}
+		]
+	}
+
+	/**
+	 * JpaConfig: Remove duplicate mapped message bundles mapped by their name.
+	 */
+	@Fix(ValidatorId.JPA_LOCALIZED_ENUMS_DUPLICATE)
+	def fixJpaConfigDuplicateMessageBundles(Issue issue, IssueResolutionAcceptor acceptor) {
+		// Remove entry
+		acceptor.accept(issue, 'Remove', 'Remove', '') [ element, context |
+			val config = (element as JpaConfig);
+			Objects.requireNonNull(config, "Element should be JpaConfig instance");
+
+			if ((issue.data != null) && (issue.data.length > 0)) {
+				for (_name : issue.data) {
+					val optionalDuplicate = config.localizedEnums.stream.filter[name.equals(_name)].findFirst;
+					if (optionalDuplicate.isPresent) {
+						config.localizedEnums.remove(optionalDuplicate.get);
+					}
+				}
+			}
 		]
 	}
 }

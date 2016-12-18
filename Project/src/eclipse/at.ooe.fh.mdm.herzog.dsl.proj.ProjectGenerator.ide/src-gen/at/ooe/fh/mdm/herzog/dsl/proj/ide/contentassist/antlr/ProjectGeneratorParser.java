@@ -36,7 +36,6 @@ public class ProjectGeneratorParser extends AbstractContentAssistParser {
 				private static final long serialVersionUID = 1L;
 				{
 					put(grammarAccess.getLocaleAccess().getAlternatives(), "rule__Locale__Alternatives");
-					put(grammarAccess.getDbTypeAccess().getAlternatives(), "rule__DbType__Alternatives");
 					put(grammarAccess.getBooleanAccess().getAlternatives(), "rule__Boolean__Alternatives");
 					put(grammarAccess.getDuringAccess().getAlternatives(), "rule__During__Alternatives");
 					put(grammarAccess.getNotifyAccess().getAlternatives(), "rule__Notify__Alternatives");
@@ -49,6 +48,7 @@ public class ProjectGeneratorParser extends AbstractContentAssistParser {
 					put(grammarAccess.getObserverAccess().getGroup(), "rule__Observer__Group__0");
 					put(grammarAccess.getObserverAccess().getGroup_14(), "rule__Observer__Group_14__0");
 					put(grammarAccess.getJpaConfigAccess().getGroup(), "rule__JpaConfig__Group__0");
+					put(grammarAccess.getJpaConfigAccess().getGroup_6(), "rule__JpaConfig__Group_6__0");
 					put(grammarAccess.getLocalizedAccess().getGroup(), "rule__Localized__Group__0");
 					put(grammarAccess.getLocalizedAccess().getGroup_2(), "rule__Localized__Group_2__0");
 					put(grammarAccess.getLocalizedEntryAccess().getGroup(), "rule__LocalizedEntry__Group__0");
@@ -70,13 +70,14 @@ public class ProjectGeneratorParser extends AbstractContentAssistParser {
 					put(grammarAccess.getObserverAccess().getClassNameAssignment_12(), "rule__Observer__ClassNameAssignment_12");
 					put(grammarAccess.getObserverAccess().getQualifierAssignment_14_1(), "rule__Observer__QualifierAssignment_14_1");
 					put(grammarAccess.getJpaConfigAccess().getLocalizedEnumsAssignment_3(), "rule__JpaConfig__LocalizedEnumsAssignment_3");
+					put(grammarAccess.getJpaConfigAccess().getObserversAssignment_6_1(), "rule__JpaConfig__ObserversAssignment_6_1");
 					put(grammarAccess.getLocalizedAccess().getNameAssignment_0(), "rule__Localized__NameAssignment_0");
 					put(grammarAccess.getLocalizedAccess().getValuesAssignment_2_2(), "rule__Localized__ValuesAssignment_2_2");
 					put(grammarAccess.getLocalizedEntryAccess().getLocalizedKeyAssignment_2(), "rule__LocalizedEntry__LocalizedKeyAssignment_2");
 					put(grammarAccess.getLocalizedEntryAccess().getValuesAssignment_6(), "rule__LocalizedEntry__ValuesAssignment_6");
 					put(grammarAccess.getLocalizedEntryAccess().getArgsAssignment_9_2(), "rule__LocalizedEntry__ArgsAssignment_9_2");
 					put(grammarAccess.getLocalizedValueAccess().getLocaleAssignment_2(), "rule__LocalizedValue__LocaleAssignment_2");
-					put(grammarAccess.getLocalizedValueAccess().getValuesAssignment_5(), "rule__LocalizedValue__ValuesAssignment_5");
+					put(grammarAccess.getLocalizedValueAccess().getValueAssignment_5(), "rule__LocalizedValue__ValueAssignment_5");
 				}
 			};
 		}

@@ -366,7 +366,7 @@ ruleServiceConfig returns [EObject current=null]
 			{
 				newLeafNode(otherlv_7, grammarAccess.getServiceConfigAccess().getSemicolonKeyword_2_4());
 			}
-		)?
+		)
 		otherlv_8='}'
 		{
 			newLeafNode(otherlv_8, grammarAccess.getServiceConfigAccess().getRightCurlyBracketKeyword_3());
@@ -420,7 +420,7 @@ ruleObserver returns [EObject current=null]
 			(
 				lv_type_3_0=RULE_CLASSNAME
 				{
-					newLeafNode(lv_type_3_0, grammarAccess.getObserverAccess().getTypeClassNameTerminalRuleCall_3_0());
+					newLeafNode(lv_type_3_0, grammarAccess.getObserverAccess().getTypeCLASSNAMETerminalRuleCall_3_0());
 				}
 				{
 					if ($current==null) {
@@ -430,7 +430,7 @@ ruleObserver returns [EObject current=null]
 						$current,
 						"type",
 						lv_type_3_0,
-						"at.ooe.fh.mdm.herzog.dsl.proj.ProjectGenerator.ClassName");
+						"at.ooe.fh.mdm.herzog.dsl.proj.ProjectGenerator.CLASSNAME");
 				}
 			)
 		)
@@ -500,7 +500,7 @@ ruleObserver returns [EObject current=null]
 			(
 				lv_className_12_0=RULE_CLASSNAME
 				{
-					newLeafNode(lv_className_12_0, grammarAccess.getObserverAccess().getClassNameClassNameTerminalRuleCall_12_0());
+					newLeafNode(lv_className_12_0, grammarAccess.getObserverAccess().getClassNameCLASSNAMETerminalRuleCall_12_0());
 				}
 				{
 					if ($current==null) {
@@ -510,7 +510,7 @@ ruleObserver returns [EObject current=null]
 						$current,
 						"className",
 						lv_className_12_0,
-						"at.ooe.fh.mdm.herzog.dsl.proj.ProjectGenerator.ClassName");
+						"at.ooe.fh.mdm.herzog.dsl.proj.ProjectGenerator.CLASSNAME");
 				}
 			)
 		)
@@ -527,7 +527,7 @@ ruleObserver returns [EObject current=null]
 				(
 					lv_qualifier_15_0=RULE_CLASSNAME
 					{
-						newLeafNode(lv_qualifier_15_0, grammarAccess.getObserverAccess().getQualifierClassNameTerminalRuleCall_14_1_0());
+						newLeafNode(lv_qualifier_15_0, grammarAccess.getObserverAccess().getQualifierCLASSNAMETerminalRuleCall_14_1_0());
 					}
 					{
 						if ($current==null) {
@@ -537,7 +537,7 @@ ruleObserver returns [EObject current=null]
 							$current,
 							"qualifier",
 							lv_qualifier_15_0,
-							"at.ooe.fh.mdm.herzog.dsl.proj.ProjectGenerator.ClassName");
+							"at.ooe.fh.mdm.herzog.dsl.proj.ProjectGenerator.CLASSNAME");
 					}
 				)
 			)
@@ -549,6 +549,10 @@ ruleObserver returns [EObject current=null]
 		otherlv_17='}'
 		{
 			newLeafNode(otherlv_17, grammarAccess.getObserverAccess().getRightCurlyBracketKeyword_15());
+		}
+		otherlv_18=';'
+		{
+			newLeafNode(otherlv_18, grammarAccess.getObserverAccess().getSemicolonKeyword_16());
 		}
 	)
 ;
@@ -602,9 +606,34 @@ ruleJpaConfig returns [EObject current=null]
 		{
 			newLeafNode(otherlv_5, grammarAccess.getJpaConfigAccess().getSemicolonKeyword_5());
 		}
-		otherlv_6='}'
+		(
+			otherlv_6='observers'
+			{
+				newLeafNode(otherlv_6, grammarAccess.getJpaConfigAccess().getObserversKeyword_6_0());
+			}
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getJpaConfigAccess().getObserversObserverParserRuleCall_6_1_0());
+					}
+					lv_observers_7_0=ruleObserver
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getJpaConfigRule());
+						}
+						add(
+							$current,
+							"observers",
+							lv_observers_7_0,
+							"at.ooe.fh.mdm.herzog.dsl.proj.ProjectGenerator.Observer");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)+
+		)?
+		otherlv_8='}'
 		{
-			newLeafNode(otherlv_6, grammarAccess.getJpaConfigAccess().getRightCurlyBracketKeyword_6());
+			newLeafNode(otherlv_8, grammarAccess.getJpaConfigAccess().getRightCurlyBracketKeyword_7());
 		}
 	)
 ;
@@ -688,6 +717,10 @@ ruleLocalized returns [EObject current=null]
 		{
 			newLeafNode(otherlv_7, grammarAccess.getLocalizedAccess().getRightCurlyBracketKeyword_3());
 		}
+		otherlv_8=';'
+		{
+			newLeafNode(otherlv_8, grammarAccess.getLocalizedAccess().getSemicolonKeyword_4());
+		}
 	)
 ;
 
@@ -719,7 +752,7 @@ ruleLocalizedEntry returns [EObject current=null]
 			(
 				lv_localizedKey_2_0=RULE_LOCALIZEDKEY
 				{
-					newLeafNode(lv_localizedKey_2_0, grammarAccess.getLocalizedEntryAccess().getLocalizedKeyLocalizedKeyTerminalRuleCall_2_0());
+					newLeafNode(lv_localizedKey_2_0, grammarAccess.getLocalizedEntryAccess().getLocalizedKeyLOCALIZEDKEYTerminalRuleCall_2_0());
 				}
 				{
 					if ($current==null) {
@@ -729,7 +762,7 @@ ruleLocalizedEntry returns [EObject current=null]
 						$current,
 						"localizedKey",
 						lv_localizedKey_2_0,
-						"at.ooe.fh.mdm.herzog.dsl.proj.ProjectGenerator.LocalizedKey");
+						"at.ooe.fh.mdm.herzog.dsl.proj.ProjectGenerator.LOCALIZEDKEY");
 				}
 			)
 		)
@@ -812,6 +845,10 @@ ruleLocalizedEntry returns [EObject current=null]
 		{
 			newLeafNode(otherlv_14, grammarAccess.getLocalizedEntryAccess().getRightCurlyBracketKeyword_10());
 		}
+		otherlv_15=';'
+		{
+			newLeafNode(otherlv_15, grammarAccess.getLocalizedEntryAccess().getSemicolonKeyword_11());
+		}
 	)
 ;
 
@@ -868,9 +905,9 @@ ruleLocalizedValue returns [EObject current=null]
 		}
 		(
 			(
-				lv_values_5_0=RULE_STRING
+				lv_value_5_0=RULE_STRING
 				{
-					newLeafNode(lv_values_5_0, grammarAccess.getLocalizedValueAccess().getValuesSTRINGTerminalRuleCall_5_0());
+					newLeafNode(lv_value_5_0, grammarAccess.getLocalizedValueAccess().getValueSTRINGTerminalRuleCall_5_0());
 				}
 				{
 					if ($current==null) {
@@ -878,8 +915,8 @@ ruleLocalizedValue returns [EObject current=null]
 					}
 					setWithLastConsumed(
 						$current,
-						"values",
-						lv_values_5_0,
+						"value",
+						lv_value_5_0,
 						"org.eclipse.xtext.common.Terminals.STRING");
 				}
 			)
@@ -891,6 +928,10 @@ ruleLocalizedValue returns [EObject current=null]
 		otherlv_7='}'
 		{
 			newLeafNode(otherlv_7, grammarAccess.getLocalizedValueAccess().getRightCurlyBracketKeyword_7());
+		}
+		otherlv_8=';'
+		{
+			newLeafNode(otherlv_8, grammarAccess.getLocalizedValueAccess().getSemicolonKeyword_8());
 		}
 	)
 ;
@@ -1003,11 +1044,15 @@ ruleNotify returns [Enumerator current=null]
 	)
 ;
 
-RULE_CLASSNAME : ('a'..'f')+ (('0'..'9'|'A'..'Z'|'a'..'z')+ '.')+ ('A'..'Z')+ ('0'..'9'|'A'..'Z'|'a'..'z')+;
+fragment RULE_UAZ : 'A'..'Z';
 
-RULE_METHODNAME : ('a'..'f')+ ('0'..'9'|'A'..'Z'|'a'..'z')+;
+fragment RULE_LAZ : 'a'..'z';
 
-RULE_LOCALIZEDKEY : ('A'..'Z'|'0'..'9')+ ('_' ('A'..'Z'|'0'..'9'))*;
+fragment RULE_UAZN : ('A'..'Z'|'0'..'9');
+
+RULE_CLASSNAME : (RULE_LAZ+ '.')+ (RULE_UAZ RULE_LAZ*)+;
+
+RULE_LOCALIZEDKEY : RULE_UAZN+ ('_' RULE_UAZN)*;
 
 RULE_ID : '^'? ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
 

@@ -15,7 +15,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.LocalizedValue#getLocale <em>Locale</em>}</li>
- *   <li>{@link at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.LocalizedValue#getValues <em>Values</em>}</li>
+ *   <li>{@link at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.LocalizedValue#getValue <em>Value</em>}</li>
  * </ul>
  *
  * @see at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.ProjectGeneratorPackage#getLocalizedValue()
@@ -54,29 +54,29 @@ public interface LocalizedValue extends EObject
   void setLocale(Locale value);
 
   /**
-   * Returns the value of the '<em><b>Values</b></em>' attribute.
+   * Returns the value of the '<em><b>Value</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Values</em>' attribute isn't clear,
+   * If the meaning of the '<em>Value</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Values</em>' attribute.
-   * @see #setValues(String)
-   * @see at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.ProjectGeneratorPackage#getLocalizedValue_Values()
+   * @return the value of the '<em>Value</em>' attribute.
+   * @see #setValue(String)
+   * @see at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.ProjectGeneratorPackage#getLocalizedValue_Value()
    * @model
    * @generated
    */
-  String getValues();
+  String getValue();
 
   /**
-   * Sets the value of the '{@link at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.LocalizedValue#getValues <em>Values</em>}' attribute.
+   * Sets the value of the '{@link at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.LocalizedValue#getValue <em>Value</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Values</em>' attribute.
-   * @see #getValues()
+   * @param value the new value of the '<em>Value</em>' attribute.
+   * @see #getValue()
    * @generated
    */
-  void setValues(String value);
+  void setValue(String value);
 
 } // LocalizedValue

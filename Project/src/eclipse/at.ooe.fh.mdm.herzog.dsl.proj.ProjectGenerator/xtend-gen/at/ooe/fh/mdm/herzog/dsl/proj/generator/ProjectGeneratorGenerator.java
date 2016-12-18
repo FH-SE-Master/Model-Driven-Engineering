@@ -3,10 +3,30 @@
  */
 package at.ooe.fh.mdm.herzog.dsl.proj.generator;
 
+import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Locale;
+import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Localized;
+import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.LocalizedEntry;
+import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.LocalizedValue;
+import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Module;
+import com.google.common.base.Objects;
+import com.google.common.collect.Iterables;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.TreeIterator;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.generator.AbstractGenerator;
 import org.eclipse.xtext.generator.IFileSystemAccess2;
 import org.eclipse.xtext.generator.IGeneratorContext;
+import org.eclipse.xtext.xbase.lib.CollectionLiterals;
+import org.eclipse.xtext.xbase.lib.Conversions;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 
 /**
  * Generates code from your model files on save.
@@ -15,7 +35,740 @@ import org.eclipse.xtext.generator.IGeneratorContext;
  */
 @SuppressWarnings("all")
 public class ProjectGeneratorGenerator extends AbstractGenerator {
+  private final static String PARENT_ARTIFACT = "parent";
+  
+  private final static String PARENT_GROUP = "com.clevercure";
+  
   @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
+    TreeIterator<EObject> _allContents = resource.getAllContents();
+    Iterable<EObject> _iterable = IteratorExtensions.<EObject>toIterable(_allContents);
+    Iterable<Module> _filter = Iterables.<Module>filter(_iterable, Module.class);
+    for (final Module e : _filter) {
+      {
+        this.generateParentProjectModule(e, resource, fsa, context);
+        this.generateParentProjectModel(e, resource, fsa, context);
+        this.generateProjectMessage(e, resource, fsa, context);
+        this.generateProjectJpa(e, resource, fsa, context);
+        this.generateParentProjectService(e, resource, fsa, context);
+        this.generateProjectServiceApi(e, resource, fsa, context);
+        this.generateProjectServiceImpl(e, resource, fsa, context);
+      }
+    }
+  }
+  
+  /**
+   * Generate the parent project for the described module
+   */
+  public void generateParentProjectModule(final Module _module, final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
+    String _key = _module.getKey();
+    String _lowerCase = _key.toLowerCase();
+    final String projectDir = (_lowerCase + "/");
+    CharSequence _pomParentModule = this.pomParentModule(_module);
+    fsa.generateFile((projectDir + "/pom.xml"), _pomParentModule);
+  }
+  
+  /**
+   * Generate the message project
+   */
+  public void generateProjectMessage(final Module _module, final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
+    String _key = _module.getKey();
+    String _lowerCase = _key.toLowerCase();
+    final String projectDir = (_lowerCase + "/message/");
+    CharSequence _pomParentModule = this.pomParentModule(_module);
+    fsa.generateFile((projectDir + "/pom.xml"), _pomParentModule);
+    EList<Localized> _messageBundles = _module.getMessageBundles();
+    for (final Localized bundle : _messageBundles) {
+      {
+        final HashMap<Locale, HashMap<String, String>> localeToKeyValueMap = CollectionLiterals.<Locale, HashMap<String, String>>newHashMap();
+        EList<LocalizedEntry> _values = bundle.getValues();
+        for (final LocalizedEntry entry : _values) {
+          EList<LocalizedValue> _values_1 = entry.getValues();
+          for (final LocalizedValue value : _values_1) {
+            {
+              Locale _locale = value.getLocale();
+              HashMap<String, String> keyToValueMap = localeToKeyValueMap.get(_locale);
+              boolean _equals = Objects.equal(keyToValueMap, null);
+              if (_equals) {
+                Locale _locale_1 = value.getLocale();
+                HashMap<String, String> _newHashMap = CollectionLiterals.<String, String>newHashMap();
+                localeToKeyValueMap.put(_locale_1, _newHashMap);
+                Locale _locale_2 = value.getLocale();
+                HashMap<String, String> _get = localeToKeyValueMap.get(_locale_2);
+                keyToValueMap = _get;
+              }
+              String _localizedKey = entry.getLocalizedKey();
+              String _value = value.getValue();
+              keyToValueMap.put(_localizedKey, _value);
+            }
+          }
+        }
+        Set<Map.Entry<Locale, HashMap<String, String>>> _entrySet = localeToKeyValueMap.entrySet();
+        for (final Map.Entry<Locale, HashMap<String, String>> entry_1 : _entrySet) {
+          {
+            String _name = bundle.getName();
+            String _lowerCase_1 = _name.toLowerCase();
+            String _plus = ((projectDir + "/src/main/resources/META-INF/resource-bundles/") + _lowerCase_1);
+            String _plus_1 = (_plus + "_");
+            Locale _key_1 = entry_1.getKey();
+            String _string = _key_1.toString();
+            String _plus_2 = (_plus_1 + _string);
+            String _plus_3 = (_plus_2 + ".properties");
+            HashMap<String, String> _value = entry_1.getValue();
+            CharSequence _messageBundleProperties = this.messageBundleProperties(_value);
+            fsa.generateFile(_plus_3, _messageBundleProperties);
+            String _key_2 = _module.getKey();
+            String _plus_4 = ((projectDir + "/src/main/java/com/clevercure/") + _key_2);
+            String _plus_5 = (_plus_4 + "/message/");
+            String _name_1 = bundle.getName();
+            String _plus_6 = (_plus_5 + _name_1);
+            String _plus_7 = (_plus_6 + ".java");
+            String _key_3 = _module.getKey();
+            String _lowerCase_2 = _key_3.toLowerCase();
+            String _plus_8 = ((ProjectGeneratorGenerator.PARENT_GROUP + ".") + _lowerCase_2);
+            String _plus_9 = (_plus_8 + ".message");
+            String _name_2 = bundle.getName();
+            HashMap<String, String> _value_1 = entry_1.getValue();
+            Set<String> _keySet = _value_1.keySet();
+            ArrayList<String> _newArrayList = CollectionLiterals.<String>newArrayList(((String[])Conversions.unwrapArray(_keySet, String.class)));
+            CharSequence _messageBundleEnum = this.messageBundleEnum(_plus_9, _name_2, _newArrayList);
+            fsa.generateFile(_plus_7, _messageBundleEnum);
+          }
+        }
+      }
+    }
+  }
+  
+  /**
+   * Generate the parent project for the model projects
+   */
+  public void generateParentProjectModel(final Module _module, final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
+    String _key = _module.getKey();
+    String _lowerCase = _key.toLowerCase();
+    final String projectDir = (_lowerCase + "/model/");
+    CharSequence _pomParentModel = this.pomParentModel(_module);
+    fsa.generateFile((projectDir + "/pom.xml"), _pomParentModel);
+  }
+  
+  /**
+   * Generate the jpa project
+   */
+  public void generateProjectJpa(final Module _module, final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
+    String _key = _module.getKey();
+    String _lowerCase = _key.toLowerCase();
+    final String projectDir = (_lowerCase + "/model/jpa/");
+    CharSequence _pomJpa = this.pomJpa(_module);
+    fsa.generateFile((projectDir + "/pom.xml"), _pomJpa);
+  }
+  
+  /**
+   * Generate the parent project for the service projects
+   */
+  public void generateParentProjectService(final Module _module, final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
+    String _key = _module.getKey();
+    String _lowerCase = _key.toLowerCase();
+    final String projectDir = (_lowerCase + "/service/");
+    CharSequence _pomServiceParent = this.pomServiceParent(_module);
+    fsa.generateFile((projectDir + "/pom.xml"), _pomServiceParent);
+  }
+  
+  /**
+   * Generate the service api project
+   */
+  public void generateProjectServiceApi(final Module _module, final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
+    String _key = _module.getKey();
+    String _lowerCase = _key.toLowerCase();
+    final String projectDir = (_lowerCase + "/service/api/");
+    CharSequence _pomServiceApi = this.pomServiceApi(_module);
+    fsa.generateFile((projectDir + "/pom.xml"), _pomServiceApi);
+  }
+  
+  /**
+   * Generate the service impl project
+   */
+  public void generateProjectServiceImpl(final Module _module, final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
+    String _key = _module.getKey();
+    String _lowerCase = _key.toLowerCase();
+    final String projectDir = (_lowerCase + "/service/impl/");
+    CharSequence _pomServiceImpl = this.pomServiceImpl(_module);
+    fsa.generateFile((projectDir + "/pom.xml"), _pomServiceImpl);
+  }
+  
+  public CharSequence messageBundleProperties(final Map<String, String> _keyTovalueMap) {
+    StringConcatenation _builder = new StringConcatenation();
+    {
+      Set<Map.Entry<String, String>> _entrySet = _keyTovalueMap.entrySet();
+      for(final Map.Entry<String, String> entry : _entrySet) {
+        String _key = entry.getKey();
+        _builder.append(_key, "");
+        _builder.append("=");
+        String _value = entry.getValue();
+        _builder.append(_value, "");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    return _builder;
+  }
+  
+  public CharSequence messageBundleEnum(final String packageName, final String bundleName, final List<String> _keys) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("package ");
+    _builder.append(packageName, "");
+    _builder.append(".message;");
+    _builder.newLineIfNotEmpty();
+    _builder.append("  ");
+    _builder.newLine();
+    _builder.append("public enum ");
+    _builder.append(bundleName, "");
+    _builder.append(" {");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t");
+    String _join = IterableExtensions.join(_keys, ",\n,");
+    _builder.append(_join, "\t");
+    _builder.append(";");
+    _builder.newLineIfNotEmpty();
+    _builder.append("}");
+    _builder.newLine();
+    return _builder;
+  }
+  
+  public CharSequence pomParentModule(final Module _module) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
+    _builder.newLine();
+    _builder.append("<project xmlns=\"http://maven.apache.org/POM/4.0.0\"");
+    _builder.newLine();
+    _builder.append("         ");
+    _builder.append("xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"");
+    _builder.newLine();
+    _builder.append("         ");
+    _builder.append("xsi:schemaLocation=\"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd\">");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("<parent>");
+    _builder.newLine();
+    _builder.append("        ");
+    _builder.append("<artifactId>");
+    _builder.append(ProjectGeneratorGenerator.PARENT_ARTIFACT, "        ");
+    _builder.append("</artifactId>");
+    _builder.newLineIfNotEmpty();
+    _builder.append("        ");
+    _builder.append("<groupId>");
+    _builder.append(ProjectGeneratorGenerator.PARENT_GROUP, "        ");
+    _builder.append("</groupId>");
+    _builder.newLineIfNotEmpty();
+    _builder.append("        ");
+    _builder.append("<version>0.0.1-SNAPSHOT</version>");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("</parent>");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("<modelVersion>4.0.0</modelVersion>");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("<packaging>pom</packaging>");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("<artifactId>module-");
+    String _key = _module.getKey();
+    String _lowerCase = _key.toLowerCase();
+    _builder.append(_lowerCase, "    ");
+    _builder.append("</artifactId>");
+    _builder.newLineIfNotEmpty();
+    _builder.append("    ");
+    _builder.append("<name>module-");
+    String _key_1 = _module.getKey();
+    String _lowerCase_1 = _key_1.toLowerCase();
+    _builder.append(_lowerCase_1, "    ");
+    _builder.append("-message</name>");
+    _builder.newLineIfNotEmpty();
+    _builder.append("    ");
+    _builder.append("<description>The parent project holding the module projects</description>");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.newLine();
+    _builder.append("\t\t  ");
+    _builder.append("<modules>");
+    _builder.newLine();
+    _builder.append("\t\t      ");
+    _builder.append("<module>message</module>");
+    _builder.newLine();
+    _builder.append("\t\t      ");
+    _builder.append("<module>model</module>");
+    _builder.newLine();
+    _builder.append("\t\t      ");
+    _builder.append("<module>service</module>");
+    _builder.newLine();
+    _builder.append("\t\t  ");
+    _builder.append("</modules>");
+    _builder.newLine();
+    _builder.append("</project>");
+    _builder.newLine();
+    return _builder;
+  }
+  
+  public CharSequence pomMessage(final Module _module) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
+    _builder.newLine();
+    _builder.append("<project xmlns=\"http://maven.apache.org/POM/4.0.0\"");
+    _builder.newLine();
+    _builder.append("         ");
+    _builder.append("xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"");
+    _builder.newLine();
+    _builder.append("         ");
+    _builder.append("xsi:schemaLocation=\"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd\">");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("<parent>");
+    _builder.newLine();
+    _builder.append("        ");
+    _builder.append("<artifactId>");
+    _builder.append(ProjectGeneratorGenerator.PARENT_ARTIFACT, "        ");
+    _builder.append("</artifactId>");
+    _builder.newLineIfNotEmpty();
+    _builder.append("        ");
+    _builder.append("<groupId>");
+    _builder.append(ProjectGeneratorGenerator.PARENT_GROUP, "        ");
+    _builder.append("</groupId>");
+    _builder.newLineIfNotEmpty();
+    _builder.append("        ");
+    _builder.append("<version>0.0.1-SNAPSHOT</version>");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("</parent>");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("<modelVersion>4.0.0</modelVersion>");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("<packaging>pom</packaging>");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("<artifactId>");
+    String _key = _module.getKey();
+    String _lowerCase = _key.toLowerCase();
+    _builder.append(_lowerCase, "    ");
+    _builder.append("-message</artifactId>");
+    _builder.newLineIfNotEmpty();
+    _builder.append("    ");
+    _builder.append("<name>");
+    String _key_1 = _module.getKey();
+    String _lowerCase_1 = _key_1.toLowerCase();
+    _builder.append(_lowerCase_1, "    ");
+    _builder.append("-message</name>");
+    _builder.newLineIfNotEmpty();
+    _builder.append("    ");
+    _builder.append("<description>The project holding the localizations</description>");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.newLine();
+    _builder.append("</project>");
+    _builder.newLine();
+    return _builder;
+  }
+  
+  public CharSequence pomParentModel(final Module _module) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
+    _builder.newLine();
+    _builder.append("<project xmlns=\"http://maven.apache.org/POM/4.0.0\"");
+    _builder.newLine();
+    _builder.append("         ");
+    _builder.append("xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"");
+    _builder.newLine();
+    _builder.append("         ");
+    _builder.append("xsi:schemaLocation=\"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd\">");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("<parent>");
+    _builder.newLine();
+    _builder.append("        ");
+    _builder.append("<artifactId>");
+    _builder.append(ProjectGeneratorGenerator.PARENT_ARTIFACT, "        ");
+    _builder.append("</artifactId>");
+    _builder.newLineIfNotEmpty();
+    _builder.append("        ");
+    _builder.append("<groupId>");
+    _builder.append(ProjectGeneratorGenerator.PARENT_GROUP, "        ");
+    _builder.append("</groupId>");
+    _builder.newLineIfNotEmpty();
+    _builder.append("        ");
+    _builder.append("<version>0.0.1-SNAPSHOT</version>");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("</parent>");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("<modelVersion>4.0.0</modelVersion>");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("<packaging>pom</packaging>");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("<artifactId>module-");
+    String _key = _module.getKey();
+    String _lowerCase = _key.toLowerCase();
+    _builder.append(_lowerCase, "    ");
+    _builder.append("-model</artifactId>");
+    _builder.newLineIfNotEmpty();
+    _builder.append("    ");
+    _builder.append("<name>");
+    String _key_1 = _module.getKey();
+    String _lowerCase_1 = _key_1.toLowerCase();
+    _builder.append(_lowerCase_1, "    ");
+    _builder.append("-model</name>");
+    _builder.newLineIfNotEmpty();
+    _builder.append("    ");
+    _builder.append("<description>The main project for all model projects</description>");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("<modules>");
+    _builder.newLine();
+    _builder.append("        ");
+    _builder.append("<module>jpa</module>");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("</modules>");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("</project>");
+    _builder.newLine();
+    return _builder;
+  }
+  
+  public CharSequence pomJpa(final Module _module) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
+    _builder.newLine();
+    _builder.append("<project xmlns=\"http://maven.apache.org/POM/4.0.0\"");
+    _builder.newLine();
+    _builder.append("         ");
+    _builder.append("xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"");
+    _builder.newLine();
+    _builder.append("         ");
+    _builder.append("xsi:schemaLocation=\"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd\">");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("<parent>");
+    _builder.newLine();
+    _builder.append("        ");
+    _builder.append("<artifactId>");
+    _builder.append(ProjectGeneratorGenerator.PARENT_ARTIFACT, "        ");
+    _builder.append("</artifactId>");
+    _builder.newLineIfNotEmpty();
+    _builder.append("        ");
+    _builder.append("<groupId>");
+    _builder.append(ProjectGeneratorGenerator.PARENT_GROUP, "        ");
+    _builder.append("</groupId>");
+    _builder.newLineIfNotEmpty();
+    _builder.append("        ");
+    _builder.append("<version>0.0.1-SNAPSHOT</version>");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("</parent>");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("<modelVersion>4.0.0</modelVersion>");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("<packaging>pom</packaging>");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("<artifactId>");
+    String _key = _module.getKey();
+    String _lowerCase = _key.toLowerCase();
+    _builder.append(_lowerCase, "\t");
+    _builder.append("-model-jpa</artifactId>");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t");
+    _builder.append("<name>");
+    String _key_1 = _module.getKey();
+    String _lowerCase_1 = _key_1.toLowerCase();
+    _builder.append(_lowerCase_1, "\t");
+    _builder.append("-model-jpa</name>");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t");
+    _builder.append("<description>The jpa model project</description>");
+    _builder.newLine();
+    _builder.append("\t\t\t\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("<!-- Dependencies Other projects -->");
+    _builder.newLine();
+    _builder.append("\t  ");
+    _builder.append("<dependency>");
+    _builder.newLine();
+    _builder.append("\t      ");
+    _builder.append("<groupId>");
+    _builder.append(ProjectGeneratorGenerator.PARENT_GROUP, "\t      ");
+    _builder.append("</groupId>");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t      ");
+    _builder.append("<artifactId>");
+    String _key_2 = _module.getKey();
+    String _lowerCase_2 = _key_2.toLowerCase();
+    _builder.append(_lowerCase_2, "\t      ");
+    _builder.append("-message</artifactId>");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t      ");
+    _builder.append("<version>${project.version}</version>");
+    _builder.newLine();
+    _builder.append("\t  ");
+    _builder.append("</dependency>");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("</project>");
+    _builder.newLine();
+    return _builder;
+  }
+  
+  public CharSequence pomServiceParent(final Module _module) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
+    _builder.newLine();
+    _builder.append("<project xmlns=\"http://maven.apache.org/POM/4.0.0\"");
+    _builder.newLine();
+    _builder.append("         ");
+    _builder.append("xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"");
+    _builder.newLine();
+    _builder.append("         ");
+    _builder.append("xsi:schemaLocation=\"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd\">");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("<parent>");
+    _builder.newLine();
+    _builder.append("        ");
+    _builder.append("<artifactId>");
+    _builder.append(ProjectGeneratorGenerator.PARENT_ARTIFACT, "        ");
+    _builder.append("</artifactId>");
+    _builder.newLineIfNotEmpty();
+    _builder.append("        ");
+    _builder.append("<groupId>");
+    _builder.append(ProjectGeneratorGenerator.PARENT_GROUP, "        ");
+    _builder.append("</groupId>");
+    _builder.newLineIfNotEmpty();
+    _builder.append("        ");
+    _builder.append("<version>0.0.1-SNAPSHOT</version>");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("</parent>");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("<modelVersion>4.0.0</modelVersion>");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("<packaging>pom</packaging>");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("<modules>");
+    _builder.newLine();
+    _builder.append("        ");
+    _builder.append("<module>jpa</module>");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("</modules>");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("<artifactId>module-");
+    String _key = _module.getKey();
+    String _lowerCase = _key.toLowerCase();
+    _builder.append(_lowerCase, "    ");
+    _builder.append("-service</artifactId>");
+    _builder.newLineIfNotEmpty();
+    _builder.append("    ");
+    _builder.append("<name>");
+    String _key_1 = _module.getKey();
+    String _lowerCase_1 = _key_1.toLowerCase();
+    _builder.append(_lowerCase_1, "    ");
+    _builder.append("-service</name>");
+    _builder.newLineIfNotEmpty();
+    _builder.append("    ");
+    _builder.append("<description>The parent project for all service projects</description>");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("</project>");
+    _builder.newLine();
+    return _builder;
+  }
+  
+  public CharSequence pomServiceApi(final Module _module) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
+    _builder.newLine();
+    _builder.append("<project xmlns=\"http://maven.apache.org/POM/4.0.0\"");
+    _builder.newLine();
+    _builder.append("         ");
+    _builder.append("xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"");
+    _builder.newLine();
+    _builder.append("         ");
+    _builder.append("xsi:schemaLocation=\"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd\">");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("<parent>");
+    _builder.newLine();
+    _builder.append("        ");
+    _builder.append("<artifactId>");
+    _builder.append(ProjectGeneratorGenerator.PARENT_ARTIFACT, "        ");
+    _builder.append("</artifactId>");
+    _builder.newLineIfNotEmpty();
+    _builder.append("        ");
+    _builder.append("<groupId>");
+    _builder.append(ProjectGeneratorGenerator.PARENT_GROUP, "        ");
+    _builder.append("</groupId>");
+    _builder.newLineIfNotEmpty();
+    _builder.append("        ");
+    _builder.append("<version>0.0.1-SNAPSHOT</version>");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("</parent>");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("<modelVersion>4.0.0</modelVersion>");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("<packaging>jar</packaging>\t\t\t\t    ");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("<artifactId>");
+    String _key = _module.getKey();
+    String _lowerCase = _key.toLowerCase();
+    _builder.append(_lowerCase, "    ");
+    _builder.append("-service-api</artifactId>");
+    _builder.newLineIfNotEmpty();
+    _builder.append("    ");
+    _builder.append("<name>");
+    String _key_1 = _module.getKey();
+    String _lowerCase_1 = _key_1.toLowerCase();
+    _builder.append(_lowerCase_1, "    ");
+    _builder.append("-service-api</name>");
+    _builder.newLineIfNotEmpty();
+    _builder.append("    ");
+    _builder.append("<description>The api for the service logic operations</description>");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("       ");
+    _builder.append("<!-- Dependencies Other projects -->");
+    _builder.newLine();
+    _builder.append("       ");
+    _builder.append("<dependency>");
+    _builder.newLine();
+    _builder.append("           ");
+    _builder.append("<groupId>");
+    _builder.append(ProjectGeneratorGenerator.PARENT_GROUP, "           ");
+    _builder.append("</groupId>");
+    _builder.newLineIfNotEmpty();
+    _builder.append("           ");
+    _builder.append("<artifactId>");
+    String _key_2 = _module.getKey();
+    String _lowerCase_2 = _key_2.toLowerCase();
+    _builder.append(_lowerCase_2, "           ");
+    _builder.append("-model-jpa</artifactId>");
+    _builder.newLineIfNotEmpty();
+    _builder.append("           ");
+    _builder.append("<version>${project.version}</version>");
+    _builder.newLine();
+    _builder.append("       ");
+    _builder.append("</dependency>");
+    _builder.newLine();
+    _builder.append("      ");
+    _builder.newLine();
+    _builder.append("</project>");
+    _builder.newLine();
+    return _builder;
+  }
+  
+  public CharSequence pomServiceImpl(final Module _module) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
+    _builder.newLine();
+    _builder.append("<project xmlns=\"http://maven.apache.org/POM/4.0.0\"");
+    _builder.newLine();
+    _builder.append("         ");
+    _builder.append("xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"");
+    _builder.newLine();
+    _builder.append("         ");
+    _builder.append("xsi:schemaLocation=\"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd\">");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("<parent>");
+    _builder.newLine();
+    _builder.append("        ");
+    _builder.append("<artifactId>");
+    _builder.append(ProjectGeneratorGenerator.PARENT_ARTIFACT, "        ");
+    _builder.append("</artifactId>");
+    _builder.newLineIfNotEmpty();
+    _builder.append("        ");
+    _builder.append("<groupId>");
+    _builder.append(ProjectGeneratorGenerator.PARENT_GROUP, "        ");
+    _builder.append("</groupId>");
+    _builder.newLineIfNotEmpty();
+    _builder.append("        ");
+    _builder.append("<version>0.0.1-SNAPSHOT</version>");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("</parent>");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("<modelVersion>4.0.0</modelVersion>");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("<packaging>jar</packaging>\t\t\t\t    ");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("<artifactId>");
+    String _key = _module.getKey();
+    String _lowerCase = _key.toLowerCase();
+    _builder.append(_lowerCase, "    ");
+    _builder.append("-service-impl</artifactId>");
+    _builder.newLineIfNotEmpty();
+    _builder.append("    ");
+    _builder.append("<name>");
+    String _key_1 = _module.getKey();
+    String _lowerCase_1 = _key_1.toLowerCase();
+    _builder.append(_lowerCase_1, "    ");
+    _builder.append("-service-impl</name>");
+    _builder.newLineIfNotEmpty();
+    _builder.append("    ");
+    _builder.append("<description>The implementation for the service logic operations</description>");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.newLine();
+    _builder.append("\t\t    ");
+    _builder.append("<!-- Dependencies Other projects -->");
+    _builder.newLine();
+    _builder.append("\t\t    ");
+    _builder.append("<dependency>");
+    _builder.newLine();
+    _builder.append("\t\t        ");
+    _builder.append("<groupId>");
+    _builder.append(ProjectGeneratorGenerator.PARENT_GROUP, "\t\t        ");
+    _builder.append("</groupId>");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t\t        ");
+    _builder.append("<artifactId>");
+    String _key_2 = _module.getKey();
+    String _lowerCase_2 = _key_2.toLowerCase();
+    _builder.append(_lowerCase_2, "\t\t        ");
+    _builder.append("-service-api</artifactId>");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t\t        ");
+    _builder.append("<version>${project.version}</version>");
+    _builder.newLine();
+    _builder.append("\t\t    ");
+    _builder.append("</dependency>");
+    _builder.newLine();
+    _builder.append("\t\t    ");
+    _builder.newLine();
+    _builder.append("</project>");
+    _builder.newLine();
+    return _builder;
   }
 }

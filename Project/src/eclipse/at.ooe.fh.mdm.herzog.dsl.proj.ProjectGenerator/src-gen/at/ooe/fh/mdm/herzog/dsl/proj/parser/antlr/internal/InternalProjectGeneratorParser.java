@@ -22,47 +22,49 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalProjectGeneratorParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_CLASSNAME", "RULE_LOCALIZEDKEY", "RULE_METHODNAME", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'module'", "'{'", "'key'", "';'", "'cdiEnabled'", "'messageBundles'", "'}'", "'observers'", "'jpaConfig'", "'serviceConfig'", "'type'", "'during'", "'notify'", "'delegate'", "'qualifier'", "'localizedEnums'", "'values'", "'args'", "'locale'", "'value'", "'de_DE'", "'en_US'", "'true'", "'false'", "'InProgress'", "'AfterCompleition'", "'Always'", "'Exists'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_CLASSNAME", "RULE_LOCALIZEDKEY", "RULE_UAZ", "RULE_LAZ", "RULE_UAZN", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'module'", "'{'", "'key'", "';'", "'cdiEnabled'", "'messageBundles'", "'}'", "'observers'", "'jpaConfig'", "'serviceConfig'", "'type'", "'during'", "'notify'", "'delegate'", "'qualifier'", "'localizedEnums'", "'values'", "'args'", "'locale'", "'value'", "'de_DE'", "'en_US'", "'true'", "'false'", "'InProgress'", "'AfterCompleition'", "'Always'", "'Exists'"
     };
-    public static final int RULE_STRING=5;
-    public static final int RULE_SL_COMMENT=11;
+    public static final int RULE_UAZN=10;
     public static final int T__19=19;
-    public static final int T__15=15;
-    public static final int T__37=37;
     public static final int T__16=16;
-    public static final int T__38=38;
     public static final int T__17=17;
-    public static final int T__39=39;
     public static final int T__18=18;
+    public static final int RULE_ID=4;
+    public static final int RULE_LOCALIZEDKEY=7;
+    public static final int RULE_UAZ=8;
+    public static final int T__26=26;
+    public static final int T__27=27;
+    public static final int T__28=28;
+    public static final int RULE_INT=11;
+    public static final int T__29=29;
+    public static final int T__22=22;
+    public static final int RULE_ML_COMMENT=12;
+    public static final int T__23=23;
+    public static final int T__24=24;
+    public static final int T__25=25;
+    public static final int T__20=20;
+    public static final int T__21=21;
+    public static final int RULE_STRING=5;
+    public static final int RULE_SL_COMMENT=13;
+    public static final int T__37=37;
+    public static final int T__38=38;
+    public static final int T__39=39;
     public static final int T__33=33;
     public static final int T__34=34;
     public static final int T__35=35;
-    public static final int T__14=14;
     public static final int T__36=36;
     public static final int EOF=-1;
     public static final int T__30=30;
     public static final int RULE_CLASSNAME=6;
     public static final int T__31=31;
     public static final int T__32=32;
-    public static final int RULE_METHODNAME=8;
-    public static final int RULE_ID=4;
-    public static final int RULE_WS=12;
-    public static final int RULE_ANY_OTHER=13;
-    public static final int RULE_LOCALIZEDKEY=7;
-    public static final int T__26=26;
-    public static final int T__27=27;
-    public static final int T__28=28;
-    public static final int RULE_INT=9;
-    public static final int T__29=29;
-    public static final int T__22=22;
-    public static final int RULE_ML_COMMENT=10;
-    public static final int T__23=23;
-    public static final int T__24=24;
-    public static final int T__25=25;
+    public static final int RULE_WS=14;
+    public static final int RULE_ANY_OTHER=15;
+    public static final int RULE_LAZ=9;
     public static final int T__40=40;
     public static final int T__41=41;
-    public static final int T__20=20;
-    public static final int T__21=21;
+    public static final int T__42=42;
+    public static final int T__43=43;
 
     // delegates
     // delegators
@@ -186,7 +188,7 @@ public class InternalProjectGeneratorParser extends AbstractInternalAntlrParser 
             // InternalProjectGenerator.g:79:2: (otherlv_0= 'module' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'key' ( (lv_key_4_0= RULE_STRING ) ) otherlv_5= ';' otherlv_6= 'cdiEnabled' ( (lv_cdiEnabled_7_0= ruleBoolean ) ) otherlv_8= ';' (otherlv_9= 'messageBundles' otherlv_10= '{' ( (lv_messageBundles_11_0= ruleLocalized ) )+ otherlv_12= '}' otherlv_13= ';' )? (otherlv_14= 'observers' otherlv_15= '{' ( (lv_observers_16_0= ruleObserver ) )+ otherlv_17= '}' otherlv_18= ';' )? otherlv_19= 'jpaConfig' ( (lv_jpaConfig_20_0= ruleJpaConfig ) ) otherlv_21= ';' otherlv_22= 'serviceConfig' ( (lv_serviceConfig_23_0= ruleServiceConfig ) ) otherlv_24= ';' otherlv_25= '}' )
             // InternalProjectGenerator.g:80:3: otherlv_0= 'module' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'key' ( (lv_key_4_0= RULE_STRING ) ) otherlv_5= ';' otherlv_6= 'cdiEnabled' ( (lv_cdiEnabled_7_0= ruleBoolean ) ) otherlv_8= ';' (otherlv_9= 'messageBundles' otherlv_10= '{' ( (lv_messageBundles_11_0= ruleLocalized ) )+ otherlv_12= '}' otherlv_13= ';' )? (otherlv_14= 'observers' otherlv_15= '{' ( (lv_observers_16_0= ruleObserver ) )+ otherlv_17= '}' otherlv_18= ';' )? otherlv_19= 'jpaConfig' ( (lv_jpaConfig_20_0= ruleJpaConfig ) ) otherlv_21= ';' otherlv_22= 'serviceConfig' ( (lv_serviceConfig_23_0= ruleServiceConfig ) ) otherlv_24= ';' otherlv_25= '}'
             {
-            otherlv_0=(Token)match(input,14,FOLLOW_3); 
+            otherlv_0=(Token)match(input,16,FOLLOW_3); 
 
             			newLeafNode(otherlv_0, grammarAccess.getModuleAccess().getModuleKeyword_0());
             		
@@ -216,11 +218,11 @@ public class InternalProjectGeneratorParser extends AbstractInternalAntlrParser 
 
             }
 
-            otherlv_2=(Token)match(input,15,FOLLOW_5); 
+            otherlv_2=(Token)match(input,17,FOLLOW_5); 
 
             			newLeafNode(otherlv_2, grammarAccess.getModuleAccess().getLeftCurlyBracketKeyword_2());
             		
-            otherlv_3=(Token)match(input,16,FOLLOW_6); 
+            otherlv_3=(Token)match(input,18,FOLLOW_6); 
 
             			newLeafNode(otherlv_3, grammarAccess.getModuleAccess().getKeyKeyword_3());
             		
@@ -250,11 +252,11 @@ public class InternalProjectGeneratorParser extends AbstractInternalAntlrParser 
 
             }
 
-            otherlv_5=(Token)match(input,17,FOLLOW_8); 
+            otherlv_5=(Token)match(input,19,FOLLOW_8); 
 
             			newLeafNode(otherlv_5, grammarAccess.getModuleAccess().getSemicolonKeyword_5());
             		
-            otherlv_6=(Token)match(input,18,FOLLOW_9); 
+            otherlv_6=(Token)match(input,20,FOLLOW_9); 
 
             			newLeafNode(otherlv_6, grammarAccess.getModuleAccess().getCdiEnabledKeyword_6());
             		
@@ -289,7 +291,7 @@ public class InternalProjectGeneratorParser extends AbstractInternalAntlrParser 
 
             }
 
-            otherlv_8=(Token)match(input,17,FOLLOW_10); 
+            otherlv_8=(Token)match(input,19,FOLLOW_10); 
 
             			newLeafNode(otherlv_8, grammarAccess.getModuleAccess().getSemicolonKeyword_8());
             		
@@ -297,18 +299,18 @@ public class InternalProjectGeneratorParser extends AbstractInternalAntlrParser 
             int alt2=2;
             int LA2_0 = input.LA(1);
 
-            if ( (LA2_0==19) ) {
+            if ( (LA2_0==21) ) {
                 alt2=1;
             }
             switch (alt2) {
                 case 1 :
                     // InternalProjectGenerator.g:160:4: otherlv_9= 'messageBundles' otherlv_10= '{' ( (lv_messageBundles_11_0= ruleLocalized ) )+ otherlv_12= '}' otherlv_13= ';'
                     {
-                    otherlv_9=(Token)match(input,19,FOLLOW_4); 
+                    otherlv_9=(Token)match(input,21,FOLLOW_4); 
 
                     				newLeafNode(otherlv_9, grammarAccess.getModuleAccess().getMessageBundlesKeyword_9_0());
                     			
-                    otherlv_10=(Token)match(input,15,FOLLOW_3); 
+                    otherlv_10=(Token)match(input,17,FOLLOW_3); 
 
                     				newLeafNode(otherlv_10, grammarAccess.getModuleAccess().getLeftCurlyBracketKeyword_9_1());
                     			
@@ -366,11 +368,11 @@ public class InternalProjectGeneratorParser extends AbstractInternalAntlrParser 
                         cnt1++;
                     } while (true);
 
-                    otherlv_12=(Token)match(input,20,FOLLOW_7); 
+                    otherlv_12=(Token)match(input,22,FOLLOW_7); 
 
                     				newLeafNode(otherlv_12, grammarAccess.getModuleAccess().getRightCurlyBracketKeyword_9_3());
                     			
-                    otherlv_13=(Token)match(input,17,FOLLOW_12); 
+                    otherlv_13=(Token)match(input,19,FOLLOW_12); 
 
                     				newLeafNode(otherlv_13, grammarAccess.getModuleAccess().getSemicolonKeyword_9_4());
                     			
@@ -384,18 +386,18 @@ public class InternalProjectGeneratorParser extends AbstractInternalAntlrParser 
             int alt4=2;
             int LA4_0 = input.LA(1);
 
-            if ( (LA4_0==21) ) {
+            if ( (LA4_0==23) ) {
                 alt4=1;
             }
             switch (alt4) {
                 case 1 :
                     // InternalProjectGenerator.g:197:4: otherlv_14= 'observers' otherlv_15= '{' ( (lv_observers_16_0= ruleObserver ) )+ otherlv_17= '}' otherlv_18= ';'
                     {
-                    otherlv_14=(Token)match(input,21,FOLLOW_4); 
+                    otherlv_14=(Token)match(input,23,FOLLOW_4); 
 
                     				newLeafNode(otherlv_14, grammarAccess.getModuleAccess().getObserversKeyword_10_0());
                     			
-                    otherlv_15=(Token)match(input,15,FOLLOW_3); 
+                    otherlv_15=(Token)match(input,17,FOLLOW_3); 
 
                     				newLeafNode(otherlv_15, grammarAccess.getModuleAccess().getLeftCurlyBracketKeyword_10_1());
                     			
@@ -453,11 +455,11 @@ public class InternalProjectGeneratorParser extends AbstractInternalAntlrParser 
                         cnt3++;
                     } while (true);
 
-                    otherlv_17=(Token)match(input,20,FOLLOW_7); 
+                    otherlv_17=(Token)match(input,22,FOLLOW_7); 
 
                     				newLeafNode(otherlv_17, grammarAccess.getModuleAccess().getRightCurlyBracketKeyword_10_3());
                     			
-                    otherlv_18=(Token)match(input,17,FOLLOW_13); 
+                    otherlv_18=(Token)match(input,19,FOLLOW_13); 
 
                     				newLeafNode(otherlv_18, grammarAccess.getModuleAccess().getSemicolonKeyword_10_4());
                     			
@@ -467,7 +469,7 @@ public class InternalProjectGeneratorParser extends AbstractInternalAntlrParser 
 
             }
 
-            otherlv_19=(Token)match(input,22,FOLLOW_4); 
+            otherlv_19=(Token)match(input,24,FOLLOW_4); 
 
             			newLeafNode(otherlv_19, grammarAccess.getModuleAccess().getJpaConfigKeyword_11());
             		
@@ -502,11 +504,11 @@ public class InternalProjectGeneratorParser extends AbstractInternalAntlrParser 
 
             }
 
-            otherlv_21=(Token)match(input,17,FOLLOW_14); 
+            otherlv_21=(Token)match(input,19,FOLLOW_14); 
 
             			newLeafNode(otherlv_21, grammarAccess.getModuleAccess().getSemicolonKeyword_13());
             		
-            otherlv_22=(Token)match(input,23,FOLLOW_4); 
+            otherlv_22=(Token)match(input,25,FOLLOW_4); 
 
             			newLeafNode(otherlv_22, grammarAccess.getModuleAccess().getServiceConfigKeyword_14());
             		
@@ -541,11 +543,11 @@ public class InternalProjectGeneratorParser extends AbstractInternalAntlrParser 
 
             }
 
-            otherlv_24=(Token)match(input,17,FOLLOW_15); 
+            otherlv_24=(Token)match(input,19,FOLLOW_15); 
 
             			newLeafNode(otherlv_24, grammarAccess.getModuleAccess().getSemicolonKeyword_16());
             		
-            otherlv_25=(Token)match(input,20,FOLLOW_2); 
+            otherlv_25=(Token)match(input,22,FOLLOW_2); 
 
             			newLeafNode(otherlv_25, grammarAccess.getModuleAccess().getRightCurlyBracketKeyword_17());
             		
@@ -608,7 +610,7 @@ public class InternalProjectGeneratorParser extends AbstractInternalAntlrParser 
 
 
     // $ANTLR start "ruleServiceConfig"
-    // InternalProjectGenerator.g:302:1: ruleServiceConfig returns [EObject current=null] : (otherlv_0= '{' (otherlv_1= 'observers' ( (lv_observers_2_0= ruleObserver ) )+ )? (otherlv_3= 'messageBundles' otherlv_4= '{' ( (otherlv_5= RULE_ID ) )+ otherlv_6= '}' otherlv_7= ';' )? otherlv_8= '}' ) ;
+    // InternalProjectGenerator.g:302:1: ruleServiceConfig returns [EObject current=null] : (otherlv_0= '{' (otherlv_1= 'observers' ( (lv_observers_2_0= ruleObserver ) )+ )? (otherlv_3= 'messageBundles' otherlv_4= '{' ( (otherlv_5= RULE_ID ) )+ otherlv_6= '}' otherlv_7= ';' ) otherlv_8= '}' ) ;
     public final EObject ruleServiceConfig() throws RecognitionException {
         EObject current = null;
 
@@ -627,13 +629,13 @@ public class InternalProjectGeneratorParser extends AbstractInternalAntlrParser 
         	enterRule();
 
         try {
-            // InternalProjectGenerator.g:308:2: ( (otherlv_0= '{' (otherlv_1= 'observers' ( (lv_observers_2_0= ruleObserver ) )+ )? (otherlv_3= 'messageBundles' otherlv_4= '{' ( (otherlv_5= RULE_ID ) )+ otherlv_6= '}' otherlv_7= ';' )? otherlv_8= '}' ) )
-            // InternalProjectGenerator.g:309:2: (otherlv_0= '{' (otherlv_1= 'observers' ( (lv_observers_2_0= ruleObserver ) )+ )? (otherlv_3= 'messageBundles' otherlv_4= '{' ( (otherlv_5= RULE_ID ) )+ otherlv_6= '}' otherlv_7= ';' )? otherlv_8= '}' )
+            // InternalProjectGenerator.g:308:2: ( (otherlv_0= '{' (otherlv_1= 'observers' ( (lv_observers_2_0= ruleObserver ) )+ )? (otherlv_3= 'messageBundles' otherlv_4= '{' ( (otherlv_5= RULE_ID ) )+ otherlv_6= '}' otherlv_7= ';' ) otherlv_8= '}' ) )
+            // InternalProjectGenerator.g:309:2: (otherlv_0= '{' (otherlv_1= 'observers' ( (lv_observers_2_0= ruleObserver ) )+ )? (otherlv_3= 'messageBundles' otherlv_4= '{' ( (otherlv_5= RULE_ID ) )+ otherlv_6= '}' otherlv_7= ';' ) otherlv_8= '}' )
             {
-            // InternalProjectGenerator.g:309:2: (otherlv_0= '{' (otherlv_1= 'observers' ( (lv_observers_2_0= ruleObserver ) )+ )? (otherlv_3= 'messageBundles' otherlv_4= '{' ( (otherlv_5= RULE_ID ) )+ otherlv_6= '}' otherlv_7= ';' )? otherlv_8= '}' )
-            // InternalProjectGenerator.g:310:3: otherlv_0= '{' (otherlv_1= 'observers' ( (lv_observers_2_0= ruleObserver ) )+ )? (otherlv_3= 'messageBundles' otherlv_4= '{' ( (otherlv_5= RULE_ID ) )+ otherlv_6= '}' otherlv_7= ';' )? otherlv_8= '}'
+            // InternalProjectGenerator.g:309:2: (otherlv_0= '{' (otherlv_1= 'observers' ( (lv_observers_2_0= ruleObserver ) )+ )? (otherlv_3= 'messageBundles' otherlv_4= '{' ( (otherlv_5= RULE_ID ) )+ otherlv_6= '}' otherlv_7= ';' ) otherlv_8= '}' )
+            // InternalProjectGenerator.g:310:3: otherlv_0= '{' (otherlv_1= 'observers' ( (lv_observers_2_0= ruleObserver ) )+ )? (otherlv_3= 'messageBundles' otherlv_4= '{' ( (otherlv_5= RULE_ID ) )+ otherlv_6= '}' otherlv_7= ';' ) otherlv_8= '}'
             {
-            otherlv_0=(Token)match(input,15,FOLLOW_16); 
+            otherlv_0=(Token)match(input,17,FOLLOW_16); 
 
             			newLeafNode(otherlv_0, grammarAccess.getServiceConfigAccess().getLeftCurlyBracketKeyword_0());
             		
@@ -641,14 +643,14 @@ public class InternalProjectGeneratorParser extends AbstractInternalAntlrParser 
             int alt6=2;
             int LA6_0 = input.LA(1);
 
-            if ( (LA6_0==21) ) {
+            if ( (LA6_0==23) ) {
                 alt6=1;
             }
             switch (alt6) {
                 case 1 :
                     // InternalProjectGenerator.g:315:4: otherlv_1= 'observers' ( (lv_observers_2_0= ruleObserver ) )+
                     {
-                    otherlv_1=(Token)match(input,21,FOLLOW_3); 
+                    otherlv_1=(Token)match(input,23,FOLLOW_3); 
 
                     				newLeafNode(otherlv_1, grammarAccess.getServiceConfigAccess().getObserversKeyword_1_0());
                     			
@@ -712,84 +714,73 @@ public class InternalProjectGeneratorParser extends AbstractInternalAntlrParser 
 
             }
 
-            // InternalProjectGenerator.g:339:3: (otherlv_3= 'messageBundles' otherlv_4= '{' ( (otherlv_5= RULE_ID ) )+ otherlv_6= '}' otherlv_7= ';' )?
-            int alt8=2;
-            int LA8_0 = input.LA(1);
+            // InternalProjectGenerator.g:339:3: (otherlv_3= 'messageBundles' otherlv_4= '{' ( (otherlv_5= RULE_ID ) )+ otherlv_6= '}' otherlv_7= ';' )
+            // InternalProjectGenerator.g:340:4: otherlv_3= 'messageBundles' otherlv_4= '{' ( (otherlv_5= RULE_ID ) )+ otherlv_6= '}' otherlv_7= ';'
+            {
+            otherlv_3=(Token)match(input,21,FOLLOW_4); 
 
-            if ( (LA8_0==19) ) {
-                alt8=1;
-            }
-            switch (alt8) {
-                case 1 :
-                    // InternalProjectGenerator.g:340:4: otherlv_3= 'messageBundles' otherlv_4= '{' ( (otherlv_5= RULE_ID ) )+ otherlv_6= '}' otherlv_7= ';'
-                    {
-                    otherlv_3=(Token)match(input,19,FOLLOW_4); 
+            				newLeafNode(otherlv_3, grammarAccess.getServiceConfigAccess().getMessageBundlesKeyword_2_0());
+            			
+            otherlv_4=(Token)match(input,17,FOLLOW_3); 
 
-                    				newLeafNode(otherlv_3, grammarAccess.getServiceConfigAccess().getMessageBundlesKeyword_2_0());
-                    			
-                    otherlv_4=(Token)match(input,15,FOLLOW_3); 
+            				newLeafNode(otherlv_4, grammarAccess.getServiceConfigAccess().getLeftCurlyBracketKeyword_2_1());
+            			
+            // InternalProjectGenerator.g:348:4: ( (otherlv_5= RULE_ID ) )+
+            int cnt7=0;
+            loop7:
+            do {
+                int alt7=2;
+                int LA7_0 = input.LA(1);
 
-                    				newLeafNode(otherlv_4, grammarAccess.getServiceConfigAccess().getLeftCurlyBracketKeyword_2_1());
-                    			
-                    // InternalProjectGenerator.g:348:4: ( (otherlv_5= RULE_ID ) )+
-                    int cnt7=0;
-                    loop7:
-                    do {
-                        int alt7=2;
-                        int LA7_0 = input.LA(1);
-
-                        if ( (LA7_0==RULE_ID) ) {
-                            alt7=1;
-                        }
+                if ( (LA7_0==RULE_ID) ) {
+                    alt7=1;
+                }
 
 
-                        switch (alt7) {
-                    	case 1 :
-                    	    // InternalProjectGenerator.g:349:5: (otherlv_5= RULE_ID )
-                    	    {
-                    	    // InternalProjectGenerator.g:349:5: (otherlv_5= RULE_ID )
-                    	    // InternalProjectGenerator.g:350:6: otherlv_5= RULE_ID
-                    	    {
+                switch (alt7) {
+            	case 1 :
+            	    // InternalProjectGenerator.g:349:5: (otherlv_5= RULE_ID )
+            	    {
+            	    // InternalProjectGenerator.g:349:5: (otherlv_5= RULE_ID )
+            	    // InternalProjectGenerator.g:350:6: otherlv_5= RULE_ID
+            	    {
 
-                    	    						if (current==null) {
-                    	    							current = createModelElement(grammarAccess.getServiceConfigRule());
-                    	    						}
-                    	    					
-                    	    otherlv_5=(Token)match(input,RULE_ID,FOLLOW_11); 
+            	    						if (current==null) {
+            	    							current = createModelElement(grammarAccess.getServiceConfigRule());
+            	    						}
+            	    					
+            	    otherlv_5=(Token)match(input,RULE_ID,FOLLOW_11); 
 
-                    	    						newLeafNode(otherlv_5, grammarAccess.getServiceConfigAccess().getMessageBundlesLocalizedCrossReference_2_2_0());
-                    	    					
+            	    						newLeafNode(otherlv_5, grammarAccess.getServiceConfigAccess().getMessageBundlesLocalizedCrossReference_2_2_0());
+            	    					
 
-                    	    }
+            	    }
 
 
-                    	    }
-                    	    break;
+            	    }
+            	    break;
 
-                    	default :
-                    	    if ( cnt7 >= 1 ) break loop7;
-                                EarlyExitException eee =
-                                    new EarlyExitException(7, input);
-                                throw eee;
-                        }
-                        cnt7++;
-                    } while (true);
+            	default :
+            	    if ( cnt7 >= 1 ) break loop7;
+                        EarlyExitException eee =
+                            new EarlyExitException(7, input);
+                        throw eee;
+                }
+                cnt7++;
+            } while (true);
 
-                    otherlv_6=(Token)match(input,20,FOLLOW_7); 
+            otherlv_6=(Token)match(input,22,FOLLOW_7); 
 
-                    				newLeafNode(otherlv_6, grammarAccess.getServiceConfigAccess().getRightCurlyBracketKeyword_2_3());
-                    			
-                    otherlv_7=(Token)match(input,17,FOLLOW_15); 
+            				newLeafNode(otherlv_6, grammarAccess.getServiceConfigAccess().getRightCurlyBracketKeyword_2_3());
+            			
+            otherlv_7=(Token)match(input,19,FOLLOW_15); 
 
-                    				newLeafNode(otherlv_7, grammarAccess.getServiceConfigAccess().getSemicolonKeyword_2_4());
-                    			
-
-                    }
-                    break;
+            				newLeafNode(otherlv_7, grammarAccess.getServiceConfigAccess().getSemicolonKeyword_2_4());
+            			
 
             }
 
-            otherlv_8=(Token)match(input,20,FOLLOW_2); 
+            otherlv_8=(Token)match(input,22,FOLLOW_2); 
 
             			newLeafNode(otherlv_8, grammarAccess.getServiceConfigAccess().getRightCurlyBracketKeyword_3());
             		
@@ -852,7 +843,7 @@ public class InternalProjectGeneratorParser extends AbstractInternalAntlrParser 
 
 
     // $ANTLR start "ruleObserver"
-    // InternalProjectGenerator.g:385:1: ruleObserver returns [EObject current=null] : ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= '{' otherlv_2= 'type' ( (lv_type_3_0= RULE_CLASSNAME ) ) otherlv_4= ';' otherlv_5= 'during' ( (lv_during_6_0= ruleDuring ) ) otherlv_7= ';' otherlv_8= 'notify' ( (lv_notify_9_0= ruleNotify ) ) otherlv_10= ';' otherlv_11= 'delegate' ( (lv_className_12_0= RULE_CLASSNAME ) ) otherlv_13= ';' (otherlv_14= 'qualifier' ( (lv_qualifier_15_0= RULE_CLASSNAME ) ) otherlv_16= ';' )? otherlv_17= '}' ) ;
+    // InternalProjectGenerator.g:385:1: ruleObserver returns [EObject current=null] : ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= '{' otherlv_2= 'type' ( (lv_type_3_0= RULE_CLASSNAME ) ) otherlv_4= ';' otherlv_5= 'during' ( (lv_during_6_0= ruleDuring ) ) otherlv_7= ';' otherlv_8= 'notify' ( (lv_notify_9_0= ruleNotify ) ) otherlv_10= ';' otherlv_11= 'delegate' ( (lv_className_12_0= RULE_CLASSNAME ) ) otherlv_13= ';' (otherlv_14= 'qualifier' ( (lv_qualifier_15_0= RULE_CLASSNAME ) ) otherlv_16= ';' )? otherlv_17= '}' otherlv_18= ';' ) ;
     public final EObject ruleObserver() throws RecognitionException {
         EObject current = null;
 
@@ -872,6 +863,7 @@ public class InternalProjectGeneratorParser extends AbstractInternalAntlrParser 
         Token lv_qualifier_15_0=null;
         Token otherlv_16=null;
         Token otherlv_17=null;
+        Token otherlv_18=null;
         Enumerator lv_during_6_0 = null;
 
         Enumerator lv_notify_9_0 = null;
@@ -881,11 +873,11 @@ public class InternalProjectGeneratorParser extends AbstractInternalAntlrParser 
         	enterRule();
 
         try {
-            // InternalProjectGenerator.g:391:2: ( ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= '{' otherlv_2= 'type' ( (lv_type_3_0= RULE_CLASSNAME ) ) otherlv_4= ';' otherlv_5= 'during' ( (lv_during_6_0= ruleDuring ) ) otherlv_7= ';' otherlv_8= 'notify' ( (lv_notify_9_0= ruleNotify ) ) otherlv_10= ';' otherlv_11= 'delegate' ( (lv_className_12_0= RULE_CLASSNAME ) ) otherlv_13= ';' (otherlv_14= 'qualifier' ( (lv_qualifier_15_0= RULE_CLASSNAME ) ) otherlv_16= ';' )? otherlv_17= '}' ) )
-            // InternalProjectGenerator.g:392:2: ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= '{' otherlv_2= 'type' ( (lv_type_3_0= RULE_CLASSNAME ) ) otherlv_4= ';' otherlv_5= 'during' ( (lv_during_6_0= ruleDuring ) ) otherlv_7= ';' otherlv_8= 'notify' ( (lv_notify_9_0= ruleNotify ) ) otherlv_10= ';' otherlv_11= 'delegate' ( (lv_className_12_0= RULE_CLASSNAME ) ) otherlv_13= ';' (otherlv_14= 'qualifier' ( (lv_qualifier_15_0= RULE_CLASSNAME ) ) otherlv_16= ';' )? otherlv_17= '}' )
+            // InternalProjectGenerator.g:391:2: ( ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= '{' otherlv_2= 'type' ( (lv_type_3_0= RULE_CLASSNAME ) ) otherlv_4= ';' otherlv_5= 'during' ( (lv_during_6_0= ruleDuring ) ) otherlv_7= ';' otherlv_8= 'notify' ( (lv_notify_9_0= ruleNotify ) ) otherlv_10= ';' otherlv_11= 'delegate' ( (lv_className_12_0= RULE_CLASSNAME ) ) otherlv_13= ';' (otherlv_14= 'qualifier' ( (lv_qualifier_15_0= RULE_CLASSNAME ) ) otherlv_16= ';' )? otherlv_17= '}' otherlv_18= ';' ) )
+            // InternalProjectGenerator.g:392:2: ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= '{' otherlv_2= 'type' ( (lv_type_3_0= RULE_CLASSNAME ) ) otherlv_4= ';' otherlv_5= 'during' ( (lv_during_6_0= ruleDuring ) ) otherlv_7= ';' otherlv_8= 'notify' ( (lv_notify_9_0= ruleNotify ) ) otherlv_10= ';' otherlv_11= 'delegate' ( (lv_className_12_0= RULE_CLASSNAME ) ) otherlv_13= ';' (otherlv_14= 'qualifier' ( (lv_qualifier_15_0= RULE_CLASSNAME ) ) otherlv_16= ';' )? otherlv_17= '}' otherlv_18= ';' )
             {
-            // InternalProjectGenerator.g:392:2: ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= '{' otherlv_2= 'type' ( (lv_type_3_0= RULE_CLASSNAME ) ) otherlv_4= ';' otherlv_5= 'during' ( (lv_during_6_0= ruleDuring ) ) otherlv_7= ';' otherlv_8= 'notify' ( (lv_notify_9_0= ruleNotify ) ) otherlv_10= ';' otherlv_11= 'delegate' ( (lv_className_12_0= RULE_CLASSNAME ) ) otherlv_13= ';' (otherlv_14= 'qualifier' ( (lv_qualifier_15_0= RULE_CLASSNAME ) ) otherlv_16= ';' )? otherlv_17= '}' )
-            // InternalProjectGenerator.g:393:3: ( (lv_name_0_0= RULE_ID ) ) otherlv_1= '{' otherlv_2= 'type' ( (lv_type_3_0= RULE_CLASSNAME ) ) otherlv_4= ';' otherlv_5= 'during' ( (lv_during_6_0= ruleDuring ) ) otherlv_7= ';' otherlv_8= 'notify' ( (lv_notify_9_0= ruleNotify ) ) otherlv_10= ';' otherlv_11= 'delegate' ( (lv_className_12_0= RULE_CLASSNAME ) ) otherlv_13= ';' (otherlv_14= 'qualifier' ( (lv_qualifier_15_0= RULE_CLASSNAME ) ) otherlv_16= ';' )? otherlv_17= '}'
+            // InternalProjectGenerator.g:392:2: ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= '{' otherlv_2= 'type' ( (lv_type_3_0= RULE_CLASSNAME ) ) otherlv_4= ';' otherlv_5= 'during' ( (lv_during_6_0= ruleDuring ) ) otherlv_7= ';' otherlv_8= 'notify' ( (lv_notify_9_0= ruleNotify ) ) otherlv_10= ';' otherlv_11= 'delegate' ( (lv_className_12_0= RULE_CLASSNAME ) ) otherlv_13= ';' (otherlv_14= 'qualifier' ( (lv_qualifier_15_0= RULE_CLASSNAME ) ) otherlv_16= ';' )? otherlv_17= '}' otherlv_18= ';' )
+            // InternalProjectGenerator.g:393:3: ( (lv_name_0_0= RULE_ID ) ) otherlv_1= '{' otherlv_2= 'type' ( (lv_type_3_0= RULE_CLASSNAME ) ) otherlv_4= ';' otherlv_5= 'during' ( (lv_during_6_0= ruleDuring ) ) otherlv_7= ';' otherlv_8= 'notify' ( (lv_notify_9_0= ruleNotify ) ) otherlv_10= ';' otherlv_11= 'delegate' ( (lv_className_12_0= RULE_CLASSNAME ) ) otherlv_13= ';' (otherlv_14= 'qualifier' ( (lv_qualifier_15_0= RULE_CLASSNAME ) ) otherlv_16= ';' )? otherlv_17= '}' otherlv_18= ';'
             {
             // InternalProjectGenerator.g:393:3: ( (lv_name_0_0= RULE_ID ) )
             // InternalProjectGenerator.g:394:4: (lv_name_0_0= RULE_ID )
@@ -913,11 +905,11 @@ public class InternalProjectGeneratorParser extends AbstractInternalAntlrParser 
 
             }
 
-            otherlv_1=(Token)match(input,15,FOLLOW_18); 
+            otherlv_1=(Token)match(input,17,FOLLOW_18); 
 
             			newLeafNode(otherlv_1, grammarAccess.getObserverAccess().getLeftCurlyBracketKeyword_1());
             		
-            otherlv_2=(Token)match(input,24,FOLLOW_19); 
+            otherlv_2=(Token)match(input,26,FOLLOW_19); 
 
             			newLeafNode(otherlv_2, grammarAccess.getObserverAccess().getTypeKeyword_2());
             		
@@ -929,7 +921,7 @@ public class InternalProjectGeneratorParser extends AbstractInternalAntlrParser 
             {
             lv_type_3_0=(Token)match(input,RULE_CLASSNAME,FOLLOW_7); 
 
-            					newLeafNode(lv_type_3_0, grammarAccess.getObserverAccess().getTypeClassNameTerminalRuleCall_3_0());
+            					newLeafNode(lv_type_3_0, grammarAccess.getObserverAccess().getTypeCLASSNAMETerminalRuleCall_3_0());
             				
 
             					if (current==null) {
@@ -939,7 +931,7 @@ public class InternalProjectGeneratorParser extends AbstractInternalAntlrParser 
             						current,
             						"type",
             						lv_type_3_0,
-            						"at.ooe.fh.mdm.herzog.dsl.proj.ProjectGenerator.ClassName");
+            						"at.ooe.fh.mdm.herzog.dsl.proj.ProjectGenerator.CLASSNAME");
             				
 
             }
@@ -947,11 +939,11 @@ public class InternalProjectGeneratorParser extends AbstractInternalAntlrParser 
 
             }
 
-            otherlv_4=(Token)match(input,17,FOLLOW_20); 
+            otherlv_4=(Token)match(input,19,FOLLOW_20); 
 
             			newLeafNode(otherlv_4, grammarAccess.getObserverAccess().getSemicolonKeyword_4());
             		
-            otherlv_5=(Token)match(input,25,FOLLOW_21); 
+            otherlv_5=(Token)match(input,27,FOLLOW_21); 
 
             			newLeafNode(otherlv_5, grammarAccess.getObserverAccess().getDuringKeyword_5());
             		
@@ -986,11 +978,11 @@ public class InternalProjectGeneratorParser extends AbstractInternalAntlrParser 
 
             }
 
-            otherlv_7=(Token)match(input,17,FOLLOW_22); 
+            otherlv_7=(Token)match(input,19,FOLLOW_22); 
 
             			newLeafNode(otherlv_7, grammarAccess.getObserverAccess().getSemicolonKeyword_7());
             		
-            otherlv_8=(Token)match(input,26,FOLLOW_23); 
+            otherlv_8=(Token)match(input,28,FOLLOW_23); 
 
             			newLeafNode(otherlv_8, grammarAccess.getObserverAccess().getNotifyKeyword_8());
             		
@@ -1025,11 +1017,11 @@ public class InternalProjectGeneratorParser extends AbstractInternalAntlrParser 
 
             }
 
-            otherlv_10=(Token)match(input,17,FOLLOW_24); 
+            otherlv_10=(Token)match(input,19,FOLLOW_24); 
 
             			newLeafNode(otherlv_10, grammarAccess.getObserverAccess().getSemicolonKeyword_10());
             		
-            otherlv_11=(Token)match(input,27,FOLLOW_19); 
+            otherlv_11=(Token)match(input,29,FOLLOW_19); 
 
             			newLeafNode(otherlv_11, grammarAccess.getObserverAccess().getDelegateKeyword_11());
             		
@@ -1041,7 +1033,7 @@ public class InternalProjectGeneratorParser extends AbstractInternalAntlrParser 
             {
             lv_className_12_0=(Token)match(input,RULE_CLASSNAME,FOLLOW_7); 
 
-            					newLeafNode(lv_className_12_0, grammarAccess.getObserverAccess().getClassNameClassNameTerminalRuleCall_12_0());
+            					newLeafNode(lv_className_12_0, grammarAccess.getObserverAccess().getClassNameCLASSNAMETerminalRuleCall_12_0());
             				
 
             					if (current==null) {
@@ -1051,7 +1043,7 @@ public class InternalProjectGeneratorParser extends AbstractInternalAntlrParser 
             						current,
             						"className",
             						lv_className_12_0,
-            						"at.ooe.fh.mdm.herzog.dsl.proj.ProjectGenerator.ClassName");
+            						"at.ooe.fh.mdm.herzog.dsl.proj.ProjectGenerator.CLASSNAME");
             				
 
             }
@@ -1059,22 +1051,22 @@ public class InternalProjectGeneratorParser extends AbstractInternalAntlrParser 
 
             }
 
-            otherlv_13=(Token)match(input,17,FOLLOW_25); 
+            otherlv_13=(Token)match(input,19,FOLLOW_25); 
 
             			newLeafNode(otherlv_13, grammarAccess.getObserverAccess().getSemicolonKeyword_13());
             		
             // InternalProjectGenerator.g:521:3: (otherlv_14= 'qualifier' ( (lv_qualifier_15_0= RULE_CLASSNAME ) ) otherlv_16= ';' )?
-            int alt9=2;
-            int LA9_0 = input.LA(1);
+            int alt8=2;
+            int LA8_0 = input.LA(1);
 
-            if ( (LA9_0==28) ) {
-                alt9=1;
+            if ( (LA8_0==30) ) {
+                alt8=1;
             }
-            switch (alt9) {
+            switch (alt8) {
                 case 1 :
                     // InternalProjectGenerator.g:522:4: otherlv_14= 'qualifier' ( (lv_qualifier_15_0= RULE_CLASSNAME ) ) otherlv_16= ';'
                     {
-                    otherlv_14=(Token)match(input,28,FOLLOW_19); 
+                    otherlv_14=(Token)match(input,30,FOLLOW_19); 
 
                     				newLeafNode(otherlv_14, grammarAccess.getObserverAccess().getQualifierKeyword_14_0());
                     			
@@ -1086,7 +1078,7 @@ public class InternalProjectGeneratorParser extends AbstractInternalAntlrParser 
                     {
                     lv_qualifier_15_0=(Token)match(input,RULE_CLASSNAME,FOLLOW_7); 
 
-                    						newLeafNode(lv_qualifier_15_0, grammarAccess.getObserverAccess().getQualifierClassNameTerminalRuleCall_14_1_0());
+                    						newLeafNode(lv_qualifier_15_0, grammarAccess.getObserverAccess().getQualifierCLASSNAMETerminalRuleCall_14_1_0());
                     					
 
                     						if (current==null) {
@@ -1096,7 +1088,7 @@ public class InternalProjectGeneratorParser extends AbstractInternalAntlrParser 
                     							current,
                     							"qualifier",
                     							lv_qualifier_15_0,
-                    							"at.ooe.fh.mdm.herzog.dsl.proj.ProjectGenerator.ClassName");
+                    							"at.ooe.fh.mdm.herzog.dsl.proj.ProjectGenerator.CLASSNAME");
                     					
 
                     }
@@ -1104,7 +1096,7 @@ public class InternalProjectGeneratorParser extends AbstractInternalAntlrParser 
 
                     }
 
-                    otherlv_16=(Token)match(input,17,FOLLOW_15); 
+                    otherlv_16=(Token)match(input,19,FOLLOW_15); 
 
                     				newLeafNode(otherlv_16, grammarAccess.getObserverAccess().getSemicolonKeyword_14_2());
                     			
@@ -1114,9 +1106,13 @@ public class InternalProjectGeneratorParser extends AbstractInternalAntlrParser 
 
             }
 
-            otherlv_17=(Token)match(input,20,FOLLOW_2); 
+            otherlv_17=(Token)match(input,22,FOLLOW_7); 
 
             			newLeafNode(otherlv_17, grammarAccess.getObserverAccess().getRightCurlyBracketKeyword_15());
+            		
+            otherlv_18=(Token)match(input,19,FOLLOW_2); 
+
+            			newLeafNode(otherlv_18, grammarAccess.getObserverAccess().getSemicolonKeyword_16());
             		
 
             }
@@ -1141,7 +1137,7 @@ public class InternalProjectGeneratorParser extends AbstractInternalAntlrParser 
 
 
     // $ANTLR start "entryRuleJpaConfig"
-    // InternalProjectGenerator.g:557:1: entryRuleJpaConfig returns [EObject current=null] : iv_ruleJpaConfig= ruleJpaConfig EOF ;
+    // InternalProjectGenerator.g:561:1: entryRuleJpaConfig returns [EObject current=null] : iv_ruleJpaConfig= ruleJpaConfig EOF ;
     public final EObject entryRuleJpaConfig() throws RecognitionException {
         EObject current = null;
 
@@ -1149,8 +1145,8 @@ public class InternalProjectGeneratorParser extends AbstractInternalAntlrParser 
 
 
         try {
-            // InternalProjectGenerator.g:557:50: (iv_ruleJpaConfig= ruleJpaConfig EOF )
-            // InternalProjectGenerator.g:558:2: iv_ruleJpaConfig= ruleJpaConfig EOF
+            // InternalProjectGenerator.g:561:50: (iv_ruleJpaConfig= ruleJpaConfig EOF )
+            // InternalProjectGenerator.g:562:2: iv_ruleJpaConfig= ruleJpaConfig EOF
             {
              newCompositeNode(grammarAccess.getJpaConfigRule()); 
             pushFollow(FOLLOW_1);
@@ -1177,7 +1173,7 @@ public class InternalProjectGeneratorParser extends AbstractInternalAntlrParser 
 
 
     // $ANTLR start "ruleJpaConfig"
-    // InternalProjectGenerator.g:564:1: ruleJpaConfig returns [EObject current=null] : (otherlv_0= '{' otherlv_1= 'localizedEnums' otherlv_2= '{' ( (otherlv_3= RULE_ID ) )+ otherlv_4= '}' otherlv_5= ';' otherlv_6= '}' ) ;
+    // InternalProjectGenerator.g:568:1: ruleJpaConfig returns [EObject current=null] : (otherlv_0= '{' otherlv_1= 'localizedEnums' otherlv_2= '{' ( (otherlv_3= RULE_ID ) )+ otherlv_4= '}' otherlv_5= ';' (otherlv_6= 'observers' ( (lv_observers_7_0= ruleObserver ) )+ )? otherlv_8= '}' ) ;
     public final EObject ruleJpaConfig() throws RecognitionException {
         EObject current = null;
 
@@ -1188,47 +1184,50 @@ public class InternalProjectGeneratorParser extends AbstractInternalAntlrParser 
         Token otherlv_4=null;
         Token otherlv_5=null;
         Token otherlv_6=null;
+        Token otherlv_8=null;
+        EObject lv_observers_7_0 = null;
+
 
 
         	enterRule();
 
         try {
-            // InternalProjectGenerator.g:570:2: ( (otherlv_0= '{' otherlv_1= 'localizedEnums' otherlv_2= '{' ( (otherlv_3= RULE_ID ) )+ otherlv_4= '}' otherlv_5= ';' otherlv_6= '}' ) )
-            // InternalProjectGenerator.g:571:2: (otherlv_0= '{' otherlv_1= 'localizedEnums' otherlv_2= '{' ( (otherlv_3= RULE_ID ) )+ otherlv_4= '}' otherlv_5= ';' otherlv_6= '}' )
+            // InternalProjectGenerator.g:574:2: ( (otherlv_0= '{' otherlv_1= 'localizedEnums' otherlv_2= '{' ( (otherlv_3= RULE_ID ) )+ otherlv_4= '}' otherlv_5= ';' (otherlv_6= 'observers' ( (lv_observers_7_0= ruleObserver ) )+ )? otherlv_8= '}' ) )
+            // InternalProjectGenerator.g:575:2: (otherlv_0= '{' otherlv_1= 'localizedEnums' otherlv_2= '{' ( (otherlv_3= RULE_ID ) )+ otherlv_4= '}' otherlv_5= ';' (otherlv_6= 'observers' ( (lv_observers_7_0= ruleObserver ) )+ )? otherlv_8= '}' )
             {
-            // InternalProjectGenerator.g:571:2: (otherlv_0= '{' otherlv_1= 'localizedEnums' otherlv_2= '{' ( (otherlv_3= RULE_ID ) )+ otherlv_4= '}' otherlv_5= ';' otherlv_6= '}' )
-            // InternalProjectGenerator.g:572:3: otherlv_0= '{' otherlv_1= 'localizedEnums' otherlv_2= '{' ( (otherlv_3= RULE_ID ) )+ otherlv_4= '}' otherlv_5= ';' otherlv_6= '}'
+            // InternalProjectGenerator.g:575:2: (otherlv_0= '{' otherlv_1= 'localizedEnums' otherlv_2= '{' ( (otherlv_3= RULE_ID ) )+ otherlv_4= '}' otherlv_5= ';' (otherlv_6= 'observers' ( (lv_observers_7_0= ruleObserver ) )+ )? otherlv_8= '}' )
+            // InternalProjectGenerator.g:576:3: otherlv_0= '{' otherlv_1= 'localizedEnums' otherlv_2= '{' ( (otherlv_3= RULE_ID ) )+ otherlv_4= '}' otherlv_5= ';' (otherlv_6= 'observers' ( (lv_observers_7_0= ruleObserver ) )+ )? otherlv_8= '}'
             {
-            otherlv_0=(Token)match(input,15,FOLLOW_26); 
+            otherlv_0=(Token)match(input,17,FOLLOW_26); 
 
             			newLeafNode(otherlv_0, grammarAccess.getJpaConfigAccess().getLeftCurlyBracketKeyword_0());
             		
-            otherlv_1=(Token)match(input,29,FOLLOW_4); 
+            otherlv_1=(Token)match(input,31,FOLLOW_4); 
 
             			newLeafNode(otherlv_1, grammarAccess.getJpaConfigAccess().getLocalizedEnumsKeyword_1());
             		
-            otherlv_2=(Token)match(input,15,FOLLOW_3); 
+            otherlv_2=(Token)match(input,17,FOLLOW_3); 
 
             			newLeafNode(otherlv_2, grammarAccess.getJpaConfigAccess().getLeftCurlyBracketKeyword_2());
             		
-            // InternalProjectGenerator.g:584:3: ( (otherlv_3= RULE_ID ) )+
-            int cnt10=0;
-            loop10:
+            // InternalProjectGenerator.g:588:3: ( (otherlv_3= RULE_ID ) )+
+            int cnt9=0;
+            loop9:
             do {
-                int alt10=2;
-                int LA10_0 = input.LA(1);
+                int alt9=2;
+                int LA9_0 = input.LA(1);
 
-                if ( (LA10_0==RULE_ID) ) {
-                    alt10=1;
+                if ( (LA9_0==RULE_ID) ) {
+                    alt9=1;
                 }
 
 
-                switch (alt10) {
+                switch (alt9) {
             	case 1 :
-            	    // InternalProjectGenerator.g:585:4: (otherlv_3= RULE_ID )
+            	    // InternalProjectGenerator.g:589:4: (otherlv_3= RULE_ID )
             	    {
-            	    // InternalProjectGenerator.g:585:4: (otherlv_3= RULE_ID )
-            	    // InternalProjectGenerator.g:586:5: otherlv_3= RULE_ID
+            	    // InternalProjectGenerator.g:589:4: (otherlv_3= RULE_ID )
+            	    // InternalProjectGenerator.g:590:5: otherlv_3= RULE_ID
             	    {
 
             	    					if (current==null) {
@@ -1247,25 +1246,100 @@ public class InternalProjectGeneratorParser extends AbstractInternalAntlrParser 
             	    break;
 
             	default :
-            	    if ( cnt10 >= 1 ) break loop10;
+            	    if ( cnt9 >= 1 ) break loop9;
                         EarlyExitException eee =
-                            new EarlyExitException(10, input);
+                            new EarlyExitException(9, input);
                         throw eee;
                 }
-                cnt10++;
+                cnt9++;
             } while (true);
 
-            otherlv_4=(Token)match(input,20,FOLLOW_7); 
+            otherlv_4=(Token)match(input,22,FOLLOW_7); 
 
             			newLeafNode(otherlv_4, grammarAccess.getJpaConfigAccess().getRightCurlyBracketKeyword_4());
             		
-            otherlv_5=(Token)match(input,17,FOLLOW_15); 
+            otherlv_5=(Token)match(input,19,FOLLOW_27); 
 
             			newLeafNode(otherlv_5, grammarAccess.getJpaConfigAccess().getSemicolonKeyword_5());
             		
-            otherlv_6=(Token)match(input,20,FOLLOW_2); 
+            // InternalProjectGenerator.g:609:3: (otherlv_6= 'observers' ( (lv_observers_7_0= ruleObserver ) )+ )?
+            int alt11=2;
+            int LA11_0 = input.LA(1);
 
-            			newLeafNode(otherlv_6, grammarAccess.getJpaConfigAccess().getRightCurlyBracketKeyword_6());
+            if ( (LA11_0==23) ) {
+                alt11=1;
+            }
+            switch (alt11) {
+                case 1 :
+                    // InternalProjectGenerator.g:610:4: otherlv_6= 'observers' ( (lv_observers_7_0= ruleObserver ) )+
+                    {
+                    otherlv_6=(Token)match(input,23,FOLLOW_3); 
+
+                    				newLeafNode(otherlv_6, grammarAccess.getJpaConfigAccess().getObserversKeyword_6_0());
+                    			
+                    // InternalProjectGenerator.g:614:4: ( (lv_observers_7_0= ruleObserver ) )+
+                    int cnt10=0;
+                    loop10:
+                    do {
+                        int alt10=2;
+                        int LA10_0 = input.LA(1);
+
+                        if ( (LA10_0==RULE_ID) ) {
+                            alt10=1;
+                        }
+
+
+                        switch (alt10) {
+                    	case 1 :
+                    	    // InternalProjectGenerator.g:615:5: (lv_observers_7_0= ruleObserver )
+                    	    {
+                    	    // InternalProjectGenerator.g:615:5: (lv_observers_7_0= ruleObserver )
+                    	    // InternalProjectGenerator.g:616:6: lv_observers_7_0= ruleObserver
+                    	    {
+
+                    	    						newCompositeNode(grammarAccess.getJpaConfigAccess().getObserversObserverParserRuleCall_6_1_0());
+                    	    					
+                    	    pushFollow(FOLLOW_11);
+                    	    lv_observers_7_0=ruleObserver();
+
+                    	    state._fsp--;
+
+
+                    	    						if (current==null) {
+                    	    							current = createModelElementForParent(grammarAccess.getJpaConfigRule());
+                    	    						}
+                    	    						add(
+                    	    							current,
+                    	    							"observers",
+                    	    							lv_observers_7_0,
+                    	    							"at.ooe.fh.mdm.herzog.dsl.proj.ProjectGenerator.Observer");
+                    	    						afterParserOrEnumRuleCall();
+                    	    					
+
+                    	    }
+
+
+                    	    }
+                    	    break;
+
+                    	default :
+                    	    if ( cnt10 >= 1 ) break loop10;
+                                EarlyExitException eee =
+                                    new EarlyExitException(10, input);
+                                throw eee;
+                        }
+                        cnt10++;
+                    } while (true);
+
+
+                    }
+                    break;
+
+            }
+
+            otherlv_8=(Token)match(input,22,FOLLOW_2); 
+
+            			newLeafNode(otherlv_8, grammarAccess.getJpaConfigAccess().getRightCurlyBracketKeyword_7());
             		
 
             }
@@ -1290,7 +1364,7 @@ public class InternalProjectGeneratorParser extends AbstractInternalAntlrParser 
 
 
     // $ANTLR start "entryRuleLocalized"
-    // InternalProjectGenerator.g:613:1: entryRuleLocalized returns [EObject current=null] : iv_ruleLocalized= ruleLocalized EOF ;
+    // InternalProjectGenerator.g:642:1: entryRuleLocalized returns [EObject current=null] : iv_ruleLocalized= ruleLocalized EOF ;
     public final EObject entryRuleLocalized() throws RecognitionException {
         EObject current = null;
 
@@ -1298,8 +1372,8 @@ public class InternalProjectGeneratorParser extends AbstractInternalAntlrParser 
 
 
         try {
-            // InternalProjectGenerator.g:613:50: (iv_ruleLocalized= ruleLocalized EOF )
-            // InternalProjectGenerator.g:614:2: iv_ruleLocalized= ruleLocalized EOF
+            // InternalProjectGenerator.g:642:50: (iv_ruleLocalized= ruleLocalized EOF )
+            // InternalProjectGenerator.g:643:2: iv_ruleLocalized= ruleLocalized EOF
             {
              newCompositeNode(grammarAccess.getLocalizedRule()); 
             pushFollow(FOLLOW_1);
@@ -1326,7 +1400,7 @@ public class InternalProjectGeneratorParser extends AbstractInternalAntlrParser 
 
 
     // $ANTLR start "ruleLocalized"
-    // InternalProjectGenerator.g:620:1: ruleLocalized returns [EObject current=null] : ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= '{' (otherlv_2= 'values' otherlv_3= '{' ( (lv_values_4_0= ruleLocalizedEntry ) )+ otherlv_5= '}' otherlv_6= ';' )? otherlv_7= '}' ) ;
+    // InternalProjectGenerator.g:649:1: ruleLocalized returns [EObject current=null] : ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= '{' (otherlv_2= 'values' otherlv_3= '{' ( (lv_values_4_0= ruleLocalizedEntry ) )+ otherlv_5= '}' otherlv_6= ';' )? otherlv_7= '}' otherlv_8= ';' ) ;
     public final EObject ruleLocalized() throws RecognitionException {
         EObject current = null;
 
@@ -1337,6 +1411,7 @@ public class InternalProjectGeneratorParser extends AbstractInternalAntlrParser 
         Token otherlv_5=null;
         Token otherlv_6=null;
         Token otherlv_7=null;
+        Token otherlv_8=null;
         EObject lv_values_4_0 = null;
 
 
@@ -1344,17 +1419,17 @@ public class InternalProjectGeneratorParser extends AbstractInternalAntlrParser 
         	enterRule();
 
         try {
-            // InternalProjectGenerator.g:626:2: ( ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= '{' (otherlv_2= 'values' otherlv_3= '{' ( (lv_values_4_0= ruleLocalizedEntry ) )+ otherlv_5= '}' otherlv_6= ';' )? otherlv_7= '}' ) )
-            // InternalProjectGenerator.g:627:2: ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= '{' (otherlv_2= 'values' otherlv_3= '{' ( (lv_values_4_0= ruleLocalizedEntry ) )+ otherlv_5= '}' otherlv_6= ';' )? otherlv_7= '}' )
+            // InternalProjectGenerator.g:655:2: ( ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= '{' (otherlv_2= 'values' otherlv_3= '{' ( (lv_values_4_0= ruleLocalizedEntry ) )+ otherlv_5= '}' otherlv_6= ';' )? otherlv_7= '}' otherlv_8= ';' ) )
+            // InternalProjectGenerator.g:656:2: ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= '{' (otherlv_2= 'values' otherlv_3= '{' ( (lv_values_4_0= ruleLocalizedEntry ) )+ otherlv_5= '}' otherlv_6= ';' )? otherlv_7= '}' otherlv_8= ';' )
             {
-            // InternalProjectGenerator.g:627:2: ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= '{' (otherlv_2= 'values' otherlv_3= '{' ( (lv_values_4_0= ruleLocalizedEntry ) )+ otherlv_5= '}' otherlv_6= ';' )? otherlv_7= '}' )
-            // InternalProjectGenerator.g:628:3: ( (lv_name_0_0= RULE_ID ) ) otherlv_1= '{' (otherlv_2= 'values' otherlv_3= '{' ( (lv_values_4_0= ruleLocalizedEntry ) )+ otherlv_5= '}' otherlv_6= ';' )? otherlv_7= '}'
+            // InternalProjectGenerator.g:656:2: ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= '{' (otherlv_2= 'values' otherlv_3= '{' ( (lv_values_4_0= ruleLocalizedEntry ) )+ otherlv_5= '}' otherlv_6= ';' )? otherlv_7= '}' otherlv_8= ';' )
+            // InternalProjectGenerator.g:657:3: ( (lv_name_0_0= RULE_ID ) ) otherlv_1= '{' (otherlv_2= 'values' otherlv_3= '{' ( (lv_values_4_0= ruleLocalizedEntry ) )+ otherlv_5= '}' otherlv_6= ';' )? otherlv_7= '}' otherlv_8= ';'
             {
-            // InternalProjectGenerator.g:628:3: ( (lv_name_0_0= RULE_ID ) )
-            // InternalProjectGenerator.g:629:4: (lv_name_0_0= RULE_ID )
+            // InternalProjectGenerator.g:657:3: ( (lv_name_0_0= RULE_ID ) )
+            // InternalProjectGenerator.g:658:4: (lv_name_0_0= RULE_ID )
             {
-            // InternalProjectGenerator.g:629:4: (lv_name_0_0= RULE_ID )
-            // InternalProjectGenerator.g:630:5: lv_name_0_0= RULE_ID
+            // InternalProjectGenerator.g:658:4: (lv_name_0_0= RULE_ID )
+            // InternalProjectGenerator.g:659:5: lv_name_0_0= RULE_ID
             {
             lv_name_0_0=(Token)match(input,RULE_ID,FOLLOW_4); 
 
@@ -1376,52 +1451,52 @@ public class InternalProjectGeneratorParser extends AbstractInternalAntlrParser 
 
             }
 
-            otherlv_1=(Token)match(input,15,FOLLOW_27); 
+            otherlv_1=(Token)match(input,17,FOLLOW_28); 
 
             			newLeafNode(otherlv_1, grammarAccess.getLocalizedAccess().getLeftCurlyBracketKeyword_1());
             		
-            // InternalProjectGenerator.g:650:3: (otherlv_2= 'values' otherlv_3= '{' ( (lv_values_4_0= ruleLocalizedEntry ) )+ otherlv_5= '}' otherlv_6= ';' )?
-            int alt12=2;
-            int LA12_0 = input.LA(1);
+            // InternalProjectGenerator.g:679:3: (otherlv_2= 'values' otherlv_3= '{' ( (lv_values_4_0= ruleLocalizedEntry ) )+ otherlv_5= '}' otherlv_6= ';' )?
+            int alt13=2;
+            int LA13_0 = input.LA(1);
 
-            if ( (LA12_0==30) ) {
-                alt12=1;
+            if ( (LA13_0==32) ) {
+                alt13=1;
             }
-            switch (alt12) {
+            switch (alt13) {
                 case 1 :
-                    // InternalProjectGenerator.g:651:4: otherlv_2= 'values' otherlv_3= '{' ( (lv_values_4_0= ruleLocalizedEntry ) )+ otherlv_5= '}' otherlv_6= ';'
+                    // InternalProjectGenerator.g:680:4: otherlv_2= 'values' otherlv_3= '{' ( (lv_values_4_0= ruleLocalizedEntry ) )+ otherlv_5= '}' otherlv_6= ';'
                     {
-                    otherlv_2=(Token)match(input,30,FOLLOW_4); 
+                    otherlv_2=(Token)match(input,32,FOLLOW_4); 
 
                     				newLeafNode(otherlv_2, grammarAccess.getLocalizedAccess().getValuesKeyword_2_0());
                     			
-                    otherlv_3=(Token)match(input,15,FOLLOW_4); 
+                    otherlv_3=(Token)match(input,17,FOLLOW_4); 
 
                     				newLeafNode(otherlv_3, grammarAccess.getLocalizedAccess().getLeftCurlyBracketKeyword_2_1());
                     			
-                    // InternalProjectGenerator.g:659:4: ( (lv_values_4_0= ruleLocalizedEntry ) )+
-                    int cnt11=0;
-                    loop11:
+                    // InternalProjectGenerator.g:688:4: ( (lv_values_4_0= ruleLocalizedEntry ) )+
+                    int cnt12=0;
+                    loop12:
                     do {
-                        int alt11=2;
-                        int LA11_0 = input.LA(1);
+                        int alt12=2;
+                        int LA12_0 = input.LA(1);
 
-                        if ( (LA11_0==15) ) {
-                            alt11=1;
+                        if ( (LA12_0==17) ) {
+                            alt12=1;
                         }
 
 
-                        switch (alt11) {
+                        switch (alt12) {
                     	case 1 :
-                    	    // InternalProjectGenerator.g:660:5: (lv_values_4_0= ruleLocalizedEntry )
+                    	    // InternalProjectGenerator.g:689:5: (lv_values_4_0= ruleLocalizedEntry )
                     	    {
-                    	    // InternalProjectGenerator.g:660:5: (lv_values_4_0= ruleLocalizedEntry )
-                    	    // InternalProjectGenerator.g:661:6: lv_values_4_0= ruleLocalizedEntry
+                    	    // InternalProjectGenerator.g:689:5: (lv_values_4_0= ruleLocalizedEntry )
+                    	    // InternalProjectGenerator.g:690:6: lv_values_4_0= ruleLocalizedEntry
                     	    {
 
                     	    						newCompositeNode(grammarAccess.getLocalizedAccess().getValuesLocalizedEntryParserRuleCall_2_2_0());
                     	    					
-                    	    pushFollow(FOLLOW_28);
+                    	    pushFollow(FOLLOW_29);
                     	    lv_values_4_0=ruleLocalizedEntry();
 
                     	    state._fsp--;
@@ -1445,19 +1520,19 @@ public class InternalProjectGeneratorParser extends AbstractInternalAntlrParser 
                     	    break;
 
                     	default :
-                    	    if ( cnt11 >= 1 ) break loop11;
+                    	    if ( cnt12 >= 1 ) break loop12;
                                 EarlyExitException eee =
-                                    new EarlyExitException(11, input);
+                                    new EarlyExitException(12, input);
                                 throw eee;
                         }
-                        cnt11++;
+                        cnt12++;
                     } while (true);
 
-                    otherlv_5=(Token)match(input,20,FOLLOW_7); 
+                    otherlv_5=(Token)match(input,22,FOLLOW_7); 
 
                     				newLeafNode(otherlv_5, grammarAccess.getLocalizedAccess().getRightCurlyBracketKeyword_2_3());
                     			
-                    otherlv_6=(Token)match(input,17,FOLLOW_15); 
+                    otherlv_6=(Token)match(input,19,FOLLOW_15); 
 
                     				newLeafNode(otherlv_6, grammarAccess.getLocalizedAccess().getSemicolonKeyword_2_4());
                     			
@@ -1467,9 +1542,13 @@ public class InternalProjectGeneratorParser extends AbstractInternalAntlrParser 
 
             }
 
-            otherlv_7=(Token)match(input,20,FOLLOW_2); 
+            otherlv_7=(Token)match(input,22,FOLLOW_7); 
 
             			newLeafNode(otherlv_7, grammarAccess.getLocalizedAccess().getRightCurlyBracketKeyword_3());
+            		
+            otherlv_8=(Token)match(input,19,FOLLOW_2); 
+
+            			newLeafNode(otherlv_8, grammarAccess.getLocalizedAccess().getSemicolonKeyword_4());
             		
 
             }
@@ -1494,7 +1573,7 @@ public class InternalProjectGeneratorParser extends AbstractInternalAntlrParser 
 
 
     // $ANTLR start "entryRuleLocalizedEntry"
-    // InternalProjectGenerator.g:695:1: entryRuleLocalizedEntry returns [EObject current=null] : iv_ruleLocalizedEntry= ruleLocalizedEntry EOF ;
+    // InternalProjectGenerator.g:728:1: entryRuleLocalizedEntry returns [EObject current=null] : iv_ruleLocalizedEntry= ruleLocalizedEntry EOF ;
     public final EObject entryRuleLocalizedEntry() throws RecognitionException {
         EObject current = null;
 
@@ -1502,8 +1581,8 @@ public class InternalProjectGeneratorParser extends AbstractInternalAntlrParser 
 
 
         try {
-            // InternalProjectGenerator.g:695:55: (iv_ruleLocalizedEntry= ruleLocalizedEntry EOF )
-            // InternalProjectGenerator.g:696:2: iv_ruleLocalizedEntry= ruleLocalizedEntry EOF
+            // InternalProjectGenerator.g:728:55: (iv_ruleLocalizedEntry= ruleLocalizedEntry EOF )
+            // InternalProjectGenerator.g:729:2: iv_ruleLocalizedEntry= ruleLocalizedEntry EOF
             {
              newCompositeNode(grammarAccess.getLocalizedEntryRule()); 
             pushFollow(FOLLOW_1);
@@ -1530,7 +1609,7 @@ public class InternalProjectGeneratorParser extends AbstractInternalAntlrParser 
 
 
     // $ANTLR start "ruleLocalizedEntry"
-    // InternalProjectGenerator.g:702:1: ruleLocalizedEntry returns [EObject current=null] : (otherlv_0= '{' otherlv_1= 'key' ( (lv_localizedKey_2_0= RULE_LOCALIZEDKEY ) ) otherlv_3= ';' otherlv_4= 'values' otherlv_5= '{' ( (lv_values_6_0= ruleLocalizedValue ) )+ otherlv_7= '}' otherlv_8= ';' (otherlv_9= 'args' otherlv_10= '{' ( (lv_args_11_0= RULE_STRING ) )+ otherlv_12= '}' otherlv_13= ';' )? otherlv_14= '}' ) ;
+    // InternalProjectGenerator.g:735:1: ruleLocalizedEntry returns [EObject current=null] : (otherlv_0= '{' otherlv_1= 'key' ( (lv_localizedKey_2_0= RULE_LOCALIZEDKEY ) ) otherlv_3= ';' otherlv_4= 'values' otherlv_5= '{' ( (lv_values_6_0= ruleLocalizedValue ) )+ otherlv_7= '}' otherlv_8= ';' (otherlv_9= 'args' otherlv_10= '{' ( (lv_args_11_0= RULE_STRING ) )+ otherlv_12= '}' otherlv_13= ';' )? otherlv_14= '}' otherlv_15= ';' ) ;
     public final EObject ruleLocalizedEntry() throws RecognitionException {
         EObject current = null;
 
@@ -1548,6 +1627,7 @@ public class InternalProjectGeneratorParser extends AbstractInternalAntlrParser 
         Token otherlv_12=null;
         Token otherlv_13=null;
         Token otherlv_14=null;
+        Token otherlv_15=null;
         EObject lv_values_6_0 = null;
 
 
@@ -1555,29 +1635,29 @@ public class InternalProjectGeneratorParser extends AbstractInternalAntlrParser 
         	enterRule();
 
         try {
-            // InternalProjectGenerator.g:708:2: ( (otherlv_0= '{' otherlv_1= 'key' ( (lv_localizedKey_2_0= RULE_LOCALIZEDKEY ) ) otherlv_3= ';' otherlv_4= 'values' otherlv_5= '{' ( (lv_values_6_0= ruleLocalizedValue ) )+ otherlv_7= '}' otherlv_8= ';' (otherlv_9= 'args' otherlv_10= '{' ( (lv_args_11_0= RULE_STRING ) )+ otherlv_12= '}' otherlv_13= ';' )? otherlv_14= '}' ) )
-            // InternalProjectGenerator.g:709:2: (otherlv_0= '{' otherlv_1= 'key' ( (lv_localizedKey_2_0= RULE_LOCALIZEDKEY ) ) otherlv_3= ';' otherlv_4= 'values' otherlv_5= '{' ( (lv_values_6_0= ruleLocalizedValue ) )+ otherlv_7= '}' otherlv_8= ';' (otherlv_9= 'args' otherlv_10= '{' ( (lv_args_11_0= RULE_STRING ) )+ otherlv_12= '}' otherlv_13= ';' )? otherlv_14= '}' )
+            // InternalProjectGenerator.g:741:2: ( (otherlv_0= '{' otherlv_1= 'key' ( (lv_localizedKey_2_0= RULE_LOCALIZEDKEY ) ) otherlv_3= ';' otherlv_4= 'values' otherlv_5= '{' ( (lv_values_6_0= ruleLocalizedValue ) )+ otherlv_7= '}' otherlv_8= ';' (otherlv_9= 'args' otherlv_10= '{' ( (lv_args_11_0= RULE_STRING ) )+ otherlv_12= '}' otherlv_13= ';' )? otherlv_14= '}' otherlv_15= ';' ) )
+            // InternalProjectGenerator.g:742:2: (otherlv_0= '{' otherlv_1= 'key' ( (lv_localizedKey_2_0= RULE_LOCALIZEDKEY ) ) otherlv_3= ';' otherlv_4= 'values' otherlv_5= '{' ( (lv_values_6_0= ruleLocalizedValue ) )+ otherlv_7= '}' otherlv_8= ';' (otherlv_9= 'args' otherlv_10= '{' ( (lv_args_11_0= RULE_STRING ) )+ otherlv_12= '}' otherlv_13= ';' )? otherlv_14= '}' otherlv_15= ';' )
             {
-            // InternalProjectGenerator.g:709:2: (otherlv_0= '{' otherlv_1= 'key' ( (lv_localizedKey_2_0= RULE_LOCALIZEDKEY ) ) otherlv_3= ';' otherlv_4= 'values' otherlv_5= '{' ( (lv_values_6_0= ruleLocalizedValue ) )+ otherlv_7= '}' otherlv_8= ';' (otherlv_9= 'args' otherlv_10= '{' ( (lv_args_11_0= RULE_STRING ) )+ otherlv_12= '}' otherlv_13= ';' )? otherlv_14= '}' )
-            // InternalProjectGenerator.g:710:3: otherlv_0= '{' otherlv_1= 'key' ( (lv_localizedKey_2_0= RULE_LOCALIZEDKEY ) ) otherlv_3= ';' otherlv_4= 'values' otherlv_5= '{' ( (lv_values_6_0= ruleLocalizedValue ) )+ otherlv_7= '}' otherlv_8= ';' (otherlv_9= 'args' otherlv_10= '{' ( (lv_args_11_0= RULE_STRING ) )+ otherlv_12= '}' otherlv_13= ';' )? otherlv_14= '}'
+            // InternalProjectGenerator.g:742:2: (otherlv_0= '{' otherlv_1= 'key' ( (lv_localizedKey_2_0= RULE_LOCALIZEDKEY ) ) otherlv_3= ';' otherlv_4= 'values' otherlv_5= '{' ( (lv_values_6_0= ruleLocalizedValue ) )+ otherlv_7= '}' otherlv_8= ';' (otherlv_9= 'args' otherlv_10= '{' ( (lv_args_11_0= RULE_STRING ) )+ otherlv_12= '}' otherlv_13= ';' )? otherlv_14= '}' otherlv_15= ';' )
+            // InternalProjectGenerator.g:743:3: otherlv_0= '{' otherlv_1= 'key' ( (lv_localizedKey_2_0= RULE_LOCALIZEDKEY ) ) otherlv_3= ';' otherlv_4= 'values' otherlv_5= '{' ( (lv_values_6_0= ruleLocalizedValue ) )+ otherlv_7= '}' otherlv_8= ';' (otherlv_9= 'args' otherlv_10= '{' ( (lv_args_11_0= RULE_STRING ) )+ otherlv_12= '}' otherlv_13= ';' )? otherlv_14= '}' otherlv_15= ';'
             {
-            otherlv_0=(Token)match(input,15,FOLLOW_5); 
+            otherlv_0=(Token)match(input,17,FOLLOW_5); 
 
             			newLeafNode(otherlv_0, grammarAccess.getLocalizedEntryAccess().getLeftCurlyBracketKeyword_0());
             		
-            otherlv_1=(Token)match(input,16,FOLLOW_29); 
+            otherlv_1=(Token)match(input,18,FOLLOW_30); 
 
             			newLeafNode(otherlv_1, grammarAccess.getLocalizedEntryAccess().getKeyKeyword_1());
             		
-            // InternalProjectGenerator.g:718:3: ( (lv_localizedKey_2_0= RULE_LOCALIZEDKEY ) )
-            // InternalProjectGenerator.g:719:4: (lv_localizedKey_2_0= RULE_LOCALIZEDKEY )
+            // InternalProjectGenerator.g:751:3: ( (lv_localizedKey_2_0= RULE_LOCALIZEDKEY ) )
+            // InternalProjectGenerator.g:752:4: (lv_localizedKey_2_0= RULE_LOCALIZEDKEY )
             {
-            // InternalProjectGenerator.g:719:4: (lv_localizedKey_2_0= RULE_LOCALIZEDKEY )
-            // InternalProjectGenerator.g:720:5: lv_localizedKey_2_0= RULE_LOCALIZEDKEY
+            // InternalProjectGenerator.g:752:4: (lv_localizedKey_2_0= RULE_LOCALIZEDKEY )
+            // InternalProjectGenerator.g:753:5: lv_localizedKey_2_0= RULE_LOCALIZEDKEY
             {
             lv_localizedKey_2_0=(Token)match(input,RULE_LOCALIZEDKEY,FOLLOW_7); 
 
-            					newLeafNode(lv_localizedKey_2_0, grammarAccess.getLocalizedEntryAccess().getLocalizedKeyLocalizedKeyTerminalRuleCall_2_0());
+            					newLeafNode(lv_localizedKey_2_0, grammarAccess.getLocalizedEntryAccess().getLocalizedKeyLOCALIZEDKEYTerminalRuleCall_2_0());
             				
 
             					if (current==null) {
@@ -1587,7 +1667,7 @@ public class InternalProjectGeneratorParser extends AbstractInternalAntlrParser 
             						current,
             						"localizedKey",
             						lv_localizedKey_2_0,
-            						"at.ooe.fh.mdm.herzog.dsl.proj.ProjectGenerator.LocalizedKey");
+            						"at.ooe.fh.mdm.herzog.dsl.proj.ProjectGenerator.LOCALIZEDKEY");
             				
 
             }
@@ -1595,41 +1675,41 @@ public class InternalProjectGeneratorParser extends AbstractInternalAntlrParser 
 
             }
 
-            otherlv_3=(Token)match(input,17,FOLLOW_30); 
+            otherlv_3=(Token)match(input,19,FOLLOW_31); 
 
             			newLeafNode(otherlv_3, grammarAccess.getLocalizedEntryAccess().getSemicolonKeyword_3());
             		
-            otherlv_4=(Token)match(input,30,FOLLOW_4); 
+            otherlv_4=(Token)match(input,32,FOLLOW_4); 
 
             			newLeafNode(otherlv_4, grammarAccess.getLocalizedEntryAccess().getValuesKeyword_4());
             		
-            otherlv_5=(Token)match(input,15,FOLLOW_4); 
+            otherlv_5=(Token)match(input,17,FOLLOW_4); 
 
             			newLeafNode(otherlv_5, grammarAccess.getLocalizedEntryAccess().getLeftCurlyBracketKeyword_5());
             		
-            // InternalProjectGenerator.g:748:3: ( (lv_values_6_0= ruleLocalizedValue ) )+
-            int cnt13=0;
-            loop13:
+            // InternalProjectGenerator.g:781:3: ( (lv_values_6_0= ruleLocalizedValue ) )+
+            int cnt14=0;
+            loop14:
             do {
-                int alt13=2;
-                int LA13_0 = input.LA(1);
+                int alt14=2;
+                int LA14_0 = input.LA(1);
 
-                if ( (LA13_0==15) ) {
-                    alt13=1;
+                if ( (LA14_0==17) ) {
+                    alt14=1;
                 }
 
 
-                switch (alt13) {
+                switch (alt14) {
             	case 1 :
-            	    // InternalProjectGenerator.g:749:4: (lv_values_6_0= ruleLocalizedValue )
+            	    // InternalProjectGenerator.g:782:4: (lv_values_6_0= ruleLocalizedValue )
             	    {
-            	    // InternalProjectGenerator.g:749:4: (lv_values_6_0= ruleLocalizedValue )
-            	    // InternalProjectGenerator.g:750:5: lv_values_6_0= ruleLocalizedValue
+            	    // InternalProjectGenerator.g:782:4: (lv_values_6_0= ruleLocalizedValue )
+            	    // InternalProjectGenerator.g:783:5: lv_values_6_0= ruleLocalizedValue
             	    {
 
             	    					newCompositeNode(grammarAccess.getLocalizedEntryAccess().getValuesLocalizedValueParserRuleCall_6_0());
             	    				
-            	    pushFollow(FOLLOW_28);
+            	    pushFollow(FOLLOW_29);
             	    lv_values_6_0=ruleLocalizedValue();
 
             	    state._fsp--;
@@ -1653,61 +1733,61 @@ public class InternalProjectGeneratorParser extends AbstractInternalAntlrParser 
             	    break;
 
             	default :
-            	    if ( cnt13 >= 1 ) break loop13;
+            	    if ( cnt14 >= 1 ) break loop14;
                         EarlyExitException eee =
-                            new EarlyExitException(13, input);
+                            new EarlyExitException(14, input);
                         throw eee;
                 }
-                cnt13++;
+                cnt14++;
             } while (true);
 
-            otherlv_7=(Token)match(input,20,FOLLOW_7); 
+            otherlv_7=(Token)match(input,22,FOLLOW_7); 
 
             			newLeafNode(otherlv_7, grammarAccess.getLocalizedEntryAccess().getRightCurlyBracketKeyword_7());
             		
-            otherlv_8=(Token)match(input,17,FOLLOW_31); 
+            otherlv_8=(Token)match(input,19,FOLLOW_32); 
 
             			newLeafNode(otherlv_8, grammarAccess.getLocalizedEntryAccess().getSemicolonKeyword_8());
             		
-            // InternalProjectGenerator.g:775:3: (otherlv_9= 'args' otherlv_10= '{' ( (lv_args_11_0= RULE_STRING ) )+ otherlv_12= '}' otherlv_13= ';' )?
-            int alt15=2;
-            int LA15_0 = input.LA(1);
+            // InternalProjectGenerator.g:808:3: (otherlv_9= 'args' otherlv_10= '{' ( (lv_args_11_0= RULE_STRING ) )+ otherlv_12= '}' otherlv_13= ';' )?
+            int alt16=2;
+            int LA16_0 = input.LA(1);
 
-            if ( (LA15_0==31) ) {
-                alt15=1;
+            if ( (LA16_0==33) ) {
+                alt16=1;
             }
-            switch (alt15) {
+            switch (alt16) {
                 case 1 :
-                    // InternalProjectGenerator.g:776:4: otherlv_9= 'args' otherlv_10= '{' ( (lv_args_11_0= RULE_STRING ) )+ otherlv_12= '}' otherlv_13= ';'
+                    // InternalProjectGenerator.g:809:4: otherlv_9= 'args' otherlv_10= '{' ( (lv_args_11_0= RULE_STRING ) )+ otherlv_12= '}' otherlv_13= ';'
                     {
-                    otherlv_9=(Token)match(input,31,FOLLOW_4); 
+                    otherlv_9=(Token)match(input,33,FOLLOW_4); 
 
                     				newLeafNode(otherlv_9, grammarAccess.getLocalizedEntryAccess().getArgsKeyword_9_0());
                     			
-                    otherlv_10=(Token)match(input,15,FOLLOW_6); 
+                    otherlv_10=(Token)match(input,17,FOLLOW_6); 
 
                     				newLeafNode(otherlv_10, grammarAccess.getLocalizedEntryAccess().getLeftCurlyBracketKeyword_9_1());
                     			
-                    // InternalProjectGenerator.g:784:4: ( (lv_args_11_0= RULE_STRING ) )+
-                    int cnt14=0;
-                    loop14:
+                    // InternalProjectGenerator.g:817:4: ( (lv_args_11_0= RULE_STRING ) )+
+                    int cnt15=0;
+                    loop15:
                     do {
-                        int alt14=2;
-                        int LA14_0 = input.LA(1);
+                        int alt15=2;
+                        int LA15_0 = input.LA(1);
 
-                        if ( (LA14_0==RULE_STRING) ) {
-                            alt14=1;
+                        if ( (LA15_0==RULE_STRING) ) {
+                            alt15=1;
                         }
 
 
-                        switch (alt14) {
+                        switch (alt15) {
                     	case 1 :
-                    	    // InternalProjectGenerator.g:785:5: (lv_args_11_0= RULE_STRING )
+                    	    // InternalProjectGenerator.g:818:5: (lv_args_11_0= RULE_STRING )
                     	    {
-                    	    // InternalProjectGenerator.g:785:5: (lv_args_11_0= RULE_STRING )
-                    	    // InternalProjectGenerator.g:786:6: lv_args_11_0= RULE_STRING
+                    	    // InternalProjectGenerator.g:818:5: (lv_args_11_0= RULE_STRING )
+                    	    // InternalProjectGenerator.g:819:6: lv_args_11_0= RULE_STRING
                     	    {
-                    	    lv_args_11_0=(Token)match(input,RULE_STRING,FOLLOW_32); 
+                    	    lv_args_11_0=(Token)match(input,RULE_STRING,FOLLOW_33); 
 
                     	    						newLeafNode(lv_args_11_0, grammarAccess.getLocalizedEntryAccess().getArgsSTRINGTerminalRuleCall_9_2_0());
                     	    					
@@ -1729,19 +1809,19 @@ public class InternalProjectGeneratorParser extends AbstractInternalAntlrParser 
                     	    break;
 
                     	default :
-                    	    if ( cnt14 >= 1 ) break loop14;
+                    	    if ( cnt15 >= 1 ) break loop15;
                                 EarlyExitException eee =
-                                    new EarlyExitException(14, input);
+                                    new EarlyExitException(15, input);
                                 throw eee;
                         }
-                        cnt14++;
+                        cnt15++;
                     } while (true);
 
-                    otherlv_12=(Token)match(input,20,FOLLOW_7); 
+                    otherlv_12=(Token)match(input,22,FOLLOW_7); 
 
                     				newLeafNode(otherlv_12, grammarAccess.getLocalizedEntryAccess().getRightCurlyBracketKeyword_9_3());
                     			
-                    otherlv_13=(Token)match(input,17,FOLLOW_15); 
+                    otherlv_13=(Token)match(input,19,FOLLOW_15); 
 
                     				newLeafNode(otherlv_13, grammarAccess.getLocalizedEntryAccess().getSemicolonKeyword_9_4());
                     			
@@ -1751,9 +1831,13 @@ public class InternalProjectGeneratorParser extends AbstractInternalAntlrParser 
 
             }
 
-            otherlv_14=(Token)match(input,20,FOLLOW_2); 
+            otherlv_14=(Token)match(input,22,FOLLOW_7); 
 
             			newLeafNode(otherlv_14, grammarAccess.getLocalizedEntryAccess().getRightCurlyBracketKeyword_10());
+            		
+            otherlv_15=(Token)match(input,19,FOLLOW_2); 
+
+            			newLeafNode(otherlv_15, grammarAccess.getLocalizedEntryAccess().getSemicolonKeyword_11());
             		
 
             }
@@ -1778,7 +1862,7 @@ public class InternalProjectGeneratorParser extends AbstractInternalAntlrParser 
 
 
     // $ANTLR start "entryRuleLocalizedValue"
-    // InternalProjectGenerator.g:819:1: entryRuleLocalizedValue returns [EObject current=null] : iv_ruleLocalizedValue= ruleLocalizedValue EOF ;
+    // InternalProjectGenerator.g:856:1: entryRuleLocalizedValue returns [EObject current=null] : iv_ruleLocalizedValue= ruleLocalizedValue EOF ;
     public final EObject entryRuleLocalizedValue() throws RecognitionException {
         EObject current = null;
 
@@ -1786,8 +1870,8 @@ public class InternalProjectGeneratorParser extends AbstractInternalAntlrParser 
 
 
         try {
-            // InternalProjectGenerator.g:819:55: (iv_ruleLocalizedValue= ruleLocalizedValue EOF )
-            // InternalProjectGenerator.g:820:2: iv_ruleLocalizedValue= ruleLocalizedValue EOF
+            // InternalProjectGenerator.g:856:55: (iv_ruleLocalizedValue= ruleLocalizedValue EOF )
+            // InternalProjectGenerator.g:857:2: iv_ruleLocalizedValue= ruleLocalizedValue EOF
             {
              newCompositeNode(grammarAccess.getLocalizedValueRule()); 
             pushFollow(FOLLOW_1);
@@ -1814,7 +1898,7 @@ public class InternalProjectGeneratorParser extends AbstractInternalAntlrParser 
 
 
     // $ANTLR start "ruleLocalizedValue"
-    // InternalProjectGenerator.g:826:1: ruleLocalizedValue returns [EObject current=null] : (otherlv_0= '{' otherlv_1= 'locale' ( (lv_locale_2_0= ruleLocale ) ) otherlv_3= ';' otherlv_4= 'value' ( (lv_values_5_0= RULE_STRING ) ) otherlv_6= ';' otherlv_7= '}' ) ;
+    // InternalProjectGenerator.g:863:1: ruleLocalizedValue returns [EObject current=null] : (otherlv_0= '{' otherlv_1= 'locale' ( (lv_locale_2_0= ruleLocale ) ) otherlv_3= ';' otherlv_4= 'value' ( (lv_value_5_0= RULE_STRING ) ) otherlv_6= ';' otherlv_7= '}' otherlv_8= ';' ) ;
     public final EObject ruleLocalizedValue() throws RecognitionException {
         EObject current = null;
 
@@ -1822,9 +1906,10 @@ public class InternalProjectGeneratorParser extends AbstractInternalAntlrParser 
         Token otherlv_1=null;
         Token otherlv_3=null;
         Token otherlv_4=null;
-        Token lv_values_5_0=null;
+        Token lv_value_5_0=null;
         Token otherlv_6=null;
         Token otherlv_7=null;
+        Token otherlv_8=null;
         Enumerator lv_locale_2_0 = null;
 
 
@@ -1832,25 +1917,25 @@ public class InternalProjectGeneratorParser extends AbstractInternalAntlrParser 
         	enterRule();
 
         try {
-            // InternalProjectGenerator.g:832:2: ( (otherlv_0= '{' otherlv_1= 'locale' ( (lv_locale_2_0= ruleLocale ) ) otherlv_3= ';' otherlv_4= 'value' ( (lv_values_5_0= RULE_STRING ) ) otherlv_6= ';' otherlv_7= '}' ) )
-            // InternalProjectGenerator.g:833:2: (otherlv_0= '{' otherlv_1= 'locale' ( (lv_locale_2_0= ruleLocale ) ) otherlv_3= ';' otherlv_4= 'value' ( (lv_values_5_0= RULE_STRING ) ) otherlv_6= ';' otherlv_7= '}' )
+            // InternalProjectGenerator.g:869:2: ( (otherlv_0= '{' otherlv_1= 'locale' ( (lv_locale_2_0= ruleLocale ) ) otherlv_3= ';' otherlv_4= 'value' ( (lv_value_5_0= RULE_STRING ) ) otherlv_6= ';' otherlv_7= '}' otherlv_8= ';' ) )
+            // InternalProjectGenerator.g:870:2: (otherlv_0= '{' otherlv_1= 'locale' ( (lv_locale_2_0= ruleLocale ) ) otherlv_3= ';' otherlv_4= 'value' ( (lv_value_5_0= RULE_STRING ) ) otherlv_6= ';' otherlv_7= '}' otherlv_8= ';' )
             {
-            // InternalProjectGenerator.g:833:2: (otherlv_0= '{' otherlv_1= 'locale' ( (lv_locale_2_0= ruleLocale ) ) otherlv_3= ';' otherlv_4= 'value' ( (lv_values_5_0= RULE_STRING ) ) otherlv_6= ';' otherlv_7= '}' )
-            // InternalProjectGenerator.g:834:3: otherlv_0= '{' otherlv_1= 'locale' ( (lv_locale_2_0= ruleLocale ) ) otherlv_3= ';' otherlv_4= 'value' ( (lv_values_5_0= RULE_STRING ) ) otherlv_6= ';' otherlv_7= '}'
+            // InternalProjectGenerator.g:870:2: (otherlv_0= '{' otherlv_1= 'locale' ( (lv_locale_2_0= ruleLocale ) ) otherlv_3= ';' otherlv_4= 'value' ( (lv_value_5_0= RULE_STRING ) ) otherlv_6= ';' otherlv_7= '}' otherlv_8= ';' )
+            // InternalProjectGenerator.g:871:3: otherlv_0= '{' otherlv_1= 'locale' ( (lv_locale_2_0= ruleLocale ) ) otherlv_3= ';' otherlv_4= 'value' ( (lv_value_5_0= RULE_STRING ) ) otherlv_6= ';' otherlv_7= '}' otherlv_8= ';'
             {
-            otherlv_0=(Token)match(input,15,FOLLOW_33); 
+            otherlv_0=(Token)match(input,17,FOLLOW_34); 
 
             			newLeafNode(otherlv_0, grammarAccess.getLocalizedValueAccess().getLeftCurlyBracketKeyword_0());
             		
-            otherlv_1=(Token)match(input,32,FOLLOW_34); 
+            otherlv_1=(Token)match(input,34,FOLLOW_35); 
 
             			newLeafNode(otherlv_1, grammarAccess.getLocalizedValueAccess().getLocaleKeyword_1());
             		
-            // InternalProjectGenerator.g:842:3: ( (lv_locale_2_0= ruleLocale ) )
-            // InternalProjectGenerator.g:843:4: (lv_locale_2_0= ruleLocale )
+            // InternalProjectGenerator.g:879:3: ( (lv_locale_2_0= ruleLocale ) )
+            // InternalProjectGenerator.g:880:4: (lv_locale_2_0= ruleLocale )
             {
-            // InternalProjectGenerator.g:843:4: (lv_locale_2_0= ruleLocale )
-            // InternalProjectGenerator.g:844:5: lv_locale_2_0= ruleLocale
+            // InternalProjectGenerator.g:880:4: (lv_locale_2_0= ruleLocale )
+            // InternalProjectGenerator.g:881:5: lv_locale_2_0= ruleLocale
             {
 
             					newCompositeNode(grammarAccess.getLocalizedValueAccess().getLocaleLocaleEnumRuleCall_2_0());
@@ -1877,23 +1962,23 @@ public class InternalProjectGeneratorParser extends AbstractInternalAntlrParser 
 
             }
 
-            otherlv_3=(Token)match(input,17,FOLLOW_35); 
+            otherlv_3=(Token)match(input,19,FOLLOW_36); 
 
             			newLeafNode(otherlv_3, grammarAccess.getLocalizedValueAccess().getSemicolonKeyword_3());
             		
-            otherlv_4=(Token)match(input,33,FOLLOW_6); 
+            otherlv_4=(Token)match(input,35,FOLLOW_6); 
 
             			newLeafNode(otherlv_4, grammarAccess.getLocalizedValueAccess().getValueKeyword_4());
             		
-            // InternalProjectGenerator.g:869:3: ( (lv_values_5_0= RULE_STRING ) )
-            // InternalProjectGenerator.g:870:4: (lv_values_5_0= RULE_STRING )
+            // InternalProjectGenerator.g:906:3: ( (lv_value_5_0= RULE_STRING ) )
+            // InternalProjectGenerator.g:907:4: (lv_value_5_0= RULE_STRING )
             {
-            // InternalProjectGenerator.g:870:4: (lv_values_5_0= RULE_STRING )
-            // InternalProjectGenerator.g:871:5: lv_values_5_0= RULE_STRING
+            // InternalProjectGenerator.g:907:4: (lv_value_5_0= RULE_STRING )
+            // InternalProjectGenerator.g:908:5: lv_value_5_0= RULE_STRING
             {
-            lv_values_5_0=(Token)match(input,RULE_STRING,FOLLOW_7); 
+            lv_value_5_0=(Token)match(input,RULE_STRING,FOLLOW_7); 
 
-            					newLeafNode(lv_values_5_0, grammarAccess.getLocalizedValueAccess().getValuesSTRINGTerminalRuleCall_5_0());
+            					newLeafNode(lv_value_5_0, grammarAccess.getLocalizedValueAccess().getValueSTRINGTerminalRuleCall_5_0());
             				
 
             					if (current==null) {
@@ -1901,8 +1986,8 @@ public class InternalProjectGeneratorParser extends AbstractInternalAntlrParser 
             					}
             					setWithLastConsumed(
             						current,
-            						"values",
-            						lv_values_5_0,
+            						"value",
+            						lv_value_5_0,
             						"org.eclipse.xtext.common.Terminals.STRING");
             				
 
@@ -1911,13 +1996,17 @@ public class InternalProjectGeneratorParser extends AbstractInternalAntlrParser 
 
             }
 
-            otherlv_6=(Token)match(input,17,FOLLOW_15); 
+            otherlv_6=(Token)match(input,19,FOLLOW_15); 
 
             			newLeafNode(otherlv_6, grammarAccess.getLocalizedValueAccess().getSemicolonKeyword_6());
             		
-            otherlv_7=(Token)match(input,20,FOLLOW_2); 
+            otherlv_7=(Token)match(input,22,FOLLOW_7); 
 
             			newLeafNode(otherlv_7, grammarAccess.getLocalizedValueAccess().getRightCurlyBracketKeyword_7());
+            		
+            otherlv_8=(Token)match(input,19,FOLLOW_2); 
+
+            			newLeafNode(otherlv_8, grammarAccess.getLocalizedValueAccess().getSemicolonKeyword_8());
             		
 
             }
@@ -1942,7 +2031,7 @@ public class InternalProjectGeneratorParser extends AbstractInternalAntlrParser 
 
 
     // $ANTLR start "ruleLocale"
-    // InternalProjectGenerator.g:899:1: ruleLocale returns [Enumerator current=null] : ( (enumLiteral_0= 'de_DE' ) | (enumLiteral_1= 'en_US' ) ) ;
+    // InternalProjectGenerator.g:940:1: ruleLocale returns [Enumerator current=null] : ( (enumLiteral_0= 'de_DE' ) | (enumLiteral_1= 'en_US' ) ) ;
     public final Enumerator ruleLocale() throws RecognitionException {
         Enumerator current = null;
 
@@ -1953,33 +2042,33 @@ public class InternalProjectGeneratorParser extends AbstractInternalAntlrParser 
         	enterRule();
 
         try {
-            // InternalProjectGenerator.g:905:2: ( ( (enumLiteral_0= 'de_DE' ) | (enumLiteral_1= 'en_US' ) ) )
-            // InternalProjectGenerator.g:906:2: ( (enumLiteral_0= 'de_DE' ) | (enumLiteral_1= 'en_US' ) )
+            // InternalProjectGenerator.g:946:2: ( ( (enumLiteral_0= 'de_DE' ) | (enumLiteral_1= 'en_US' ) ) )
+            // InternalProjectGenerator.g:947:2: ( (enumLiteral_0= 'de_DE' ) | (enumLiteral_1= 'en_US' ) )
             {
-            // InternalProjectGenerator.g:906:2: ( (enumLiteral_0= 'de_DE' ) | (enumLiteral_1= 'en_US' ) )
-            int alt16=2;
-            int LA16_0 = input.LA(1);
+            // InternalProjectGenerator.g:947:2: ( (enumLiteral_0= 'de_DE' ) | (enumLiteral_1= 'en_US' ) )
+            int alt17=2;
+            int LA17_0 = input.LA(1);
 
-            if ( (LA16_0==34) ) {
-                alt16=1;
+            if ( (LA17_0==36) ) {
+                alt17=1;
             }
-            else if ( (LA16_0==35) ) {
-                alt16=2;
+            else if ( (LA17_0==37) ) {
+                alt17=2;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 16, 0, input);
+                    new NoViableAltException("", 17, 0, input);
 
                 throw nvae;
             }
-            switch (alt16) {
+            switch (alt17) {
                 case 1 :
-                    // InternalProjectGenerator.g:907:3: (enumLiteral_0= 'de_DE' )
+                    // InternalProjectGenerator.g:948:3: (enumLiteral_0= 'de_DE' )
                     {
-                    // InternalProjectGenerator.g:907:3: (enumLiteral_0= 'de_DE' )
-                    // InternalProjectGenerator.g:908:4: enumLiteral_0= 'de_DE'
+                    // InternalProjectGenerator.g:948:3: (enumLiteral_0= 'de_DE' )
+                    // InternalProjectGenerator.g:949:4: enumLiteral_0= 'de_DE'
                     {
-                    enumLiteral_0=(Token)match(input,34,FOLLOW_2); 
+                    enumLiteral_0=(Token)match(input,36,FOLLOW_2); 
 
                     				current = grammarAccess.getLocaleAccess().getDE_DEEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_0, grammarAccess.getLocaleAccess().getDE_DEEnumLiteralDeclaration_0());
@@ -1991,12 +2080,12 @@ public class InternalProjectGeneratorParser extends AbstractInternalAntlrParser 
                     }
                     break;
                 case 2 :
-                    // InternalProjectGenerator.g:915:3: (enumLiteral_1= 'en_US' )
+                    // InternalProjectGenerator.g:956:3: (enumLiteral_1= 'en_US' )
                     {
-                    // InternalProjectGenerator.g:915:3: (enumLiteral_1= 'en_US' )
-                    // InternalProjectGenerator.g:916:4: enumLiteral_1= 'en_US'
+                    // InternalProjectGenerator.g:956:3: (enumLiteral_1= 'en_US' )
+                    // InternalProjectGenerator.g:957:4: enumLiteral_1= 'en_US'
                     {
-                    enumLiteral_1=(Token)match(input,35,FOLLOW_2); 
+                    enumLiteral_1=(Token)match(input,37,FOLLOW_2); 
 
                     				current = grammarAccess.getLocaleAccess().getEN_USEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_1, grammarAccess.getLocaleAccess().getEN_USEnumLiteralDeclaration_1());
@@ -2030,7 +2119,7 @@ public class InternalProjectGeneratorParser extends AbstractInternalAntlrParser 
 
 
     // $ANTLR start "ruleBoolean"
-    // InternalProjectGenerator.g:926:1: ruleBoolean returns [Enumerator current=null] : ( (enumLiteral_0= 'true' ) | (enumLiteral_1= 'false' ) ) ;
+    // InternalProjectGenerator.g:967:1: ruleBoolean returns [Enumerator current=null] : ( (enumLiteral_0= 'true' ) | (enumLiteral_1= 'false' ) ) ;
     public final Enumerator ruleBoolean() throws RecognitionException {
         Enumerator current = null;
 
@@ -2041,33 +2130,33 @@ public class InternalProjectGeneratorParser extends AbstractInternalAntlrParser 
         	enterRule();
 
         try {
-            // InternalProjectGenerator.g:932:2: ( ( (enumLiteral_0= 'true' ) | (enumLiteral_1= 'false' ) ) )
-            // InternalProjectGenerator.g:933:2: ( (enumLiteral_0= 'true' ) | (enumLiteral_1= 'false' ) )
+            // InternalProjectGenerator.g:973:2: ( ( (enumLiteral_0= 'true' ) | (enumLiteral_1= 'false' ) ) )
+            // InternalProjectGenerator.g:974:2: ( (enumLiteral_0= 'true' ) | (enumLiteral_1= 'false' ) )
             {
-            // InternalProjectGenerator.g:933:2: ( (enumLiteral_0= 'true' ) | (enumLiteral_1= 'false' ) )
-            int alt17=2;
-            int LA17_0 = input.LA(1);
+            // InternalProjectGenerator.g:974:2: ( (enumLiteral_0= 'true' ) | (enumLiteral_1= 'false' ) )
+            int alt18=2;
+            int LA18_0 = input.LA(1);
 
-            if ( (LA17_0==36) ) {
-                alt17=1;
+            if ( (LA18_0==38) ) {
+                alt18=1;
             }
-            else if ( (LA17_0==37) ) {
-                alt17=2;
+            else if ( (LA18_0==39) ) {
+                alt18=2;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 17, 0, input);
+                    new NoViableAltException("", 18, 0, input);
 
                 throw nvae;
             }
-            switch (alt17) {
+            switch (alt18) {
                 case 1 :
-                    // InternalProjectGenerator.g:934:3: (enumLiteral_0= 'true' )
+                    // InternalProjectGenerator.g:975:3: (enumLiteral_0= 'true' )
                     {
-                    // InternalProjectGenerator.g:934:3: (enumLiteral_0= 'true' )
-                    // InternalProjectGenerator.g:935:4: enumLiteral_0= 'true'
+                    // InternalProjectGenerator.g:975:3: (enumLiteral_0= 'true' )
+                    // InternalProjectGenerator.g:976:4: enumLiteral_0= 'true'
                     {
-                    enumLiteral_0=(Token)match(input,36,FOLLOW_2); 
+                    enumLiteral_0=(Token)match(input,38,FOLLOW_2); 
 
                     				current = grammarAccess.getBooleanAccess().getTRUEEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_0, grammarAccess.getBooleanAccess().getTRUEEnumLiteralDeclaration_0());
@@ -2079,12 +2168,12 @@ public class InternalProjectGeneratorParser extends AbstractInternalAntlrParser 
                     }
                     break;
                 case 2 :
-                    // InternalProjectGenerator.g:942:3: (enumLiteral_1= 'false' )
+                    // InternalProjectGenerator.g:983:3: (enumLiteral_1= 'false' )
                     {
-                    // InternalProjectGenerator.g:942:3: (enumLiteral_1= 'false' )
-                    // InternalProjectGenerator.g:943:4: enumLiteral_1= 'false'
+                    // InternalProjectGenerator.g:983:3: (enumLiteral_1= 'false' )
+                    // InternalProjectGenerator.g:984:4: enumLiteral_1= 'false'
                     {
-                    enumLiteral_1=(Token)match(input,37,FOLLOW_2); 
+                    enumLiteral_1=(Token)match(input,39,FOLLOW_2); 
 
                     				current = grammarAccess.getBooleanAccess().getFALSEEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_1, grammarAccess.getBooleanAccess().getFALSEEnumLiteralDeclaration_1());
@@ -2118,7 +2207,7 @@ public class InternalProjectGeneratorParser extends AbstractInternalAntlrParser 
 
 
     // $ANTLR start "ruleDuring"
-    // InternalProjectGenerator.g:953:1: ruleDuring returns [Enumerator current=null] : ( (enumLiteral_0= 'InProgress' ) | (enumLiteral_1= 'AfterCompleition' ) ) ;
+    // InternalProjectGenerator.g:994:1: ruleDuring returns [Enumerator current=null] : ( (enumLiteral_0= 'InProgress' ) | (enumLiteral_1= 'AfterCompleition' ) ) ;
     public final Enumerator ruleDuring() throws RecognitionException {
         Enumerator current = null;
 
@@ -2129,33 +2218,33 @@ public class InternalProjectGeneratorParser extends AbstractInternalAntlrParser 
         	enterRule();
 
         try {
-            // InternalProjectGenerator.g:959:2: ( ( (enumLiteral_0= 'InProgress' ) | (enumLiteral_1= 'AfterCompleition' ) ) )
-            // InternalProjectGenerator.g:960:2: ( (enumLiteral_0= 'InProgress' ) | (enumLiteral_1= 'AfterCompleition' ) )
+            // InternalProjectGenerator.g:1000:2: ( ( (enumLiteral_0= 'InProgress' ) | (enumLiteral_1= 'AfterCompleition' ) ) )
+            // InternalProjectGenerator.g:1001:2: ( (enumLiteral_0= 'InProgress' ) | (enumLiteral_1= 'AfterCompleition' ) )
             {
-            // InternalProjectGenerator.g:960:2: ( (enumLiteral_0= 'InProgress' ) | (enumLiteral_1= 'AfterCompleition' ) )
-            int alt18=2;
-            int LA18_0 = input.LA(1);
+            // InternalProjectGenerator.g:1001:2: ( (enumLiteral_0= 'InProgress' ) | (enumLiteral_1= 'AfterCompleition' ) )
+            int alt19=2;
+            int LA19_0 = input.LA(1);
 
-            if ( (LA18_0==38) ) {
-                alt18=1;
+            if ( (LA19_0==40) ) {
+                alt19=1;
             }
-            else if ( (LA18_0==39) ) {
-                alt18=2;
+            else if ( (LA19_0==41) ) {
+                alt19=2;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 18, 0, input);
+                    new NoViableAltException("", 19, 0, input);
 
                 throw nvae;
             }
-            switch (alt18) {
+            switch (alt19) {
                 case 1 :
-                    // InternalProjectGenerator.g:961:3: (enumLiteral_0= 'InProgress' )
+                    // InternalProjectGenerator.g:1002:3: (enumLiteral_0= 'InProgress' )
                     {
-                    // InternalProjectGenerator.g:961:3: (enumLiteral_0= 'InProgress' )
-                    // InternalProjectGenerator.g:962:4: enumLiteral_0= 'InProgress'
+                    // InternalProjectGenerator.g:1002:3: (enumLiteral_0= 'InProgress' )
+                    // InternalProjectGenerator.g:1003:4: enumLiteral_0= 'InProgress'
                     {
-                    enumLiteral_0=(Token)match(input,38,FOLLOW_2); 
+                    enumLiteral_0=(Token)match(input,40,FOLLOW_2); 
 
                     				current = grammarAccess.getDuringAccess().getIN_PROGEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_0, grammarAccess.getDuringAccess().getIN_PROGEnumLiteralDeclaration_0());
@@ -2167,12 +2256,12 @@ public class InternalProjectGeneratorParser extends AbstractInternalAntlrParser 
                     }
                     break;
                 case 2 :
-                    // InternalProjectGenerator.g:969:3: (enumLiteral_1= 'AfterCompleition' )
+                    // InternalProjectGenerator.g:1010:3: (enumLiteral_1= 'AfterCompleition' )
                     {
-                    // InternalProjectGenerator.g:969:3: (enumLiteral_1= 'AfterCompleition' )
-                    // InternalProjectGenerator.g:970:4: enumLiteral_1= 'AfterCompleition'
+                    // InternalProjectGenerator.g:1010:3: (enumLiteral_1= 'AfterCompleition' )
+                    // InternalProjectGenerator.g:1011:4: enumLiteral_1= 'AfterCompleition'
                     {
-                    enumLiteral_1=(Token)match(input,39,FOLLOW_2); 
+                    enumLiteral_1=(Token)match(input,41,FOLLOW_2); 
 
                     				current = grammarAccess.getDuringAccess().getAFTER_COMPLETIONEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_1, grammarAccess.getDuringAccess().getAFTER_COMPLETIONEnumLiteralDeclaration_1());
@@ -2206,7 +2295,7 @@ public class InternalProjectGeneratorParser extends AbstractInternalAntlrParser 
 
 
     // $ANTLR start "ruleNotify"
-    // InternalProjectGenerator.g:980:1: ruleNotify returns [Enumerator current=null] : ( (enumLiteral_0= 'Always' ) | (enumLiteral_1= 'Exists' ) ) ;
+    // InternalProjectGenerator.g:1021:1: ruleNotify returns [Enumerator current=null] : ( (enumLiteral_0= 'Always' ) | (enumLiteral_1= 'Exists' ) ) ;
     public final Enumerator ruleNotify() throws RecognitionException {
         Enumerator current = null;
 
@@ -2217,33 +2306,33 @@ public class InternalProjectGeneratorParser extends AbstractInternalAntlrParser 
         	enterRule();
 
         try {
-            // InternalProjectGenerator.g:986:2: ( ( (enumLiteral_0= 'Always' ) | (enumLiteral_1= 'Exists' ) ) )
-            // InternalProjectGenerator.g:987:2: ( (enumLiteral_0= 'Always' ) | (enumLiteral_1= 'Exists' ) )
+            // InternalProjectGenerator.g:1027:2: ( ( (enumLiteral_0= 'Always' ) | (enumLiteral_1= 'Exists' ) ) )
+            // InternalProjectGenerator.g:1028:2: ( (enumLiteral_0= 'Always' ) | (enumLiteral_1= 'Exists' ) )
             {
-            // InternalProjectGenerator.g:987:2: ( (enumLiteral_0= 'Always' ) | (enumLiteral_1= 'Exists' ) )
-            int alt19=2;
-            int LA19_0 = input.LA(1);
+            // InternalProjectGenerator.g:1028:2: ( (enumLiteral_0= 'Always' ) | (enumLiteral_1= 'Exists' ) )
+            int alt20=2;
+            int LA20_0 = input.LA(1);
 
-            if ( (LA19_0==40) ) {
-                alt19=1;
+            if ( (LA20_0==42) ) {
+                alt20=1;
             }
-            else if ( (LA19_0==41) ) {
-                alt19=2;
+            else if ( (LA20_0==43) ) {
+                alt20=2;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 19, 0, input);
+                    new NoViableAltException("", 20, 0, input);
 
                 throw nvae;
             }
-            switch (alt19) {
+            switch (alt20) {
                 case 1 :
-                    // InternalProjectGenerator.g:988:3: (enumLiteral_0= 'Always' )
+                    // InternalProjectGenerator.g:1029:3: (enumLiteral_0= 'Always' )
                     {
-                    // InternalProjectGenerator.g:988:3: (enumLiteral_0= 'Always' )
-                    // InternalProjectGenerator.g:989:4: enumLiteral_0= 'Always'
+                    // InternalProjectGenerator.g:1029:3: (enumLiteral_0= 'Always' )
+                    // InternalProjectGenerator.g:1030:4: enumLiteral_0= 'Always'
                     {
-                    enumLiteral_0=(Token)match(input,40,FOLLOW_2); 
+                    enumLiteral_0=(Token)match(input,42,FOLLOW_2); 
 
                     				current = grammarAccess.getNotifyAccess().getALWAYSEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_0, grammarAccess.getNotifyAccess().getALWAYSEnumLiteralDeclaration_0());
@@ -2255,12 +2344,12 @@ public class InternalProjectGeneratorParser extends AbstractInternalAntlrParser 
                     }
                     break;
                 case 2 :
-                    // InternalProjectGenerator.g:996:3: (enumLiteral_1= 'Exists' )
+                    // InternalProjectGenerator.g:1037:3: (enumLiteral_1= 'Exists' )
                     {
-                    // InternalProjectGenerator.g:996:3: (enumLiteral_1= 'Exists' )
-                    // InternalProjectGenerator.g:997:4: enumLiteral_1= 'Exists'
+                    // InternalProjectGenerator.g:1037:3: (enumLiteral_1= 'Exists' )
+                    // InternalProjectGenerator.g:1038:4: enumLiteral_1= 'Exists'
                     {
-                    enumLiteral_1=(Token)match(input,41,FOLLOW_2); 
+                    enumLiteral_1=(Token)match(input,43,FOLLOW_2); 
 
                     				current = grammarAccess.getNotifyAccess().getEXISTSEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_1, grammarAccess.getNotifyAccess().getEXISTSEnumLiteralDeclaration_1());
@@ -2300,37 +2389,38 @@ public class InternalProjectGeneratorParser extends AbstractInternalAntlrParser 
     public static final BitSet FOLLOW_1 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_2 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_3 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_4 = new BitSet(new long[]{0x0000000000008000L});
-    public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x0000000000010000L});
+    public static final BitSet FOLLOW_4 = new BitSet(new long[]{0x0000000000020000L});
+    public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x0000000000040000L});
     public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_7 = new BitSet(new long[]{0x0000000000020000L});
-    public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x0000000000040000L});
-    public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x0000003000000000L});
-    public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x0000000000680000L});
-    public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x0000000000100010L});
-    public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x0000000000600000L});
-    public static final BitSet FOLLOW_13 = new BitSet(new long[]{0x0000000000400000L});
-    public static final BitSet FOLLOW_14 = new BitSet(new long[]{0x0000000000800000L});
-    public static final BitSet FOLLOW_15 = new BitSet(new long[]{0x0000000000100000L});
-    public static final BitSet FOLLOW_16 = new BitSet(new long[]{0x0000000000380000L});
-    public static final BitSet FOLLOW_17 = new BitSet(new long[]{0x0000000000180010L});
-    public static final BitSet FOLLOW_18 = new BitSet(new long[]{0x0000000001000000L});
+    public static final BitSet FOLLOW_7 = new BitSet(new long[]{0x0000000000080000L});
+    public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x0000000000100000L});
+    public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x000000C000000000L});
+    public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x0000000001A00000L});
+    public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x0000000000400010L});
+    public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x0000000001800000L});
+    public static final BitSet FOLLOW_13 = new BitSet(new long[]{0x0000000001000000L});
+    public static final BitSet FOLLOW_14 = new BitSet(new long[]{0x0000000002000000L});
+    public static final BitSet FOLLOW_15 = new BitSet(new long[]{0x0000000000400000L});
+    public static final BitSet FOLLOW_16 = new BitSet(new long[]{0x0000000000A00000L});
+    public static final BitSet FOLLOW_17 = new BitSet(new long[]{0x0000000000200010L});
+    public static final BitSet FOLLOW_18 = new BitSet(new long[]{0x0000000004000000L});
     public static final BitSet FOLLOW_19 = new BitSet(new long[]{0x0000000000000040L});
-    public static final BitSet FOLLOW_20 = new BitSet(new long[]{0x0000000002000000L});
-    public static final BitSet FOLLOW_21 = new BitSet(new long[]{0x000000C000000000L});
-    public static final BitSet FOLLOW_22 = new BitSet(new long[]{0x0000000004000000L});
-    public static final BitSet FOLLOW_23 = new BitSet(new long[]{0x0000030000000000L});
-    public static final BitSet FOLLOW_24 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_25 = new BitSet(new long[]{0x0000000010100000L});
-    public static final BitSet FOLLOW_26 = new BitSet(new long[]{0x0000000020000000L});
-    public static final BitSet FOLLOW_27 = new BitSet(new long[]{0x0000000040100000L});
-    public static final BitSet FOLLOW_28 = new BitSet(new long[]{0x0000000000108000L});
-    public static final BitSet FOLLOW_29 = new BitSet(new long[]{0x0000000000000080L});
-    public static final BitSet FOLLOW_30 = new BitSet(new long[]{0x0000000040000000L});
-    public static final BitSet FOLLOW_31 = new BitSet(new long[]{0x0000000080100000L});
-    public static final BitSet FOLLOW_32 = new BitSet(new long[]{0x0000000000100020L});
-    public static final BitSet FOLLOW_33 = new BitSet(new long[]{0x0000000100000000L});
-    public static final BitSet FOLLOW_34 = new BitSet(new long[]{0x0000000C00000000L});
-    public static final BitSet FOLLOW_35 = new BitSet(new long[]{0x0000000200000000L});
+    public static final BitSet FOLLOW_20 = new BitSet(new long[]{0x0000000008000000L});
+    public static final BitSet FOLLOW_21 = new BitSet(new long[]{0x0000030000000000L});
+    public static final BitSet FOLLOW_22 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_23 = new BitSet(new long[]{0x00000C0000000000L});
+    public static final BitSet FOLLOW_24 = new BitSet(new long[]{0x0000000020000000L});
+    public static final BitSet FOLLOW_25 = new BitSet(new long[]{0x0000000040400000L});
+    public static final BitSet FOLLOW_26 = new BitSet(new long[]{0x0000000080000000L});
+    public static final BitSet FOLLOW_27 = new BitSet(new long[]{0x0000000000C00000L});
+    public static final BitSet FOLLOW_28 = new BitSet(new long[]{0x0000000100400000L});
+    public static final BitSet FOLLOW_29 = new BitSet(new long[]{0x0000000000420000L});
+    public static final BitSet FOLLOW_30 = new BitSet(new long[]{0x0000000000000080L});
+    public static final BitSet FOLLOW_31 = new BitSet(new long[]{0x0000000100000000L});
+    public static final BitSet FOLLOW_32 = new BitSet(new long[]{0x0000000200400000L});
+    public static final BitSet FOLLOW_33 = new BitSet(new long[]{0x0000000000400020L});
+    public static final BitSet FOLLOW_34 = new BitSet(new long[]{0x0000000400000000L});
+    public static final BitSet FOLLOW_35 = new BitSet(new long[]{0x0000003000000000L});
+    public static final BitSet FOLLOW_36 = new BitSet(new long[]{0x0000000800000000L});
 
 }

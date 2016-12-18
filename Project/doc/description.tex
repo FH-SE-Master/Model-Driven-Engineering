@@ -1,0 +1,37 @@
+\section{Beschreibung}
+In dieser Übung wird eine \emph{DSL} entwickelt, mit der ein Modul für eine bestehende Anwendung beschrieben werden kann. Mit dieser Beschreibung wird eine Maven-Projektstruktur wie folgt aufgelistet erstellt:
+\begin{itemize}
+	\item\emph{\textbf{[MODULE\_KEY]}/model/pom.xml}
+	\newline
+	\emph{Parent} für alle Modell Projekte.
+	
+	\item\emph{\textbf{[MODULE\_KEY]}/model/jpa/pom.xml}
+	\newline
+	Das Projekt der \emph{JPA}-Modells.
+	
+	\item\emph{\textbf{[MODULE\_KEY]}/service/pom.xml}
+	\newline
+	\emph{Parent} für alle Service Projekte.
+	
+	\item\emph{\textbf{[MODULE\_KEY]}/service/api/pom.xml}
+	\newline
+	Das Projekt mit der Service Spezifikation
+
+	\item\emph{\textbf{[MODULE\_KEY]}/service/impl/pom.xml}
+	\newline
+	Das Projekt mit der Service Implementierung.
+\end{itemize}
+\ \newline
+Es können folgende \emph{Java}-Ressourcen definiert werden:
+\begin{itemize}
+	\item\textbf{\emph{MessageBundles}} sind Beschreibungen von Klassen, die sprachspezifische Texte für einen Schlüssel und eine \emph{Locale} verwalten.
+	
+	\item\textbf{\emph{Observers}} sind Beschreibungen von Beobachtermethoden, die mittels einen \emph{Delegate} auf einem definierten \emph{CDI}-Event reagieren können.
+	
+	\item\textbf{\emph{JpaConfig}} ist die Beschreibung des \emph{JPA}-Projekts, dem \emph{Observer} und \emph{MessageBundles} hinzugefügt werden können.
+	
+	\item\textbf{\emph{ServiceConfig}} ist die Beschreibung der \emph{Service}-Projekte, dem \emph{Observer} und \emph{MessageBundles} hinzugefügt werden können.
+\end{itemize}
+\ \newline
+Das Ziel dieser \emph{DSL} ist es den initialen Aufwand beim erstellen eines Moduls für eine bestehende Anwendung zu erleichtern. Ein Module besteht aus mehreren \emph{Maven}-Projekten, die Mühsam erstellt werden müssen. Mit dieser \emph{DSL} kann ein Modul einfach beschrieben werden und daraus einen \emph{Maven}-Projektstruktur zu erstellen.
+

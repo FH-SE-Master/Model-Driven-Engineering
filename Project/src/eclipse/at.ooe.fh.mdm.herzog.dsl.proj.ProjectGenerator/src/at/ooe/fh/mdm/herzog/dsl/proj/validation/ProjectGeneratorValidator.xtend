@@ -3,14 +3,17 @@
  */
 package at.ooe.fh.mdm.herzog.dsl.proj.validation
 
-import org.eclipse.xtext.validation.Check
+import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.JpaConfig
 import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Localized
-import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.LocalizedEntry
 import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Module
+import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Observer
 import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.ProjectGeneratorPackage
-import static java.util.stream.Collectors.*
+import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.ServiceConfig
+import java.util.Objects
 import java.util.regex.Pattern
-import org.eclipse.xtext.validation.AbstractDeclarativeValidator
+import org.eclipse.xtext.validation.Check
+
+import static java.util.stream.Collectors.*
 
 /**
  * This class contains custom validation rules. 
@@ -23,15 +26,36 @@ class ProjectGeneratorValidator extends AbstractProjectGeneratorValidator {
 	 * The Class holding the validator ids.
 	 */
 	public static class ValidatorId {
+		// Module
+		public static final String MODULE_EMPTY = "MODULE_EMPTY";
 		public static final String MODULE_NAME_CAMEL_CASE = "MODULE_NAME_CAMEL_CASE";
 		public static final String MODULE_KEY_UPPER_CASE = "MODULE_KEY_UPPER_CASE";
-		public static final String DUPLICATE_LOCALIZED_ENTRY = "DUPLICATE_LOCALIZED_ENTRY";
-		public static final String DEFINED_LOCALIZED_ENTRY = "DEFINED_LOCALIZED_ENTRY";
+		// Observer
+		public static final String OBSERVER_NAME_CAMEL_CASE = "OBSERVER_NAME_CAMEL_CASE";
+		public static final String OBSERVER_NAME_DUPLICATE = "OBSERVER_NAME_UNIQUE";
+		// Localized
+		public static final String LOCALIZED_NAME_CAMEL_CASE = "LOCALIZED_NAME_CAMEL_CASE";
+		public static final String LOCALIZED_NAME_DUPLICATE = "LOCALIZED_NAME_UNIQUE";
+		public static final String LOCALIZED_ENTRY_DUPLICATE = "LOCALIZED_ENTRY_DUPLICATE";
+		public static final String LOCALIZED_ENTRY_UNDEFINED = "LOCALIZED_ENTRY_UNDEFINED";
+		// ServiceConfig
+		public static final String SERVICE_CONFIG_MESSAGE_BUNDLE_DUPLICATE = "SERVICE_CONFIG_MESSAGE_BUNDLE_DUPLICATE";
+		// JpaConfig
+		public static final String JPA_LOCALIZED_ENUMS_DUPLICATE = "JPA_LOCALIZED_ENUMS_DUPLICATE";
 	}
 
-	static Pattern CAMEL_CASE_PATTERN = Pattern.compile("([A-Z]{1}[a-z]+)+");
+	static Pattern CAMEL_CASE_PATTERN = Pattern.compile("([A-Z]{1}[a-z0-9]+)+");
 
-	// 1. Module Name must be camel case
+	@Check
+	def checkForEmptyModule(Module module) {
+		if (module.key == null && module.messageBundles.empty && module.observers.empty && module.jpaConfig == null &&
+			module.serviceConfig == null) {
+			val errorMsg = "Module is empty";
+			error(errorMsg, ProjectGeneratorPackage.Literals.MODULE__NAME, ValidatorId.MODULE_EMPTY);
+		}
+	}
+
+	// Module: Name must be camel case
 	@Check
 	def checkForCamelCaseModuleName(Module _module) {
 		if (!CAMEL_CASE_PATTERN.matcher(_module.name).matches) {
@@ -40,7 +64,7 @@ class ProjectGeneratorValidator extends AbstractProjectGeneratorValidator {
 		}
 	}
 
-	// 2. Module Key must be upper case
+	// Module: Key must be upper case
 	@Check
 	def checkForUpperCaseModuleKey(Module _module) {
 		for (Character c : _module.key.toCharArray) {
@@ -52,28 +76,98 @@ class ProjectGeneratorValidator extends AbstractProjectGeneratorValidator {
 		}
 	}
 
-	// 3. Duplicate locale entries for a localized key not allowed
+	// Localized: Name must be camel case
 	@Check
-	def checkForDuplicateLocaleEntries(LocalizedEntry _localizedEntry) {
-		val count = _localizedEntry.values.size;
-		val localeCount = _localizedEntry.values.stream.map[locale].distinct.count;
-		val duplicateLocales = _localizedEntry.values.stream.collect(groupingBy[locale]).entrySet.stream.filter [
-			value.size > 1
-		].map[key].distinct.collect(toList);
-
-		if (count != localeCount) {
-			val errorMsg = "Duplicate locale entries found. " +
-				duplicateLocales.stream.map[toString].collect(joining(",", "[", "]"));
-			error(errorMsg, ProjectGeneratorPackage.Literals.LOCALIZED_ENTRY__VALUES, ValidatorId.DUPLICATE_LOCALIZED_ENTRY, duplicateLocales.toArray(newArrayOfSize(duplicateLocales.size)));
+	def checkForCamelCaseLocalizedName(Localized _localized) {
+		if (!CAMEL_CASE_PATTERN.matcher(_localized.name).matches) {
+			val errorMsg = "Localized name must be a camel case string (e.g.: MyLocalizedName)";
+			error(errorMsg, ProjectGeneratorPackage.Literals.LOCALIZED__NAME, ValidatorId.LOCALIZED_NAME_DUPLICATE);
 		}
 	}
 
-	// 4. Localized must contain at least one localized entry
+	// Localized: Name must be unique
+	@Check
+	def checkForUniqueLocalizedName(Localized _localized) {
+		val module = _localized.eContainer as Module;
+		Objects.requireNonNull(module, "eContainer should be an instance of Module");
+		val count = module.messageBundles.stream.filter[name.equals(_localized.name)].distinct.count;
+		if (count > 1) {
+			val errorMsg = "Localized name is used by '" + (count - 1) + "' other Localized instances";
+			error(errorMsg, ProjectGeneratorPackage.Literals.LOCALIZED__NAME, ValidatorId.LOCALIZED_NAME_CAMEL_CASE);
+		}
+	}
+
+	// Localized: must contain at least one localized entry
 	@Check
 	def checkForDefinedLocaleEntries(Localized localized) {
 		if (localized.values.empty) {
 			error("If attribute 'values' is defined, then at least one localized values must be given",
-				ProjectGeneratorPackage.Literals.LOCALIZED__VALUES, ValidatorId.DEFINED_LOCALIZED_ENTRY);
+				ProjectGeneratorPackage.Literals.LOCALIZED__VALUES, ValidatorId.LOCALIZED_ENTRY_UNDEFINED);
+		}
+	}
+
+	// LocalizedEntry: Duplicate locale entries for a localized key not allowed
+	@Check
+	def checkForDuplicateLocaleEntries(Localized _localized) {
+		val duplicateEntries = _localized.values.stream.collect(groupingBy[localizedKey]).entrySet.stream.filter [
+			value.size > 1
+		].map[key].distinct.collect(toList);
+
+		if (!duplicateEntries.empty) {
+			val errorMsg = "Duplicate locale entries found. " + duplicateEntries.stream.collect(joining(",", "[", "]"));
+			error(errorMsg, ProjectGeneratorPackage.Literals.LOCALIZED__VALUES, ValidatorId.LOCALIZED_ENTRY_DUPLICATE,
+				duplicateEntries.toArray(newArrayOfSize(duplicateEntries.size)));
+		}
+	}
+
+	// Observer: Name must be camel case
+	@Check
+	def checkForCamelCaseObserverName(Observer _observer) {
+		if (!CAMEL_CASE_PATTERN.matcher(_observer.name).matches) {
+			val errorMsg = "Observer name must be a camel case string (e.g.: MyObserverName)";
+			error(errorMsg, ProjectGeneratorPackage.Literals.OBSERVER__NAME, ValidatorId.OBSERVER_NAME_CAMEL_CASE);
+		}
+	}
+
+	// Observer: Name must be unique
+	@Check
+	def checkForUniqueObserverName(Observer _observer) {
+		val module = _observer.eContainer as Module;
+		Objects.requireNonNull(module, "eContainer should be an instance of Module");
+		val count = module.observers.stream.filter[name.equals(_observer.name)].distinct.count;
+		if (count > 1) {
+			val errorMsg = "Observer name is used by '" + (count - 1) + "' other Observer instances";
+			error(errorMsg, ProjectGeneratorPackage.Literals.OBSERVER__NAME, ValidatorId.OBSERVER_NAME_DUPLICATE);
+		}
+	}
+
+	// ServiceConfig: Message Bundles must be unique
+	@Check
+	def checkForUniqueServiceConfigMessagebundles(ServiceConfig _serviceConfig) {
+		val duplciateBundles = _serviceConfig.messageBundles.stream.collect(groupingBy[name]).entrySet.stream.filter [
+			value.size > 1
+		].map[key].distinct.collect(toList);
+		if (!duplciateBundles.empty) {
+			val errorMsg = "Duplicate message bundles found. " +
+				duplciateBundles.stream.collect(joining(",", "[", "]"));
+			error(errorMsg, ProjectGeneratorPackage.Literals.SERVICE_CONFIG__MESSAGE_BUNDLES,
+				ValidatorId.SERVICE_CONFIG_MESSAGE_BUNDLE_DUPLICATE,
+				duplciateBundles.toArray(newArrayOfSize(duplciateBundles.size)));
+		}
+	}
+
+	// JpaConfig: Message Bundles must be unique
+	@Check
+	def checkForUniqueJpaConfigMessagebundles(JpaConfig _jpaConfig) {
+		val duplciateBundles = _jpaConfig.localizedEnums.stream.collect(groupingBy[name]).entrySet.stream.filter [
+			value.size > 1
+		].map[key].distinct.collect(toList);
+		if (!duplciateBundles.empty) {
+			val errorMsg = "Duplicate localized enums found. " +
+				duplciateBundles.stream.collect(joining(",", "[", "]"));
+			error(errorMsg, ProjectGeneratorPackage.Literals.JPA_CONFIG__LOCALIZED_ENUMS,
+				ValidatorId.JPA_LOCALIZED_ENUMS_DUPLICATE,
+				duplciateBundles.toArray(newArrayOfSize(duplciateBundles.size)));
 		}
 	}
 }
