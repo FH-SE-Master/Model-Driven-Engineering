@@ -22,7 +22,7 @@ Observer:
     name=ID '{'
     'type' type=CLASSNAME';'
     'during' during=During';'
-    'notify' notify=Notify';'
+    'notifyObserver' notify=Notify';'
     'delegate' className=CLASSNAME';'
     ('qualifier' qualifier=CLASSNAME';')?
     '}'';';
@@ -30,7 +30,7 @@ Observer:
 // Jpa configuration
 JpaConfig: '{'
     'localizedEnums' '{' (localizedEnums+=[Localized]+) '}'';'
-    ('observers' observers+=Observer+)?
+    ('observers' '{' (observers+=[Observer]+) '}' ';')?
     '}';
 
 // Common

@@ -651,7 +651,7 @@ public class ProjectGeneratorPackageImpl extends EPackageImpl implements Project
 
     initEClass(jpaConfigEClass, JpaConfig.class, "JpaConfig", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getJpaConfig_LocalizedEnums(), this.getLocalized(), null, "localizedEnums", null, 0, -1, JpaConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getJpaConfig_Observers(), this.getObserver(), null, "observers", null, 0, -1, JpaConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getJpaConfig_Observers(), this.getObserver(), null, "observers", null, 0, -1, JpaConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(localizedEClass, Localized.class, "Localized", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getLocalized_Name(), ecorePackage.getEString(), "name", null, 0, 1, Localized.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

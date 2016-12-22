@@ -15,7 +15,7 @@ Module:
 
 // Service configuration
 ServiceConfig: \PYGZsq{}\PYGZob{}\PYGZsq{}
-    (\PYGZsq{}observers\PYGZsq{} observers+=Observer+)?
+    (\PYGZsq{}observers\PYGZsq{} \PYGZsq{}\PYGZob{}\PYGZsq{} (observers+=[Observer]+) \PYGZsq{}\PYGZcb{}\PYGZsq{} \PYGZsq{};\PYGZsq{})?
     (\PYGZsq{}messageBundles\PYGZsq{} \PYGZsq{}\PYGZob{}\PYGZsq{} (messageBundles+=[Localized]+) \PYGZsq{}\PYGZcb{}\PYGZsq{} \PYGZsq{};\PYGZsq{})
     \PYGZsq{}\PYGZcb{}\PYGZsq{};
 
@@ -23,33 +23,33 @@ Observer:
     name=ID \PYGZsq{}\PYGZob{}\PYGZsq{}
     \PYGZsq{}type\PYGZsq{} type=CLASSNAME\PYGZsq{};\PYGZsq{}
     \PYGZsq{}during\PYGZsq{} during=During\PYGZsq{};\PYGZsq{}
-    \PYGZsq{}notify\PYGZsq{} notify=Notify\PYGZsq{};\PYGZsq{}
+    \PYGZsq{}notifyObserver\PYGZsq{} notify=Notify\PYGZsq{};\PYGZsq{}
     \PYGZsq{}delegate\PYGZsq{} className=CLASSNAME\PYGZsq{};\PYGZsq{}
     (\PYGZsq{}qualifier\PYGZsq{} qualifier=CLASSNAME\PYGZsq{};\PYGZsq{})?
-    \PYGZsq{}\PYGZcb{}\PYGZsq{};
+    \PYGZsq{}\PYGZcb{}\PYGZsq{}\PYGZsq{};\PYGZsq{};
 
 // Jpa configuration
 JpaConfig: \PYGZsq{}\PYGZob{}\PYGZsq{}
     \PYGZsq{}localizedEnums\PYGZsq{} \PYGZsq{}\PYGZob{}\PYGZsq{} (localizedEnums+=[Localized]+) \PYGZsq{}\PYGZcb{}\PYGZsq{}\PYGZsq{};\PYGZsq{}
-    (\PYGZsq{}observers\PYGZsq{} observers+=Observer+)?
+    (\PYGZsq{}observers\PYGZsq{} \PYGZsq{}\PYGZob{}\PYGZsq{} (observers+=[Observer]+) \PYGZsq{}\PYGZcb{}\PYGZsq{} \PYGZsq{};\PYGZsq{})?
     \PYGZsq{}\PYGZcb{}\PYGZsq{};
 
 // Common
 Localized:
     name=ID \PYGZsq{}\PYGZob{}\PYGZsq{}
     (\PYGZsq{}values\PYGZsq{} \PYGZsq{}\PYGZob{}\PYGZsq{} (values+=LocalizedEntry+) \PYGZsq{}\PYGZcb{}\PYGZsq{} \PYGZsq{};\PYGZsq{})?
-    \PYGZsq{}\PYGZcb{}\PYGZsq{};
+    \PYGZsq{}\PYGZcb{}\PYGZsq{}\PYGZsq{};\PYGZsq{};
 
 LocalizedEntry: \PYGZsq{}\PYGZob{}\PYGZsq{}
     \PYGZsq{}key\PYGZsq{} localizedKey=LOCALIZEDKEY\PYGZsq{};\PYGZsq{}
     \PYGZsq{}values\PYGZsq{} \PYGZsq{}\PYGZob{}\PYGZsq{} (values+=LocalizedValue+) \PYGZsq{}\PYGZcb{}\PYGZsq{} \PYGZsq{};\PYGZsq{}
     (\PYGZsq{}args\PYGZsq{} \PYGZsq{}\PYGZob{}\PYGZsq{} (args+=STRING+) \PYGZsq{}\PYGZcb{}\PYGZsq{} \PYGZsq{};\PYGZsq{})?
-    \PYGZsq{}\PYGZcb{}\PYGZsq{};
+    \PYGZsq{}\PYGZcb{}\PYGZsq{}\PYGZsq{};\PYGZsq{};
 
 LocalizedValue: \PYGZsq{}\PYGZob{}\PYGZsq{}
     \PYGZsq{}locale\PYGZsq{} locale=Locale\PYGZsq{};\PYGZsq{}
     \PYGZsq{}value\PYGZsq{} value=STRING\PYGZsq{};\PYGZsq{}
-    \PYGZsq{}\PYGZcb{}\PYGZsq{};
+    \PYGZsq{}\PYGZcb{}\PYGZsq{}\PYGZsq{};\PYGZsq{};
 
 // Constants
 enum Locale: DE\PYGZus{}DE=\PYGZsq{}de\PYGZus{}DE\PYGZsq{} | EN\PYGZus{}US=\PYGZsq{}en\PYGZus{}US\PYGZsq{};

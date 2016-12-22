@@ -284,7 +284,7 @@ public class ProjectGeneratorGrammarAccess extends AbstractGrammarElementFinder 
 		private final Assignment cDuringAssignment_6 = (Assignment)cGroup.eContents().get(6);
 		private final RuleCall cDuringDuringEnumRuleCall_6_0 = (RuleCall)cDuringAssignment_6.eContents().get(0);
 		private final Keyword cSemicolonKeyword_7 = (Keyword)cGroup.eContents().get(7);
-		private final Keyword cNotifyKeyword_8 = (Keyword)cGroup.eContents().get(8);
+		private final Keyword cNotifyObserverKeyword_8 = (Keyword)cGroup.eContents().get(8);
 		private final Assignment cNotifyAssignment_9 = (Assignment)cGroup.eContents().get(9);
 		private final RuleCall cNotifyNotifyEnumRuleCall_9_0 = (RuleCall)cNotifyAssignment_9.eContents().get(0);
 		private final Keyword cSemicolonKeyword_10 = (Keyword)cGroup.eContents().get(10);
@@ -304,12 +304,12 @@ public class ProjectGeneratorGrammarAccess extends AbstractGrammarElementFinder 
 		//	name=ID '{'
 		//	'type' type=CLASSNAME ';'
 		//	'during' during=During ';'
-		//	'notify' notify=Notify ';'
+		//	'notifyObserver' notify=Notify ';'
 		//	'delegate' className=CLASSNAME ';' ('qualifier' qualifier=CLASSNAME ';')?
 		//	'}' ';';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//name=ID '{' 'type' type=CLASSNAME ';' 'during' during=During ';' 'notify' notify=Notify ';' 'delegate'
+		//name=ID '{' 'type' type=CLASSNAME ';' 'during' during=During ';' 'notifyObserver' notify=Notify ';' 'delegate'
 		//className=CLASSNAME ';' ('qualifier' qualifier=CLASSNAME ';')? '}' ';'
 		public Group getGroup() { return cGroup; }
 		
@@ -346,8 +346,8 @@ public class ProjectGeneratorGrammarAccess extends AbstractGrammarElementFinder 
 		//';'
 		public Keyword getSemicolonKeyword_7() { return cSemicolonKeyword_7; }
 		
-		//'notify'
-		public Keyword getNotifyKeyword_8() { return cNotifyKeyword_8; }
+		//'notifyObserver'
+		public Keyword getNotifyObserverKeyword_8() { return cNotifyObserverKeyword_8; }
 		
 		//notify=Notify
 		public Assignment getNotifyAssignment_9() { return cNotifyAssignment_9; }
@@ -404,18 +404,22 @@ public class ProjectGeneratorGrammarAccess extends AbstractGrammarElementFinder 
 		private final Keyword cSemicolonKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		private final Group cGroup_6 = (Group)cGroup.eContents().get(6);
 		private final Keyword cObserversKeyword_6_0 = (Keyword)cGroup_6.eContents().get(0);
-		private final Assignment cObserversAssignment_6_1 = (Assignment)cGroup_6.eContents().get(1);
-		private final RuleCall cObserversObserverParserRuleCall_6_1_0 = (RuleCall)cObserversAssignment_6_1.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_6_1 = (Keyword)cGroup_6.eContents().get(1);
+		private final Assignment cObserversAssignment_6_2 = (Assignment)cGroup_6.eContents().get(2);
+		private final CrossReference cObserversObserverCrossReference_6_2_0 = (CrossReference)cObserversAssignment_6_2.eContents().get(0);
+		private final RuleCall cObserversObserverIDTerminalRuleCall_6_2_0_1 = (RuleCall)cObserversObserverCrossReference_6_2_0.eContents().get(1);
+		private final Keyword cRightCurlyBracketKeyword_6_3 = (Keyword)cGroup_6.eContents().get(3);
+		private final Keyword cSemicolonKeyword_6_4 = (Keyword)cGroup_6.eContents().get(4);
 		private final Keyword cRightCurlyBracketKeyword_7 = (Keyword)cGroup.eContents().get(7);
 		
 		//// Jpa configuration
 		//JpaConfig:
 		//	'{'
-		//	'localizedEnums' '{' localizedEnums+=[Localized]+ '}' ';' ('observers' observers+=Observer+)?
+		//	'localizedEnums' '{' localizedEnums+=[Localized]+ '}' ';' ('observers' '{' observers+=[Observer]+ '}' ';')?
 		//	'}';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'{' 'localizedEnums' '{' localizedEnums+=[Localized]+ '}' ';' ('observers' observers+=Observer+)? '}'
+		//'{' 'localizedEnums' '{' localizedEnums+=[Localized]+ '}' ';' ('observers' '{' observers+=[Observer]+ '}' ';')? '}'
 		public Group getGroup() { return cGroup; }
 		
 		//'{'
@@ -442,17 +446,29 @@ public class ProjectGeneratorGrammarAccess extends AbstractGrammarElementFinder 
 		//';'
 		public Keyword getSemicolonKeyword_5() { return cSemicolonKeyword_5; }
 		
-		//('observers' observers+=Observer+)?
+		//('observers' '{' observers+=[Observer]+ '}' ';')?
 		public Group getGroup_6() { return cGroup_6; }
 		
 		//'observers'
 		public Keyword getObserversKeyword_6_0() { return cObserversKeyword_6_0; }
 		
-		//observers+=Observer+
-		public Assignment getObserversAssignment_6_1() { return cObserversAssignment_6_1; }
+		//'{'
+		public Keyword getLeftCurlyBracketKeyword_6_1() { return cLeftCurlyBracketKeyword_6_1; }
 		
-		//Observer
-		public RuleCall getObserversObserverParserRuleCall_6_1_0() { return cObserversObserverParserRuleCall_6_1_0; }
+		//observers+=[Observer]+
+		public Assignment getObserversAssignment_6_2() { return cObserversAssignment_6_2; }
+		
+		//[Observer]
+		public CrossReference getObserversObserverCrossReference_6_2_0() { return cObserversObserverCrossReference_6_2_0; }
+		
+		//ID
+		public RuleCall getObserversObserverIDTerminalRuleCall_6_2_0_1() { return cObserversObserverIDTerminalRuleCall_6_2_0_1; }
+		
+		//'}'
+		public Keyword getRightCurlyBracketKeyword_6_3() { return cRightCurlyBracketKeyword_6_3; }
+		
+		//';'
+		public Keyword getSemicolonKeyword_6_4() { return cSemicolonKeyword_6_4; }
 		
 		//'}'
 		public Keyword getRightCurlyBracketKeyword_7() { return cRightCurlyBracketKeyword_7; }
@@ -884,7 +900,7 @@ public class ProjectGeneratorGrammarAccess extends AbstractGrammarElementFinder 
 	//	name=ID '{'
 	//	'type' type=CLASSNAME ';'
 	//	'during' during=During ';'
-	//	'notify' notify=Notify ';'
+	//	'notifyObserver' notify=Notify ';'
 	//	'delegate' className=CLASSNAME ';' ('qualifier' qualifier=CLASSNAME ';')?
 	//	'}' ';';
 	public ObserverElements getObserverAccess() {
@@ -898,7 +914,7 @@ public class ProjectGeneratorGrammarAccess extends AbstractGrammarElementFinder 
 	//// Jpa configuration
 	//JpaConfig:
 	//	'{'
-	//	'localizedEnums' '{' localizedEnums+=[Localized]+ '}' ';' ('observers' observers+=Observer+)?
+	//	'localizedEnums' '{' localizedEnums+=[Localized]+ '}' ';' ('observers' '{' observers+=[Observer]+ '}' ';')?
 	//	'}';
 	public JpaConfigElements getJpaConfigAccess() {
 		return pJpaConfig;

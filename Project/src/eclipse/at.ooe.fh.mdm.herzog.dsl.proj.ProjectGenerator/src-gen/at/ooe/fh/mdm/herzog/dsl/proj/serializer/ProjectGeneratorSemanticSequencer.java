@@ -69,7 +69,7 @@ public class ProjectGeneratorSemanticSequencer extends AbstractDelegatingSemanti
 	 *     JpaConfig returns JpaConfig
 	 *
 	 * Constraint:
-	 *     (localizedEnums+=[Localized|ID]+ observers+=Observer*)
+	 *     (localizedEnums+=[Localized|ID]+ observers+=[Observer|ID]*)
 	 */
 	protected void sequence_JpaConfig(ISerializationContext context, JpaConfig semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

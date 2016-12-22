@@ -7,10 +7,11 @@
 \ \newline
 
 \subsection{Regeln}
-Die gesamte Konfiguration befindet sich im Wurzelobjekt des Typ Modul, das ein Modul beschreibt. Objekte, die in mehreren Objekten referenziert werden können, werden auf Ebene des Moduls einmalig beschrieben und dann von anderen Objekten referenziert. Sofern ein Name benötigt wird, wurde das Attribut Name den Regeln, die Objekte beschreiben, hinzugefügt, wobei der Name ebenfalls als Schlüssel für diese Objekte fungiert, damit diese Objekte referenziert werden können. Im Fall der \emph{Observer} und \emph{Localized} wird aus dem Namen der Klassenname für Quelltextgenerierung abgeleitet.
+Die gesamte Konfiguration befindet sich im Wurzelobjekt des Typ Modul, das ein Modul beschreibt. Objekte, die in mehreren Objekten referenziert werden können, werden auf Ebene des Moduls einmalig beschrieben und dann von anderen Objekten referenziert \emph{(Observer, Localized)}. Sofern ein Name benötigt wird, wurde das Attribut Name den Regeln, die Objekte beschreiben, hinzugefügt, wobei der Name ebenfalls als Schlüssel für diese Objekte fungiert, damit diese Objekte referenziert werden können. Die einzelnen Regeln bilden Objekte, dessen \emph{Java}-Klassenbibliotheken bei der Validierung, Quickfixes und Generatoren verwendet werden.
  
 \subsection{Konstanten}
-Die Konstanten, wie die unterstützten \emph{Locale}, boolsche Werte und \emph{Observer} spezifische Konstanten wurden als Aufzählungen abgebildet. Es wurde darauf geachtet, das über die Zeichenkettenrepräsentation der Aufzählungen sich leicht die \emph{Java}-Datentypen erstellen lassen.
+Die Konstanten, wie die unterstützten \emph{Locale}, boolsche Zustände und \emph{Observer} spezifische Konstanten wurden als Aufzählungen abgebildet. Es wurde darauf geachtet, das über die Zeichenkettenrepräsentation der Aufzählungen sich leicht die \emph{Java}-Datentypen erstellen lassen.
 
 \subsection{Terminal Regeln}
 Die Terminal Regeln wurden eingeführt, damit die Klassennamen für die \emph{Observer}-Beschreibungen einen gültigen voll qualifizierten  \emph{Java}-Klassennamen darstellen und damit die Schlüssel der sprachspezifischen Einträge einer \emph{Localized}-Beschreibung, der Konvention von Schlüsseln einer \emph{Properties}-Datei folgen.
+\newpage

@@ -1768,9 +1768,9 @@ rule__Observer__Group__8__Impl
 	}
 :
 (
-	{ before(grammarAccess.getObserverAccess().getNotifyKeyword_8()); }
-	'notify'
-	{ after(grammarAccess.getObserverAccess().getNotifyKeyword_8()); }
+	{ before(grammarAccess.getObserverAccess().getNotifyObserverKeyword_8()); }
+	'notifyObserver'
+	{ after(grammarAccess.getObserverAccess().getNotifyObserverKeyword_8()); }
 )
 ;
 finally {
@@ -2330,6 +2330,7 @@ rule__JpaConfig__Group_6__1
 	}
 :
 	rule__JpaConfig__Group_6__1__Impl
+	rule__JpaConfig__Group_6__2
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -2341,16 +2342,96 @@ rule__JpaConfig__Group_6__1__Impl
 	}
 :
 (
+	{ before(grammarAccess.getJpaConfigAccess().getLeftCurlyBracketKeyword_6_1()); }
+	'{'
+	{ after(grammarAccess.getJpaConfigAccess().getLeftCurlyBracketKeyword_6_1()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__JpaConfig__Group_6__2
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__JpaConfig__Group_6__2__Impl
+	rule__JpaConfig__Group_6__3
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__JpaConfig__Group_6__2__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
 	(
-		{ before(grammarAccess.getJpaConfigAccess().getObserversAssignment_6_1()); }
-		(rule__JpaConfig__ObserversAssignment_6_1)
-		{ after(grammarAccess.getJpaConfigAccess().getObserversAssignment_6_1()); }
+		{ before(grammarAccess.getJpaConfigAccess().getObserversAssignment_6_2()); }
+		(rule__JpaConfig__ObserversAssignment_6_2)
+		{ after(grammarAccess.getJpaConfigAccess().getObserversAssignment_6_2()); }
 	)
 	(
-		{ before(grammarAccess.getJpaConfigAccess().getObserversAssignment_6_1()); }
-		(rule__JpaConfig__ObserversAssignment_6_1)*
-		{ after(grammarAccess.getJpaConfigAccess().getObserversAssignment_6_1()); }
+		{ before(grammarAccess.getJpaConfigAccess().getObserversAssignment_6_2()); }
+		(rule__JpaConfig__ObserversAssignment_6_2)*
+		{ after(grammarAccess.getJpaConfigAccess().getObserversAssignment_6_2()); }
 	)
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__JpaConfig__Group_6__3
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__JpaConfig__Group_6__3__Impl
+	rule__JpaConfig__Group_6__4
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__JpaConfig__Group_6__3__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getJpaConfigAccess().getRightCurlyBracketKeyword_6_3()); }
+	'}'
+	{ after(grammarAccess.getJpaConfigAccess().getRightCurlyBracketKeyword_6_3()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__JpaConfig__Group_6__4
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__JpaConfig__Group_6__4__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__JpaConfig__Group_6__4__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getJpaConfigAccess().getSemicolonKeyword_6_4()); }
+	';'
+	{ after(grammarAccess.getJpaConfigAccess().getSemicolonKeyword_6_4()); }
 )
 ;
 finally {
@@ -3603,15 +3684,19 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__JpaConfig__ObserversAssignment_6_1
+rule__JpaConfig__ObserversAssignment_6_2
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 	(
-		{ before(grammarAccess.getJpaConfigAccess().getObserversObserverParserRuleCall_6_1_0()); }
-		ruleObserver
-		{ after(grammarAccess.getJpaConfigAccess().getObserversObserverParserRuleCall_6_1_0()); }
+		{ before(grammarAccess.getJpaConfigAccess().getObserversObserverCrossReference_6_2_0()); }
+		(
+			{ before(grammarAccess.getJpaConfigAccess().getObserversObserverIDTerminalRuleCall_6_2_0_1()); }
+			RULE_ID
+			{ after(grammarAccess.getJpaConfigAccess().getObserversObserverIDTerminalRuleCall_6_2_0_1()); }
+		)
+		{ after(grammarAccess.getJpaConfigAccess().getObserversObserverCrossReference_6_2_0()); }
 	)
 ;
 finally {

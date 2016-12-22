@@ -3,13 +3,19 @@ Folgende Auflistung beschreibt die implementierten Validierungen:
 \begin{itemize}
 	\item\textbf{\emph{Leere Beschreibung}}: Es wurde eine Validierung eingeführt, die auf eine leere Beschreibung eines Moduls prüft, damit ein \emph{Quickfix} eine initiale Beschreibung erstellen kann.
 	
-	\item\textbf{\emph{Duplikate Namen}}: Da die Namen vom Datentyp \emph{ID} sind, wurde zusätzlich eine Prüfung eingeführt, ob die Namen bereits vergeben wurden.
+	\item\textbf{\emph{Duplikate Namen}}: Da die Namen vom Datentyp \emph{ID} sind, wurde zusätzlich eine Prüfung eingeführt, ob die Namen bereits vergeben wurden. \emph{(Observer, Localized)}
 	
 	\item\textbf{\emph{Camel case Namen}}: Da die Namen vom Datentyp \emph{ID} sind, wurde zusätzlich eine Prüfung eingeführt, ob die Namen in \emph{camel case} sind.
 	
-	\item\textbf{\emph{Duplikate Locale Einträge}}: Es wurde eine Validierung eingeführt, die prüft ob es Duplikate der \emph{Locale} für ein \emph{Localized} gibt. 
+	\item\textbf{\emph{Duplikate LocaleEntry Einträge}}: Es wurde eine Validierung eingeführt, die prüft ob es Duplikate sprachspezifischen Einträge mit demselben Schlüssel gibt.
+	
+	\item\textbf{\emph{Doppelte Verwendung von \emph{Locale}}}: Es wurde eine Validierung eingeführt, die prüft ob eine \emph{Locale} innerhalb eines \emph{Bundles} definiert wurde.
 	
 	\item\textbf{\emph{Duplikate Referenzen}}: Es wurde eine Validierung eingeführt, die prüft ob es Duplikate bei den gesetzten Referenzen gibt.
+	
+	\item\textbf{\emph{Ungenutzte Objekte}}: Es wurde eine Validierung eingeführt, die prüft Objekte wie \emph{Observer} oder \emph{Localized} zwar definiert wurden aber nirgends referenziert werden.
+	
+	\item\textbf{\emph{Doppelte Objekt Ids}}: Es wurde eine Validierung eingeführt, die prüft ob Objekt Ids doppelt vergeben wurden \emph{(Observer, Localized)} Namen.
 \end{itemize}
 \ \newline
 Mit einer Grammatik kann nicht beschrieben werden, dass es keine Duplikate bei den verwendeten Namen von Objekten in einer Auflistung gibt. Das ist so, da es sich hierum Semantik handelt und nicht Grammatik, ob ein Name nur einmalig oder mehrmalig vergeben werden darf.

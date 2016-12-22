@@ -15,6 +15,8 @@
 \PYG{k+kn}{import} \PYG{n+nn}{org.eclipse.xtext.validation.Check}
 
 \PYG{k+kn}{import} \PYG{n+nn}{static} \PYG{n}{java}\PYG{o}{.}\PYG{n+na}{util}\PYG{o}{.}\PYG{n+na}{stream}\PYG{o}{.}\PYG{n+na}{Collectors}\PYG{o}{.*}
+\PYG{k+kn}{import} \PYG{n+nn}{java.util.List}
+\PYG{k+kn}{import} \PYG{n+nn}{at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.LocalizedEntry}
 
 \PYG{c+cm}{/**}
 \PYG{c+cm}{ * This class contains custom validation rules. }
@@ -31,6 +33,8 @@
 		\PYG{k+kd}{public} \PYG{k+kd}{static} \PYG{k+kd}{final} \PYG{n}{String} \PYG{n}{MODULE\PYGZus{}EMPTY} \PYG{o}{=} \PYG{l+s}{\PYGZdq{}MODULE\PYGZus{}EMPTY\PYGZdq{}}\PYG{o}{;}
 		\PYG{k+kd}{public} \PYG{k+kd}{static} \PYG{k+kd}{final} \PYG{n}{String} \PYG{n}{MODULE\PYGZus{}NAME\PYGZus{}CAMEL\PYGZus{}CASE} \PYG{o}{=} \PYG{l+s}{\PYGZdq{}MODULE\PYGZus{}NAME\PYGZus{}CAMEL\PYGZus{}CASE\PYGZdq{}}\PYG{o}{;}
 		\PYG{k+kd}{public} \PYG{k+kd}{static} \PYG{k+kd}{final} \PYG{n}{String} \PYG{n}{MODULE\PYGZus{}KEY\PYGZus{}UPPER\PYGZus{}CASE} \PYG{o}{=} \PYG{l+s}{\PYGZdq{}MODULE\PYGZus{}KEY\PYGZus{}UPPER\PYGZus{}CASE\PYGZdq{}}\PYG{o}{;}
+		\PYG{k+kd}{public} \PYG{k+kd}{static} \PYG{k+kd}{final} \PYG{n}{String} \PYG{n}{MODULE\PYGZus{}OBSERVER\PYGZus{}UNUSED} \PYG{o}{=} \PYG{l+s}{\PYGZdq{}MODULE\PYGZus{}OBSERVER\PYGZus{}UNUSED\PYGZdq{}}\PYG{o}{;}
+		\PYG{k+kd}{public} \PYG{k+kd}{static} \PYG{k+kd}{final} \PYG{n}{String} \PYG{n}{MODULE\PYGZus{}LOCALIZED\PYGZus{}UNUSED} \PYG{o}{=} \PYG{l+s}{\PYGZdq{}MODULE\PYGZus{}LOCALIZED\PYGZus{}UNUSED\PYGZdq{}}\PYG{o}{;}
 		\PYG{c+c1}{// Observer}
 		\PYG{k+kd}{public} \PYG{k+kd}{static} \PYG{k+kd}{final} \PYG{n}{String} \PYG{n}{OBSERVER\PYGZus{}NAME\PYGZus{}CAMEL\PYGZus{}CASE} \PYG{o}{=} \PYG{l+s}{\PYGZdq{}OBSERVER\PYGZus{}NAME\PYGZus{}CAMEL\PYGZus{}CASE\PYGZdq{}}\PYG{o}{;}
 		\PYG{k+kd}{public} \PYG{k+kd}{static} \PYG{k+kd}{final} \PYG{n}{String} \PYG{n}{OBSERVER\PYGZus{}NAME\PYGZus{}DUPLICATE} \PYG{o}{=} \PYG{l+s}{\PYGZdq{}OBSERVER\PYGZus{}NAME\PYGZus{}UNIQUE\PYGZdq{}}\PYG{o}{;}
@@ -38,11 +42,14 @@
 		\PYG{k+kd}{public} \PYG{k+kd}{static} \PYG{k+kd}{final} \PYG{n}{String} \PYG{n}{LOCALIZED\PYGZus{}NAME\PYGZus{}CAMEL\PYGZus{}CASE} \PYG{o}{=} \PYG{l+s}{\PYGZdq{}LOCALIZED\PYGZus{}NAME\PYGZus{}CAMEL\PYGZus{}CASE\PYGZdq{}}\PYG{o}{;}
 		\PYG{k+kd}{public} \PYG{k+kd}{static} \PYG{k+kd}{final} \PYG{n}{String} \PYG{n}{LOCALIZED\PYGZus{}NAME\PYGZus{}DUPLICATE} \PYG{o}{=} \PYG{l+s}{\PYGZdq{}LOCALIZED\PYGZus{}NAME\PYGZus{}UNIQUE\PYGZdq{}}\PYG{o}{;}
 		\PYG{k+kd}{public} \PYG{k+kd}{static} \PYG{k+kd}{final} \PYG{n}{String} \PYG{n}{LOCALIZED\PYGZus{}ENTRY\PYGZus{}DUPLICATE} \PYG{o}{=} \PYG{l+s}{\PYGZdq{}LOCALIZED\PYGZus{}ENTRY\PYGZus{}DUPLICATE\PYGZdq{}}\PYG{o}{;}
+		\PYG{k+kd}{public} \PYG{k+kd}{static} \PYG{k+kd}{final} \PYG{n}{String} \PYG{n}{LOCALIZED\PYGZus{}ENTRY\PYGZus{}LOCALE\PYGZus{}DUPLICATE} \PYG{o}{=} \PYG{l+s}{\PYGZdq{}LOCALIZED\PYGZus{}ENTRY\PYGZus{}LOCALE\PYGZus{}DUPLICATE\PYGZdq{}}\PYG{o}{;}
 		\PYG{k+kd}{public} \PYG{k+kd}{static} \PYG{k+kd}{final} \PYG{n}{String} \PYG{n}{LOCALIZED\PYGZus{}ENTRY\PYGZus{}UNDEFINED} \PYG{o}{=} \PYG{l+s}{\PYGZdq{}LOCALIZED\PYGZus{}ENTRY\PYGZus{}UNDEFINED\PYGZdq{}}\PYG{o}{;}
 		\PYG{c+c1}{// ServiceConfig}
 		\PYG{k+kd}{public} \PYG{k+kd}{static} \PYG{k+kd}{final} \PYG{n}{String} \PYG{n}{SERVICE\PYGZus{}CONFIG\PYGZus{}MESSAGE\PYGZus{}BUNDLE\PYGZus{}DUPLICATE} \PYG{o}{=} \PYG{l+s}{\PYGZdq{}SERVICE\PYGZus{}CONFIG\PYGZus{}MESSAGE\PYGZus{}BUNDLE\PYGZus{}DUPLICATE\PYGZdq{}}\PYG{o}{;}
+		\PYG{k+kd}{public} \PYG{k+kd}{static} \PYG{k+kd}{final} \PYG{n}{String} \PYG{n}{SERVICE\PYGZus{}CONFIG\PYGZus{}OBSERVERS\PYGZus{}DUPLICATE} \PYG{o}{=} \PYG{l+s}{\PYGZdq{}SERVICE\PYGZus{}CONFIG\PYGZus{}OBSERVERS\PYGZus{}DUPLICATE\PYGZdq{}}\PYG{o}{;}
 		\PYG{c+c1}{// JpaConfig}
 		\PYG{k+kd}{public} \PYG{k+kd}{static} \PYG{k+kd}{final} \PYG{n}{String} \PYG{n}{JPA\PYGZus{}LOCALIZED\PYGZus{}ENUMS\PYGZus{}DUPLICATE} \PYG{o}{=} \PYG{l+s}{\PYGZdq{}JPA\PYGZus{}LOCALIZED\PYGZus{}ENUMS\PYGZus{}DUPLICATE\PYGZdq{}}\PYG{o}{;}
+		\PYG{k+kd}{public} \PYG{k+kd}{static} \PYG{k+kd}{final} \PYG{n}{String} \PYG{n}{JPA\PYGZus{}OBSERVERS\PYGZus{}DUPLICATE} \PYG{o}{=} \PYG{l+s}{\PYGZdq{}JPA\PYGZus{}OBSERVERS\PYGZus{}DUPLICATE\PYGZdq{}}\PYG{o}{;}
 	\PYG{o}{\PYGZcb{}}
 
 	\PYG{k+kd}{static} \PYG{n}{Pattern} \PYG{n}{CAMEL\PYGZus{}CASE\PYGZus{}PATTERN} \PYG{o}{=} \PYG{n}{Pattern}\PYG{o}{.}\PYG{n+na}{compile}\PYG{o}{(}\PYG{l+s}{\PYGZdq{}([A\PYGZhy{}Z]\PYGZob{}1\PYGZcb{}[a\PYGZhy{}z0\PYGZhy{}9]+)+\PYGZdq{}}\PYG{o}{);}
@@ -77,12 +84,46 @@
 		\PYG{o}{\PYGZcb{}}
 	\PYG{o}{\PYGZcb{}}
 
+	\PYG{c+c1}{// Module: Observer unused}
+	\PYG{n+nd}{@Check}
+	\PYG{n}{def} \PYG{n+nf}{checkForUnusedObserver}\PYG{o}{(}\PYG{n}{Module} \PYG{n}{\PYGZus{}module}\PYG{o}{)} \PYG{o}{\PYGZob{}}
+		\PYG{n}{val} \PYG{n}{List}\PYG{o}{\PYGZlt{}}\PYG{n}{Observer}\PYG{o}{\PYGZgt{}} \PYG{n}{observers} \PYG{o}{=} \PYG{n}{newArrayList}\PYG{o}{(}\PYG{n}{\PYGZus{}module}\PYG{o}{.}\PYG{n+na}{observers}\PYG{o}{);}
+		\PYG{k}{if} \PYG{o}{(}\PYG{n}{\PYGZus{}module}\PYG{o}{.}\PYG{n+na}{serviceConfig} \PYG{o}{!=} \PYG{k+kc}{null}\PYG{o}{)} \PYG{o}{\PYGZob{}}
+			\PYG{n}{observers}\PYG{o}{.}\PYG{n+na}{removeAll}\PYG{o}{(}\PYG{n}{\PYGZus{}module}\PYG{o}{.}\PYG{n+na}{serviceConfig}\PYG{o}{.}\PYG{n+na}{observers}\PYG{o}{);}
+		\PYG{o}{\PYGZcb{}}
+		\PYG{k}{if} \PYG{o}{(}\PYG{n}{\PYGZus{}module}\PYG{o}{.}\PYG{n+na}{jpaConfig} \PYG{o}{!=} \PYG{k+kc}{null}\PYG{o}{)} \PYG{o}{\PYGZob{}}
+			\PYG{n}{observers}\PYG{o}{.}\PYG{n+na}{removeAll}\PYG{o}{(}\PYG{n}{\PYGZus{}module}\PYG{o}{.}\PYG{n+na}{jpaConfig}\PYG{o}{.}\PYG{n+na}{observers}\PYG{o}{);}
+		\PYG{o}{\PYGZcb{}}
+		\PYG{k}{if} \PYG{o}{(!}\PYG{n}{observers}\PYG{o}{.}\PYG{n+na}{isEmpty}\PYG{o}{)} \PYG{o}{\PYGZob{}}
+			\PYG{n}{val} \PYG{n}{warnMsg} \PYG{o}{=} \PYG{l+s}{\PYGZdq{}Some observers are unused\PYGZdq{}}\PYG{o}{;}
+			\PYG{n}{warning}\PYG{o}{(}\PYG{n}{warnMsg}\PYG{o}{,} \PYG{n}{ProjectGeneratorPackage}\PYG{o}{.}\PYG{n+na}{Literals}\PYG{o}{.}\PYG{n+na}{MODULE\PYGZus{}\PYGZus{}OBSERVERS}\PYG{o}{,} \PYG{n}{ValidatorId}\PYG{o}{.}\PYG{n+na}{MODULE\PYGZus{}OBSERVER\PYGZus{}UNUSED}\PYG{o}{,}
+				\PYG{n}{observers}\PYG{o}{.}\PYG{n+na}{stream}\PYG{o}{.}\PYG{n+na}{map}\PYG{o}{[}\PYG{n}{name}\PYG{o}{].}\PYG{n+na}{toArray}\PYG{o}{(}\PYG{n}{size}\PYG{o}{|}\PYG{n}{newArrayOfSize}\PYG{o}{(}\PYG{n}{size}\PYG{o}{)));}
+		\PYG{o}{\PYGZcb{}}
+	\PYG{o}{\PYGZcb{}}
+
+	\PYG{c+c1}{// Module: Localized unused}
+	\PYG{n+nd}{@Check}
+	\PYG{n}{def} \PYG{n+nf}{checkForUnusedMessageBundle}\PYG{o}{(}\PYG{n}{Module} \PYG{n}{\PYGZus{}module}\PYG{o}{)} \PYG{o}{\PYGZob{}}
+		\PYG{n}{val} \PYG{n}{List}\PYG{o}{\PYGZlt{}}\PYG{n}{Localized}\PYG{o}{\PYGZgt{}} \PYG{n}{localized} \PYG{o}{=} \PYG{n}{newArrayList}\PYG{o}{(}\PYG{n}{\PYGZus{}module}\PYG{o}{.}\PYG{n+na}{messageBundles}\PYG{o}{);}
+		\PYG{k}{if} \PYG{o}{(}\PYG{n}{\PYGZus{}module}\PYG{o}{.}\PYG{n+na}{serviceConfig} \PYG{o}{!=} \PYG{k+kc}{null}\PYG{o}{)} \PYG{o}{\PYGZob{}}
+			\PYG{n}{localized}\PYG{o}{.}\PYG{n+na}{removeAll}\PYG{o}{(}\PYG{n}{\PYGZus{}module}\PYG{o}{.}\PYG{n+na}{serviceConfig}\PYG{o}{.}\PYG{n+na}{messageBundles}\PYG{o}{);}
+		\PYG{o}{\PYGZcb{}}
+		\PYG{k}{if} \PYG{o}{(}\PYG{n}{\PYGZus{}module}\PYG{o}{.}\PYG{n+na}{jpaConfig} \PYG{o}{!=} \PYG{k+kc}{null}\PYG{o}{)} \PYG{o}{\PYGZob{}}
+			\PYG{n}{localized}\PYG{o}{.}\PYG{n+na}{removeAll}\PYG{o}{(}\PYG{n}{\PYGZus{}module}\PYG{o}{.}\PYG{n+na}{jpaConfig}\PYG{o}{.}\PYG{n+na}{localizedEnums}\PYG{o}{);}
+		\PYG{o}{\PYGZcb{}}
+		\PYG{k}{if} \PYG{o}{(!}\PYG{n}{localized}\PYG{o}{.}\PYG{n+na}{isEmpty}\PYG{o}{)} \PYG{o}{\PYGZob{}}
+			\PYG{n}{val} \PYG{n}{warnMsg} \PYG{o}{=} \PYG{l+s}{\PYGZdq{}Some message bundles are unused\PYGZdq{}}\PYG{o}{;}
+			\PYG{n}{warning}\PYG{o}{(}\PYG{n}{warnMsg}\PYG{o}{,} \PYG{n}{ProjectGeneratorPackage}\PYG{o}{.}\PYG{n+na}{Literals}\PYG{o}{.}\PYG{n+na}{MODULE\PYGZus{}\PYGZus{}MESSAGE\PYGZus{}BUNDLES}\PYG{o}{,} \PYG{n}{ValidatorId}\PYG{o}{.}\PYG{n+na}{MODULE\PYGZus{}LOCALIZED\PYGZus{}UNUSED}\PYG{o}{,}
+				\PYG{n}{localized}\PYG{o}{.}\PYG{n+na}{stream}\PYG{o}{.}\PYG{n+na}{map}\PYG{o}{[}\PYG{n}{name}\PYG{o}{].}\PYG{n+na}{toArray}\PYG{o}{(}\PYG{n}{size}\PYG{o}{|}\PYG{n}{newArrayOfSize}\PYG{o}{(}\PYG{n}{size}\PYG{o}{)));}
+		\PYG{o}{\PYGZcb{}}
+	\PYG{o}{\PYGZcb{}}
+
 	\PYG{c+c1}{// Localized: Name must be camel case}
 	\PYG{n+nd}{@Check}
 	\PYG{n}{def} \PYG{n+nf}{checkForCamelCaseLocalizedName}\PYG{o}{(}\PYG{n}{Localized} \PYG{n}{\PYGZus{}localized}\PYG{o}{)} \PYG{o}{\PYGZob{}}
 		\PYG{k}{if} \PYG{o}{(!}\PYG{n}{CAMEL\PYGZus{}CASE\PYGZus{}PATTERN}\PYG{o}{.}\PYG{n+na}{matcher}\PYG{o}{(}\PYG{n}{\PYGZus{}localized}\PYG{o}{.}\PYG{n+na}{name}\PYG{o}{).}\PYG{n+na}{matches}\PYG{o}{)} \PYG{o}{\PYGZob{}}
 			\PYG{n}{val} \PYG{n}{errorMsg} \PYG{o}{=} \PYG{l+s}{\PYGZdq{}Localized name must be a camel case string (e.g.: MyLocalizedName)\PYGZdq{}}\PYG{o}{;}
-			\PYG{n}{error}\PYG{o}{(}\PYG{n}{errorMsg}\PYG{o}{,} \PYG{n}{ProjectGeneratorPackage}\PYG{o}{.}\PYG{n+na}{Literals}\PYG{o}{.}\PYG{n+na}{LOCALIZED\PYGZus{}\PYGZus{}NAME}\PYG{o}{,} \PYG{n}{ValidatorId}\PYG{o}{.}\PYG{n+na}{LOCALIZED\PYGZus{}NAME\PYGZus{}DUPLICATE}\PYG{o}{);}
+			\PYG{n}{error}\PYG{o}{(}\PYG{n}{errorMsg}\PYG{o}{,} \PYG{n}{ProjectGeneratorPackage}\PYG{o}{.}\PYG{n+na}{Literals}\PYG{o}{.}\PYG{n+na}{LOCALIZED\PYGZus{}\PYGZus{}NAME}\PYG{o}{,} \PYG{n}{ValidatorId}\PYG{o}{.}\PYG{n+na}{LOCALIZED\PYGZus{}NAME\PYGZus{}CAMEL\PYGZus{}CASE}\PYG{o}{);}
 		\PYG{o}{\PYGZcb{}}
 	\PYG{o}{\PYGZcb{}}
 
@@ -94,7 +135,7 @@
 		\PYG{n}{val} \PYG{n}{count} \PYG{o}{=} \PYG{n}{module}\PYG{o}{.}\PYG{n+na}{messageBundles}\PYG{o}{.}\PYG{n+na}{stream}\PYG{o}{.}\PYG{n+na}{filter}\PYG{o}{[}\PYG{n}{name}\PYG{o}{.}\PYG{n+na}{equals}\PYG{o}{(}\PYG{n}{\PYGZus{}localized}\PYG{o}{.}\PYG{n+na}{name}\PYG{o}{)].}\PYG{n+na}{distinct}\PYG{o}{.}\PYG{n+na}{count}\PYG{o}{;}
 		\PYG{k}{if} \PYG{o}{(}\PYG{n}{count} \PYG{o}{\PYGZgt{}} \PYG{l+m+mi}{1}\PYG{o}{)} \PYG{o}{\PYGZob{}}
 			\PYG{n}{val} \PYG{n}{errorMsg} \PYG{o}{=} \PYG{l+s}{\PYGZdq{}Localized name is used by \PYGZsq{}\PYGZdq{}} \PYG{o}{+} \PYG{o}{(}\PYG{n}{count} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{o}{)} \PYG{o}{+} \PYG{l+s}{\PYGZdq{}\PYGZsq{} other Localized instances\PYGZdq{}}\PYG{o}{;}
-			\PYG{n}{error}\PYG{o}{(}\PYG{n}{errorMsg}\PYG{o}{,} \PYG{n}{ProjectGeneratorPackage}\PYG{o}{.}\PYG{n+na}{Literals}\PYG{o}{.}\PYG{n+na}{LOCALIZED\PYGZus{}\PYGZus{}NAME}\PYG{o}{,} \PYG{n}{ValidatorId}\PYG{o}{.}\PYG{n+na}{LOCALIZED\PYGZus{}NAME\PYGZus{}CAMEL\PYGZus{}CASE}\PYG{o}{);}
+			\PYG{n}{error}\PYG{o}{(}\PYG{n}{errorMsg}\PYG{o}{,} \PYG{n}{ProjectGeneratorPackage}\PYG{o}{.}\PYG{n+na}{Literals}\PYG{o}{.}\PYG{n+na}{LOCALIZED\PYGZus{}\PYGZus{}NAME}\PYG{o}{,} \PYG{n}{ValidatorId}\PYG{o}{.}\PYG{n+na}{LOCALIZED\PYGZus{}ENTRY\PYGZus{}DUPLICATE}\PYG{o}{);}
 		\PYG{o}{\PYGZcb{}}
 	\PYG{o}{\PYGZcb{}}
 
@@ -121,6 +162,21 @@
 		\PYG{o}{\PYGZcb{}}
 	\PYG{o}{\PYGZcb{}}
 
+	\PYG{c+c1}{// LocalizedEntry: Duplicate locale entries for a locale not allowed}
+	\PYG{n+nd}{@Check}
+	\PYG{n}{def} \PYG{n+nf}{checkForDuplicateLocaleEntriesLocales}\PYG{o}{(}\PYG{n}{LocalizedEntry} \PYG{n}{\PYGZus{}localized}\PYG{o}{)} \PYG{o}{\PYGZob{}}
+		\PYG{n}{val} \PYG{n}{duplicateLocales} \PYG{o}{=} \PYG{n}{\PYGZus{}localized}\PYG{o}{.}\PYG{n+na}{values}\PYG{o}{.}\PYG{n+na}{stream}\PYG{o}{.}\PYG{n+na}{collect}\PYG{o}{(}\PYG{n}{groupingBy}\PYG{o}{[}\PYG{n}{locale}\PYG{o}{.}\PYG{n+na}{toString}\PYG{o}{]).}\PYG{n+na}{entrySet}\PYG{o}{.}\PYG{n+na}{stream}\PYG{o}{.}\PYG{n+na}{filter} \PYG{o}{[}
+			\PYG{n}{value}\PYG{o}{.}\PYG{n+na}{size} \PYG{o}{\PYGZgt{}} \PYG{l+m+mi}{1}
+		\PYG{o}{].}\PYG{n+na}{map}\PYG{o}{[}\PYG{n}{key}\PYG{o}{].}\PYG{n+na}{distinct}\PYG{o}{.}\PYG{n+na}{collect}\PYG{o}{(}\PYG{n}{toList}\PYG{o}{);}
+
+		\PYG{k}{if} \PYG{o}{(!}\PYG{n}{duplicateLocales}\PYG{o}{.}\PYG{n+na}{isEmpty}\PYG{o}{)} \PYG{o}{\PYGZob{}}
+			\PYG{n}{val} \PYG{n}{errorMsg} \PYG{o}{=} \PYG{l+s}{\PYGZdq{}Duplicate locale found. \PYGZdq{}} \PYG{o}{+} \PYG{n}{duplicateLocales}\PYG{o}{.}\PYG{n+na}{stream}\PYG{o}{.}\PYG{n+na}{collect}\PYG{o}{(}\PYG{n}{joining}\PYG{o}{(}\PYG{l+s}{\PYGZdq{},\PYGZdq{}}\PYG{o}{,} \PYG{l+s}{\PYGZdq{}[\PYGZdq{}}\PYG{o}{,} \PYG{l+s}{\PYGZdq{}]\PYGZdq{}}\PYG{o}{));}
+			\PYG{n}{error}\PYG{o}{(}\PYG{n}{errorMsg}\PYG{o}{,} \PYG{n}{ProjectGeneratorPackage}\PYG{o}{.}\PYG{n+na}{Literals}\PYG{o}{.}\PYG{n+na}{LOCALIZED\PYGZus{}ENTRY\PYGZus{}\PYGZus{}VALUES}\PYG{o}{,} \PYG{n}{ValidatorId}\PYG{o}{.}\PYG{n+na}{LOCALIZED\PYGZus{}ENTRY\PYGZus{}LOCALE\PYGZus{}DUPLICATE}\PYG{o}{,}
+				\PYG{n}{duplicateLocales}\PYG{o}{.}\PYG{n+na}{toArray}\PYG{o}{(}\PYG{n}{newArrayOfSize}\PYG{o}{(}\PYG{n}{duplicateLocales}\PYG{o}{.}\PYG{n+na}{size}\PYG{o}{)));}
+		\PYG{o}{\PYGZcb{}}
+	\PYG{o}{\PYGZcb{}}
+	
+
 	\PYG{c+c1}{// Observer: Name must be camel case}
 	\PYG{n+nd}{@Check}
 	\PYG{n}{def} \PYG{n+nf}{checkForCamelCaseObserverName}\PYG{o}{(}\PYG{n}{Observer} \PYG{n}{\PYGZus{}observer}\PYG{o}{)} \PYG{o}{\PYGZob{}}
@@ -144,7 +200,7 @@
 
 	\PYG{c+c1}{// ServiceConfig: Message Bundles must be unique}
 	\PYG{n+nd}{@Check}
-	\PYG{n}{def} \PYG{n+nf}{checkForUniqueServiceConfigMessagebundles}\PYG{o}{(}\PYG{n}{ServiceConfig} \PYG{n}{\PYGZus{}serviceConfig}\PYG{o}{)} \PYG{o}{\PYGZob{}}
+	\PYG{n}{def} \PYG{n+nf}{checkForUniqueServiceConfigMessageBundles}\PYG{o}{(}\PYG{n}{ServiceConfig} \PYG{n}{\PYGZus{}serviceConfig}\PYG{o}{)} \PYG{o}{\PYGZob{}}
 		\PYG{n}{val} \PYG{n}{duplciateBundles} \PYG{o}{=} \PYG{n}{\PYGZus{}serviceConfig}\PYG{o}{.}\PYG{n+na}{messageBundles}\PYG{o}{.}\PYG{n+na}{stream}\PYG{o}{.}\PYG{n+na}{collect}\PYG{o}{(}\PYG{n}{groupingBy}\PYG{o}{[}\PYG{n}{name}\PYG{o}{]).}\PYG{n+na}{entrySet}\PYG{o}{.}\PYG{n+na}{stream}\PYG{o}{.}\PYG{n+na}{filter} \PYG{o}{[}
 			\PYG{n}{value}\PYG{o}{.}\PYG{n+na}{size} \PYG{o}{\PYGZgt{}} \PYG{l+m+mi}{1}
 		\PYG{o}{].}\PYG{n+na}{map}\PYG{o}{[}\PYG{n}{key}\PYG{o}{].}\PYG{n+na}{distinct}\PYG{o}{.}\PYG{n+na}{collect}\PYG{o}{(}\PYG{n}{toList}\PYG{o}{);}
@@ -153,6 +209,21 @@
 				\PYG{n}{duplciateBundles}\PYG{o}{.}\PYG{n+na}{stream}\PYG{o}{.}\PYG{n+na}{collect}\PYG{o}{(}\PYG{n}{joining}\PYG{o}{(}\PYG{l+s}{\PYGZdq{},\PYGZdq{}}\PYG{o}{,} \PYG{l+s}{\PYGZdq{}[\PYGZdq{}}\PYG{o}{,} \PYG{l+s}{\PYGZdq{}]\PYGZdq{}}\PYG{o}{));}
 			\PYG{n}{error}\PYG{o}{(}\PYG{n}{errorMsg}\PYG{o}{,} \PYG{n}{ProjectGeneratorPackage}\PYG{o}{.}\PYG{n+na}{Literals}\PYG{o}{.}\PYG{n+na}{SERVICE\PYGZus{}CONFIG\PYGZus{}\PYGZus{}MESSAGE\PYGZus{}BUNDLES}\PYG{o}{,}
 				\PYG{n}{ValidatorId}\PYG{o}{.}\PYG{n+na}{SERVICE\PYGZus{}CONFIG\PYGZus{}MESSAGE\PYGZus{}BUNDLE\PYGZus{}DUPLICATE}\PYG{o}{,}
+				\PYG{n}{duplciateBundles}\PYG{o}{.}\PYG{n+na}{toArray}\PYG{o}{(}\PYG{n}{newArrayOfSize}\PYG{o}{(}\PYG{n}{duplciateBundles}\PYG{o}{.}\PYG{n+na}{size}\PYG{o}{)));}
+		\PYG{o}{\PYGZcb{}}
+	\PYG{o}{\PYGZcb{}}
+
+	\PYG{c+c1}{// ServiceConfig: Observers must be unique}
+	\PYG{n+nd}{@Check}
+	\PYG{n}{def} \PYG{n+nf}{checkForUniqueServiceConfigObservers}\PYG{o}{(}\PYG{n}{ServiceConfig} \PYG{n}{\PYGZus{}serviceConfig}\PYG{o}{)} \PYG{o}{\PYGZob{}}
+		\PYG{n}{val} \PYG{n}{duplciateBundles} \PYG{o}{=} \PYG{n}{\PYGZus{}serviceConfig}\PYG{o}{.}\PYG{n+na}{observers}\PYG{o}{.}\PYG{n+na}{stream}\PYG{o}{.}\PYG{n+na}{collect}\PYG{o}{(}\PYG{n}{groupingBy}\PYG{o}{[}\PYG{n}{name}\PYG{o}{]).}\PYG{n+na}{entrySet}\PYG{o}{.}\PYG{n+na}{stream}\PYG{o}{.}\PYG{n+na}{filter} \PYG{o}{[}
+			\PYG{n}{value}\PYG{o}{.}\PYG{n+na}{size} \PYG{o}{\PYGZgt{}} \PYG{l+m+mi}{1}
+		\PYG{o}{].}\PYG{n+na}{map}\PYG{o}{[}\PYG{n}{key}\PYG{o}{].}\PYG{n+na}{distinct}\PYG{o}{.}\PYG{n+na}{collect}\PYG{o}{(}\PYG{n}{toList}\PYG{o}{);}
+		\PYG{k}{if} \PYG{o}{(!}\PYG{n}{duplciateBundles}\PYG{o}{.}\PYG{n+na}{empty}\PYG{o}{)} \PYG{o}{\PYGZob{}}
+			\PYG{n}{val} \PYG{n}{errorMsg} \PYG{o}{=} \PYG{l+s}{\PYGZdq{}Duplicate observers found. \PYGZdq{}} \PYG{o}{+}
+				\PYG{n}{duplciateBundles}\PYG{o}{.}\PYG{n+na}{stream}\PYG{o}{.}\PYG{n+na}{collect}\PYG{o}{(}\PYG{n}{joining}\PYG{o}{(}\PYG{l+s}{\PYGZdq{},\PYGZdq{}}\PYG{o}{,} \PYG{l+s}{\PYGZdq{}[\PYGZdq{}}\PYG{o}{,} \PYG{l+s}{\PYGZdq{}]\PYGZdq{}}\PYG{o}{));}
+			\PYG{n}{error}\PYG{o}{(}\PYG{n}{errorMsg}\PYG{o}{,} \PYG{n}{ProjectGeneratorPackage}\PYG{o}{.}\PYG{n+na}{Literals}\PYG{o}{.}\PYG{n+na}{SERVICE\PYGZus{}CONFIG\PYGZus{}\PYGZus{}OBSERVERS}\PYG{o}{,}
+				\PYG{n}{ValidatorId}\PYG{o}{.}\PYG{n+na}{SERVICE\PYGZus{}CONFIG\PYGZus{}OBSERVERS\PYGZus{}DUPLICATE}\PYG{o}{,}
 				\PYG{n}{duplciateBundles}\PYG{o}{.}\PYG{n+na}{toArray}\PYG{o}{(}\PYG{n}{newArrayOfSize}\PYG{o}{(}\PYG{n}{duplciateBundles}\PYG{o}{.}\PYG{n+na}{size}\PYG{o}{)));}
 		\PYG{o}{\PYGZcb{}}
 	\PYG{o}{\PYGZcb{}}
@@ -168,6 +239,21 @@
 				\PYG{n}{duplciateBundles}\PYG{o}{.}\PYG{n+na}{stream}\PYG{o}{.}\PYG{n+na}{collect}\PYG{o}{(}\PYG{n}{joining}\PYG{o}{(}\PYG{l+s}{\PYGZdq{},\PYGZdq{}}\PYG{o}{,} \PYG{l+s}{\PYGZdq{}[\PYGZdq{}}\PYG{o}{,} \PYG{l+s}{\PYGZdq{}]\PYGZdq{}}\PYG{o}{));}
 			\PYG{n}{error}\PYG{o}{(}\PYG{n}{errorMsg}\PYG{o}{,} \PYG{n}{ProjectGeneratorPackage}\PYG{o}{.}\PYG{n+na}{Literals}\PYG{o}{.}\PYG{n+na}{JPA\PYGZus{}CONFIG\PYGZus{}\PYGZus{}LOCALIZED\PYGZus{}ENUMS}\PYG{o}{,}
 				\PYG{n}{ValidatorId}\PYG{o}{.}\PYG{n+na}{JPA\PYGZus{}LOCALIZED\PYGZus{}ENUMS\PYGZus{}DUPLICATE}\PYG{o}{,}
+				\PYG{n}{duplciateBundles}\PYG{o}{.}\PYG{n+na}{toArray}\PYG{o}{(}\PYG{n}{newArrayOfSize}\PYG{o}{(}\PYG{n}{duplciateBundles}\PYG{o}{.}\PYG{n+na}{size}\PYG{o}{)));}
+		\PYG{o}{\PYGZcb{}}
+	\PYG{o}{\PYGZcb{}}
+	
+	\PYG{c+c1}{// JpaConfig: Name must be unique}
+	\PYG{n+nd}{@Check}
+	\PYG{n}{def} \PYG{n+nf}{checkForUniqueJpaConfigObserverName}\PYG{o}{(}\PYG{n}{JpaConfig} \PYG{n}{\PYGZus{}jpaConfig}\PYG{o}{)} \PYG{o}{\PYGZob{}}
+		\PYG{n}{val} \PYG{n}{duplciateBundles} \PYG{o}{=} \PYG{n}{\PYGZus{}jpaConfig}\PYG{o}{.}\PYG{n+na}{observers}\PYG{o}{.}\PYG{n+na}{stream}\PYG{o}{.}\PYG{n+na}{collect}\PYG{o}{(}\PYG{n}{groupingBy}\PYG{o}{[}\PYG{n}{name}\PYG{o}{]).}\PYG{n+na}{entrySet}\PYG{o}{.}\PYG{n+na}{stream}\PYG{o}{.}\PYG{n+na}{filter} \PYG{o}{[}
+			\PYG{n}{value}\PYG{o}{.}\PYG{n+na}{size} \PYG{o}{\PYGZgt{}} \PYG{l+m+mi}{1}
+		\PYG{o}{].}\PYG{n+na}{map}\PYG{o}{[}\PYG{n}{key}\PYG{o}{].}\PYG{n+na}{distinct}\PYG{o}{.}\PYG{n+na}{collect}\PYG{o}{(}\PYG{n}{toList}\PYG{o}{);}
+		\PYG{k}{if} \PYG{o}{(!}\PYG{n}{duplciateBundles}\PYG{o}{.}\PYG{n+na}{empty}\PYG{o}{)} \PYG{o}{\PYGZob{}}
+			\PYG{n}{val} \PYG{n}{errorMsg} \PYG{o}{=} \PYG{l+s}{\PYGZdq{}Duplicate observers found. \PYGZdq{}} \PYG{o}{+}
+				\PYG{n}{duplciateBundles}\PYG{o}{.}\PYG{n+na}{stream}\PYG{o}{.}\PYG{n+na}{collect}\PYG{o}{(}\PYG{n}{joining}\PYG{o}{(}\PYG{l+s}{\PYGZdq{},\PYGZdq{}}\PYG{o}{,} \PYG{l+s}{\PYGZdq{}[\PYGZdq{}}\PYG{o}{,} \PYG{l+s}{\PYGZdq{}]\PYGZdq{}}\PYG{o}{));}
+			\PYG{n}{error}\PYG{o}{(}\PYG{n}{errorMsg}\PYG{o}{,} \PYG{n}{ProjectGeneratorPackage}\PYG{o}{.}\PYG{n+na}{Literals}\PYG{o}{.}\PYG{n+na}{JPA\PYGZus{}CONFIG\PYGZus{}\PYGZus{}OBSERVERS}\PYG{o}{,}
+				\PYG{n}{ValidatorId}\PYG{o}{.}\PYG{n+na}{JPA\PYGZus{}OBSERVERS\PYGZus{}DUPLICATE}\PYG{o}{,}
 				\PYG{n}{duplciateBundles}\PYG{o}{.}\PYG{n+na}{toArray}\PYG{o}{(}\PYG{n}{newArrayOfSize}\PYG{o}{(}\PYG{n}{duplciateBundles}\PYG{o}{.}\PYG{n+na}{size}\PYG{o}{)));}
 		\PYG{o}{\PYGZcb{}}
 	\PYG{o}{\PYGZcb{}}

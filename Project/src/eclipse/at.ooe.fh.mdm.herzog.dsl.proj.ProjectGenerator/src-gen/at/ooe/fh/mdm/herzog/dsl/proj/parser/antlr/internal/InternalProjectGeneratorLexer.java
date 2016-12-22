@@ -321,10 +321,10 @@ public class InternalProjectGeneratorLexer extends Lexer {
         try {
             int _type = T__28;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalProjectGenerator.g:23:7: ( 'notify' )
-            // InternalProjectGenerator.g:23:9: 'notify'
+            // InternalProjectGenerator.g:23:7: ( 'notifyObserver' )
+            // InternalProjectGenerator.g:23:9: 'notifyObserver'
             {
-            match("notify"); 
+            match("notifyObserver"); 
 
 
             }
@@ -655,8 +655,8 @@ public class InternalProjectGeneratorLexer extends Lexer {
     // $ANTLR start "RULE_UAZ"
     public final void mRULE_UAZ() throws RecognitionException {
         try {
-            // InternalProjectGenerator.g:1053:19: ( 'A' .. 'Z' )
-            // InternalProjectGenerator.g:1053:21: 'A' .. 'Z'
+            // InternalProjectGenerator.g:1059:19: ( 'A' .. 'Z' )
+            // InternalProjectGenerator.g:1059:21: 'A' .. 'Z'
             {
             matchRange('A','Z'); 
 
@@ -671,8 +671,8 @@ public class InternalProjectGeneratorLexer extends Lexer {
     // $ANTLR start "RULE_LAZ"
     public final void mRULE_LAZ() throws RecognitionException {
         try {
-            // InternalProjectGenerator.g:1055:19: ( 'a' .. 'z' )
-            // InternalProjectGenerator.g:1055:21: 'a' .. 'z'
+            // InternalProjectGenerator.g:1061:19: ( 'a' .. 'z' )
+            // InternalProjectGenerator.g:1061:21: 'a' .. 'z'
             {
             matchRange('a','z'); 
 
@@ -687,8 +687,8 @@ public class InternalProjectGeneratorLexer extends Lexer {
     // $ANTLR start "RULE_UAZN"
     public final void mRULE_UAZN() throws RecognitionException {
         try {
-            // InternalProjectGenerator.g:1057:20: ( ( 'A' .. 'Z' | '0' .. '9' ) )
-            // InternalProjectGenerator.g:1057:22: ( 'A' .. 'Z' | '0' .. '9' )
+            // InternalProjectGenerator.g:1063:20: ( ( 'A' .. 'Z' | '0' .. '9' ) )
+            // InternalProjectGenerator.g:1063:22: ( 'A' .. 'Z' | '0' .. '9' )
             {
             if ( (input.LA(1)>='0' && input.LA(1)<='9')||(input.LA(1)>='A' && input.LA(1)<='Z') ) {
                 input.consume();
@@ -713,10 +713,10 @@ public class InternalProjectGeneratorLexer extends Lexer {
         try {
             int _type = RULE_CLASSNAME;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalProjectGenerator.g:1059:16: ( ( ( RULE_LAZ )+ '.' )+ ( RULE_UAZ ( RULE_LAZ )* )+ )
-            // InternalProjectGenerator.g:1059:18: ( ( RULE_LAZ )+ '.' )+ ( RULE_UAZ ( RULE_LAZ )* )+
+            // InternalProjectGenerator.g:1065:16: ( ( ( RULE_LAZ )+ '.' )+ ( RULE_UAZ ( RULE_LAZ )* )+ )
+            // InternalProjectGenerator.g:1065:18: ( ( RULE_LAZ )+ '.' )+ ( RULE_UAZ ( RULE_LAZ )* )+
             {
-            // InternalProjectGenerator.g:1059:18: ( ( RULE_LAZ )+ '.' )+
+            // InternalProjectGenerator.g:1065:18: ( ( RULE_LAZ )+ '.' )+
             int cnt2=0;
             loop2:
             do {
@@ -730,9 +730,9 @@ public class InternalProjectGeneratorLexer extends Lexer {
 
                 switch (alt2) {
             	case 1 :
-            	    // InternalProjectGenerator.g:1059:19: ( RULE_LAZ )+ '.'
+            	    // InternalProjectGenerator.g:1065:19: ( RULE_LAZ )+ '.'
             	    {
-            	    // InternalProjectGenerator.g:1059:19: ( RULE_LAZ )+
+            	    // InternalProjectGenerator.g:1065:19: ( RULE_LAZ )+
             	    int cnt1=0;
             	    loop1:
             	    do {
@@ -746,7 +746,7 @@ public class InternalProjectGeneratorLexer extends Lexer {
 
             	        switch (alt1) {
             	    	case 1 :
-            	    	    // InternalProjectGenerator.g:1059:19: RULE_LAZ
+            	    	    // InternalProjectGenerator.g:1065:19: RULE_LAZ
             	    	    {
             	    	    mRULE_LAZ(); 
 
@@ -776,7 +776,7 @@ public class InternalProjectGeneratorLexer extends Lexer {
                 cnt2++;
             } while (true);
 
-            // InternalProjectGenerator.g:1059:35: ( RULE_UAZ ( RULE_LAZ )* )+
+            // InternalProjectGenerator.g:1065:35: ( RULE_UAZ ( RULE_LAZ )* )+
             int cnt4=0;
             loop4:
             do {
@@ -790,10 +790,10 @@ public class InternalProjectGeneratorLexer extends Lexer {
 
                 switch (alt4) {
             	case 1 :
-            	    // InternalProjectGenerator.g:1059:36: RULE_UAZ ( RULE_LAZ )*
+            	    // InternalProjectGenerator.g:1065:36: RULE_UAZ ( RULE_LAZ )*
             	    {
             	    mRULE_UAZ(); 
-            	    // InternalProjectGenerator.g:1059:45: ( RULE_LAZ )*
+            	    // InternalProjectGenerator.g:1065:45: ( RULE_LAZ )*
             	    loop3:
             	    do {
             	        int alt3=2;
@@ -806,7 +806,7 @@ public class InternalProjectGeneratorLexer extends Lexer {
 
             	        switch (alt3) {
             	    	case 1 :
-            	    	    // InternalProjectGenerator.g:1059:45: RULE_LAZ
+            	    	    // InternalProjectGenerator.g:1065:45: RULE_LAZ
             	    	    {
             	    	    mRULE_LAZ(); 
 
@@ -847,10 +847,10 @@ public class InternalProjectGeneratorLexer extends Lexer {
         try {
             int _type = RULE_LOCALIZEDKEY;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalProjectGenerator.g:1061:19: ( ( RULE_UAZN )+ ( '_' RULE_UAZN )* )
-            // InternalProjectGenerator.g:1061:21: ( RULE_UAZN )+ ( '_' RULE_UAZN )*
+            // InternalProjectGenerator.g:1067:19: ( ( RULE_UAZN )+ ( '_' RULE_UAZN )* )
+            // InternalProjectGenerator.g:1067:21: ( RULE_UAZN )+ ( '_' RULE_UAZN )*
             {
-            // InternalProjectGenerator.g:1061:21: ( RULE_UAZN )+
+            // InternalProjectGenerator.g:1067:21: ( RULE_UAZN )+
             int cnt5=0;
             loop5:
             do {
@@ -864,7 +864,7 @@ public class InternalProjectGeneratorLexer extends Lexer {
 
                 switch (alt5) {
             	case 1 :
-            	    // InternalProjectGenerator.g:1061:21: RULE_UAZN
+            	    // InternalProjectGenerator.g:1067:21: RULE_UAZN
             	    {
             	    mRULE_UAZN(); 
 
@@ -880,7 +880,7 @@ public class InternalProjectGeneratorLexer extends Lexer {
                 cnt5++;
             } while (true);
 
-            // InternalProjectGenerator.g:1061:32: ( '_' RULE_UAZN )*
+            // InternalProjectGenerator.g:1067:32: ( '_' RULE_UAZN )*
             loop6:
             do {
                 int alt6=2;
@@ -893,7 +893,7 @@ public class InternalProjectGeneratorLexer extends Lexer {
 
                 switch (alt6) {
             	case 1 :
-            	    // InternalProjectGenerator.g:1061:33: '_' RULE_UAZN
+            	    // InternalProjectGenerator.g:1067:33: '_' RULE_UAZN
             	    {
             	    match('_'); 
             	    mRULE_UAZN(); 
@@ -922,10 +922,10 @@ public class InternalProjectGeneratorLexer extends Lexer {
         try {
             int _type = RULE_ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalProjectGenerator.g:1063:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
-            // InternalProjectGenerator.g:1063:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // InternalProjectGenerator.g:1069:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
+            // InternalProjectGenerator.g:1069:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             {
-            // InternalProjectGenerator.g:1063:11: ( '^' )?
+            // InternalProjectGenerator.g:1069:11: ( '^' )?
             int alt7=2;
             int LA7_0 = input.LA(1);
 
@@ -934,7 +934,7 @@ public class InternalProjectGeneratorLexer extends Lexer {
             }
             switch (alt7) {
                 case 1 :
-                    // InternalProjectGenerator.g:1063:11: '^'
+                    // InternalProjectGenerator.g:1069:11: '^'
                     {
                     match('^'); 
 
@@ -952,7 +952,7 @@ public class InternalProjectGeneratorLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // InternalProjectGenerator.g:1063:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // InternalProjectGenerator.g:1069:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             loop8:
             do {
                 int alt8=2;
@@ -1001,10 +1001,10 @@ public class InternalProjectGeneratorLexer extends Lexer {
         try {
             int _type = RULE_INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalProjectGenerator.g:1065:10: ( ( '0' .. '9' )+ )
-            // InternalProjectGenerator.g:1065:12: ( '0' .. '9' )+
+            // InternalProjectGenerator.g:1071:10: ( ( '0' .. '9' )+ )
+            // InternalProjectGenerator.g:1071:12: ( '0' .. '9' )+
             {
-            // InternalProjectGenerator.g:1065:12: ( '0' .. '9' )+
+            // InternalProjectGenerator.g:1071:12: ( '0' .. '9' )+
             int cnt9=0;
             loop9:
             do {
@@ -1018,7 +1018,7 @@ public class InternalProjectGeneratorLexer extends Lexer {
 
                 switch (alt9) {
             	case 1 :
-            	    // InternalProjectGenerator.g:1065:13: '0' .. '9'
+            	    // InternalProjectGenerator.g:1071:13: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -1050,10 +1050,10 @@ public class InternalProjectGeneratorLexer extends Lexer {
         try {
             int _type = RULE_STRING;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalProjectGenerator.g:1067:13: ( ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
-            // InternalProjectGenerator.g:1067:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // InternalProjectGenerator.g:1073:13: ( ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
+            // InternalProjectGenerator.g:1073:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             {
-            // InternalProjectGenerator.g:1067:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // InternalProjectGenerator.g:1073:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             int alt12=2;
             int LA12_0 = input.LA(1);
 
@@ -1071,10 +1071,10 @@ public class InternalProjectGeneratorLexer extends Lexer {
             }
             switch (alt12) {
                 case 1 :
-                    // InternalProjectGenerator.g:1067:16: '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
+                    // InternalProjectGenerator.g:1073:16: '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
                     {
                     match('\"'); 
-                    // InternalProjectGenerator.g:1067:20: ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )*
+                    // InternalProjectGenerator.g:1073:20: ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )*
                     loop10:
                     do {
                         int alt10=3;
@@ -1090,7 +1090,7 @@ public class InternalProjectGeneratorLexer extends Lexer {
 
                         switch (alt10) {
                     	case 1 :
-                    	    // InternalProjectGenerator.g:1067:21: '\\\\' .
+                    	    // InternalProjectGenerator.g:1073:21: '\\\\' .
                     	    {
                     	    match('\\'); 
                     	    matchAny(); 
@@ -1098,7 +1098,7 @@ public class InternalProjectGeneratorLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // InternalProjectGenerator.g:1067:28: ~ ( ( '\\\\' | '\"' ) )
+                    	    // InternalProjectGenerator.g:1073:28: ~ ( ( '\\\\' | '\"' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -1123,10 +1123,10 @@ public class InternalProjectGeneratorLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // InternalProjectGenerator.g:1067:48: '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
+                    // InternalProjectGenerator.g:1073:48: '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
                     {
                     match('\''); 
-                    // InternalProjectGenerator.g:1067:53: ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )*
+                    // InternalProjectGenerator.g:1073:53: ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )*
                     loop11:
                     do {
                         int alt11=3;
@@ -1142,7 +1142,7 @@ public class InternalProjectGeneratorLexer extends Lexer {
 
                         switch (alt11) {
                     	case 1 :
-                    	    // InternalProjectGenerator.g:1067:54: '\\\\' .
+                    	    // InternalProjectGenerator.g:1073:54: '\\\\' .
                     	    {
                     	    match('\\'); 
                     	    matchAny(); 
@@ -1150,7 +1150,7 @@ public class InternalProjectGeneratorLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // InternalProjectGenerator.g:1067:61: ~ ( ( '\\\\' | '\\'' ) )
+                    	    // InternalProjectGenerator.g:1073:61: ~ ( ( '\\\\' | '\\'' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -1193,12 +1193,12 @@ public class InternalProjectGeneratorLexer extends Lexer {
         try {
             int _type = RULE_ML_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalProjectGenerator.g:1069:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
-            // InternalProjectGenerator.g:1069:19: '/*' ( options {greedy=false; } : . )* '*/'
+            // InternalProjectGenerator.g:1075:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
+            // InternalProjectGenerator.g:1075:19: '/*' ( options {greedy=false; } : . )* '*/'
             {
             match("/*"); 
 
-            // InternalProjectGenerator.g:1069:24: ( options {greedy=false; } : . )*
+            // InternalProjectGenerator.g:1075:24: ( options {greedy=false; } : . )*
             loop13:
             do {
                 int alt13=2;
@@ -1223,7 +1223,7 @@ public class InternalProjectGeneratorLexer extends Lexer {
 
                 switch (alt13) {
             	case 1 :
-            	    // InternalProjectGenerator.g:1069:52: .
+            	    // InternalProjectGenerator.g:1075:52: .
             	    {
             	    matchAny(); 
 
@@ -1253,12 +1253,12 @@ public class InternalProjectGeneratorLexer extends Lexer {
         try {
             int _type = RULE_SL_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalProjectGenerator.g:1071:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
-            // InternalProjectGenerator.g:1071:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
+            // InternalProjectGenerator.g:1077:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
+            // InternalProjectGenerator.g:1077:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
             {
             match("//"); 
 
-            // InternalProjectGenerator.g:1071:24: (~ ( ( '\\n' | '\\r' ) ) )*
+            // InternalProjectGenerator.g:1077:24: (~ ( ( '\\n' | '\\r' ) ) )*
             loop14:
             do {
                 int alt14=2;
@@ -1271,7 +1271,7 @@ public class InternalProjectGeneratorLexer extends Lexer {
 
                 switch (alt14) {
             	case 1 :
-            	    // InternalProjectGenerator.g:1071:24: ~ ( ( '\\n' | '\\r' ) )
+            	    // InternalProjectGenerator.g:1077:24: ~ ( ( '\\n' | '\\r' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -1291,7 +1291,7 @@ public class InternalProjectGeneratorLexer extends Lexer {
                 }
             } while (true);
 
-            // InternalProjectGenerator.g:1071:40: ( ( '\\r' )? '\\n' )?
+            // InternalProjectGenerator.g:1077:40: ( ( '\\r' )? '\\n' )?
             int alt16=2;
             int LA16_0 = input.LA(1);
 
@@ -1300,9 +1300,9 @@ public class InternalProjectGeneratorLexer extends Lexer {
             }
             switch (alt16) {
                 case 1 :
-                    // InternalProjectGenerator.g:1071:41: ( '\\r' )? '\\n'
+                    // InternalProjectGenerator.g:1077:41: ( '\\r' )? '\\n'
                     {
-                    // InternalProjectGenerator.g:1071:41: ( '\\r' )?
+                    // InternalProjectGenerator.g:1077:41: ( '\\r' )?
                     int alt15=2;
                     int LA15_0 = input.LA(1);
 
@@ -1311,7 +1311,7 @@ public class InternalProjectGeneratorLexer extends Lexer {
                     }
                     switch (alt15) {
                         case 1 :
-                            // InternalProjectGenerator.g:1071:41: '\\r'
+                            // InternalProjectGenerator.g:1077:41: '\\r'
                             {
                             match('\r'); 
 
@@ -1343,10 +1343,10 @@ public class InternalProjectGeneratorLexer extends Lexer {
         try {
             int _type = RULE_WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalProjectGenerator.g:1073:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
-            // InternalProjectGenerator.g:1073:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // InternalProjectGenerator.g:1079:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
+            // InternalProjectGenerator.g:1079:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             {
-            // InternalProjectGenerator.g:1073:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // InternalProjectGenerator.g:1079:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             int cnt17=0;
             loop17:
             do {
@@ -1400,8 +1400,8 @@ public class InternalProjectGeneratorLexer extends Lexer {
         try {
             int _type = RULE_ANY_OTHER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalProjectGenerator.g:1075:16: ( . )
-            // InternalProjectGenerator.g:1075:18: .
+            // InternalProjectGenerator.g:1081:16: ( . )
+            // InternalProjectGenerator.g:1081:18: .
             {
             matchAny(); 
 
@@ -1687,17 +1687,17 @@ public class InternalProjectGeneratorLexer extends Lexer {
 
     protected DFA18 dfa18 = new DFA18(this);
     static final String DFA18_eotS =
-        "\1\uffff\1\42\1\uffff\1\42\1\uffff\1\42\1\uffff\14\42\3\71\1\42\1\71\1\37\1\71\1\uffff\3\37\2\uffff\2\42\2\uffff\1\42\1\uffff\1\42\1\uffff\1\42\1\uffff\17\42\1\uffff\1\42\1\71\3\42\1\71\4\uffff\2\42\1\136\21\42\1\71\5\42\1\uffff\4\42\1\171\1\172\7\42\1\u0082\14\42\2\uffff\2\42\1\u0091\3\42\1\u0097\1\uffff\1\u0098\1\u0099\4\42\1\u009e\5\42\1\u00a4\1\42\1\uffff\1\u00a6\2\42\1\u00a9\1\u00aa\3\uffff\2\42\1\u00ad\1\u00ae\1\uffff\5\42\1\uffff\1\42\1\uffff\2\42\2\uffff\2\42\2\uffff\5\42\1\u00be\6\42\1\u00c5\1\u00c6\1\42\1\uffff\1\u00c8\4\42\1\u00cd\2\uffff\1\42\1\uffff\1\42\1\u00d0\2\42\1\uffff\2\42\1\uffff\6\42\1\u00db\2\42\1\u00de\1\uffff\1\u00df\1\42\2\uffff\1\42\1\u00e2\1\uffff";
+        "\1\uffff\1\42\1\uffff\1\42\1\uffff\1\42\1\uffff\14\42\3\71\1\42\1\71\1\37\1\71\1\uffff\3\37\2\uffff\2\42\2\uffff\1\42\1\uffff\1\42\1\uffff\1\42\1\uffff\17\42\1\uffff\1\42\1\71\3\42\1\71\4\uffff\2\42\1\136\21\42\1\71\5\42\1\uffff\4\42\1\171\1\172\7\42\1\u0082\14\42\2\uffff\2\42\1\u0091\3\42\1\u0097\1\uffff\1\u0098\1\u0099\4\42\1\u009e\5\42\1\u00a4\1\42\1\uffff\3\42\1\u00a9\1\u00aa\3\uffff\2\42\1\u00ad\1\u00ae\1\uffff\5\42\1\uffff\4\42\2\uffff\2\42\2\uffff\5\42\1\u00bf\7\42\1\u00c7\1\u00c8\1\42\1\uffff\1\42\1\u00cb\4\42\1\u00d0\2\uffff\2\42\1\uffff\1\42\1\u00d4\2\42\1\uffff\3\42\1\uffff\7\42\1\u00e1\3\42\1\u00e5\1\uffff\1\u00e6\1\u00e7\1\42\3\uffff\1\42\1\u00ea\1\uffff";
     static final String DFA18_eofS =
-        "\u00e3\uffff";
+        "\u00eb\uffff";
     static final String DFA18_minS =
-        "\1\0\1\56\1\uffff\1\56\1\uffff\1\56\1\uffff\14\56\3\60\1\56\1\60\1\101\1\60\1\uffff\2\0\1\52\2\uffff\2\56\2\uffff\1\56\1\uffff\1\56\1\uffff\1\56\1\uffff\16\56\1\120\1\uffff\2\60\1\164\1\167\1\151\1\60\4\uffff\13\56\1\104\5\56\1\125\1\56\1\162\1\60\1\145\1\141\1\163\2\56\1\uffff\1\156\1\56\1\157\5\56\1\105\5\56\1\123\1\56\1\157\1\162\1\171\1\164\2\56\1\141\1\56\1\156\1\56\2\uffff\2\56\1\60\4\56\1\uffff\1\60\1\56\1\147\1\103\2\163\2\56\1\142\1\56\1\146\3\56\1\uffff\5\56\3\uffff\1\162\1\157\2\60\1\uffff\1\56\1\154\1\56\1\151\1\56\1\uffff\1\56\1\uffff\2\56\2\uffff\1\145\1\155\2\uffff\1\165\1\145\1\56\1\147\1\157\3\56\1\163\1\160\1\156\1\144\1\56\1\60\1\156\1\uffff\2\56\1\163\1\154\1\144\1\60\2\uffff\1\146\1\uffff\1\156\1\60\1\145\1\154\1\uffff\1\151\1\165\1\uffff\1\151\1\145\1\147\1\155\1\164\1\163\1\60\1\163\1\151\1\60\1\uffff\1\60\1\157\2\uffff\1\156\1\60\1\uffff";
+        "\1\0\1\56\1\uffff\1\56\1\uffff\1\56\1\uffff\14\56\3\60\1\56\1\60\1\101\1\60\1\uffff\2\0\1\52\2\uffff\2\56\2\uffff\1\56\1\uffff\1\56\1\uffff\1\56\1\uffff\16\56\1\120\1\uffff\2\60\1\164\1\167\1\151\1\60\4\uffff\13\56\1\104\5\56\1\125\1\56\1\162\1\60\1\145\1\141\1\163\2\56\1\uffff\1\156\1\56\1\157\5\56\1\105\5\56\1\123\1\56\1\157\1\162\1\171\1\164\2\56\1\141\1\56\1\156\1\56\2\uffff\2\56\1\60\4\56\1\uffff\1\60\1\56\1\147\1\103\2\163\2\56\1\142\1\56\1\146\3\56\1\uffff\5\56\3\uffff\1\162\1\157\2\60\1\uffff\1\56\1\154\1\56\1\151\1\56\1\uffff\1\56\1\142\2\56\2\uffff\1\145\1\155\2\uffff\1\165\1\145\1\56\1\147\1\157\1\56\1\163\2\56\1\163\1\160\1\156\1\144\1\56\1\60\1\156\1\uffff\1\145\2\56\1\163\1\154\1\144\1\60\2\uffff\1\146\1\162\1\uffff\1\156\1\60\1\145\1\154\1\uffff\1\151\1\166\1\165\1\uffff\1\151\1\145\1\147\1\145\1\155\1\164\1\163\1\60\1\162\1\163\1\151\1\60\1\uffff\2\60\1\157\3\uffff\1\156\1\60\1\uffff";
     static final String DFA18_maxS =
-        "\1\uffff\1\172\1\uffff\1\172\1\uffff\1\172\1\uffff\22\172\1\71\1\uffff\2\uffff\1\57\2\uffff\2\172\2\uffff\1\172\1\uffff\1\172\1\uffff\1\172\1\uffff\16\172\1\120\1\uffff\1\132\1\172\1\164\1\167\1\151\1\71\4\uffff\13\172\1\104\5\172\1\125\1\172\1\162\1\172\1\145\1\141\1\163\2\172\1\uffff\1\156\1\172\1\157\5\172\1\105\5\172\1\123\1\172\1\157\1\162\1\171\1\164\2\172\1\141\1\172\1\156\1\172\2\uffff\7\172\1\uffff\2\172\1\147\1\103\2\163\2\172\1\142\1\172\1\146\3\172\1\uffff\5\172\3\uffff\1\162\1\157\2\172\1\uffff\1\172\1\154\1\172\1\151\1\172\1\uffff\1\172\1\uffff\2\172\2\uffff\1\145\1\155\2\uffff\1\165\1\145\1\172\1\147\1\157\3\172\1\163\1\160\1\156\1\144\2\172\1\156\1\uffff\2\172\1\163\1\154\1\144\1\172\2\uffff\1\146\1\uffff\1\156\1\172\1\145\1\154\1\uffff\1\151\1\165\1\uffff\1\151\1\145\1\147\1\155\1\164\1\163\1\172\1\163\1\151\1\172\1\uffff\1\172\1\157\2\uffff\1\156\1\172\1\uffff";
+        "\1\uffff\1\172\1\uffff\1\172\1\uffff\1\172\1\uffff\22\172\1\71\1\uffff\2\uffff\1\57\2\uffff\2\172\2\uffff\1\172\1\uffff\1\172\1\uffff\1\172\1\uffff\16\172\1\120\1\uffff\1\132\1\172\1\164\1\167\1\151\1\71\4\uffff\13\172\1\104\5\172\1\125\1\172\1\162\1\172\1\145\1\141\1\163\2\172\1\uffff\1\156\1\172\1\157\5\172\1\105\5\172\1\123\1\172\1\157\1\162\1\171\1\164\2\172\1\141\1\172\1\156\1\172\2\uffff\7\172\1\uffff\2\172\1\147\1\103\2\163\2\172\1\142\1\172\1\146\3\172\1\uffff\5\172\3\uffff\1\162\1\157\2\172\1\uffff\1\172\1\154\1\172\1\151\1\172\1\uffff\1\172\1\142\2\172\2\uffff\1\145\1\155\2\uffff\1\165\1\145\1\172\1\147\1\157\1\172\1\163\2\172\1\163\1\160\1\156\1\144\2\172\1\156\1\uffff\1\145\2\172\1\163\1\154\1\144\1\172\2\uffff\1\146\1\162\1\uffff\1\156\1\172\1\145\1\154\1\uffff\1\151\1\166\1\165\1\uffff\1\151\1\145\1\147\1\145\1\155\1\164\1\163\1\172\1\162\1\163\1\151\1\172\1\uffff\2\172\1\157\3\uffff\1\156\1\172\1\uffff";
     static final String DFA18_acceptS =
-        "\2\uffff\1\2\1\uffff\1\4\1\uffff\1\7\23\uffff\1\37\3\uffff\1\44\1\45\2\uffff\1\37\1\35\1\uffff\1\2\1\uffff\1\4\1\uffff\1\7\17\uffff\1\36\6\uffff\1\41\1\42\1\43\1\44\32\uffff\1\3\32\uffff\1\13\1\27\7\uffff\1\22\16\uffff\1\25\5\uffff\1\24\1\26\1\30\4\uffff\1\1\5\uffff\1\14\1\uffff\1\15\2\uffff\1\23\1\21\2\uffff\1\33\1\34\17\uffff\1\16\6\uffff\1\10\1\11\1\uffff\1\17\4\uffff\1\5\2\uffff\1\31\12\uffff\1\12\2\uffff\1\6\1\20\2\uffff\1\32";
+        "\2\uffff\1\2\1\uffff\1\4\1\uffff\1\7\23\uffff\1\37\3\uffff\1\44\1\45\2\uffff\1\37\1\35\1\uffff\1\2\1\uffff\1\4\1\uffff\1\7\17\uffff\1\36\6\uffff\1\41\1\42\1\43\1\44\32\uffff\1\3\32\uffff\1\13\1\27\7\uffff\1\22\16\uffff\1\25\5\uffff\1\24\1\26\1\30\4\uffff\1\1\5\uffff\1\14\4\uffff\1\23\1\21\2\uffff\1\33\1\34\20\uffff\1\16\7\uffff\1\10\1\11\2\uffff\1\17\4\uffff\1\5\3\uffff\1\31\14\uffff\1\12\3\uffff\1\6\1\15\1\20\2\uffff\1\32";
     static final String DFA18_specialS =
-        "\1\0\32\uffff\1\1\1\2\u00c6\uffff}>";
+        "\1\1\32\uffff\1\2\1\0\u00ce\uffff}>";
     static final String[] DFA18_transitionS = {
             "\11\37\2\36\2\37\1\36\22\37\1\36\1\37\1\33\4\37\1\34\7\37\1\35\12\31\1\37\1\4\5\37\1\24\3\27\1\25\3\27\1\23\21\27\3\37\1\30\1\32\1\37\1\20\1\26\1\5\1\13\1\21\1\22\3\26\1\10\1\3\1\16\1\1\1\14\1\7\1\26\1\15\1\26\1\11\1\12\1\26\1\17\4\26\1\2\1\37\1\6\uff82\37",
             "\1\43\62\uffff\4\44\1\41\11\44\1\40\13\44",
@@ -1845,7 +1845,7 @@ public class InternalProjectGeneratorLexer extends Lexer {
             "\1\43\1\uffff\12\42\7\uffff\32\42\4\uffff\1\42\1\uffff\32\44",
             "\1\43\62\uffff\23\44\1\u00a5\6\44",
             "",
-            "\1\43\1\uffff\12\42\7\uffff\32\42\4\uffff\1\42\1\uffff\32\44",
+            "\1\43\40\uffff\1\u00a6\21\uffff\32\44",
             "\1\43\62\uffff\10\44\1\u00a7\21\44",
             "\1\43\62\uffff\31\44\1\u00a8",
             "\1\43\1\uffff\12\42\7\uffff\32\42\4\uffff\1\42\1\uffff\32\44",
@@ -1865,65 +1865,73 @@ public class InternalProjectGeneratorLexer extends Lexer {
             "\1\43\24\uffff\1\u00b3\35\uffff\32\44",
             "",
             "\1\43\62\uffff\4\44\1\u00b4\25\44",
-            "",
-            "\1\43\62\uffff\4\44\1\u00b5\25\44",
+            "\1\u00b5",
             "\1\43\62\uffff\4\44\1\u00b6\25\44",
+            "\1\43\62\uffff\4\44\1\u00b7\25\44",
             "",
             "",
-            "\1\u00b7",
             "\1\u00b8",
-            "",
-            "",
             "\1\u00b9",
+            "",
+            "",
             "\1\u00ba",
-            "\1\43\62\uffff\22\44\1\u00bb\7\44",
-            "\1\u00bc",
+            "\1\u00bb",
+            "\1\43\62\uffff\22\44\1\u00bc\7\44",
             "\1\u00bd",
+            "\1\u00be",
             "\1\43\1\uffff\12\42\7\uffff\32\42\4\uffff\1\42\1\uffff\32\44",
-            "\1\43\62\uffff\21\44\1\u00bf\10\44",
-            "\1\43\62\uffff\3\44\1\u00c0\26\44",
-            "\1\u00c1",
-            "\1\u00c2",
+            "\1\u00c0",
+            "\1\43\62\uffff\21\44\1\u00c1\10\44",
+            "\1\43\62\uffff\3\44\1\u00c2\26\44",
             "\1\u00c3",
             "\1\u00c4",
+            "\1\u00c5",
+            "\1\u00c6",
             "\1\43\1\uffff\12\42\7\uffff\32\42\4\uffff\1\42\1\uffff\32\44",
             "\12\42\7\uffff\32\42\4\uffff\1\42\1\uffff\32\42",
-            "\1\u00c7",
+            "\1\u00c9",
             "",
-            "\1\43\1\uffff\12\42\7\uffff\32\42\4\uffff\1\42\1\uffff\32\44",
-            "\1\43\26\uffff\1\u00c9\33\uffff\32\44",
             "\1\u00ca",
-            "\1\u00cb",
-            "\1\u00cc",
-            "\12\42\7\uffff\32\42\4\uffff\1\42\1\uffff\32\42",
-            "",
-            "",
+            "\1\43\1\uffff\12\42\7\uffff\32\42\4\uffff\1\42\1\uffff\32\44",
+            "\1\43\26\uffff\1\u00cc\33\uffff\32\44",
+            "\1\u00cd",
             "\1\u00ce",
-            "",
             "\1\u00cf",
             "\12\42\7\uffff\32\42\4\uffff\1\42\1\uffff\32\42",
+            "",
+            "",
             "\1\u00d1",
             "\1\u00d2",
             "",
             "\1\u00d3",
-            "\1\u00d4",
-            "",
+            "\12\42\7\uffff\32\42\4\uffff\1\42\1\uffff\32\42",
             "\1\u00d5",
             "\1\u00d6",
+            "",
             "\1\u00d7",
             "\1\u00d8",
             "\1\u00d9",
+            "",
             "\1\u00da",
-            "\12\42\7\uffff\32\42\4\uffff\1\42\1\uffff\32\42",
+            "\1\u00db",
             "\1\u00dc",
             "\1\u00dd",
-            "\12\42\7\uffff\32\42\4\uffff\1\42\1\uffff\32\42",
-            "",
-            "\12\42\7\uffff\32\42\4\uffff\1\42\1\uffff\32\42",
+            "\1\u00de",
+            "\1\u00df",
             "\1\u00e0",
+            "\12\42\7\uffff\32\42\4\uffff\1\42\1\uffff\32\42",
+            "\1\u00e2",
+            "\1\u00e3",
+            "\1\u00e4",
+            "\12\42\7\uffff\32\42\4\uffff\1\42\1\uffff\32\42",
+            "",
+            "\12\42\7\uffff\32\42\4\uffff\1\42\1\uffff\32\42",
+            "\12\42\7\uffff\32\42\4\uffff\1\42\1\uffff\32\42",
+            "\1\u00e8",
             "",
             "",
-            "\1\u00e1",
+            "",
+            "\1\u00e9",
             "\12\42\7\uffff\32\42\4\uffff\1\42\1\uffff\32\42",
             ""
     };
@@ -1965,6 +1973,16 @@ public class InternalProjectGeneratorLexer extends Lexer {
         	int _s = s;
             switch ( s ) {
                     case 0 : 
+                        int LA18_28 = input.LA(1);
+
+                        s = -1;
+                        if ( ((LA18_28>='\u0000' && LA18_28<='\uFFFF')) ) {s = 64;}
+
+                        else s = 31;
+
+                        if ( s>=0 ) return s;
+                        break;
+                    case 1 : 
                         int LA18_0 = input.LA(1);
 
                         s = -1;
@@ -2032,21 +2050,11 @@ public class InternalProjectGeneratorLexer extends Lexer {
 
                         if ( s>=0 ) return s;
                         break;
-                    case 1 : 
+                    case 2 : 
                         int LA18_27 = input.LA(1);
 
                         s = -1;
                         if ( ((LA18_27>='\u0000' && LA18_27<='\uFFFF')) ) {s = 64;}
-
-                        else s = 31;
-
-                        if ( s>=0 ) return s;
-                        break;
-                    case 2 : 
-                        int LA18_28 = input.LA(1);
-
-                        s = -1;
-                        if ( ((LA18_28>='\u0000' && LA18_28<='\uFFFF')) ) {s = 64;}
 
                         else s = 31;
 

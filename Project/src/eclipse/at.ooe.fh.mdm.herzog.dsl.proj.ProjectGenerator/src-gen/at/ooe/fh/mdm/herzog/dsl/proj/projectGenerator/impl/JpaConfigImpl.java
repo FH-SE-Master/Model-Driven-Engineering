@@ -10,18 +10,13 @@ import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.ProjectGeneratorPackage;
 
 import java.util.Collection;
 
-import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -50,7 +45,7 @@ public class JpaConfigImpl extends MinimalEObjectImpl.Container implements JpaCo
   protected EList<Localized> localizedEnums;
 
   /**
-   * The cached value of the '{@link #getObservers() <em>Observers</em>}' containment reference list.
+   * The cached value of the '{@link #getObservers() <em>Observers</em>}' reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getObservers()
@@ -103,25 +98,9 @@ public class JpaConfigImpl extends MinimalEObjectImpl.Container implements JpaCo
   {
     if (observers == null)
     {
-      observers = new EObjectContainmentEList<Observer>(Observer.class, this, ProjectGeneratorPackage.JPA_CONFIG__OBSERVERS);
+      observers = new EObjectResolvingEList<Observer>(Observer.class, this, ProjectGeneratorPackage.JPA_CONFIG__OBSERVERS);
     }
     return observers;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
-  {
-    switch (featureID)
-    {
-      case ProjectGeneratorPackage.JPA_CONFIG__OBSERVERS:
-        return ((InternalEList<?>)getObservers()).basicRemove(otherEnd, msgs);
-    }
-    return super.eInverseRemove(otherEnd, featureID, msgs);
   }
 
   /**

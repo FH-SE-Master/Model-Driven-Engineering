@@ -15,6 +15,7 @@ import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Observer;
 import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.ProjectGeneratorFactory;
 import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.ServiceConfig;
 import at.ooe.fh.mdm.herzog.dsl.proj.validation.ProjectGeneratorValidator;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -30,6 +31,9 @@ import org.eclipse.xtext.ui.editor.quickfix.DefaultQuickfixProvider;
 import org.eclipse.xtext.ui.editor.quickfix.Fix;
 import org.eclipse.xtext.ui.editor.quickfix.IssueResolutionAcceptor;
 import org.eclipse.xtext.validation.Issue;
+import org.eclipse.xtext.xbase.lib.CollectionLiterals;
+import org.eclipse.xtext.xbase.lib.Conversions;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 /**
  * Custom quickfixes.
@@ -111,6 +115,63 @@ public class ProjectGeneratorQuickfixProvider extends DefaultQuickfixProvider {
       module.setKey(_upperCase);
     };
     acceptor.accept(issue, "Convert to upper case", "Convert to upper case", "", _function);
+  }
+  
+  /**
+   * Module: Observers unused
+   */
+  @Fix(ProjectGeneratorValidator.ValidatorId.MODULE_OBSERVER_UNUSED)
+  public void fixUnusedObservers(final Issue issue, final IssueResolutionAcceptor acceptor) {
+    String[] _data = issue.getData();
+    String _join = IterableExtensions.join(((Iterable<?>)Conversions.doWrapArray(_data)), ",");
+    String _plus = ("Remove unused observers (" + _join);
+    String _plus_1 = (_plus + ")");
+    final ISemanticModification _function = (EObject element, IModificationContext context) -> {
+      final Module module = ((Module) element);
+      String[] _data_1 = issue.getData();
+      final ArrayList<String> observerNames = CollectionLiterals.<String>newArrayList(_data_1);
+      EList<Observer> _observers = module.getObservers();
+      EList<Observer> _observers_1 = module.getObservers();
+      Stream<Observer> _stream = _observers_1.stream();
+      final Predicate<Observer> _function_1 = (Observer it) -> {
+        String _name = it.getName();
+        return observerNames.contains(_name);
+      };
+      Stream<Observer> _filter = _stream.filter(_function_1);
+      Collector<Observer, ?, List<Observer>> _list = Collectors.<Observer>toList();
+      List<Observer> _collect = _filter.collect(_list);
+      _observers.removeAll(_collect);
+    };
+    acceptor.accept(issue, "Remove unused observers", _plus_1, "", _function);
+  }
+  
+  /**
+   * Module: Localized unused
+   */
+  @Fix(ProjectGeneratorValidator.ValidatorId.MODULE_LOCALIZED_UNUSED)
+  public void fixUnusedLocalized(final Issue issue, final IssueResolutionAcceptor acceptor) {
+    String[] _data = issue.getData();
+    String _join = IterableExtensions.join(((Iterable<?>)Conversions.doWrapArray(_data)), ",");
+    String _plus = ("Remove unused message bundles (" + _join);
+    String _plus_1 = (_plus + ")");
+    final ISemanticModification _function = (EObject element, IModificationContext context) -> {
+      final Module module = ((Module) element);
+      String[] _data_1 = issue.getData();
+      final ArrayList<String> bundleNames = CollectionLiterals.<String>newArrayList(_data_1);
+      EList<Localized> _messageBundles = module.getMessageBundles();
+      EList<Observer> _observers = module.getObservers();
+      Stream<Observer> _stream = _observers.stream();
+      final Predicate<Observer> _function_1 = (Observer it) -> {
+        String _name = it.getName();
+        boolean _contains = bundleNames.contains(_name);
+        return (!_contains);
+      };
+      Stream<Observer> _filter = _stream.filter(_function_1);
+      Collector<Observer, ?, List<Observer>> _list = Collectors.<Observer>toList();
+      List<Observer> _collect = _filter.collect(_list);
+      _messageBundles.removeAll(_collect);
+    };
+    acceptor.accept(issue, "Remove unused message bundles", _plus_1, "", _function);
   }
   
   /**
@@ -218,6 +279,40 @@ public class ProjectGeneratorQuickfixProvider extends DefaultQuickfixProvider {
   }
   
   /**
+   * Localized: Remove or rename duplicate LocalizedEntry locale.
+   */
+  @Fix(ProjectGeneratorValidator.ValidatorId.LOCALIZED_ENTRY_LOCALE_DUPLICATE)
+  public void fixLocalizedEntryLocaleDuplicates(final Issue issue, final IssueResolutionAcceptor acceptor) {
+    final ISemanticModification _function = (EObject element, IModificationContext context) -> {
+      final LocalizedEntry localized = ((LocalizedEntry) element);
+      Objects.<LocalizedEntry>requireNonNull(localized, "Element should be Localized instance");
+      if (((!com.google.common.base.Objects.equal(issue.getData(), null)) && (issue.getData().length > 0))) {
+        String[] _data = issue.getData();
+        for (final String _key : _data) {
+          {
+            EList<LocalizedValue> _values = localized.getValues();
+            Stream<LocalizedValue> _stream = _values.stream();
+            final Predicate<LocalizedValue> _function_1 = (LocalizedValue it) -> {
+              Locale _locale = it.getLocale();
+              String _string = _locale.toString();
+              return _string.equals(_key);
+            };
+            Stream<LocalizedValue> _filter = _stream.filter(_function_1);
+            final Optional<LocalizedValue> optionalDuplicate = _filter.findFirst();
+            boolean _isPresent = optionalDuplicate.isPresent();
+            if (_isPresent) {
+              EList<LocalizedValue> _values_1 = localized.getValues();
+              LocalizedValue _get = optionalDuplicate.get();
+              _values_1.remove(_get);
+            }
+          }
+        }
+      }
+    };
+    acceptor.accept(issue, "Remove", "Remove", "", _function);
+  }
+  
+  /**
    * Observer: Remove or rename duplicate Observer matched by their name.
    */
   @Fix(ProjectGeneratorValidator.ValidatorId.OBSERVER_NAME_DUPLICATE)
@@ -294,6 +389,39 @@ public class ProjectGeneratorQuickfixProvider extends DefaultQuickfixProvider {
   }
   
   /**
+   * ServiceConfig: Remove duplicate mapped message bundle matched by their name
+   */
+  @Fix(ProjectGeneratorValidator.ValidatorId.SERVICE_CONFIG_OBSERVERS_DUPLICATE)
+  public void fixServiceConfigDuplicateObservers(final Issue issue, final IssueResolutionAcceptor acceptor) {
+    final ISemanticModification _function = (EObject element, IModificationContext context) -> {
+      final ServiceConfig config = ((ServiceConfig) element);
+      Objects.<ServiceConfig>requireNonNull(config, "Element should be ServiceConfig instance");
+      if (((!com.google.common.base.Objects.equal(issue.getData(), null)) && (issue.getData().length > 0))) {
+        String[] _data = issue.getData();
+        for (final String _name : _data) {
+          {
+            EList<Observer> _observers = config.getObservers();
+            Stream<Observer> _stream = _observers.stream();
+            final Predicate<Observer> _function_1 = (Observer it) -> {
+              String _name_1 = it.getName();
+              return _name_1.equals(_name);
+            };
+            Stream<Observer> _filter = _stream.filter(_function_1);
+            final Optional<Observer> optionalDuplicate = _filter.findFirst();
+            boolean _isPresent = optionalDuplicate.isPresent();
+            if (_isPresent) {
+              EList<Observer> _observers_1 = config.getObservers();
+              Observer _get = optionalDuplicate.get();
+              _observers_1.remove(_get);
+            }
+          }
+        }
+      }
+    };
+    acceptor.accept(issue, "Remove", "Remove", "", _function);
+  }
+  
+  /**
    * JpaConfig: Remove duplicate mapped message bundles mapped by their name.
    */
   @Fix(ProjectGeneratorValidator.ValidatorId.JPA_LOCALIZED_ENUMS_DUPLICATE)
@@ -318,6 +446,39 @@ public class ProjectGeneratorQuickfixProvider extends DefaultQuickfixProvider {
               EList<Localized> _localizedEnums_1 = config.getLocalizedEnums();
               Localized _get = optionalDuplicate.get();
               _localizedEnums_1.remove(_get);
+            }
+          }
+        }
+      }
+    };
+    acceptor.accept(issue, "Remove", "Remove", "", _function);
+  }
+  
+  /**
+   * JpaConfig: Remove duplicate mapped observers mapped by their name.
+   */
+  @Fix(ProjectGeneratorValidator.ValidatorId.JPA_OBSERVERS_DUPLICATE)
+  public void fixJpaConfigDuplicateObservers(final Issue issue, final IssueResolutionAcceptor acceptor) {
+    final ISemanticModification _function = (EObject element, IModificationContext context) -> {
+      final JpaConfig config = ((JpaConfig) element);
+      Objects.<JpaConfig>requireNonNull(config, "Element should be JpaConfig instance");
+      if (((!com.google.common.base.Objects.equal(issue.getData(), null)) && (issue.getData().length > 0))) {
+        String[] _data = issue.getData();
+        for (final String _name : _data) {
+          {
+            EList<Observer> _observers = config.getObservers();
+            Stream<Observer> _stream = _observers.stream();
+            final Predicate<Observer> _function_1 = (Observer it) -> {
+              String _name_1 = it.getName();
+              return _name_1.equals(_name);
+            };
+            Stream<Observer> _filter = _stream.filter(_function_1);
+            final Optional<Observer> optionalDuplicate = _filter.findFirst();
+            boolean _isPresent = optionalDuplicate.isPresent();
+            if (_isPresent) {
+              EList<Observer> _observers_1 = config.getObservers();
+              Observer _get = optionalDuplicate.get();
+              _observers_1.remove(_get);
             }
           }
         }

@@ -3,11 +3,14 @@
  */
 package at.ooe.fh.mdm.herzog.dsl.proj.generator;
 
+import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.During;
+import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.JpaConfig;
 import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Locale;
 import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Localized;
 import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.LocalizedEntry;
 import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.LocalizedValue;
 import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Module;
+import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Notify;
 import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Observer;
 import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.ServiceConfig;
 import com.google.common.base.Objects;
@@ -39,7 +42,15 @@ import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 public class ProjectGeneratorGenerator extends AbstractGenerator {
   private final static String PARENT_ARTIFACT = "parent";
   
-  private final static String PARENT_GROUP = "com.clevercure";
+  private final static String PARENT_GROUP = "com.app";
+  
+  private final static String PACKAGE_PREFIX = "com.app.";
+  
+  private final static String DIR_PACKAGE_PREFIX = "com/app/";
+  
+  private final static String SRC_MAIN_JAVA = "src/main/java/";
+  
+  private final static String SRC_MAIN_RES = "src/main/resources/";
   
   @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
@@ -74,19 +85,24 @@ public class ProjectGeneratorGenerator extends AbstractGenerator {
    * Generate the message project
    */
   public void generateProjectMessage(final Module _module, final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
+    EList<Localized> _messageBundles = _module.getMessageBundles();
+    boolean _isEmpty = _messageBundles.isEmpty();
+    if (_isEmpty) {
+      return;
+    }
     String _key = _module.getKey();
     String _lowerCase = _key.toLowerCase();
     final String projectDir = (_lowerCase + "/message/");
-    CharSequence _pomParentModule = this.pomParentModule(_module);
-    fsa.generateFile((projectDir + "/pom.xml"), _pomParentModule);
+    CharSequence _pomMessage = this.pomMessage(_module);
+    fsa.generateFile((projectDir + "/pom.xml"), _pomMessage);
     at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Boolean _cdiEnabled = _module.getCdiEnabled();
     boolean _equals = at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Boolean.TRUE.equals(_cdiEnabled);
     if (_equals) {
       CharSequence _beansXml = this.beansXml(null);
-      fsa.generateFile((projectDir + "/src/main/resources/META-INF/beans.xml"), _beansXml);
+      fsa.generateFile(((projectDir + ProjectGeneratorGenerator.SRC_MAIN_RES) + "META-INF/beans.xml"), _beansXml);
     }
-    EList<Localized> _messageBundles = _module.getMessageBundles();
-    for (final Localized bundle : _messageBundles) {
+    EList<Localized> _messageBundles_1 = _module.getMessageBundles();
+    for (final Localized bundle : _messageBundles_1) {
       {
         final HashMap<Locale, HashMap<String, String>> localeToKeyValueMap = CollectionLiterals.<Locale, HashMap<String, String>>newHashMap();
         EList<LocalizedEntry> _values = bundle.getValues();
@@ -116,7 +132,7 @@ public class ProjectGeneratorGenerator extends AbstractGenerator {
           {
             String _name = bundle.getName();
             String _lowerCase_1 = _name.toLowerCase();
-            String _plus = ((projectDir + "/src/main/resources/META-INF/resource-bundles/") + _lowerCase_1);
+            String _plus = (((projectDir + ProjectGeneratorGenerator.SRC_MAIN_RES) + "META-INF/resource-bundles/") + _lowerCase_1);
             String _plus_1 = (_plus + "_");
             Locale _key_1 = entry_1.getKey();
             String _string = _key_1.toString();
@@ -126,14 +142,15 @@ public class ProjectGeneratorGenerator extends AbstractGenerator {
             CharSequence _messageBundleProperties = this.messageBundleProperties(_value);
             fsa.generateFile(_plus_3, _messageBundleProperties);
             String _key_2 = _module.getKey();
-            String _plus_4 = ((projectDir + "/src/main/java/com/clevercure/") + _key_2);
+            String _lowerCase_2 = _key_2.toLowerCase();
+            String _plus_4 = (((projectDir + ProjectGeneratorGenerator.SRC_MAIN_JAVA) + ProjectGeneratorGenerator.DIR_PACKAGE_PREFIX) + _lowerCase_2);
             String _plus_5 = (_plus_4 + "/message/");
             String _name_1 = bundle.getName();
             String _plus_6 = (_plus_5 + _name_1);
             String _plus_7 = (_plus_6 + ".java");
             String _key_3 = _module.getKey();
-            String _lowerCase_2 = _key_3.toLowerCase();
-            String _plus_8 = ((ProjectGeneratorGenerator.PARENT_GROUP + ".") + _lowerCase_2);
+            String _lowerCase_3 = _key_3.toLowerCase();
+            String _plus_8 = ((ProjectGeneratorGenerator.PARENT_GROUP + ".") + _lowerCase_3);
             String _plus_9 = (_plus_8 + ".message");
             String _name_2 = bundle.getName();
             HashMap<String, String> _value_1 = entry_1.getValue();
@@ -162,16 +179,46 @@ public class ProjectGeneratorGenerator extends AbstractGenerator {
    * Generate the jpa project
    */
   public void generateProjectJpa(final Module _module, final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
+    JpaConfig _jpaConfig = _module.getJpaConfig();
+    boolean _equals = Objects.equal(_jpaConfig, null);
+    if (_equals) {
+      return;
+    }
     String _key = _module.getKey();
     String _lowerCase = _key.toLowerCase();
     final String projectDir = (_lowerCase + "/model/jpa/");
     CharSequence _pomJpa = this.pomJpa(_module);
     fsa.generateFile((projectDir + "/pom.xml"), _pomJpa);
     at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Boolean _cdiEnabled = _module.getCdiEnabled();
-    boolean _equals = at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Boolean.TRUE.equals(_cdiEnabled);
-    if (_equals) {
+    boolean _equals_1 = at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Boolean.TRUE.equals(_cdiEnabled);
+    if (_equals_1) {
       CharSequence _beansXml = this.beansXml(null);
-      fsa.generateFile((projectDir + "/src/main/resources/META-INF/beans.xml"), _beansXml);
+      fsa.generateFile(((projectDir + ProjectGeneratorGenerator.SRC_MAIN_RES) + "META-INF/beans.xml"), _beansXml);
+      String _key_1 = _module.getKey();
+      String _lowerCase_1 = _key_1.toLowerCase();
+      String _plus = (((projectDir + ProjectGeneratorGenerator.SRC_MAIN_RES) + "META-INF/") + _lowerCase_1);
+      String _plus_1 = (_plus + "Orm.xml");
+      CharSequence _beansXml_1 = this.beansXml(null);
+      fsa.generateFile(_plus_1, _beansXml_1);
+      JpaConfig _jpaConfig_1 = _module.getJpaConfig();
+      EList<Observer> _observers = _jpaConfig_1.getObservers();
+      boolean _isEmpty = _observers.isEmpty();
+      boolean _not = (!_isEmpty);
+      if (_not) {
+        String _key_2 = _module.getKey();
+        String _lowerCase_2 = _key_2.toLowerCase();
+        String _plus_2 = (((projectDir + ProjectGeneratorGenerator.SRC_MAIN_JAVA) + ProjectGeneratorGenerator.DIR_PACKAGE_PREFIX) + _lowerCase_2);
+        String _plus_3 = (_plus_2 + 
+          "/model/jpa/observer/Observer.java");
+        String _key_3 = _module.getKey();
+        String _lowerCase_3 = _key_3.toLowerCase();
+        String _plus_4 = (ProjectGeneratorGenerator.PACKAGE_PREFIX + _lowerCase_3);
+        String _plus_5 = (_plus_4 + ".observer");
+        JpaConfig _jpaConfig_2 = _module.getJpaConfig();
+        EList<Observer> _observers_1 = _jpaConfig_2.getObservers();
+        CharSequence _observerClass = this.observerClass(_plus_5, _observers_1);
+        fsa.generateFile(_plus_3, _observerClass);
+      }
     }
   }
   
@@ -179,6 +226,11 @@ public class ProjectGeneratorGenerator extends AbstractGenerator {
    * Generate the parent project for the service projects
    */
   public void generateParentProjectService(final Module _module, final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
+    ServiceConfig _serviceConfig = _module.getServiceConfig();
+    boolean _equals = Objects.equal(_serviceConfig, null);
+    if (_equals) {
+      return;
+    }
     String _key = _module.getKey();
     String _lowerCase = _key.toLowerCase();
     final String projectDir = (_lowerCase + "/service/");
@@ -190,16 +242,21 @@ public class ProjectGeneratorGenerator extends AbstractGenerator {
    * Generate the service api project
    */
   public void generateProjectServiceApi(final Module _module, final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
+    ServiceConfig _serviceConfig = _module.getServiceConfig();
+    boolean _equals = Objects.equal(_serviceConfig, null);
+    if (_equals) {
+      return;
+    }
     String _key = _module.getKey();
     String _lowerCase = _key.toLowerCase();
     final String projectDir = (_lowerCase + "/service/api/");
     CharSequence _pomServiceApi = this.pomServiceApi(_module);
     fsa.generateFile((projectDir + "/pom.xml"), _pomServiceApi);
     at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Boolean _cdiEnabled = _module.getCdiEnabled();
-    boolean _equals = at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Boolean.TRUE.equals(_cdiEnabled);
-    if (_equals) {
+    boolean _equals_1 = at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Boolean.TRUE.equals(_cdiEnabled);
+    if (_equals_1) {
       CharSequence _beansXml = this.beansXml(null);
-      fsa.generateFile((projectDir + "/src/main/resources/META-INF/beans.xml"), _beansXml);
+      fsa.generateFile(((projectDir + ProjectGeneratorGenerator.SRC_MAIN_RES) + "META-INF/beans.xml"), _beansXml);
     }
   }
   
@@ -207,29 +264,46 @@ public class ProjectGeneratorGenerator extends AbstractGenerator {
    * Generate the service impl project
    */
   public void generateProjectServiceImpl(final Module _module, final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
+    ServiceConfig _serviceConfig = _module.getServiceConfig();
+    boolean _equals = Objects.equal(_serviceConfig, null);
+    if (_equals) {
+      return;
+    }
     String _key = _module.getKey();
     String _lowerCase = _key.toLowerCase();
     final String projectDir = (_lowerCase + "/service/impl/");
     CharSequence _pomServiceImpl = this.pomServiceImpl(_module);
     fsa.generateFile((projectDir + "/pom.xml"), _pomServiceImpl);
     at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Boolean _cdiEnabled = _module.getCdiEnabled();
-    boolean _equals = at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Boolean.TRUE.equals(_cdiEnabled);
-    if (_equals) {
+    boolean _equals_1 = at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Boolean.TRUE.equals(_cdiEnabled);
+    if (_equals_1) {
       CharSequence _beansXml = this.beansXml(null);
-      fsa.generateFile((projectDir + "/src/main/resources/META-INF/beans.xml"), _beansXml);
-      String _key_1 = _module.getKey();
-      String _plus = ((projectDir + "/src/main/java/com/clevercure/") + _key_1);
-      String _plus_1 = (_plus + "/observer/Observer.java");
-      String _key_2 = _module.getKey();
-      String _plus_2 = ("com.clevercure." + _key_2);
-      String _plus_3 = (_plus_2 + ".observer");
-      ServiceConfig _serviceConfig = _module.getServiceConfig();
-      EList<Observer> _observers = _serviceConfig.getObservers();
-      CharSequence _observerClass = this.observerClass(_plus_3, _observers);
-      fsa.generateFile(_plus_1, _observerClass);
+      fsa.generateFile(((projectDir + ProjectGeneratorGenerator.SRC_MAIN_RES) + "META-INF/beans.xml"), _beansXml);
+      ServiceConfig _serviceConfig_1 = _module.getServiceConfig();
+      EList<Observer> _observers = _serviceConfig_1.getObservers();
+      boolean _isEmpty = _observers.isEmpty();
+      boolean _not = (!_isEmpty);
+      if (_not) {
+        String _key_1 = _module.getKey();
+        String _lowerCase_1 = _key_1.toLowerCase();
+        String _plus = (((projectDir + ProjectGeneratorGenerator.SRC_MAIN_JAVA) + ProjectGeneratorGenerator.DIR_PACKAGE_PREFIX) + _lowerCase_1);
+        String _plus_1 = (_plus + 
+          "/service/impl/observer/Observer.java");
+        String _key_2 = _module.getKey();
+        String _lowerCase_2 = _key_2.toLowerCase();
+        String _plus_2 = (ProjectGeneratorGenerator.PACKAGE_PREFIX + _lowerCase_2);
+        String _plus_3 = (_plus_2 + ".observer");
+        ServiceConfig _serviceConfig_2 = _module.getServiceConfig();
+        EList<Observer> _observers_1 = _serviceConfig_2.getObservers();
+        CharSequence _observerClass = this.observerClass(_plus_3, _observers_1);
+        fsa.generateFile(_plus_1, _observerClass);
+      }
     }
   }
   
+  /**
+   * Template for the beans xml.
+   */
   public CharSequence beansXml(final List<Observer> observers) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
@@ -237,23 +311,47 @@ public class ProjectGeneratorGenerator extends AbstractGenerator {
     _builder.append("\t");
     _builder.append("<beans xmlns=\"http://java.sun.com/xml/ns/javaee\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/beans_1_0.xsd\">");
     _builder.newLine();
-    {
-      if (((!Objects.equal(observers, null)) && (!observers.isEmpty()))) {
-        {
-          for(final Observer decorator : observers) {
-            _builder.append("<class>");
-            _builder.append(decorator, "");
-            _builder.append("</class>");
-            _builder.newLineIfNotEmpty();
-          }
-        }
-      }
-    }
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("<!-- Add decorators, interceptors, .. here -->");
+    _builder.newLine();
     _builder.append("</beans>");
     _builder.newLine();
     return _builder;
   }
   
+  /**
+   * Template for the beans xml.
+   */
+  public CharSequence ormXml() {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("<entity-mappings xmlns=\"http://java.sun.com/xml/ns/persistence/orm\"");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("xsi:schemaLocation=\"http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_2_0.xsd\"");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("version=\"2.0\">");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("<!-- Add your first entity here -->");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("</entity-mappings>");
+    _builder.newLine();
+    return _builder;
+  }
+  
+  /**
+   * Template for the observer class.
+   */
   public CharSequence observerClass(final String packageName, final List<Observer> observers) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package ");
@@ -261,7 +359,7 @@ public class ProjectGeneratorGenerator extends AbstractGenerator {
     _builder.append(";");
     _builder.newLineIfNotEmpty();
     _builder.newLine();
-    _builder.append("import javax.inject.Event;");
+    _builder.append("import javax.enterprise.event.*;");
     _builder.newLine();
     _builder.newLine();
     _builder.append("@Dependent");
@@ -301,7 +399,15 @@ public class ProjectGeneratorGenerator extends AbstractGenerator {
         _builder.append("public void observerEvent_");
         int _indexOf_2 = observers.indexOf(observer_1);
         _builder.append(_indexOf_2, "");
-        _builder.append("(@Observes ");
+        _builder.append("(@Observes(during=TransactionPhase.");
+        During _during = observer_1.getDuring();
+        String _string = _during.toString();
+        _builder.append(_string, "");
+        _builder.append(", notifyObserver = Reception.");
+        Notify _notify = observer_1.getNotify();
+        String _string_1 = _notify.toString();
+        _builder.append(_string_1, "");
+        _builder.append(") ");
         String _type_1 = observer_1.getType();
         _builder.append(_type_1, "");
         _builder.append(" evt) {");
@@ -321,6 +427,9 @@ public class ProjectGeneratorGenerator extends AbstractGenerator {
     return _builder;
   }
   
+  /**
+   * Template for the message bundle properties file.
+   */
   public CharSequence messageBundleProperties(final Map<String, String> _keyTovalueMap) {
     StringConcatenation _builder = new StringConcatenation();
     {
@@ -337,6 +446,9 @@ public class ProjectGeneratorGenerator extends AbstractGenerator {
     return _builder;
   }
   
+  /**
+   * Template for the message bundle enumeration for the keys.
+   */
   public CharSequence messageBundleEnum(final String packageName, final String bundleName, final List<String> _keys) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package ");
@@ -347,7 +459,7 @@ public class ProjectGeneratorGenerator extends AbstractGenerator {
     _builder.newLine();
     _builder.append("public enum ");
     _builder.append(bundleName, "");
-    _builder.append(" {");
+    _builder.append("MessageBundle {");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
     String _join = IterableExtensions.join(_keys, ",\n,");
@@ -359,6 +471,9 @@ public class ProjectGeneratorGenerator extends AbstractGenerator {
     return _builder;
   }
   
+  /**
+   * Template for the pom.xml of the module parent project
+   */
   public CharSequence pomParentModule(final Module _module) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
@@ -436,6 +551,9 @@ public class ProjectGeneratorGenerator extends AbstractGenerator {
     return _builder;
   }
   
+  /**
+   * Template for the pom.xml of the message project
+   */
   public CharSequence pomMessage(final Module _module) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
@@ -497,6 +615,9 @@ public class ProjectGeneratorGenerator extends AbstractGenerator {
     return _builder;
   }
   
+  /**
+   * Template for the pom.xml of the model parent project
+   */
   public CharSequence pomParentModel(final Module _module) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
@@ -567,6 +688,9 @@ public class ProjectGeneratorGenerator extends AbstractGenerator {
     return _builder;
   }
   
+  /**
+   * Template for the pom.xml of the model jpa project
+   */
   public CharSequence pomJpa(final Module _module) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
@@ -653,6 +777,9 @@ public class ProjectGeneratorGenerator extends AbstractGenerator {
     return _builder;
   }
   
+  /**
+   * Template for the pom.xml of the service parent project
+   */
   public CharSequence pomServiceParent(final Module _module) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
@@ -719,11 +846,28 @@ public class ProjectGeneratorGenerator extends AbstractGenerator {
     _builder.append("<description>The parent project for all service projects</description>");
     _builder.newLine();
     _builder.newLine();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("<modules>");
+    _builder.newLine();
+    _builder.append("        ");
+    _builder.append("<module>api</module>");
+    _builder.newLine();
+    _builder.append("        ");
+    _builder.append("<module>impl</module>");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("</modules>");
+    _builder.newLine();
     _builder.append("</project>");
     _builder.newLine();
     return _builder;
   }
   
+  /**
+   * Template for the pom.xml of the service api project
+   */
   public CharSequence pomServiceApi(final Module _module) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
@@ -811,6 +955,9 @@ public class ProjectGeneratorGenerator extends AbstractGenerator {
     return _builder;
   }
   
+  /**
+   * Template for the pom.xml of the service impl project
+   */
   public CharSequence pomServiceImpl(final Module _module) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");

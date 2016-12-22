@@ -21,6 +21,8 @@
 \PYG{k+kn}{import} \PYG{n+nn}{org.eclipse.xtext.ui.editor.quickfix.Fix}
 \PYG{k+kn}{import} \PYG{n+nn}{org.eclipse.xtext.ui.editor.quickfix.IssueResolutionAcceptor}
 \PYG{k+kn}{import} \PYG{n+nn}{org.eclipse.xtext.validation.Issue}
+\PYG{k+kn}{import} \PYG{n+nn}{static} \PYG{n}{java}\PYG{o}{.}\PYG{n+na}{util}\PYG{o}{.}\PYG{n+na}{stream}\PYG{o}{.}\PYG{n+na}{Collectors}\PYG{o}{.*}
+\PYG{k+kn}{import} \PYG{n+nn}{at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.LocalizedEntry}
 
 \PYG{c+cm}{/**}
 \PYG{c+cm}{ * Custom quickfixes.	}
@@ -62,7 +64,7 @@
 
 			\PYG{n}{localizedErrorEntry}\PYG{o}{.}\PYG{n+na}{values}\PYG{o}{.}\PYG{n+na}{add}\PYG{o}{(}\PYG{n}{localizedErrorValue}\PYG{o}{);}
 			\PYG{n}{localizedError}\PYG{o}{.}\PYG{n+na}{values}\PYG{o}{.}\PYG{n+na}{add}\PYG{o}{(}\PYG{n}{localizedErrorEntry}\PYG{o}{);}
-  
+
 			\PYG{c+c1}{// Default Observer}
 			\PYG{n}{val} \PYG{n}{observer} \PYG{o}{=} \PYG{n}{ProjectGeneratorFactory}\PYG{o}{.}\PYG{n+na}{eINSTANCE}\PYG{o}{.}\PYG{n+na}{createObserver}\PYG{o}{;}
 			\PYG{n}{observer}\PYG{o}{.}\PYG{n+na}{name} \PYG{o}{=} \PYG{l+s}{\PYGZdq{}YourObserverName\PYGZdq{}}\PYG{o}{;}
@@ -95,6 +97,31 @@
 		\PYG{n}{acceptor}\PYG{o}{.}\PYG{n+na}{accept}\PYG{o}{(}\PYG{n}{issue}\PYG{o}{,} \PYG{err}{\PYGZsq{}}\PYG{n}{Convert} \PYG{n}{to} \PYG{n}{upper} \PYG{k}{case}\PYG{err}{\PYGZsq{}}\PYG{o}{,} \PYG{err}{\PYGZsq{}}\PYG{n}{Convert} \PYG{n}{to} \PYG{n}{upper} \PYG{k}{case}\PYG{err}{\PYGZsq{}}\PYG{o}{,} \PYG{err}{\PYGZsq{}\PYGZsq{}}\PYG{o}{)} \PYG{o}{[} \PYG{n}{element}\PYG{o}{,} \PYG{n}{context} \PYG{o}{|}
 			\PYG{n}{val} \PYG{n}{module} \PYG{o}{=} \PYG{o}{(}\PYG{n}{element} \PYG{n}{as} \PYG{n}{Module}\PYG{o}{);}
 			\PYG{n}{module}\PYG{o}{.}\PYG{n+na}{key} \PYG{o}{=} \PYG{n}{module}\PYG{o}{.}\PYG{n+na}{key}\PYG{o}{.}\PYG{n+na}{toUpperCase}\PYG{o}{;}
+		\PYG{o}{]}
+	\PYG{o}{\PYGZcb{}}
+
+	\PYG{c+cm}{/**}
+\PYG{c+cm}{	 * Module: Observers unused}
+\PYG{c+cm}{	 */}
+	\PYG{n+nd}{@Fix}\PYG{o}{(}\PYG{n}{ValidatorId}\PYG{o}{.}\PYG{n+na}{MODULE\PYGZus{}OBSERVER\PYGZus{}UNUSED}\PYG{o}{)}
+	\PYG{n}{def} \PYG{n+nf}{fixUnusedObservers}\PYG{o}{(}\PYG{n}{Issue} \PYG{n}{issue}\PYG{o}{,} \PYG{n}{IssueResolutionAcceptor} \PYG{n}{acceptor}\PYG{o}{)} \PYG{o}{\PYGZob{}}
+		\PYG{n}{acceptor}\PYG{o}{.}\PYG{n+na}{accept}\PYG{o}{(}\PYG{n}{issue}\PYG{o}{,} \PYG{err}{\PYGZsq{}}\PYG{n}{Remove} \PYG{n}{unused} \PYG{n}{observers}\PYG{err}{\PYGZsq{}}\PYG{o}{,} \PYG{err}{\PYGZsq{}}\PYG{n}{Remove} \PYG{n}{unused} \PYG{n+nf}{observers} \PYG{o}{(}\PYG{err}{\PYGZsq{}} \PYG{o}{+} \PYG{n}{issue}\PYG{o}{.}\PYG{n+na}{data}\PYG{o}{.}\PYG{n+na}{join}\PYG{o}{(}\PYG{l+s}{\PYGZdq{},\PYGZdq{}}\PYG{o}{)} \PYG{o}{+} \PYG{l+s+sc}{\PYGZsq{})\PYGZsq{}}\PYG{o}{,} \PYG{err}{\PYGZsq{}\PYGZsq{}}\PYG{o}{)} \PYG{o}{[} \PYG{n}{element}\PYG{o}{,} \PYG{n}{context} \PYG{o}{|}
+			\PYG{n}{val} \PYG{n}{module} \PYG{o}{=} \PYG{o}{(}\PYG{n}{element} \PYG{n}{as} \PYG{n}{Module}\PYG{o}{);}
+			\PYG{n}{val} \PYG{n}{observerNames} \PYG{o}{=} \PYG{n}{newArrayList}\PYG{o}{(}\PYG{n}{issue}\PYG{o}{.}\PYG{n+na}{data}\PYG{o}{);}
+			\PYG{n}{module}\PYG{o}{.}\PYG{n+na}{observers}\PYG{o}{.}\PYG{n+na}{removeAll}\PYG{o}{(}\PYG{n}{module}\PYG{o}{.}\PYG{n+na}{observers}\PYG{o}{.}\PYG{n+na}{stream}\PYG{o}{.}\PYG{n+na}{filter}\PYG{o}{[}\PYG{n}{observerNames}\PYG{o}{.}\PYG{n+na}{contains}\PYG{o}{(}\PYG{n}{name}\PYG{o}{)].}\PYG{n+na}{collect}\PYG{o}{(}\PYG{n}{toList}\PYG{o}{));}
+		\PYG{o}{]}
+	\PYG{o}{\PYGZcb{}}
+
+	\PYG{c+cm}{/**}
+\PYG{c+cm}{	 * Module: Localized unused}
+\PYG{c+cm}{	 */}
+	\PYG{n+nd}{@Fix}\PYG{o}{(}\PYG{n}{ValidatorId}\PYG{o}{.}\PYG{n+na}{MODULE\PYGZus{}LOCALIZED\PYGZus{}UNUSED}\PYG{o}{)}
+	\PYG{n}{def} \PYG{n+nf}{fixUnusedLocalized}\PYG{o}{(}\PYG{n}{Issue} \PYG{n}{issue}\PYG{o}{,} \PYG{n}{IssueResolutionAcceptor} \PYG{n}{acceptor}\PYG{o}{)} \PYG{o}{\PYGZob{}}
+		\PYG{n}{acceptor}\PYG{o}{.}\PYG{n+na}{accept}\PYG{o}{(}\PYG{n}{issue}\PYG{o}{,} \PYG{err}{\PYGZsq{}}\PYG{n}{Remove} \PYG{n}{unused} \PYG{n}{message} \PYG{n}{bundles}\PYG{err}{\PYGZsq{}}\PYG{o}{,} \PYG{err}{\PYGZsq{}}\PYG{n}{Remove} \PYG{n}{unused} \PYG{n}{message} \PYG{n+nf}{bundles} \PYG{o}{(}\PYG{err}{\PYGZsq{}} \PYG{o}{+} \PYG{n}{issue}\PYG{o}{.}\PYG{n+na}{data}\PYG{o}{.}\PYG{n+na}{join}\PYG{o}{(}\PYG{l+s}{\PYGZdq{},\PYGZdq{}}\PYG{o}{)} \PYG{o}{+} \PYG{l+s+sc}{\PYGZsq{})\PYGZsq{}}\PYG{o}{,} \PYG{err}{\PYGZsq{}\PYGZsq{}}\PYG{o}{)} \PYG{o}{[} \PYG{n}{element}\PYG{o}{,} \PYG{n}{context} \PYG{o}{|}
+			\PYG{n}{val} \PYG{n}{module} \PYG{o}{=} \PYG{o}{(}\PYG{n}{element} \PYG{n}{as} \PYG{n}{Module}\PYG{o}{);}
+			\PYG{n}{val} \PYG{n}{bundleNames} \PYG{o}{=} \PYG{n}{newArrayList}\PYG{o}{(}\PYG{n}{issue}\PYG{o}{.}\PYG{n+na}{data}\PYG{o}{);}
+			\PYG{n}{module}\PYG{o}{.}\PYG{n+na}{messageBundles}\PYG{o}{.}\PYG{n+na}{removeAll}\PYG{o}{(}
+				\PYG{n}{module}\PYG{o}{.}\PYG{n+na}{observers}\PYG{o}{.}\PYG{n+na}{stream}\PYG{o}{.}\PYG{n+na}{filter}\PYG{o}{[!}\PYG{n}{bundleNames}\PYG{o}{.}\PYG{n+na}{contains}\PYG{o}{(}\PYG{n}{name}\PYG{o}{)].}\PYG{n+na}{collect}\PYG{o}{(}\PYG{n}{toList}\PYG{o}{));}
 		\PYG{o}{]}
 	\PYG{o}{\PYGZcb{}}
 
@@ -162,6 +189,27 @@
 			\PYG{o}{\PYGZcb{}}
 		\PYG{o}{]}
 	\PYG{o}{\PYGZcb{}}
+	
+	\PYG{c+cm}{/**}
+\PYG{c+cm}{	 * Localized: Remove or rename duplicate LocalizedEntry locale. }
+\PYG{c+cm}{	 */}
+	\PYG{n+nd}{@Fix}\PYG{o}{(}\PYG{n}{ValidatorId}\PYG{o}{.}\PYG{n+na}{LOCALIZED\PYGZus{}ENTRY\PYGZus{}LOCALE\PYGZus{}DUPLICATE}\PYG{o}{)}
+	\PYG{n}{def} \PYG{n+nf}{fixLocalizedEntryLocaleDuplicates}\PYG{o}{(}\PYG{n}{Issue} \PYG{n}{issue}\PYG{o}{,} \PYG{n}{IssueResolutionAcceptor} \PYG{n}{acceptor}\PYG{o}{)} \PYG{o}{\PYGZob{}}
+		\PYG{c+c1}{// Remove entry}
+		\PYG{n}{acceptor}\PYG{o}{.}\PYG{n+na}{accept}\PYG{o}{(}\PYG{n}{issue}\PYG{o}{,} \PYG{err}{\PYGZsq{}}\PYG{n}{Remove}\PYG{err}{\PYGZsq{}}\PYG{o}{,} \PYG{err}{\PYGZsq{}}\PYG{n}{Remove}\PYG{err}{\PYGZsq{}}\PYG{o}{,} \PYG{err}{\PYGZsq{}\PYGZsq{}}\PYG{o}{)} \PYG{o}{[} \PYG{n}{element}\PYG{o}{,} \PYG{n}{context} \PYG{o}{|}
+			\PYG{n}{val} \PYG{n}{localized} \PYG{o}{=} \PYG{o}{(}\PYG{n}{element} \PYG{n}{as} \PYG{n}{LocalizedEntry}\PYG{o}{);}
+			\PYG{n}{Objects}\PYG{o}{.}\PYG{n+na}{requireNonNull}\PYG{o}{(}\PYG{n}{localized}\PYG{o}{,} \PYG{l+s}{\PYGZdq{}Element should be Localized instance\PYGZdq{}}\PYG{o}{);}
+
+			\PYG{k}{if} \PYG{o}{((}\PYG{n}{issue}\PYG{o}{.}\PYG{n+na}{data} \PYG{o}{!=} \PYG{k+kc}{null}\PYG{o}{)} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{o}{(}\PYG{n}{issue}\PYG{o}{.}\PYG{n+na}{data}\PYG{o}{.}\PYG{n+na}{length} \PYG{o}{\PYGZgt{}} \PYG{l+m+mi}{0}\PYG{o}{))} \PYG{o}{\PYGZob{}}
+				\PYG{k}{for} \PYG{o}{(}\PYG{n}{\PYGZus{}key} \PYG{o}{:} \PYG{n}{issue}\PYG{o}{.}\PYG{n+na}{data}\PYG{o}{)} \PYG{o}{\PYGZob{}}
+					\PYG{n}{val} \PYG{n}{optionalDuplicate} \PYG{o}{=} \PYG{n}{localized}\PYG{o}{.}\PYG{n+na}{values}\PYG{o}{.}\PYG{n+na}{stream}\PYG{o}{.}\PYG{n+na}{filter}\PYG{o}{[}\PYG{n}{locale}\PYG{o}{.}\PYG{n+na}{toString}\PYG{o}{.}\PYG{n+na}{equals}\PYG{o}{(}\PYG{n}{\PYGZus{}key}\PYG{o}{)].}\PYG{n+na}{findFirst}\PYG{o}{;}
+					\PYG{k}{if} \PYG{o}{(}\PYG{n}{optionalDuplicate}\PYG{o}{.}\PYG{n+na}{isPresent}\PYG{o}{)} \PYG{o}{\PYGZob{}}
+						\PYG{n}{localized}\PYG{o}{.}\PYG{n+na}{values}\PYG{o}{.}\PYG{n+na}{remove}\PYG{o}{(}\PYG{n}{optionalDuplicate}\PYG{o}{.}\PYG{n+na}{get}\PYG{o}{);}
+					\PYG{o}{\PYGZcb{}} 
+				\PYG{o}{\PYGZcb{}}
+			\PYG{o}{\PYGZcb{}}
+		\PYG{o}{]}
+	\PYG{o}{\PYGZcb{}}
 
 	\PYG{c+cm}{/**}
 \PYG{c+cm}{	 * Observer: Remove or rename duplicate Observer matched by their name. }
@@ -214,6 +262,28 @@
 	\PYG{o}{\PYGZcb{}}
 
 	\PYG{c+cm}{/**}
+\PYG{c+cm}{	 * ServiceConfig: Remove duplicate mapped message bundle matched by their name }
+\PYG{c+cm}{	 */}
+	\PYG{n+nd}{@Fix}\PYG{o}{(}\PYG{n}{ValidatorId}\PYG{o}{.}\PYG{n+na}{SERVICE\PYGZus{}CONFIG\PYGZus{}OBSERVERS\PYGZus{}DUPLICATE}\PYG{o}{)}
+	\PYG{n}{def} \PYG{n+nf}{fixServiceConfigDuplicateObservers}\PYG{o}{(}\PYG{n}{Issue} \PYG{n}{issue}\PYG{o}{,} \PYG{n}{IssueResolutionAcceptor} \PYG{n}{acceptor}\PYG{o}{)} \PYG{o}{\PYGZob{}}
+		\PYG{c+c1}{// Remove entry}
+		\PYG{n}{acceptor}\PYG{o}{.}\PYG{n+na}{accept}\PYG{o}{(}\PYG{n}{issue}\PYG{o}{,} \PYG{err}{\PYGZsq{}}\PYG{n}{Remove}\PYG{err}{\PYGZsq{}}\PYG{o}{,} \PYG{err}{\PYGZsq{}}\PYG{n}{Remove}\PYG{err}{\PYGZsq{}}\PYG{o}{,} \PYG{err}{\PYGZsq{}\PYGZsq{}}\PYG{o}{)} \PYG{o}{[} \PYG{n}{element}\PYG{o}{,} \PYG{n}{context} \PYG{o}{|}
+			\PYG{n}{val} \PYG{n}{config} \PYG{o}{=} \PYG{o}{(}\PYG{n}{element} \PYG{n}{as} \PYG{n}{ServiceConfig}\PYG{o}{);}
+			\PYG{n}{Objects}\PYG{o}{.}\PYG{n+na}{requireNonNull}\PYG{o}{(}\PYG{n}{config}\PYG{o}{,} \PYG{l+s}{\PYGZdq{}Element should be ServiceConfig instance\PYGZdq{}}\PYG{o}{);}
+
+			\PYG{k}{if} \PYG{o}{((}\PYG{n}{issue}\PYG{o}{.}\PYG{n+na}{data} \PYG{o}{!=} \PYG{k+kc}{null}\PYG{o}{)} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{o}{(}\PYG{n}{issue}\PYG{o}{.}\PYG{n+na}{data}\PYG{o}{.}\PYG{n+na}{length} \PYG{o}{\PYGZgt{}} \PYG{l+m+mi}{0}\PYG{o}{))} \PYG{o}{\PYGZob{}}
+				\PYG{k}{for} \PYG{o}{(}\PYG{n}{\PYGZus{}name} \PYG{o}{:} \PYG{n}{issue}\PYG{o}{.}\PYG{n+na}{data}\PYG{o}{)} \PYG{o}{\PYGZob{}}
+					\PYG{n}{val} \PYG{n}{optionalDuplicate} \PYG{o}{=} \PYG{n}{config}\PYG{o}{.}\PYG{n+na}{observers}\PYG{o}{.}\PYG{n+na}{stream}\PYG{o}{.}\PYG{n+na}{filter}\PYG{o}{[}\PYG{n}{name}\PYG{o}{.}\PYG{n+na}{equals}\PYG{o}{(}\PYG{n}{\PYGZus{}name}\PYG{o}{)].}\PYG{n+na}{findFirst}\PYG{o}{;}
+					\PYG{k}{if} \PYG{o}{(}\PYG{n}{optionalDuplicate}\PYG{o}{.}\PYG{n+na}{isPresent}\PYG{o}{)} \PYG{o}{\PYGZob{}}
+						\PYG{n}{config}\PYG{o}{.}\PYG{n+na}{observers}\PYG{o}{.}\PYG{n+na}{remove}\PYG{o}{(}\PYG{n}{optionalDuplicate}\PYG{o}{.}\PYG{n+na}{get}\PYG{o}{);}
+					\PYG{o}{\PYGZcb{}}
+				\PYG{o}{\PYGZcb{}}
+			\PYG{o}{\PYGZcb{}}
+		\PYG{o}{]}
+	\PYG{o}{\PYGZcb{}}
+	
+
+	\PYG{c+cm}{/**}
 \PYG{c+cm}{	 * JpaConfig: Remove duplicate mapped message bundles mapped by their name.}
 \PYG{c+cm}{	 */}
 	\PYG{n+nd}{@Fix}\PYG{o}{(}\PYG{n}{ValidatorId}\PYG{o}{.}\PYG{n+na}{JPA\PYGZus{}LOCALIZED\PYGZus{}ENUMS\PYGZus{}DUPLICATE}\PYG{o}{)}
@@ -228,6 +298,27 @@
 					\PYG{n}{val} \PYG{n}{optionalDuplicate} \PYG{o}{=} \PYG{n}{config}\PYG{o}{.}\PYG{n+na}{localizedEnums}\PYG{o}{.}\PYG{n+na}{stream}\PYG{o}{.}\PYG{n+na}{filter}\PYG{o}{[}\PYG{n}{name}\PYG{o}{.}\PYG{n+na}{equals}\PYG{o}{(}\PYG{n}{\PYGZus{}name}\PYG{o}{)].}\PYG{n+na}{findFirst}\PYG{o}{;}
 					\PYG{k}{if} \PYG{o}{(}\PYG{n}{optionalDuplicate}\PYG{o}{.}\PYG{n+na}{isPresent}\PYG{o}{)} \PYG{o}{\PYGZob{}}
 						\PYG{n}{config}\PYG{o}{.}\PYG{n+na}{localizedEnums}\PYG{o}{.}\PYG{n+na}{remove}\PYG{o}{(}\PYG{n}{optionalDuplicate}\PYG{o}{.}\PYG{n+na}{get}\PYG{o}{);}
+					\PYG{o}{\PYGZcb{}}
+				\PYG{o}{\PYGZcb{}}
+			\PYG{o}{\PYGZcb{}}
+		\PYG{o}{]}
+	\PYG{o}{\PYGZcb{}}
+
+	\PYG{c+cm}{/**}
+\PYG{c+cm}{	 * JpaConfig: Remove duplicate mapped observers mapped by their name.}
+\PYG{c+cm}{	 */}
+	\PYG{n+nd}{@Fix}\PYG{o}{(}\PYG{n}{ValidatorId}\PYG{o}{.}\PYG{n+na}{JPA\PYGZus{}OBSERVERS\PYGZus{}DUPLICATE}\PYG{o}{)}
+	\PYG{n}{def} \PYG{n+nf}{fixJpaConfigDuplicateObservers}\PYG{o}{(}\PYG{n}{Issue} \PYG{n}{issue}\PYG{o}{,} \PYG{n}{IssueResolutionAcceptor} \PYG{n}{acceptor}\PYG{o}{)} \PYG{o}{\PYGZob{}}
+		\PYG{c+c1}{// Remove entry}
+		\PYG{n}{acceptor}\PYG{o}{.}\PYG{n+na}{accept}\PYG{o}{(}\PYG{n}{issue}\PYG{o}{,} \PYG{err}{\PYGZsq{}}\PYG{n}{Remove}\PYG{err}{\PYGZsq{}}\PYG{o}{,} \PYG{err}{\PYGZsq{}}\PYG{n}{Remove}\PYG{err}{\PYGZsq{}}\PYG{o}{,} \PYG{err}{\PYGZsq{}\PYGZsq{}}\PYG{o}{)} \PYG{o}{[} \PYG{n}{element}\PYG{o}{,} \PYG{n}{context} \PYG{o}{|}
+			\PYG{n}{val} \PYG{n}{config} \PYG{o}{=} \PYG{o}{(}\PYG{n}{element} \PYG{n}{as} \PYG{n}{JpaConfig}\PYG{o}{);}
+			\PYG{n}{Objects}\PYG{o}{.}\PYG{n+na}{requireNonNull}\PYG{o}{(}\PYG{n}{config}\PYG{o}{,} \PYG{l+s}{\PYGZdq{}Element should be JpaConfig instance\PYGZdq{}}\PYG{o}{);}
+
+			\PYG{k}{if} \PYG{o}{((}\PYG{n}{issue}\PYG{o}{.}\PYG{n+na}{data} \PYG{o}{!=} \PYG{k+kc}{null}\PYG{o}{)} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{o}{(}\PYG{n}{issue}\PYG{o}{.}\PYG{n+na}{data}\PYG{o}{.}\PYG{n+na}{length} \PYG{o}{\PYGZgt{}} \PYG{l+m+mi}{0}\PYG{o}{))} \PYG{o}{\PYGZob{}}
+				\PYG{k}{for} \PYG{o}{(}\PYG{n}{\PYGZus{}name} \PYG{o}{:} \PYG{n}{issue}\PYG{o}{.}\PYG{n+na}{data}\PYG{o}{)} \PYG{o}{\PYGZob{}}
+					\PYG{n}{val} \PYG{n}{optionalDuplicate} \PYG{o}{=} \PYG{n}{config}\PYG{o}{.}\PYG{n+na}{observers}\PYG{o}{.}\PYG{n+na}{stream}\PYG{o}{.}\PYG{n+na}{filter}\PYG{o}{[}\PYG{n}{name}\PYG{o}{.}\PYG{n+na}{equals}\PYG{o}{(}\PYG{n}{\PYGZus{}name}\PYG{o}{)].}\PYG{n+na}{findFirst}\PYG{o}{;}
+					\PYG{k}{if} \PYG{o}{(}\PYG{n}{optionalDuplicate}\PYG{o}{.}\PYG{n+na}{isPresent}\PYG{o}{)} \PYG{o}{\PYGZob{}}
+						\PYG{n}{config}\PYG{o}{.}\PYG{n+na}{observers}\PYG{o}{.}\PYG{n+na}{remove}\PYG{o}{(}\PYG{n}{optionalDuplicate}\PYG{o}{.}\PYG{n+na}{get}\PYG{o}{);}
 					\PYG{o}{\PYGZcb{}}
 				\PYG{o}{\PYGZcb{}}
 			\PYG{o}{\PYGZcb{}}

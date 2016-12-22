@@ -471,9 +471,9 @@ ruleObserver returns [EObject current=null]
 		{
 			newLeafNode(otherlv_7, grammarAccess.getObserverAccess().getSemicolonKeyword_7());
 		}
-		otherlv_8='notify'
+		otherlv_8='notifyObserver'
 		{
-			newLeafNode(otherlv_8, grammarAccess.getObserverAccess().getNotifyKeyword_8());
+			newLeafNode(otherlv_8, grammarAccess.getObserverAccess().getNotifyObserverKeyword_8());
 		}
 		(
 			(
@@ -617,29 +617,35 @@ ruleJpaConfig returns [EObject current=null]
 			{
 				newLeafNode(otherlv_6, grammarAccess.getJpaConfigAccess().getObserversKeyword_6_0());
 			}
+			otherlv_7='{'
+			{
+				newLeafNode(otherlv_7, grammarAccess.getJpaConfigAccess().getLeftCurlyBracketKeyword_6_1());
+			}
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getJpaConfigAccess().getObserversObserverParserRuleCall_6_1_0());
-					}
-					lv_observers_7_0=ruleObserver
-					{
 						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getJpaConfigRule());
+							$current = createModelElement(grammarAccess.getJpaConfigRule());
 						}
-						add(
-							$current,
-							"observers",
-							lv_observers_7_0,
-							"at.ooe.fh.mdm.herzog.dsl.proj.ProjectGenerator.Observer");
-						afterParserOrEnumRuleCall();
+					}
+					otherlv_8=RULE_ID
+					{
+						newLeafNode(otherlv_8, grammarAccess.getJpaConfigAccess().getObserversObserverCrossReference_6_2_0());
 					}
 				)
 			)+
+			otherlv_9='}'
+			{
+				newLeafNode(otherlv_9, grammarAccess.getJpaConfigAccess().getRightCurlyBracketKeyword_6_3());
+			}
+			otherlv_10=';'
+			{
+				newLeafNode(otherlv_10, grammarAccess.getJpaConfigAccess().getSemicolonKeyword_6_4());
+			}
 		)?
-		otherlv_8='}'
+		otherlv_11='}'
 		{
-			newLeafNode(otherlv_8, grammarAccess.getJpaConfigAccess().getRightCurlyBracketKeyword_7());
+			newLeafNode(otherlv_11, grammarAccess.getJpaConfigAccess().getRightCurlyBracketKeyword_7());
 		}
 	)
 ;

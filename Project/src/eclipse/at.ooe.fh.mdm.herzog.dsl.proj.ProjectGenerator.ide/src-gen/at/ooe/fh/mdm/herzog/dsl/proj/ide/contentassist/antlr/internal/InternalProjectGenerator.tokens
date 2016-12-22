@@ -16,7 +16,7 @@
 'localizedEnums'=39
 'messageBundles'=32
 'module'=24
-'notify'=36
+'notifyObserver'=36
 'observers'=33
 'qualifier'=38
 'serviceConfig'=30

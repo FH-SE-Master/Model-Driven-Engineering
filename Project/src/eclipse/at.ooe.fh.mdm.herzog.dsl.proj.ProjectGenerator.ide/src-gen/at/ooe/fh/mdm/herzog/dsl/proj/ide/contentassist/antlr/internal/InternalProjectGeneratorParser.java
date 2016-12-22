@@ -22,7 +22,7 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalProjectGeneratorParser extends AbstractInternalContentAssistParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_CLASSNAME", "RULE_LOCALIZEDKEY", "RULE_UAZ", "RULE_LAZ", "RULE_UAZN", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'de_DE'", "'en_US'", "'true'", "'false'", "'InProgress'", "'AfterCompleition'", "'Always'", "'Exists'", "'module'", "'{'", "'key'", "';'", "'cdiEnabled'", "'jpaConfig'", "'serviceConfig'", "'}'", "'messageBundles'", "'observers'", "'type'", "'during'", "'notify'", "'delegate'", "'qualifier'", "'localizedEnums'", "'values'", "'args'", "'locale'", "'value'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_CLASSNAME", "RULE_LOCALIZEDKEY", "RULE_UAZ", "RULE_LAZ", "RULE_UAZN", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'de_DE'", "'en_US'", "'true'", "'false'", "'InProgress'", "'AfterCompleition'", "'Always'", "'Exists'", "'module'", "'{'", "'key'", "';'", "'cdiEnabled'", "'jpaConfig'", "'serviceConfig'", "'}'", "'messageBundles'", "'observers'", "'type'", "'during'", "'notifyObserver'", "'delegate'", "'qualifier'", "'localizedEnums'", "'values'", "'args'", "'locale'", "'value'"
     };
     public static final int RULE_UAZN=10;
     public static final int T__19=19;
@@ -5284,21 +5284,21 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__Observer__Group__8__Impl"
-    // InternalProjectGenerator.g:1765:1: rule__Observer__Group__8__Impl : ( 'notify' ) ;
+    // InternalProjectGenerator.g:1765:1: rule__Observer__Group__8__Impl : ( 'notifyObserver' ) ;
     public final void rule__Observer__Group__8__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:1769:1: ( ( 'notify' ) )
-            // InternalProjectGenerator.g:1770:1: ( 'notify' )
+            // InternalProjectGenerator.g:1769:1: ( ( 'notifyObserver' ) )
+            // InternalProjectGenerator.g:1770:1: ( 'notifyObserver' )
             {
-            // InternalProjectGenerator.g:1770:1: ( 'notify' )
-            // InternalProjectGenerator.g:1771:2: 'notify'
+            // InternalProjectGenerator.g:1770:1: ( 'notifyObserver' )
+            // InternalProjectGenerator.g:1771:2: 'notifyObserver'
             {
-             before(grammarAccess.getObserverAccess().getNotifyKeyword_8()); 
+             before(grammarAccess.getObserverAccess().getNotifyObserverKeyword_8()); 
             match(input,36,FOLLOW_2); 
-             after(grammarAccess.getObserverAccess().getNotifyKeyword_8()); 
+             after(grammarAccess.getObserverAccess().getNotifyObserverKeyword_8()); 
 
             }
 
@@ -6865,7 +6865,7 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
             // InternalProjectGenerator.g:2304:1: ( rule__JpaConfig__Group_6__0__Impl rule__JpaConfig__Group_6__1 )
             // InternalProjectGenerator.g:2305:2: rule__JpaConfig__Group_6__0__Impl rule__JpaConfig__Group_6__1
             {
-            pushFollow(FOLLOW_3);
+            pushFollow(FOLLOW_4);
             rule__JpaConfig__Group_6__0__Impl();
 
             state._fsp--;
@@ -6931,17 +6931,22 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__JpaConfig__Group_6__1"
-    // InternalProjectGenerator.g:2327:1: rule__JpaConfig__Group_6__1 : rule__JpaConfig__Group_6__1__Impl ;
+    // InternalProjectGenerator.g:2327:1: rule__JpaConfig__Group_6__1 : rule__JpaConfig__Group_6__1__Impl rule__JpaConfig__Group_6__2 ;
     public final void rule__JpaConfig__Group_6__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:2331:1: ( rule__JpaConfig__Group_6__1__Impl )
-            // InternalProjectGenerator.g:2332:2: rule__JpaConfig__Group_6__1__Impl
+            // InternalProjectGenerator.g:2331:1: ( rule__JpaConfig__Group_6__1__Impl rule__JpaConfig__Group_6__2 )
+            // InternalProjectGenerator.g:2332:2: rule__JpaConfig__Group_6__1__Impl rule__JpaConfig__Group_6__2
             {
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_3);
             rule__JpaConfig__Group_6__1__Impl();
+
+            state._fsp--;
+
+            pushFollow(FOLLOW_2);
+            rule__JpaConfig__Group_6__2();
 
             state._fsp--;
 
@@ -6964,74 +6969,21 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__JpaConfig__Group_6__1__Impl"
-    // InternalProjectGenerator.g:2338:1: rule__JpaConfig__Group_6__1__Impl : ( ( ( rule__JpaConfig__ObserversAssignment_6_1 ) ) ( ( rule__JpaConfig__ObserversAssignment_6_1 )* ) ) ;
+    // InternalProjectGenerator.g:2339:1: rule__JpaConfig__Group_6__1__Impl : ( '{' ) ;
     public final void rule__JpaConfig__Group_6__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:2342:1: ( ( ( ( rule__JpaConfig__ObserversAssignment_6_1 ) ) ( ( rule__JpaConfig__ObserversAssignment_6_1 )* ) ) )
-            // InternalProjectGenerator.g:2343:1: ( ( ( rule__JpaConfig__ObserversAssignment_6_1 ) ) ( ( rule__JpaConfig__ObserversAssignment_6_1 )* ) )
+            // InternalProjectGenerator.g:2343:1: ( ( '{' ) )
+            // InternalProjectGenerator.g:2344:1: ( '{' )
             {
-            // InternalProjectGenerator.g:2343:1: ( ( ( rule__JpaConfig__ObserversAssignment_6_1 ) ) ( ( rule__JpaConfig__ObserversAssignment_6_1 )* ) )
-            // InternalProjectGenerator.g:2344:2: ( ( rule__JpaConfig__ObserversAssignment_6_1 ) ) ( ( rule__JpaConfig__ObserversAssignment_6_1 )* )
+            // InternalProjectGenerator.g:2344:1: ( '{' )
+            // InternalProjectGenerator.g:2345:2: '{'
             {
-            // InternalProjectGenerator.g:2344:2: ( ( rule__JpaConfig__ObserversAssignment_6_1 ) )
-            // InternalProjectGenerator.g:2345:3: ( rule__JpaConfig__ObserversAssignment_6_1 )
-            {
-             before(grammarAccess.getJpaConfigAccess().getObserversAssignment_6_1()); 
-            // InternalProjectGenerator.g:2346:3: ( rule__JpaConfig__ObserversAssignment_6_1 )
-            // InternalProjectGenerator.g:2346:4: rule__JpaConfig__ObserversAssignment_6_1
-            {
-            pushFollow(FOLLOW_13);
-            rule__JpaConfig__ObserversAssignment_6_1();
-
-            state._fsp--;
-
-
-            }
-
-             after(grammarAccess.getJpaConfigAccess().getObserversAssignment_6_1()); 
-
-            }
-
-            // InternalProjectGenerator.g:2349:2: ( ( rule__JpaConfig__ObserversAssignment_6_1 )* )
-            // InternalProjectGenerator.g:2350:3: ( rule__JpaConfig__ObserversAssignment_6_1 )*
-            {
-             before(grammarAccess.getJpaConfigAccess().getObserversAssignment_6_1()); 
-            // InternalProjectGenerator.g:2351:3: ( rule__JpaConfig__ObserversAssignment_6_1 )*
-            loop15:
-            do {
-                int alt15=2;
-                int LA15_0 = input.LA(1);
-
-                if ( (LA15_0==RULE_ID) ) {
-                    alt15=1;
-                }
-
-
-                switch (alt15) {
-            	case 1 :
-            	    // InternalProjectGenerator.g:2351:4: rule__JpaConfig__ObserversAssignment_6_1
-            	    {
-            	    pushFollow(FOLLOW_13);
-            	    rule__JpaConfig__ObserversAssignment_6_1();
-
-            	    state._fsp--;
-
-
-            	    }
-            	    break;
-
-            	default :
-            	    break loop15;
-                }
-            } while (true);
-
-             after(grammarAccess.getJpaConfigAccess().getObserversAssignment_6_1()); 
-
-            }
-
+             before(grammarAccess.getJpaConfigAccess().getLeftCurlyBracketKeyword_6_1()); 
+            match(input,25,FOLLOW_2); 
+             after(grammarAccess.getJpaConfigAccess().getLeftCurlyBracketKeyword_6_1()); 
 
             }
 
@@ -7053,15 +7005,288 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
     // $ANTLR end "rule__JpaConfig__Group_6__1__Impl"
 
 
+    // $ANTLR start "rule__JpaConfig__Group_6__2"
+    // InternalProjectGenerator.g:2354:1: rule__JpaConfig__Group_6__2 : rule__JpaConfig__Group_6__2__Impl rule__JpaConfig__Group_6__3 ;
+    public final void rule__JpaConfig__Group_6__2() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalProjectGenerator.g:2358:1: ( rule__JpaConfig__Group_6__2__Impl rule__JpaConfig__Group_6__3 )
+            // InternalProjectGenerator.g:2359:2: rule__JpaConfig__Group_6__2__Impl rule__JpaConfig__Group_6__3
+            {
+            pushFollow(FOLLOW_12);
+            rule__JpaConfig__Group_6__2__Impl();
+
+            state._fsp--;
+
+            pushFollow(FOLLOW_2);
+            rule__JpaConfig__Group_6__3();
+
+            state._fsp--;
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__JpaConfig__Group_6__2"
+
+
+    // $ANTLR start "rule__JpaConfig__Group_6__2__Impl"
+    // InternalProjectGenerator.g:2366:1: rule__JpaConfig__Group_6__2__Impl : ( ( ( rule__JpaConfig__ObserversAssignment_6_2 ) ) ( ( rule__JpaConfig__ObserversAssignment_6_2 )* ) ) ;
+    public final void rule__JpaConfig__Group_6__2__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalProjectGenerator.g:2370:1: ( ( ( ( rule__JpaConfig__ObserversAssignment_6_2 ) ) ( ( rule__JpaConfig__ObserversAssignment_6_2 )* ) ) )
+            // InternalProjectGenerator.g:2371:1: ( ( ( rule__JpaConfig__ObserversAssignment_6_2 ) ) ( ( rule__JpaConfig__ObserversAssignment_6_2 )* ) )
+            {
+            // InternalProjectGenerator.g:2371:1: ( ( ( rule__JpaConfig__ObserversAssignment_6_2 ) ) ( ( rule__JpaConfig__ObserversAssignment_6_2 )* ) )
+            // InternalProjectGenerator.g:2372:2: ( ( rule__JpaConfig__ObserversAssignment_6_2 ) ) ( ( rule__JpaConfig__ObserversAssignment_6_2 )* )
+            {
+            // InternalProjectGenerator.g:2372:2: ( ( rule__JpaConfig__ObserversAssignment_6_2 ) )
+            // InternalProjectGenerator.g:2373:3: ( rule__JpaConfig__ObserversAssignment_6_2 )
+            {
+             before(grammarAccess.getJpaConfigAccess().getObserversAssignment_6_2()); 
+            // InternalProjectGenerator.g:2374:3: ( rule__JpaConfig__ObserversAssignment_6_2 )
+            // InternalProjectGenerator.g:2374:4: rule__JpaConfig__ObserversAssignment_6_2
+            {
+            pushFollow(FOLLOW_13);
+            rule__JpaConfig__ObserversAssignment_6_2();
+
+            state._fsp--;
+
+
+            }
+
+             after(grammarAccess.getJpaConfigAccess().getObserversAssignment_6_2()); 
+
+            }
+
+            // InternalProjectGenerator.g:2377:2: ( ( rule__JpaConfig__ObserversAssignment_6_2 )* )
+            // InternalProjectGenerator.g:2378:3: ( rule__JpaConfig__ObserversAssignment_6_2 )*
+            {
+             before(grammarAccess.getJpaConfigAccess().getObserversAssignment_6_2()); 
+            // InternalProjectGenerator.g:2379:3: ( rule__JpaConfig__ObserversAssignment_6_2 )*
+            loop15:
+            do {
+                int alt15=2;
+                int LA15_0 = input.LA(1);
+
+                if ( (LA15_0==RULE_ID) ) {
+                    alt15=1;
+                }
+
+
+                switch (alt15) {
+            	case 1 :
+            	    // InternalProjectGenerator.g:2379:4: rule__JpaConfig__ObserversAssignment_6_2
+            	    {
+            	    pushFollow(FOLLOW_13);
+            	    rule__JpaConfig__ObserversAssignment_6_2();
+
+            	    state._fsp--;
+
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop15;
+                }
+            } while (true);
+
+             after(grammarAccess.getJpaConfigAccess().getObserversAssignment_6_2()); 
+
+            }
+
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__JpaConfig__Group_6__2__Impl"
+
+
+    // $ANTLR start "rule__JpaConfig__Group_6__3"
+    // InternalProjectGenerator.g:2388:1: rule__JpaConfig__Group_6__3 : rule__JpaConfig__Group_6__3__Impl rule__JpaConfig__Group_6__4 ;
+    public final void rule__JpaConfig__Group_6__3() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalProjectGenerator.g:2392:1: ( rule__JpaConfig__Group_6__3__Impl rule__JpaConfig__Group_6__4 )
+            // InternalProjectGenerator.g:2393:2: rule__JpaConfig__Group_6__3__Impl rule__JpaConfig__Group_6__4
+            {
+            pushFollow(FOLLOW_7);
+            rule__JpaConfig__Group_6__3__Impl();
+
+            state._fsp--;
+
+            pushFollow(FOLLOW_2);
+            rule__JpaConfig__Group_6__4();
+
+            state._fsp--;
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__JpaConfig__Group_6__3"
+
+
+    // $ANTLR start "rule__JpaConfig__Group_6__3__Impl"
+    // InternalProjectGenerator.g:2400:1: rule__JpaConfig__Group_6__3__Impl : ( '}' ) ;
+    public final void rule__JpaConfig__Group_6__3__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalProjectGenerator.g:2404:1: ( ( '}' ) )
+            // InternalProjectGenerator.g:2405:1: ( '}' )
+            {
+            // InternalProjectGenerator.g:2405:1: ( '}' )
+            // InternalProjectGenerator.g:2406:2: '}'
+            {
+             before(grammarAccess.getJpaConfigAccess().getRightCurlyBracketKeyword_6_3()); 
+            match(input,31,FOLLOW_2); 
+             after(grammarAccess.getJpaConfigAccess().getRightCurlyBracketKeyword_6_3()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__JpaConfig__Group_6__3__Impl"
+
+
+    // $ANTLR start "rule__JpaConfig__Group_6__4"
+    // InternalProjectGenerator.g:2415:1: rule__JpaConfig__Group_6__4 : rule__JpaConfig__Group_6__4__Impl ;
+    public final void rule__JpaConfig__Group_6__4() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalProjectGenerator.g:2419:1: ( rule__JpaConfig__Group_6__4__Impl )
+            // InternalProjectGenerator.g:2420:2: rule__JpaConfig__Group_6__4__Impl
+            {
+            pushFollow(FOLLOW_2);
+            rule__JpaConfig__Group_6__4__Impl();
+
+            state._fsp--;
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__JpaConfig__Group_6__4"
+
+
+    // $ANTLR start "rule__JpaConfig__Group_6__4__Impl"
+    // InternalProjectGenerator.g:2426:1: rule__JpaConfig__Group_6__4__Impl : ( ';' ) ;
+    public final void rule__JpaConfig__Group_6__4__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalProjectGenerator.g:2430:1: ( ( ';' ) )
+            // InternalProjectGenerator.g:2431:1: ( ';' )
+            {
+            // InternalProjectGenerator.g:2431:1: ( ';' )
+            // InternalProjectGenerator.g:2432:2: ';'
+            {
+             before(grammarAccess.getJpaConfigAccess().getSemicolonKeyword_6_4()); 
+            match(input,27,FOLLOW_2); 
+             after(grammarAccess.getJpaConfigAccess().getSemicolonKeyword_6_4()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__JpaConfig__Group_6__4__Impl"
+
+
     // $ANTLR start "rule__Localized__Group__0"
-    // InternalProjectGenerator.g:2361:1: rule__Localized__Group__0 : rule__Localized__Group__0__Impl rule__Localized__Group__1 ;
+    // InternalProjectGenerator.g:2442:1: rule__Localized__Group__0 : rule__Localized__Group__0__Impl rule__Localized__Group__1 ;
     public final void rule__Localized__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:2365:1: ( rule__Localized__Group__0__Impl rule__Localized__Group__1 )
-            // InternalProjectGenerator.g:2366:2: rule__Localized__Group__0__Impl rule__Localized__Group__1
+            // InternalProjectGenerator.g:2446:1: ( rule__Localized__Group__0__Impl rule__Localized__Group__1 )
+            // InternalProjectGenerator.g:2447:2: rule__Localized__Group__0__Impl rule__Localized__Group__1
             {
             pushFollow(FOLLOW_4);
             rule__Localized__Group__0__Impl();
@@ -7092,21 +7317,21 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__Localized__Group__0__Impl"
-    // InternalProjectGenerator.g:2373:1: rule__Localized__Group__0__Impl : ( ( rule__Localized__NameAssignment_0 ) ) ;
+    // InternalProjectGenerator.g:2454:1: rule__Localized__Group__0__Impl : ( ( rule__Localized__NameAssignment_0 ) ) ;
     public final void rule__Localized__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:2377:1: ( ( ( rule__Localized__NameAssignment_0 ) ) )
-            // InternalProjectGenerator.g:2378:1: ( ( rule__Localized__NameAssignment_0 ) )
+            // InternalProjectGenerator.g:2458:1: ( ( ( rule__Localized__NameAssignment_0 ) ) )
+            // InternalProjectGenerator.g:2459:1: ( ( rule__Localized__NameAssignment_0 ) )
             {
-            // InternalProjectGenerator.g:2378:1: ( ( rule__Localized__NameAssignment_0 ) )
-            // InternalProjectGenerator.g:2379:2: ( rule__Localized__NameAssignment_0 )
+            // InternalProjectGenerator.g:2459:1: ( ( rule__Localized__NameAssignment_0 ) )
+            // InternalProjectGenerator.g:2460:2: ( rule__Localized__NameAssignment_0 )
             {
              before(grammarAccess.getLocalizedAccess().getNameAssignment_0()); 
-            // InternalProjectGenerator.g:2380:2: ( rule__Localized__NameAssignment_0 )
-            // InternalProjectGenerator.g:2380:3: rule__Localized__NameAssignment_0
+            // InternalProjectGenerator.g:2461:2: ( rule__Localized__NameAssignment_0 )
+            // InternalProjectGenerator.g:2461:3: rule__Localized__NameAssignment_0
             {
             pushFollow(FOLLOW_2);
             rule__Localized__NameAssignment_0();
@@ -7139,14 +7364,14 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__Localized__Group__1"
-    // InternalProjectGenerator.g:2388:1: rule__Localized__Group__1 : rule__Localized__Group__1__Impl rule__Localized__Group__2 ;
+    // InternalProjectGenerator.g:2469:1: rule__Localized__Group__1 : rule__Localized__Group__1__Impl rule__Localized__Group__2 ;
     public final void rule__Localized__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:2392:1: ( rule__Localized__Group__1__Impl rule__Localized__Group__2 )
-            // InternalProjectGenerator.g:2393:2: rule__Localized__Group__1__Impl rule__Localized__Group__2
+            // InternalProjectGenerator.g:2473:1: ( rule__Localized__Group__1__Impl rule__Localized__Group__2 )
+            // InternalProjectGenerator.g:2474:2: rule__Localized__Group__1__Impl rule__Localized__Group__2
             {
             pushFollow(FOLLOW_25);
             rule__Localized__Group__1__Impl();
@@ -7177,17 +7402,17 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__Localized__Group__1__Impl"
-    // InternalProjectGenerator.g:2400:1: rule__Localized__Group__1__Impl : ( '{' ) ;
+    // InternalProjectGenerator.g:2481:1: rule__Localized__Group__1__Impl : ( '{' ) ;
     public final void rule__Localized__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:2404:1: ( ( '{' ) )
-            // InternalProjectGenerator.g:2405:1: ( '{' )
+            // InternalProjectGenerator.g:2485:1: ( ( '{' ) )
+            // InternalProjectGenerator.g:2486:1: ( '{' )
             {
-            // InternalProjectGenerator.g:2405:1: ( '{' )
-            // InternalProjectGenerator.g:2406:2: '{'
+            // InternalProjectGenerator.g:2486:1: ( '{' )
+            // InternalProjectGenerator.g:2487:2: '{'
             {
              before(grammarAccess.getLocalizedAccess().getLeftCurlyBracketKeyword_1()); 
             match(input,25,FOLLOW_2); 
@@ -7214,14 +7439,14 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__Localized__Group__2"
-    // InternalProjectGenerator.g:2415:1: rule__Localized__Group__2 : rule__Localized__Group__2__Impl rule__Localized__Group__3 ;
+    // InternalProjectGenerator.g:2496:1: rule__Localized__Group__2 : rule__Localized__Group__2__Impl rule__Localized__Group__3 ;
     public final void rule__Localized__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:2419:1: ( rule__Localized__Group__2__Impl rule__Localized__Group__3 )
-            // InternalProjectGenerator.g:2420:2: rule__Localized__Group__2__Impl rule__Localized__Group__3
+            // InternalProjectGenerator.g:2500:1: ( rule__Localized__Group__2__Impl rule__Localized__Group__3 )
+            // InternalProjectGenerator.g:2501:2: rule__Localized__Group__2__Impl rule__Localized__Group__3
             {
             pushFollow(FOLLOW_25);
             rule__Localized__Group__2__Impl();
@@ -7252,20 +7477,20 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__Localized__Group__2__Impl"
-    // InternalProjectGenerator.g:2427:1: rule__Localized__Group__2__Impl : ( ( rule__Localized__Group_2__0 )? ) ;
+    // InternalProjectGenerator.g:2508:1: rule__Localized__Group__2__Impl : ( ( rule__Localized__Group_2__0 )? ) ;
     public final void rule__Localized__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:2431:1: ( ( ( rule__Localized__Group_2__0 )? ) )
-            // InternalProjectGenerator.g:2432:1: ( ( rule__Localized__Group_2__0 )? )
+            // InternalProjectGenerator.g:2512:1: ( ( ( rule__Localized__Group_2__0 )? ) )
+            // InternalProjectGenerator.g:2513:1: ( ( rule__Localized__Group_2__0 )? )
             {
-            // InternalProjectGenerator.g:2432:1: ( ( rule__Localized__Group_2__0 )? )
-            // InternalProjectGenerator.g:2433:2: ( rule__Localized__Group_2__0 )?
+            // InternalProjectGenerator.g:2513:1: ( ( rule__Localized__Group_2__0 )? )
+            // InternalProjectGenerator.g:2514:2: ( rule__Localized__Group_2__0 )?
             {
              before(grammarAccess.getLocalizedAccess().getGroup_2()); 
-            // InternalProjectGenerator.g:2434:2: ( rule__Localized__Group_2__0 )?
+            // InternalProjectGenerator.g:2515:2: ( rule__Localized__Group_2__0 )?
             int alt16=2;
             int LA16_0 = input.LA(1);
 
@@ -7274,7 +7499,7 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
             }
             switch (alt16) {
                 case 1 :
-                    // InternalProjectGenerator.g:2434:3: rule__Localized__Group_2__0
+                    // InternalProjectGenerator.g:2515:3: rule__Localized__Group_2__0
                     {
                     pushFollow(FOLLOW_2);
                     rule__Localized__Group_2__0();
@@ -7310,14 +7535,14 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__Localized__Group__3"
-    // InternalProjectGenerator.g:2442:1: rule__Localized__Group__3 : rule__Localized__Group__3__Impl rule__Localized__Group__4 ;
+    // InternalProjectGenerator.g:2523:1: rule__Localized__Group__3 : rule__Localized__Group__3__Impl rule__Localized__Group__4 ;
     public final void rule__Localized__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:2446:1: ( rule__Localized__Group__3__Impl rule__Localized__Group__4 )
-            // InternalProjectGenerator.g:2447:2: rule__Localized__Group__3__Impl rule__Localized__Group__4
+            // InternalProjectGenerator.g:2527:1: ( rule__Localized__Group__3__Impl rule__Localized__Group__4 )
+            // InternalProjectGenerator.g:2528:2: rule__Localized__Group__3__Impl rule__Localized__Group__4
             {
             pushFollow(FOLLOW_7);
             rule__Localized__Group__3__Impl();
@@ -7348,17 +7573,17 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__Localized__Group__3__Impl"
-    // InternalProjectGenerator.g:2454:1: rule__Localized__Group__3__Impl : ( '}' ) ;
+    // InternalProjectGenerator.g:2535:1: rule__Localized__Group__3__Impl : ( '}' ) ;
     public final void rule__Localized__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:2458:1: ( ( '}' ) )
-            // InternalProjectGenerator.g:2459:1: ( '}' )
+            // InternalProjectGenerator.g:2539:1: ( ( '}' ) )
+            // InternalProjectGenerator.g:2540:1: ( '}' )
             {
-            // InternalProjectGenerator.g:2459:1: ( '}' )
-            // InternalProjectGenerator.g:2460:2: '}'
+            // InternalProjectGenerator.g:2540:1: ( '}' )
+            // InternalProjectGenerator.g:2541:2: '}'
             {
              before(grammarAccess.getLocalizedAccess().getRightCurlyBracketKeyword_3()); 
             match(input,31,FOLLOW_2); 
@@ -7385,14 +7610,14 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__Localized__Group__4"
-    // InternalProjectGenerator.g:2469:1: rule__Localized__Group__4 : rule__Localized__Group__4__Impl ;
+    // InternalProjectGenerator.g:2550:1: rule__Localized__Group__4 : rule__Localized__Group__4__Impl ;
     public final void rule__Localized__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:2473:1: ( rule__Localized__Group__4__Impl )
-            // InternalProjectGenerator.g:2474:2: rule__Localized__Group__4__Impl
+            // InternalProjectGenerator.g:2554:1: ( rule__Localized__Group__4__Impl )
+            // InternalProjectGenerator.g:2555:2: rule__Localized__Group__4__Impl
             {
             pushFollow(FOLLOW_2);
             rule__Localized__Group__4__Impl();
@@ -7418,17 +7643,17 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__Localized__Group__4__Impl"
-    // InternalProjectGenerator.g:2480:1: rule__Localized__Group__4__Impl : ( ';' ) ;
+    // InternalProjectGenerator.g:2561:1: rule__Localized__Group__4__Impl : ( ';' ) ;
     public final void rule__Localized__Group__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:2484:1: ( ( ';' ) )
-            // InternalProjectGenerator.g:2485:1: ( ';' )
+            // InternalProjectGenerator.g:2565:1: ( ( ';' ) )
+            // InternalProjectGenerator.g:2566:1: ( ';' )
             {
-            // InternalProjectGenerator.g:2485:1: ( ';' )
-            // InternalProjectGenerator.g:2486:2: ';'
+            // InternalProjectGenerator.g:2566:1: ( ';' )
+            // InternalProjectGenerator.g:2567:2: ';'
             {
              before(grammarAccess.getLocalizedAccess().getSemicolonKeyword_4()); 
             match(input,27,FOLLOW_2); 
@@ -7455,14 +7680,14 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__Localized__Group_2__0"
-    // InternalProjectGenerator.g:2496:1: rule__Localized__Group_2__0 : rule__Localized__Group_2__0__Impl rule__Localized__Group_2__1 ;
+    // InternalProjectGenerator.g:2577:1: rule__Localized__Group_2__0 : rule__Localized__Group_2__0__Impl rule__Localized__Group_2__1 ;
     public final void rule__Localized__Group_2__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:2500:1: ( rule__Localized__Group_2__0__Impl rule__Localized__Group_2__1 )
-            // InternalProjectGenerator.g:2501:2: rule__Localized__Group_2__0__Impl rule__Localized__Group_2__1
+            // InternalProjectGenerator.g:2581:1: ( rule__Localized__Group_2__0__Impl rule__Localized__Group_2__1 )
+            // InternalProjectGenerator.g:2582:2: rule__Localized__Group_2__0__Impl rule__Localized__Group_2__1
             {
             pushFollow(FOLLOW_4);
             rule__Localized__Group_2__0__Impl();
@@ -7493,17 +7718,17 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__Localized__Group_2__0__Impl"
-    // InternalProjectGenerator.g:2508:1: rule__Localized__Group_2__0__Impl : ( 'values' ) ;
+    // InternalProjectGenerator.g:2589:1: rule__Localized__Group_2__0__Impl : ( 'values' ) ;
     public final void rule__Localized__Group_2__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:2512:1: ( ( 'values' ) )
-            // InternalProjectGenerator.g:2513:1: ( 'values' )
+            // InternalProjectGenerator.g:2593:1: ( ( 'values' ) )
+            // InternalProjectGenerator.g:2594:1: ( 'values' )
             {
-            // InternalProjectGenerator.g:2513:1: ( 'values' )
-            // InternalProjectGenerator.g:2514:2: 'values'
+            // InternalProjectGenerator.g:2594:1: ( 'values' )
+            // InternalProjectGenerator.g:2595:2: 'values'
             {
              before(grammarAccess.getLocalizedAccess().getValuesKeyword_2_0()); 
             match(input,40,FOLLOW_2); 
@@ -7530,14 +7755,14 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__Localized__Group_2__1"
-    // InternalProjectGenerator.g:2523:1: rule__Localized__Group_2__1 : rule__Localized__Group_2__1__Impl rule__Localized__Group_2__2 ;
+    // InternalProjectGenerator.g:2604:1: rule__Localized__Group_2__1 : rule__Localized__Group_2__1__Impl rule__Localized__Group_2__2 ;
     public final void rule__Localized__Group_2__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:2527:1: ( rule__Localized__Group_2__1__Impl rule__Localized__Group_2__2 )
-            // InternalProjectGenerator.g:2528:2: rule__Localized__Group_2__1__Impl rule__Localized__Group_2__2
+            // InternalProjectGenerator.g:2608:1: ( rule__Localized__Group_2__1__Impl rule__Localized__Group_2__2 )
+            // InternalProjectGenerator.g:2609:2: rule__Localized__Group_2__1__Impl rule__Localized__Group_2__2
             {
             pushFollow(FOLLOW_4);
             rule__Localized__Group_2__1__Impl();
@@ -7568,17 +7793,17 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__Localized__Group_2__1__Impl"
-    // InternalProjectGenerator.g:2535:1: rule__Localized__Group_2__1__Impl : ( '{' ) ;
+    // InternalProjectGenerator.g:2616:1: rule__Localized__Group_2__1__Impl : ( '{' ) ;
     public final void rule__Localized__Group_2__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:2539:1: ( ( '{' ) )
-            // InternalProjectGenerator.g:2540:1: ( '{' )
+            // InternalProjectGenerator.g:2620:1: ( ( '{' ) )
+            // InternalProjectGenerator.g:2621:1: ( '{' )
             {
-            // InternalProjectGenerator.g:2540:1: ( '{' )
-            // InternalProjectGenerator.g:2541:2: '{'
+            // InternalProjectGenerator.g:2621:1: ( '{' )
+            // InternalProjectGenerator.g:2622:2: '{'
             {
              before(grammarAccess.getLocalizedAccess().getLeftCurlyBracketKeyword_2_1()); 
             match(input,25,FOLLOW_2); 
@@ -7605,14 +7830,14 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__Localized__Group_2__2"
-    // InternalProjectGenerator.g:2550:1: rule__Localized__Group_2__2 : rule__Localized__Group_2__2__Impl rule__Localized__Group_2__3 ;
+    // InternalProjectGenerator.g:2631:1: rule__Localized__Group_2__2 : rule__Localized__Group_2__2__Impl rule__Localized__Group_2__3 ;
     public final void rule__Localized__Group_2__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:2554:1: ( rule__Localized__Group_2__2__Impl rule__Localized__Group_2__3 )
-            // InternalProjectGenerator.g:2555:2: rule__Localized__Group_2__2__Impl rule__Localized__Group_2__3
+            // InternalProjectGenerator.g:2635:1: ( rule__Localized__Group_2__2__Impl rule__Localized__Group_2__3 )
+            // InternalProjectGenerator.g:2636:2: rule__Localized__Group_2__2__Impl rule__Localized__Group_2__3
             {
             pushFollow(FOLLOW_12);
             rule__Localized__Group_2__2__Impl();
@@ -7643,24 +7868,24 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__Localized__Group_2__2__Impl"
-    // InternalProjectGenerator.g:2562:1: rule__Localized__Group_2__2__Impl : ( ( ( rule__Localized__ValuesAssignment_2_2 ) ) ( ( rule__Localized__ValuesAssignment_2_2 )* ) ) ;
+    // InternalProjectGenerator.g:2643:1: rule__Localized__Group_2__2__Impl : ( ( ( rule__Localized__ValuesAssignment_2_2 ) ) ( ( rule__Localized__ValuesAssignment_2_2 )* ) ) ;
     public final void rule__Localized__Group_2__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:2566:1: ( ( ( ( rule__Localized__ValuesAssignment_2_2 ) ) ( ( rule__Localized__ValuesAssignment_2_2 )* ) ) )
-            // InternalProjectGenerator.g:2567:1: ( ( ( rule__Localized__ValuesAssignment_2_2 ) ) ( ( rule__Localized__ValuesAssignment_2_2 )* ) )
+            // InternalProjectGenerator.g:2647:1: ( ( ( ( rule__Localized__ValuesAssignment_2_2 ) ) ( ( rule__Localized__ValuesAssignment_2_2 )* ) ) )
+            // InternalProjectGenerator.g:2648:1: ( ( ( rule__Localized__ValuesAssignment_2_2 ) ) ( ( rule__Localized__ValuesAssignment_2_2 )* ) )
             {
-            // InternalProjectGenerator.g:2567:1: ( ( ( rule__Localized__ValuesAssignment_2_2 ) ) ( ( rule__Localized__ValuesAssignment_2_2 )* ) )
-            // InternalProjectGenerator.g:2568:2: ( ( rule__Localized__ValuesAssignment_2_2 ) ) ( ( rule__Localized__ValuesAssignment_2_2 )* )
+            // InternalProjectGenerator.g:2648:1: ( ( ( rule__Localized__ValuesAssignment_2_2 ) ) ( ( rule__Localized__ValuesAssignment_2_2 )* ) )
+            // InternalProjectGenerator.g:2649:2: ( ( rule__Localized__ValuesAssignment_2_2 ) ) ( ( rule__Localized__ValuesAssignment_2_2 )* )
             {
-            // InternalProjectGenerator.g:2568:2: ( ( rule__Localized__ValuesAssignment_2_2 ) )
-            // InternalProjectGenerator.g:2569:3: ( rule__Localized__ValuesAssignment_2_2 )
+            // InternalProjectGenerator.g:2649:2: ( ( rule__Localized__ValuesAssignment_2_2 ) )
+            // InternalProjectGenerator.g:2650:3: ( rule__Localized__ValuesAssignment_2_2 )
             {
              before(grammarAccess.getLocalizedAccess().getValuesAssignment_2_2()); 
-            // InternalProjectGenerator.g:2570:3: ( rule__Localized__ValuesAssignment_2_2 )
-            // InternalProjectGenerator.g:2570:4: rule__Localized__ValuesAssignment_2_2
+            // InternalProjectGenerator.g:2651:3: ( rule__Localized__ValuesAssignment_2_2 )
+            // InternalProjectGenerator.g:2651:4: rule__Localized__ValuesAssignment_2_2
             {
             pushFollow(FOLLOW_26);
             rule__Localized__ValuesAssignment_2_2();
@@ -7674,11 +7899,11 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
             }
 
-            // InternalProjectGenerator.g:2573:2: ( ( rule__Localized__ValuesAssignment_2_2 )* )
-            // InternalProjectGenerator.g:2574:3: ( rule__Localized__ValuesAssignment_2_2 )*
+            // InternalProjectGenerator.g:2654:2: ( ( rule__Localized__ValuesAssignment_2_2 )* )
+            // InternalProjectGenerator.g:2655:3: ( rule__Localized__ValuesAssignment_2_2 )*
             {
              before(grammarAccess.getLocalizedAccess().getValuesAssignment_2_2()); 
-            // InternalProjectGenerator.g:2575:3: ( rule__Localized__ValuesAssignment_2_2 )*
+            // InternalProjectGenerator.g:2656:3: ( rule__Localized__ValuesAssignment_2_2 )*
             loop17:
             do {
                 int alt17=2;
@@ -7691,7 +7916,7 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
                 switch (alt17) {
             	case 1 :
-            	    // InternalProjectGenerator.g:2575:4: rule__Localized__ValuesAssignment_2_2
+            	    // InternalProjectGenerator.g:2656:4: rule__Localized__ValuesAssignment_2_2
             	    {
             	    pushFollow(FOLLOW_26);
             	    rule__Localized__ValuesAssignment_2_2();
@@ -7733,14 +7958,14 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__Localized__Group_2__3"
-    // InternalProjectGenerator.g:2584:1: rule__Localized__Group_2__3 : rule__Localized__Group_2__3__Impl rule__Localized__Group_2__4 ;
+    // InternalProjectGenerator.g:2665:1: rule__Localized__Group_2__3 : rule__Localized__Group_2__3__Impl rule__Localized__Group_2__4 ;
     public final void rule__Localized__Group_2__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:2588:1: ( rule__Localized__Group_2__3__Impl rule__Localized__Group_2__4 )
-            // InternalProjectGenerator.g:2589:2: rule__Localized__Group_2__3__Impl rule__Localized__Group_2__4
+            // InternalProjectGenerator.g:2669:1: ( rule__Localized__Group_2__3__Impl rule__Localized__Group_2__4 )
+            // InternalProjectGenerator.g:2670:2: rule__Localized__Group_2__3__Impl rule__Localized__Group_2__4
             {
             pushFollow(FOLLOW_7);
             rule__Localized__Group_2__3__Impl();
@@ -7771,17 +7996,17 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__Localized__Group_2__3__Impl"
-    // InternalProjectGenerator.g:2596:1: rule__Localized__Group_2__3__Impl : ( '}' ) ;
+    // InternalProjectGenerator.g:2677:1: rule__Localized__Group_2__3__Impl : ( '}' ) ;
     public final void rule__Localized__Group_2__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:2600:1: ( ( '}' ) )
-            // InternalProjectGenerator.g:2601:1: ( '}' )
+            // InternalProjectGenerator.g:2681:1: ( ( '}' ) )
+            // InternalProjectGenerator.g:2682:1: ( '}' )
             {
-            // InternalProjectGenerator.g:2601:1: ( '}' )
-            // InternalProjectGenerator.g:2602:2: '}'
+            // InternalProjectGenerator.g:2682:1: ( '}' )
+            // InternalProjectGenerator.g:2683:2: '}'
             {
              before(grammarAccess.getLocalizedAccess().getRightCurlyBracketKeyword_2_3()); 
             match(input,31,FOLLOW_2); 
@@ -7808,14 +8033,14 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__Localized__Group_2__4"
-    // InternalProjectGenerator.g:2611:1: rule__Localized__Group_2__4 : rule__Localized__Group_2__4__Impl ;
+    // InternalProjectGenerator.g:2692:1: rule__Localized__Group_2__4 : rule__Localized__Group_2__4__Impl ;
     public final void rule__Localized__Group_2__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:2615:1: ( rule__Localized__Group_2__4__Impl )
-            // InternalProjectGenerator.g:2616:2: rule__Localized__Group_2__4__Impl
+            // InternalProjectGenerator.g:2696:1: ( rule__Localized__Group_2__4__Impl )
+            // InternalProjectGenerator.g:2697:2: rule__Localized__Group_2__4__Impl
             {
             pushFollow(FOLLOW_2);
             rule__Localized__Group_2__4__Impl();
@@ -7841,17 +8066,17 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__Localized__Group_2__4__Impl"
-    // InternalProjectGenerator.g:2622:1: rule__Localized__Group_2__4__Impl : ( ';' ) ;
+    // InternalProjectGenerator.g:2703:1: rule__Localized__Group_2__4__Impl : ( ';' ) ;
     public final void rule__Localized__Group_2__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:2626:1: ( ( ';' ) )
-            // InternalProjectGenerator.g:2627:1: ( ';' )
+            // InternalProjectGenerator.g:2707:1: ( ( ';' ) )
+            // InternalProjectGenerator.g:2708:1: ( ';' )
             {
-            // InternalProjectGenerator.g:2627:1: ( ';' )
-            // InternalProjectGenerator.g:2628:2: ';'
+            // InternalProjectGenerator.g:2708:1: ( ';' )
+            // InternalProjectGenerator.g:2709:2: ';'
             {
              before(grammarAccess.getLocalizedAccess().getSemicolonKeyword_2_4()); 
             match(input,27,FOLLOW_2); 
@@ -7878,14 +8103,14 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__LocalizedEntry__Group__0"
-    // InternalProjectGenerator.g:2638:1: rule__LocalizedEntry__Group__0 : rule__LocalizedEntry__Group__0__Impl rule__LocalizedEntry__Group__1 ;
+    // InternalProjectGenerator.g:2719:1: rule__LocalizedEntry__Group__0 : rule__LocalizedEntry__Group__0__Impl rule__LocalizedEntry__Group__1 ;
     public final void rule__LocalizedEntry__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:2642:1: ( rule__LocalizedEntry__Group__0__Impl rule__LocalizedEntry__Group__1 )
-            // InternalProjectGenerator.g:2643:2: rule__LocalizedEntry__Group__0__Impl rule__LocalizedEntry__Group__1
+            // InternalProjectGenerator.g:2723:1: ( rule__LocalizedEntry__Group__0__Impl rule__LocalizedEntry__Group__1 )
+            // InternalProjectGenerator.g:2724:2: rule__LocalizedEntry__Group__0__Impl rule__LocalizedEntry__Group__1
             {
             pushFollow(FOLLOW_5);
             rule__LocalizedEntry__Group__0__Impl();
@@ -7916,17 +8141,17 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__LocalizedEntry__Group__0__Impl"
-    // InternalProjectGenerator.g:2650:1: rule__LocalizedEntry__Group__0__Impl : ( '{' ) ;
+    // InternalProjectGenerator.g:2731:1: rule__LocalizedEntry__Group__0__Impl : ( '{' ) ;
     public final void rule__LocalizedEntry__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:2654:1: ( ( '{' ) )
-            // InternalProjectGenerator.g:2655:1: ( '{' )
+            // InternalProjectGenerator.g:2735:1: ( ( '{' ) )
+            // InternalProjectGenerator.g:2736:1: ( '{' )
             {
-            // InternalProjectGenerator.g:2655:1: ( '{' )
-            // InternalProjectGenerator.g:2656:2: '{'
+            // InternalProjectGenerator.g:2736:1: ( '{' )
+            // InternalProjectGenerator.g:2737:2: '{'
             {
              before(grammarAccess.getLocalizedEntryAccess().getLeftCurlyBracketKeyword_0()); 
             match(input,25,FOLLOW_2); 
@@ -7953,14 +8178,14 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__LocalizedEntry__Group__1"
-    // InternalProjectGenerator.g:2665:1: rule__LocalizedEntry__Group__1 : rule__LocalizedEntry__Group__1__Impl rule__LocalizedEntry__Group__2 ;
+    // InternalProjectGenerator.g:2746:1: rule__LocalizedEntry__Group__1 : rule__LocalizedEntry__Group__1__Impl rule__LocalizedEntry__Group__2 ;
     public final void rule__LocalizedEntry__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:2669:1: ( rule__LocalizedEntry__Group__1__Impl rule__LocalizedEntry__Group__2 )
-            // InternalProjectGenerator.g:2670:2: rule__LocalizedEntry__Group__1__Impl rule__LocalizedEntry__Group__2
+            // InternalProjectGenerator.g:2750:1: ( rule__LocalizedEntry__Group__1__Impl rule__LocalizedEntry__Group__2 )
+            // InternalProjectGenerator.g:2751:2: rule__LocalizedEntry__Group__1__Impl rule__LocalizedEntry__Group__2
             {
             pushFollow(FOLLOW_27);
             rule__LocalizedEntry__Group__1__Impl();
@@ -7991,17 +8216,17 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__LocalizedEntry__Group__1__Impl"
-    // InternalProjectGenerator.g:2677:1: rule__LocalizedEntry__Group__1__Impl : ( 'key' ) ;
+    // InternalProjectGenerator.g:2758:1: rule__LocalizedEntry__Group__1__Impl : ( 'key' ) ;
     public final void rule__LocalizedEntry__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:2681:1: ( ( 'key' ) )
-            // InternalProjectGenerator.g:2682:1: ( 'key' )
+            // InternalProjectGenerator.g:2762:1: ( ( 'key' ) )
+            // InternalProjectGenerator.g:2763:1: ( 'key' )
             {
-            // InternalProjectGenerator.g:2682:1: ( 'key' )
-            // InternalProjectGenerator.g:2683:2: 'key'
+            // InternalProjectGenerator.g:2763:1: ( 'key' )
+            // InternalProjectGenerator.g:2764:2: 'key'
             {
              before(grammarAccess.getLocalizedEntryAccess().getKeyKeyword_1()); 
             match(input,26,FOLLOW_2); 
@@ -8028,14 +8253,14 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__LocalizedEntry__Group__2"
-    // InternalProjectGenerator.g:2692:1: rule__LocalizedEntry__Group__2 : rule__LocalizedEntry__Group__2__Impl rule__LocalizedEntry__Group__3 ;
+    // InternalProjectGenerator.g:2773:1: rule__LocalizedEntry__Group__2 : rule__LocalizedEntry__Group__2__Impl rule__LocalizedEntry__Group__3 ;
     public final void rule__LocalizedEntry__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:2696:1: ( rule__LocalizedEntry__Group__2__Impl rule__LocalizedEntry__Group__3 )
-            // InternalProjectGenerator.g:2697:2: rule__LocalizedEntry__Group__2__Impl rule__LocalizedEntry__Group__3
+            // InternalProjectGenerator.g:2777:1: ( rule__LocalizedEntry__Group__2__Impl rule__LocalizedEntry__Group__3 )
+            // InternalProjectGenerator.g:2778:2: rule__LocalizedEntry__Group__2__Impl rule__LocalizedEntry__Group__3
             {
             pushFollow(FOLLOW_7);
             rule__LocalizedEntry__Group__2__Impl();
@@ -8066,21 +8291,21 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__LocalizedEntry__Group__2__Impl"
-    // InternalProjectGenerator.g:2704:1: rule__LocalizedEntry__Group__2__Impl : ( ( rule__LocalizedEntry__LocalizedKeyAssignment_2 ) ) ;
+    // InternalProjectGenerator.g:2785:1: rule__LocalizedEntry__Group__2__Impl : ( ( rule__LocalizedEntry__LocalizedKeyAssignment_2 ) ) ;
     public final void rule__LocalizedEntry__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:2708:1: ( ( ( rule__LocalizedEntry__LocalizedKeyAssignment_2 ) ) )
-            // InternalProjectGenerator.g:2709:1: ( ( rule__LocalizedEntry__LocalizedKeyAssignment_2 ) )
+            // InternalProjectGenerator.g:2789:1: ( ( ( rule__LocalizedEntry__LocalizedKeyAssignment_2 ) ) )
+            // InternalProjectGenerator.g:2790:1: ( ( rule__LocalizedEntry__LocalizedKeyAssignment_2 ) )
             {
-            // InternalProjectGenerator.g:2709:1: ( ( rule__LocalizedEntry__LocalizedKeyAssignment_2 ) )
-            // InternalProjectGenerator.g:2710:2: ( rule__LocalizedEntry__LocalizedKeyAssignment_2 )
+            // InternalProjectGenerator.g:2790:1: ( ( rule__LocalizedEntry__LocalizedKeyAssignment_2 ) )
+            // InternalProjectGenerator.g:2791:2: ( rule__LocalizedEntry__LocalizedKeyAssignment_2 )
             {
              before(grammarAccess.getLocalizedEntryAccess().getLocalizedKeyAssignment_2()); 
-            // InternalProjectGenerator.g:2711:2: ( rule__LocalizedEntry__LocalizedKeyAssignment_2 )
-            // InternalProjectGenerator.g:2711:3: rule__LocalizedEntry__LocalizedKeyAssignment_2
+            // InternalProjectGenerator.g:2792:2: ( rule__LocalizedEntry__LocalizedKeyAssignment_2 )
+            // InternalProjectGenerator.g:2792:3: rule__LocalizedEntry__LocalizedKeyAssignment_2
             {
             pushFollow(FOLLOW_2);
             rule__LocalizedEntry__LocalizedKeyAssignment_2();
@@ -8113,14 +8338,14 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__LocalizedEntry__Group__3"
-    // InternalProjectGenerator.g:2719:1: rule__LocalizedEntry__Group__3 : rule__LocalizedEntry__Group__3__Impl rule__LocalizedEntry__Group__4 ;
+    // InternalProjectGenerator.g:2800:1: rule__LocalizedEntry__Group__3 : rule__LocalizedEntry__Group__3__Impl rule__LocalizedEntry__Group__4 ;
     public final void rule__LocalizedEntry__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:2723:1: ( rule__LocalizedEntry__Group__3__Impl rule__LocalizedEntry__Group__4 )
-            // InternalProjectGenerator.g:2724:2: rule__LocalizedEntry__Group__3__Impl rule__LocalizedEntry__Group__4
+            // InternalProjectGenerator.g:2804:1: ( rule__LocalizedEntry__Group__3__Impl rule__LocalizedEntry__Group__4 )
+            // InternalProjectGenerator.g:2805:2: rule__LocalizedEntry__Group__3__Impl rule__LocalizedEntry__Group__4
             {
             pushFollow(FOLLOW_28);
             rule__LocalizedEntry__Group__3__Impl();
@@ -8151,17 +8376,17 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__LocalizedEntry__Group__3__Impl"
-    // InternalProjectGenerator.g:2731:1: rule__LocalizedEntry__Group__3__Impl : ( ';' ) ;
+    // InternalProjectGenerator.g:2812:1: rule__LocalizedEntry__Group__3__Impl : ( ';' ) ;
     public final void rule__LocalizedEntry__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:2735:1: ( ( ';' ) )
-            // InternalProjectGenerator.g:2736:1: ( ';' )
+            // InternalProjectGenerator.g:2816:1: ( ( ';' ) )
+            // InternalProjectGenerator.g:2817:1: ( ';' )
             {
-            // InternalProjectGenerator.g:2736:1: ( ';' )
-            // InternalProjectGenerator.g:2737:2: ';'
+            // InternalProjectGenerator.g:2817:1: ( ';' )
+            // InternalProjectGenerator.g:2818:2: ';'
             {
              before(grammarAccess.getLocalizedEntryAccess().getSemicolonKeyword_3()); 
             match(input,27,FOLLOW_2); 
@@ -8188,14 +8413,14 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__LocalizedEntry__Group__4"
-    // InternalProjectGenerator.g:2746:1: rule__LocalizedEntry__Group__4 : rule__LocalizedEntry__Group__4__Impl rule__LocalizedEntry__Group__5 ;
+    // InternalProjectGenerator.g:2827:1: rule__LocalizedEntry__Group__4 : rule__LocalizedEntry__Group__4__Impl rule__LocalizedEntry__Group__5 ;
     public final void rule__LocalizedEntry__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:2750:1: ( rule__LocalizedEntry__Group__4__Impl rule__LocalizedEntry__Group__5 )
-            // InternalProjectGenerator.g:2751:2: rule__LocalizedEntry__Group__4__Impl rule__LocalizedEntry__Group__5
+            // InternalProjectGenerator.g:2831:1: ( rule__LocalizedEntry__Group__4__Impl rule__LocalizedEntry__Group__5 )
+            // InternalProjectGenerator.g:2832:2: rule__LocalizedEntry__Group__4__Impl rule__LocalizedEntry__Group__5
             {
             pushFollow(FOLLOW_4);
             rule__LocalizedEntry__Group__4__Impl();
@@ -8226,17 +8451,17 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__LocalizedEntry__Group__4__Impl"
-    // InternalProjectGenerator.g:2758:1: rule__LocalizedEntry__Group__4__Impl : ( 'values' ) ;
+    // InternalProjectGenerator.g:2839:1: rule__LocalizedEntry__Group__4__Impl : ( 'values' ) ;
     public final void rule__LocalizedEntry__Group__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:2762:1: ( ( 'values' ) )
-            // InternalProjectGenerator.g:2763:1: ( 'values' )
+            // InternalProjectGenerator.g:2843:1: ( ( 'values' ) )
+            // InternalProjectGenerator.g:2844:1: ( 'values' )
             {
-            // InternalProjectGenerator.g:2763:1: ( 'values' )
-            // InternalProjectGenerator.g:2764:2: 'values'
+            // InternalProjectGenerator.g:2844:1: ( 'values' )
+            // InternalProjectGenerator.g:2845:2: 'values'
             {
              before(grammarAccess.getLocalizedEntryAccess().getValuesKeyword_4()); 
             match(input,40,FOLLOW_2); 
@@ -8263,14 +8488,14 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__LocalizedEntry__Group__5"
-    // InternalProjectGenerator.g:2773:1: rule__LocalizedEntry__Group__5 : rule__LocalizedEntry__Group__5__Impl rule__LocalizedEntry__Group__6 ;
+    // InternalProjectGenerator.g:2854:1: rule__LocalizedEntry__Group__5 : rule__LocalizedEntry__Group__5__Impl rule__LocalizedEntry__Group__6 ;
     public final void rule__LocalizedEntry__Group__5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:2777:1: ( rule__LocalizedEntry__Group__5__Impl rule__LocalizedEntry__Group__6 )
-            // InternalProjectGenerator.g:2778:2: rule__LocalizedEntry__Group__5__Impl rule__LocalizedEntry__Group__6
+            // InternalProjectGenerator.g:2858:1: ( rule__LocalizedEntry__Group__5__Impl rule__LocalizedEntry__Group__6 )
+            // InternalProjectGenerator.g:2859:2: rule__LocalizedEntry__Group__5__Impl rule__LocalizedEntry__Group__6
             {
             pushFollow(FOLLOW_4);
             rule__LocalizedEntry__Group__5__Impl();
@@ -8301,17 +8526,17 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__LocalizedEntry__Group__5__Impl"
-    // InternalProjectGenerator.g:2785:1: rule__LocalizedEntry__Group__5__Impl : ( '{' ) ;
+    // InternalProjectGenerator.g:2866:1: rule__LocalizedEntry__Group__5__Impl : ( '{' ) ;
     public final void rule__LocalizedEntry__Group__5__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:2789:1: ( ( '{' ) )
-            // InternalProjectGenerator.g:2790:1: ( '{' )
+            // InternalProjectGenerator.g:2870:1: ( ( '{' ) )
+            // InternalProjectGenerator.g:2871:1: ( '{' )
             {
-            // InternalProjectGenerator.g:2790:1: ( '{' )
-            // InternalProjectGenerator.g:2791:2: '{'
+            // InternalProjectGenerator.g:2871:1: ( '{' )
+            // InternalProjectGenerator.g:2872:2: '{'
             {
              before(grammarAccess.getLocalizedEntryAccess().getLeftCurlyBracketKeyword_5()); 
             match(input,25,FOLLOW_2); 
@@ -8338,14 +8563,14 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__LocalizedEntry__Group__6"
-    // InternalProjectGenerator.g:2800:1: rule__LocalizedEntry__Group__6 : rule__LocalizedEntry__Group__6__Impl rule__LocalizedEntry__Group__7 ;
+    // InternalProjectGenerator.g:2881:1: rule__LocalizedEntry__Group__6 : rule__LocalizedEntry__Group__6__Impl rule__LocalizedEntry__Group__7 ;
     public final void rule__LocalizedEntry__Group__6() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:2804:1: ( rule__LocalizedEntry__Group__6__Impl rule__LocalizedEntry__Group__7 )
-            // InternalProjectGenerator.g:2805:2: rule__LocalizedEntry__Group__6__Impl rule__LocalizedEntry__Group__7
+            // InternalProjectGenerator.g:2885:1: ( rule__LocalizedEntry__Group__6__Impl rule__LocalizedEntry__Group__7 )
+            // InternalProjectGenerator.g:2886:2: rule__LocalizedEntry__Group__6__Impl rule__LocalizedEntry__Group__7
             {
             pushFollow(FOLLOW_12);
             rule__LocalizedEntry__Group__6__Impl();
@@ -8376,24 +8601,24 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__LocalizedEntry__Group__6__Impl"
-    // InternalProjectGenerator.g:2812:1: rule__LocalizedEntry__Group__6__Impl : ( ( ( rule__LocalizedEntry__ValuesAssignment_6 ) ) ( ( rule__LocalizedEntry__ValuesAssignment_6 )* ) ) ;
+    // InternalProjectGenerator.g:2893:1: rule__LocalizedEntry__Group__6__Impl : ( ( ( rule__LocalizedEntry__ValuesAssignment_6 ) ) ( ( rule__LocalizedEntry__ValuesAssignment_6 )* ) ) ;
     public final void rule__LocalizedEntry__Group__6__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:2816:1: ( ( ( ( rule__LocalizedEntry__ValuesAssignment_6 ) ) ( ( rule__LocalizedEntry__ValuesAssignment_6 )* ) ) )
-            // InternalProjectGenerator.g:2817:1: ( ( ( rule__LocalizedEntry__ValuesAssignment_6 ) ) ( ( rule__LocalizedEntry__ValuesAssignment_6 )* ) )
+            // InternalProjectGenerator.g:2897:1: ( ( ( ( rule__LocalizedEntry__ValuesAssignment_6 ) ) ( ( rule__LocalizedEntry__ValuesAssignment_6 )* ) ) )
+            // InternalProjectGenerator.g:2898:1: ( ( ( rule__LocalizedEntry__ValuesAssignment_6 ) ) ( ( rule__LocalizedEntry__ValuesAssignment_6 )* ) )
             {
-            // InternalProjectGenerator.g:2817:1: ( ( ( rule__LocalizedEntry__ValuesAssignment_6 ) ) ( ( rule__LocalizedEntry__ValuesAssignment_6 )* ) )
-            // InternalProjectGenerator.g:2818:2: ( ( rule__LocalizedEntry__ValuesAssignment_6 ) ) ( ( rule__LocalizedEntry__ValuesAssignment_6 )* )
+            // InternalProjectGenerator.g:2898:1: ( ( ( rule__LocalizedEntry__ValuesAssignment_6 ) ) ( ( rule__LocalizedEntry__ValuesAssignment_6 )* ) )
+            // InternalProjectGenerator.g:2899:2: ( ( rule__LocalizedEntry__ValuesAssignment_6 ) ) ( ( rule__LocalizedEntry__ValuesAssignment_6 )* )
             {
-            // InternalProjectGenerator.g:2818:2: ( ( rule__LocalizedEntry__ValuesAssignment_6 ) )
-            // InternalProjectGenerator.g:2819:3: ( rule__LocalizedEntry__ValuesAssignment_6 )
+            // InternalProjectGenerator.g:2899:2: ( ( rule__LocalizedEntry__ValuesAssignment_6 ) )
+            // InternalProjectGenerator.g:2900:3: ( rule__LocalizedEntry__ValuesAssignment_6 )
             {
              before(grammarAccess.getLocalizedEntryAccess().getValuesAssignment_6()); 
-            // InternalProjectGenerator.g:2820:3: ( rule__LocalizedEntry__ValuesAssignment_6 )
-            // InternalProjectGenerator.g:2820:4: rule__LocalizedEntry__ValuesAssignment_6
+            // InternalProjectGenerator.g:2901:3: ( rule__LocalizedEntry__ValuesAssignment_6 )
+            // InternalProjectGenerator.g:2901:4: rule__LocalizedEntry__ValuesAssignment_6
             {
             pushFollow(FOLLOW_26);
             rule__LocalizedEntry__ValuesAssignment_6();
@@ -8407,11 +8632,11 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
             }
 
-            // InternalProjectGenerator.g:2823:2: ( ( rule__LocalizedEntry__ValuesAssignment_6 )* )
-            // InternalProjectGenerator.g:2824:3: ( rule__LocalizedEntry__ValuesAssignment_6 )*
+            // InternalProjectGenerator.g:2904:2: ( ( rule__LocalizedEntry__ValuesAssignment_6 )* )
+            // InternalProjectGenerator.g:2905:3: ( rule__LocalizedEntry__ValuesAssignment_6 )*
             {
              before(grammarAccess.getLocalizedEntryAccess().getValuesAssignment_6()); 
-            // InternalProjectGenerator.g:2825:3: ( rule__LocalizedEntry__ValuesAssignment_6 )*
+            // InternalProjectGenerator.g:2906:3: ( rule__LocalizedEntry__ValuesAssignment_6 )*
             loop18:
             do {
                 int alt18=2;
@@ -8424,7 +8649,7 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
                 switch (alt18) {
             	case 1 :
-            	    // InternalProjectGenerator.g:2825:4: rule__LocalizedEntry__ValuesAssignment_6
+            	    // InternalProjectGenerator.g:2906:4: rule__LocalizedEntry__ValuesAssignment_6
             	    {
             	    pushFollow(FOLLOW_26);
             	    rule__LocalizedEntry__ValuesAssignment_6();
@@ -8466,14 +8691,14 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__LocalizedEntry__Group__7"
-    // InternalProjectGenerator.g:2834:1: rule__LocalizedEntry__Group__7 : rule__LocalizedEntry__Group__7__Impl rule__LocalizedEntry__Group__8 ;
+    // InternalProjectGenerator.g:2915:1: rule__LocalizedEntry__Group__7 : rule__LocalizedEntry__Group__7__Impl rule__LocalizedEntry__Group__8 ;
     public final void rule__LocalizedEntry__Group__7() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:2838:1: ( rule__LocalizedEntry__Group__7__Impl rule__LocalizedEntry__Group__8 )
-            // InternalProjectGenerator.g:2839:2: rule__LocalizedEntry__Group__7__Impl rule__LocalizedEntry__Group__8
+            // InternalProjectGenerator.g:2919:1: ( rule__LocalizedEntry__Group__7__Impl rule__LocalizedEntry__Group__8 )
+            // InternalProjectGenerator.g:2920:2: rule__LocalizedEntry__Group__7__Impl rule__LocalizedEntry__Group__8
             {
             pushFollow(FOLLOW_7);
             rule__LocalizedEntry__Group__7__Impl();
@@ -8504,17 +8729,17 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__LocalizedEntry__Group__7__Impl"
-    // InternalProjectGenerator.g:2846:1: rule__LocalizedEntry__Group__7__Impl : ( '}' ) ;
+    // InternalProjectGenerator.g:2927:1: rule__LocalizedEntry__Group__7__Impl : ( '}' ) ;
     public final void rule__LocalizedEntry__Group__7__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:2850:1: ( ( '}' ) )
-            // InternalProjectGenerator.g:2851:1: ( '}' )
+            // InternalProjectGenerator.g:2931:1: ( ( '}' ) )
+            // InternalProjectGenerator.g:2932:1: ( '}' )
             {
-            // InternalProjectGenerator.g:2851:1: ( '}' )
-            // InternalProjectGenerator.g:2852:2: '}'
+            // InternalProjectGenerator.g:2932:1: ( '}' )
+            // InternalProjectGenerator.g:2933:2: '}'
             {
              before(grammarAccess.getLocalizedEntryAccess().getRightCurlyBracketKeyword_7()); 
             match(input,31,FOLLOW_2); 
@@ -8541,14 +8766,14 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__LocalizedEntry__Group__8"
-    // InternalProjectGenerator.g:2861:1: rule__LocalizedEntry__Group__8 : rule__LocalizedEntry__Group__8__Impl rule__LocalizedEntry__Group__9 ;
+    // InternalProjectGenerator.g:2942:1: rule__LocalizedEntry__Group__8 : rule__LocalizedEntry__Group__8__Impl rule__LocalizedEntry__Group__9 ;
     public final void rule__LocalizedEntry__Group__8() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:2865:1: ( rule__LocalizedEntry__Group__8__Impl rule__LocalizedEntry__Group__9 )
-            // InternalProjectGenerator.g:2866:2: rule__LocalizedEntry__Group__8__Impl rule__LocalizedEntry__Group__9
+            // InternalProjectGenerator.g:2946:1: ( rule__LocalizedEntry__Group__8__Impl rule__LocalizedEntry__Group__9 )
+            // InternalProjectGenerator.g:2947:2: rule__LocalizedEntry__Group__8__Impl rule__LocalizedEntry__Group__9
             {
             pushFollow(FOLLOW_29);
             rule__LocalizedEntry__Group__8__Impl();
@@ -8579,17 +8804,17 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__LocalizedEntry__Group__8__Impl"
-    // InternalProjectGenerator.g:2873:1: rule__LocalizedEntry__Group__8__Impl : ( ';' ) ;
+    // InternalProjectGenerator.g:2954:1: rule__LocalizedEntry__Group__8__Impl : ( ';' ) ;
     public final void rule__LocalizedEntry__Group__8__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:2877:1: ( ( ';' ) )
-            // InternalProjectGenerator.g:2878:1: ( ';' )
+            // InternalProjectGenerator.g:2958:1: ( ( ';' ) )
+            // InternalProjectGenerator.g:2959:1: ( ';' )
             {
-            // InternalProjectGenerator.g:2878:1: ( ';' )
-            // InternalProjectGenerator.g:2879:2: ';'
+            // InternalProjectGenerator.g:2959:1: ( ';' )
+            // InternalProjectGenerator.g:2960:2: ';'
             {
              before(grammarAccess.getLocalizedEntryAccess().getSemicolonKeyword_8()); 
             match(input,27,FOLLOW_2); 
@@ -8616,14 +8841,14 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__LocalizedEntry__Group__9"
-    // InternalProjectGenerator.g:2888:1: rule__LocalizedEntry__Group__9 : rule__LocalizedEntry__Group__9__Impl rule__LocalizedEntry__Group__10 ;
+    // InternalProjectGenerator.g:2969:1: rule__LocalizedEntry__Group__9 : rule__LocalizedEntry__Group__9__Impl rule__LocalizedEntry__Group__10 ;
     public final void rule__LocalizedEntry__Group__9() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:2892:1: ( rule__LocalizedEntry__Group__9__Impl rule__LocalizedEntry__Group__10 )
-            // InternalProjectGenerator.g:2893:2: rule__LocalizedEntry__Group__9__Impl rule__LocalizedEntry__Group__10
+            // InternalProjectGenerator.g:2973:1: ( rule__LocalizedEntry__Group__9__Impl rule__LocalizedEntry__Group__10 )
+            // InternalProjectGenerator.g:2974:2: rule__LocalizedEntry__Group__9__Impl rule__LocalizedEntry__Group__10
             {
             pushFollow(FOLLOW_29);
             rule__LocalizedEntry__Group__9__Impl();
@@ -8654,20 +8879,20 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__LocalizedEntry__Group__9__Impl"
-    // InternalProjectGenerator.g:2900:1: rule__LocalizedEntry__Group__9__Impl : ( ( rule__LocalizedEntry__Group_9__0 )? ) ;
+    // InternalProjectGenerator.g:2981:1: rule__LocalizedEntry__Group__9__Impl : ( ( rule__LocalizedEntry__Group_9__0 )? ) ;
     public final void rule__LocalizedEntry__Group__9__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:2904:1: ( ( ( rule__LocalizedEntry__Group_9__0 )? ) )
-            // InternalProjectGenerator.g:2905:1: ( ( rule__LocalizedEntry__Group_9__0 )? )
+            // InternalProjectGenerator.g:2985:1: ( ( ( rule__LocalizedEntry__Group_9__0 )? ) )
+            // InternalProjectGenerator.g:2986:1: ( ( rule__LocalizedEntry__Group_9__0 )? )
             {
-            // InternalProjectGenerator.g:2905:1: ( ( rule__LocalizedEntry__Group_9__0 )? )
-            // InternalProjectGenerator.g:2906:2: ( rule__LocalizedEntry__Group_9__0 )?
+            // InternalProjectGenerator.g:2986:1: ( ( rule__LocalizedEntry__Group_9__0 )? )
+            // InternalProjectGenerator.g:2987:2: ( rule__LocalizedEntry__Group_9__0 )?
             {
              before(grammarAccess.getLocalizedEntryAccess().getGroup_9()); 
-            // InternalProjectGenerator.g:2907:2: ( rule__LocalizedEntry__Group_9__0 )?
+            // InternalProjectGenerator.g:2988:2: ( rule__LocalizedEntry__Group_9__0 )?
             int alt19=2;
             int LA19_0 = input.LA(1);
 
@@ -8676,7 +8901,7 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
             }
             switch (alt19) {
                 case 1 :
-                    // InternalProjectGenerator.g:2907:3: rule__LocalizedEntry__Group_9__0
+                    // InternalProjectGenerator.g:2988:3: rule__LocalizedEntry__Group_9__0
                     {
                     pushFollow(FOLLOW_2);
                     rule__LocalizedEntry__Group_9__0();
@@ -8712,14 +8937,14 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__LocalizedEntry__Group__10"
-    // InternalProjectGenerator.g:2915:1: rule__LocalizedEntry__Group__10 : rule__LocalizedEntry__Group__10__Impl rule__LocalizedEntry__Group__11 ;
+    // InternalProjectGenerator.g:2996:1: rule__LocalizedEntry__Group__10 : rule__LocalizedEntry__Group__10__Impl rule__LocalizedEntry__Group__11 ;
     public final void rule__LocalizedEntry__Group__10() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:2919:1: ( rule__LocalizedEntry__Group__10__Impl rule__LocalizedEntry__Group__11 )
-            // InternalProjectGenerator.g:2920:2: rule__LocalizedEntry__Group__10__Impl rule__LocalizedEntry__Group__11
+            // InternalProjectGenerator.g:3000:1: ( rule__LocalizedEntry__Group__10__Impl rule__LocalizedEntry__Group__11 )
+            // InternalProjectGenerator.g:3001:2: rule__LocalizedEntry__Group__10__Impl rule__LocalizedEntry__Group__11
             {
             pushFollow(FOLLOW_7);
             rule__LocalizedEntry__Group__10__Impl();
@@ -8750,17 +8975,17 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__LocalizedEntry__Group__10__Impl"
-    // InternalProjectGenerator.g:2927:1: rule__LocalizedEntry__Group__10__Impl : ( '}' ) ;
+    // InternalProjectGenerator.g:3008:1: rule__LocalizedEntry__Group__10__Impl : ( '}' ) ;
     public final void rule__LocalizedEntry__Group__10__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:2931:1: ( ( '}' ) )
-            // InternalProjectGenerator.g:2932:1: ( '}' )
+            // InternalProjectGenerator.g:3012:1: ( ( '}' ) )
+            // InternalProjectGenerator.g:3013:1: ( '}' )
             {
-            // InternalProjectGenerator.g:2932:1: ( '}' )
-            // InternalProjectGenerator.g:2933:2: '}'
+            // InternalProjectGenerator.g:3013:1: ( '}' )
+            // InternalProjectGenerator.g:3014:2: '}'
             {
              before(grammarAccess.getLocalizedEntryAccess().getRightCurlyBracketKeyword_10()); 
             match(input,31,FOLLOW_2); 
@@ -8787,14 +9012,14 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__LocalizedEntry__Group__11"
-    // InternalProjectGenerator.g:2942:1: rule__LocalizedEntry__Group__11 : rule__LocalizedEntry__Group__11__Impl ;
+    // InternalProjectGenerator.g:3023:1: rule__LocalizedEntry__Group__11 : rule__LocalizedEntry__Group__11__Impl ;
     public final void rule__LocalizedEntry__Group__11() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:2946:1: ( rule__LocalizedEntry__Group__11__Impl )
-            // InternalProjectGenerator.g:2947:2: rule__LocalizedEntry__Group__11__Impl
+            // InternalProjectGenerator.g:3027:1: ( rule__LocalizedEntry__Group__11__Impl )
+            // InternalProjectGenerator.g:3028:2: rule__LocalizedEntry__Group__11__Impl
             {
             pushFollow(FOLLOW_2);
             rule__LocalizedEntry__Group__11__Impl();
@@ -8820,17 +9045,17 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__LocalizedEntry__Group__11__Impl"
-    // InternalProjectGenerator.g:2953:1: rule__LocalizedEntry__Group__11__Impl : ( ';' ) ;
+    // InternalProjectGenerator.g:3034:1: rule__LocalizedEntry__Group__11__Impl : ( ';' ) ;
     public final void rule__LocalizedEntry__Group__11__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:2957:1: ( ( ';' ) )
-            // InternalProjectGenerator.g:2958:1: ( ';' )
+            // InternalProjectGenerator.g:3038:1: ( ( ';' ) )
+            // InternalProjectGenerator.g:3039:1: ( ';' )
             {
-            // InternalProjectGenerator.g:2958:1: ( ';' )
-            // InternalProjectGenerator.g:2959:2: ';'
+            // InternalProjectGenerator.g:3039:1: ( ';' )
+            // InternalProjectGenerator.g:3040:2: ';'
             {
              before(grammarAccess.getLocalizedEntryAccess().getSemicolonKeyword_11()); 
             match(input,27,FOLLOW_2); 
@@ -8857,14 +9082,14 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__LocalizedEntry__Group_9__0"
-    // InternalProjectGenerator.g:2969:1: rule__LocalizedEntry__Group_9__0 : rule__LocalizedEntry__Group_9__0__Impl rule__LocalizedEntry__Group_9__1 ;
+    // InternalProjectGenerator.g:3050:1: rule__LocalizedEntry__Group_9__0 : rule__LocalizedEntry__Group_9__0__Impl rule__LocalizedEntry__Group_9__1 ;
     public final void rule__LocalizedEntry__Group_9__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:2973:1: ( rule__LocalizedEntry__Group_9__0__Impl rule__LocalizedEntry__Group_9__1 )
-            // InternalProjectGenerator.g:2974:2: rule__LocalizedEntry__Group_9__0__Impl rule__LocalizedEntry__Group_9__1
+            // InternalProjectGenerator.g:3054:1: ( rule__LocalizedEntry__Group_9__0__Impl rule__LocalizedEntry__Group_9__1 )
+            // InternalProjectGenerator.g:3055:2: rule__LocalizedEntry__Group_9__0__Impl rule__LocalizedEntry__Group_9__1
             {
             pushFollow(FOLLOW_4);
             rule__LocalizedEntry__Group_9__0__Impl();
@@ -8895,17 +9120,17 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__LocalizedEntry__Group_9__0__Impl"
-    // InternalProjectGenerator.g:2981:1: rule__LocalizedEntry__Group_9__0__Impl : ( 'args' ) ;
+    // InternalProjectGenerator.g:3062:1: rule__LocalizedEntry__Group_9__0__Impl : ( 'args' ) ;
     public final void rule__LocalizedEntry__Group_9__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:2985:1: ( ( 'args' ) )
-            // InternalProjectGenerator.g:2986:1: ( 'args' )
+            // InternalProjectGenerator.g:3066:1: ( ( 'args' ) )
+            // InternalProjectGenerator.g:3067:1: ( 'args' )
             {
-            // InternalProjectGenerator.g:2986:1: ( 'args' )
-            // InternalProjectGenerator.g:2987:2: 'args'
+            // InternalProjectGenerator.g:3067:1: ( 'args' )
+            // InternalProjectGenerator.g:3068:2: 'args'
             {
              before(grammarAccess.getLocalizedEntryAccess().getArgsKeyword_9_0()); 
             match(input,41,FOLLOW_2); 
@@ -8932,14 +9157,14 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__LocalizedEntry__Group_9__1"
-    // InternalProjectGenerator.g:2996:1: rule__LocalizedEntry__Group_9__1 : rule__LocalizedEntry__Group_9__1__Impl rule__LocalizedEntry__Group_9__2 ;
+    // InternalProjectGenerator.g:3077:1: rule__LocalizedEntry__Group_9__1 : rule__LocalizedEntry__Group_9__1__Impl rule__LocalizedEntry__Group_9__2 ;
     public final void rule__LocalizedEntry__Group_9__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:3000:1: ( rule__LocalizedEntry__Group_9__1__Impl rule__LocalizedEntry__Group_9__2 )
-            // InternalProjectGenerator.g:3001:2: rule__LocalizedEntry__Group_9__1__Impl rule__LocalizedEntry__Group_9__2
+            // InternalProjectGenerator.g:3081:1: ( rule__LocalizedEntry__Group_9__1__Impl rule__LocalizedEntry__Group_9__2 )
+            // InternalProjectGenerator.g:3082:2: rule__LocalizedEntry__Group_9__1__Impl rule__LocalizedEntry__Group_9__2
             {
             pushFollow(FOLLOW_6);
             rule__LocalizedEntry__Group_9__1__Impl();
@@ -8970,17 +9195,17 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__LocalizedEntry__Group_9__1__Impl"
-    // InternalProjectGenerator.g:3008:1: rule__LocalizedEntry__Group_9__1__Impl : ( '{' ) ;
+    // InternalProjectGenerator.g:3089:1: rule__LocalizedEntry__Group_9__1__Impl : ( '{' ) ;
     public final void rule__LocalizedEntry__Group_9__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:3012:1: ( ( '{' ) )
-            // InternalProjectGenerator.g:3013:1: ( '{' )
+            // InternalProjectGenerator.g:3093:1: ( ( '{' ) )
+            // InternalProjectGenerator.g:3094:1: ( '{' )
             {
-            // InternalProjectGenerator.g:3013:1: ( '{' )
-            // InternalProjectGenerator.g:3014:2: '{'
+            // InternalProjectGenerator.g:3094:1: ( '{' )
+            // InternalProjectGenerator.g:3095:2: '{'
             {
              before(grammarAccess.getLocalizedEntryAccess().getLeftCurlyBracketKeyword_9_1()); 
             match(input,25,FOLLOW_2); 
@@ -9007,14 +9232,14 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__LocalizedEntry__Group_9__2"
-    // InternalProjectGenerator.g:3023:1: rule__LocalizedEntry__Group_9__2 : rule__LocalizedEntry__Group_9__2__Impl rule__LocalizedEntry__Group_9__3 ;
+    // InternalProjectGenerator.g:3104:1: rule__LocalizedEntry__Group_9__2 : rule__LocalizedEntry__Group_9__2__Impl rule__LocalizedEntry__Group_9__3 ;
     public final void rule__LocalizedEntry__Group_9__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:3027:1: ( rule__LocalizedEntry__Group_9__2__Impl rule__LocalizedEntry__Group_9__3 )
-            // InternalProjectGenerator.g:3028:2: rule__LocalizedEntry__Group_9__2__Impl rule__LocalizedEntry__Group_9__3
+            // InternalProjectGenerator.g:3108:1: ( rule__LocalizedEntry__Group_9__2__Impl rule__LocalizedEntry__Group_9__3 )
+            // InternalProjectGenerator.g:3109:2: rule__LocalizedEntry__Group_9__2__Impl rule__LocalizedEntry__Group_9__3
             {
             pushFollow(FOLLOW_12);
             rule__LocalizedEntry__Group_9__2__Impl();
@@ -9045,24 +9270,24 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__LocalizedEntry__Group_9__2__Impl"
-    // InternalProjectGenerator.g:3035:1: rule__LocalizedEntry__Group_9__2__Impl : ( ( ( rule__LocalizedEntry__ArgsAssignment_9_2 ) ) ( ( rule__LocalizedEntry__ArgsAssignment_9_2 )* ) ) ;
+    // InternalProjectGenerator.g:3116:1: rule__LocalizedEntry__Group_9__2__Impl : ( ( ( rule__LocalizedEntry__ArgsAssignment_9_2 ) ) ( ( rule__LocalizedEntry__ArgsAssignment_9_2 )* ) ) ;
     public final void rule__LocalizedEntry__Group_9__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:3039:1: ( ( ( ( rule__LocalizedEntry__ArgsAssignment_9_2 ) ) ( ( rule__LocalizedEntry__ArgsAssignment_9_2 )* ) ) )
-            // InternalProjectGenerator.g:3040:1: ( ( ( rule__LocalizedEntry__ArgsAssignment_9_2 ) ) ( ( rule__LocalizedEntry__ArgsAssignment_9_2 )* ) )
+            // InternalProjectGenerator.g:3120:1: ( ( ( ( rule__LocalizedEntry__ArgsAssignment_9_2 ) ) ( ( rule__LocalizedEntry__ArgsAssignment_9_2 )* ) ) )
+            // InternalProjectGenerator.g:3121:1: ( ( ( rule__LocalizedEntry__ArgsAssignment_9_2 ) ) ( ( rule__LocalizedEntry__ArgsAssignment_9_2 )* ) )
             {
-            // InternalProjectGenerator.g:3040:1: ( ( ( rule__LocalizedEntry__ArgsAssignment_9_2 ) ) ( ( rule__LocalizedEntry__ArgsAssignment_9_2 )* ) )
-            // InternalProjectGenerator.g:3041:2: ( ( rule__LocalizedEntry__ArgsAssignment_9_2 ) ) ( ( rule__LocalizedEntry__ArgsAssignment_9_2 )* )
+            // InternalProjectGenerator.g:3121:1: ( ( ( rule__LocalizedEntry__ArgsAssignment_9_2 ) ) ( ( rule__LocalizedEntry__ArgsAssignment_9_2 )* ) )
+            // InternalProjectGenerator.g:3122:2: ( ( rule__LocalizedEntry__ArgsAssignment_9_2 ) ) ( ( rule__LocalizedEntry__ArgsAssignment_9_2 )* )
             {
-            // InternalProjectGenerator.g:3041:2: ( ( rule__LocalizedEntry__ArgsAssignment_9_2 ) )
-            // InternalProjectGenerator.g:3042:3: ( rule__LocalizedEntry__ArgsAssignment_9_2 )
+            // InternalProjectGenerator.g:3122:2: ( ( rule__LocalizedEntry__ArgsAssignment_9_2 ) )
+            // InternalProjectGenerator.g:3123:3: ( rule__LocalizedEntry__ArgsAssignment_9_2 )
             {
              before(grammarAccess.getLocalizedEntryAccess().getArgsAssignment_9_2()); 
-            // InternalProjectGenerator.g:3043:3: ( rule__LocalizedEntry__ArgsAssignment_9_2 )
-            // InternalProjectGenerator.g:3043:4: rule__LocalizedEntry__ArgsAssignment_9_2
+            // InternalProjectGenerator.g:3124:3: ( rule__LocalizedEntry__ArgsAssignment_9_2 )
+            // InternalProjectGenerator.g:3124:4: rule__LocalizedEntry__ArgsAssignment_9_2
             {
             pushFollow(FOLLOW_30);
             rule__LocalizedEntry__ArgsAssignment_9_2();
@@ -9076,11 +9301,11 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
             }
 
-            // InternalProjectGenerator.g:3046:2: ( ( rule__LocalizedEntry__ArgsAssignment_9_2 )* )
-            // InternalProjectGenerator.g:3047:3: ( rule__LocalizedEntry__ArgsAssignment_9_2 )*
+            // InternalProjectGenerator.g:3127:2: ( ( rule__LocalizedEntry__ArgsAssignment_9_2 )* )
+            // InternalProjectGenerator.g:3128:3: ( rule__LocalizedEntry__ArgsAssignment_9_2 )*
             {
              before(grammarAccess.getLocalizedEntryAccess().getArgsAssignment_9_2()); 
-            // InternalProjectGenerator.g:3048:3: ( rule__LocalizedEntry__ArgsAssignment_9_2 )*
+            // InternalProjectGenerator.g:3129:3: ( rule__LocalizedEntry__ArgsAssignment_9_2 )*
             loop20:
             do {
                 int alt20=2;
@@ -9093,7 +9318,7 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
                 switch (alt20) {
             	case 1 :
-            	    // InternalProjectGenerator.g:3048:4: rule__LocalizedEntry__ArgsAssignment_9_2
+            	    // InternalProjectGenerator.g:3129:4: rule__LocalizedEntry__ArgsAssignment_9_2
             	    {
             	    pushFollow(FOLLOW_30);
             	    rule__LocalizedEntry__ArgsAssignment_9_2();
@@ -9135,14 +9360,14 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__LocalizedEntry__Group_9__3"
-    // InternalProjectGenerator.g:3057:1: rule__LocalizedEntry__Group_9__3 : rule__LocalizedEntry__Group_9__3__Impl rule__LocalizedEntry__Group_9__4 ;
+    // InternalProjectGenerator.g:3138:1: rule__LocalizedEntry__Group_9__3 : rule__LocalizedEntry__Group_9__3__Impl rule__LocalizedEntry__Group_9__4 ;
     public final void rule__LocalizedEntry__Group_9__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:3061:1: ( rule__LocalizedEntry__Group_9__3__Impl rule__LocalizedEntry__Group_9__4 )
-            // InternalProjectGenerator.g:3062:2: rule__LocalizedEntry__Group_9__3__Impl rule__LocalizedEntry__Group_9__4
+            // InternalProjectGenerator.g:3142:1: ( rule__LocalizedEntry__Group_9__3__Impl rule__LocalizedEntry__Group_9__4 )
+            // InternalProjectGenerator.g:3143:2: rule__LocalizedEntry__Group_9__3__Impl rule__LocalizedEntry__Group_9__4
             {
             pushFollow(FOLLOW_7);
             rule__LocalizedEntry__Group_9__3__Impl();
@@ -9173,17 +9398,17 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__LocalizedEntry__Group_9__3__Impl"
-    // InternalProjectGenerator.g:3069:1: rule__LocalizedEntry__Group_9__3__Impl : ( '}' ) ;
+    // InternalProjectGenerator.g:3150:1: rule__LocalizedEntry__Group_9__3__Impl : ( '}' ) ;
     public final void rule__LocalizedEntry__Group_9__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:3073:1: ( ( '}' ) )
-            // InternalProjectGenerator.g:3074:1: ( '}' )
+            // InternalProjectGenerator.g:3154:1: ( ( '}' ) )
+            // InternalProjectGenerator.g:3155:1: ( '}' )
             {
-            // InternalProjectGenerator.g:3074:1: ( '}' )
-            // InternalProjectGenerator.g:3075:2: '}'
+            // InternalProjectGenerator.g:3155:1: ( '}' )
+            // InternalProjectGenerator.g:3156:2: '}'
             {
              before(grammarAccess.getLocalizedEntryAccess().getRightCurlyBracketKeyword_9_3()); 
             match(input,31,FOLLOW_2); 
@@ -9210,14 +9435,14 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__LocalizedEntry__Group_9__4"
-    // InternalProjectGenerator.g:3084:1: rule__LocalizedEntry__Group_9__4 : rule__LocalizedEntry__Group_9__4__Impl ;
+    // InternalProjectGenerator.g:3165:1: rule__LocalizedEntry__Group_9__4 : rule__LocalizedEntry__Group_9__4__Impl ;
     public final void rule__LocalizedEntry__Group_9__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:3088:1: ( rule__LocalizedEntry__Group_9__4__Impl )
-            // InternalProjectGenerator.g:3089:2: rule__LocalizedEntry__Group_9__4__Impl
+            // InternalProjectGenerator.g:3169:1: ( rule__LocalizedEntry__Group_9__4__Impl )
+            // InternalProjectGenerator.g:3170:2: rule__LocalizedEntry__Group_9__4__Impl
             {
             pushFollow(FOLLOW_2);
             rule__LocalizedEntry__Group_9__4__Impl();
@@ -9243,17 +9468,17 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__LocalizedEntry__Group_9__4__Impl"
-    // InternalProjectGenerator.g:3095:1: rule__LocalizedEntry__Group_9__4__Impl : ( ';' ) ;
+    // InternalProjectGenerator.g:3176:1: rule__LocalizedEntry__Group_9__4__Impl : ( ';' ) ;
     public final void rule__LocalizedEntry__Group_9__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:3099:1: ( ( ';' ) )
-            // InternalProjectGenerator.g:3100:1: ( ';' )
+            // InternalProjectGenerator.g:3180:1: ( ( ';' ) )
+            // InternalProjectGenerator.g:3181:1: ( ';' )
             {
-            // InternalProjectGenerator.g:3100:1: ( ';' )
-            // InternalProjectGenerator.g:3101:2: ';'
+            // InternalProjectGenerator.g:3181:1: ( ';' )
+            // InternalProjectGenerator.g:3182:2: ';'
             {
              before(grammarAccess.getLocalizedEntryAccess().getSemicolonKeyword_9_4()); 
             match(input,27,FOLLOW_2); 
@@ -9280,14 +9505,14 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__LocalizedValue__Group__0"
-    // InternalProjectGenerator.g:3111:1: rule__LocalizedValue__Group__0 : rule__LocalizedValue__Group__0__Impl rule__LocalizedValue__Group__1 ;
+    // InternalProjectGenerator.g:3192:1: rule__LocalizedValue__Group__0 : rule__LocalizedValue__Group__0__Impl rule__LocalizedValue__Group__1 ;
     public final void rule__LocalizedValue__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:3115:1: ( rule__LocalizedValue__Group__0__Impl rule__LocalizedValue__Group__1 )
-            // InternalProjectGenerator.g:3116:2: rule__LocalizedValue__Group__0__Impl rule__LocalizedValue__Group__1
+            // InternalProjectGenerator.g:3196:1: ( rule__LocalizedValue__Group__0__Impl rule__LocalizedValue__Group__1 )
+            // InternalProjectGenerator.g:3197:2: rule__LocalizedValue__Group__0__Impl rule__LocalizedValue__Group__1
             {
             pushFollow(FOLLOW_31);
             rule__LocalizedValue__Group__0__Impl();
@@ -9318,17 +9543,17 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__LocalizedValue__Group__0__Impl"
-    // InternalProjectGenerator.g:3123:1: rule__LocalizedValue__Group__0__Impl : ( '{' ) ;
+    // InternalProjectGenerator.g:3204:1: rule__LocalizedValue__Group__0__Impl : ( '{' ) ;
     public final void rule__LocalizedValue__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:3127:1: ( ( '{' ) )
-            // InternalProjectGenerator.g:3128:1: ( '{' )
+            // InternalProjectGenerator.g:3208:1: ( ( '{' ) )
+            // InternalProjectGenerator.g:3209:1: ( '{' )
             {
-            // InternalProjectGenerator.g:3128:1: ( '{' )
-            // InternalProjectGenerator.g:3129:2: '{'
+            // InternalProjectGenerator.g:3209:1: ( '{' )
+            // InternalProjectGenerator.g:3210:2: '{'
             {
              before(grammarAccess.getLocalizedValueAccess().getLeftCurlyBracketKeyword_0()); 
             match(input,25,FOLLOW_2); 
@@ -9355,14 +9580,14 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__LocalizedValue__Group__1"
-    // InternalProjectGenerator.g:3138:1: rule__LocalizedValue__Group__1 : rule__LocalizedValue__Group__1__Impl rule__LocalizedValue__Group__2 ;
+    // InternalProjectGenerator.g:3219:1: rule__LocalizedValue__Group__1 : rule__LocalizedValue__Group__1__Impl rule__LocalizedValue__Group__2 ;
     public final void rule__LocalizedValue__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:3142:1: ( rule__LocalizedValue__Group__1__Impl rule__LocalizedValue__Group__2 )
-            // InternalProjectGenerator.g:3143:2: rule__LocalizedValue__Group__1__Impl rule__LocalizedValue__Group__2
+            // InternalProjectGenerator.g:3223:1: ( rule__LocalizedValue__Group__1__Impl rule__LocalizedValue__Group__2 )
+            // InternalProjectGenerator.g:3224:2: rule__LocalizedValue__Group__1__Impl rule__LocalizedValue__Group__2
             {
             pushFollow(FOLLOW_32);
             rule__LocalizedValue__Group__1__Impl();
@@ -9393,17 +9618,17 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__LocalizedValue__Group__1__Impl"
-    // InternalProjectGenerator.g:3150:1: rule__LocalizedValue__Group__1__Impl : ( 'locale' ) ;
+    // InternalProjectGenerator.g:3231:1: rule__LocalizedValue__Group__1__Impl : ( 'locale' ) ;
     public final void rule__LocalizedValue__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:3154:1: ( ( 'locale' ) )
-            // InternalProjectGenerator.g:3155:1: ( 'locale' )
+            // InternalProjectGenerator.g:3235:1: ( ( 'locale' ) )
+            // InternalProjectGenerator.g:3236:1: ( 'locale' )
             {
-            // InternalProjectGenerator.g:3155:1: ( 'locale' )
-            // InternalProjectGenerator.g:3156:2: 'locale'
+            // InternalProjectGenerator.g:3236:1: ( 'locale' )
+            // InternalProjectGenerator.g:3237:2: 'locale'
             {
              before(grammarAccess.getLocalizedValueAccess().getLocaleKeyword_1()); 
             match(input,42,FOLLOW_2); 
@@ -9430,14 +9655,14 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__LocalizedValue__Group__2"
-    // InternalProjectGenerator.g:3165:1: rule__LocalizedValue__Group__2 : rule__LocalizedValue__Group__2__Impl rule__LocalizedValue__Group__3 ;
+    // InternalProjectGenerator.g:3246:1: rule__LocalizedValue__Group__2 : rule__LocalizedValue__Group__2__Impl rule__LocalizedValue__Group__3 ;
     public final void rule__LocalizedValue__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:3169:1: ( rule__LocalizedValue__Group__2__Impl rule__LocalizedValue__Group__3 )
-            // InternalProjectGenerator.g:3170:2: rule__LocalizedValue__Group__2__Impl rule__LocalizedValue__Group__3
+            // InternalProjectGenerator.g:3250:1: ( rule__LocalizedValue__Group__2__Impl rule__LocalizedValue__Group__3 )
+            // InternalProjectGenerator.g:3251:2: rule__LocalizedValue__Group__2__Impl rule__LocalizedValue__Group__3
             {
             pushFollow(FOLLOW_7);
             rule__LocalizedValue__Group__2__Impl();
@@ -9468,21 +9693,21 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__LocalizedValue__Group__2__Impl"
-    // InternalProjectGenerator.g:3177:1: rule__LocalizedValue__Group__2__Impl : ( ( rule__LocalizedValue__LocaleAssignment_2 ) ) ;
+    // InternalProjectGenerator.g:3258:1: rule__LocalizedValue__Group__2__Impl : ( ( rule__LocalizedValue__LocaleAssignment_2 ) ) ;
     public final void rule__LocalizedValue__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:3181:1: ( ( ( rule__LocalizedValue__LocaleAssignment_2 ) ) )
-            // InternalProjectGenerator.g:3182:1: ( ( rule__LocalizedValue__LocaleAssignment_2 ) )
+            // InternalProjectGenerator.g:3262:1: ( ( ( rule__LocalizedValue__LocaleAssignment_2 ) ) )
+            // InternalProjectGenerator.g:3263:1: ( ( rule__LocalizedValue__LocaleAssignment_2 ) )
             {
-            // InternalProjectGenerator.g:3182:1: ( ( rule__LocalizedValue__LocaleAssignment_2 ) )
-            // InternalProjectGenerator.g:3183:2: ( rule__LocalizedValue__LocaleAssignment_2 )
+            // InternalProjectGenerator.g:3263:1: ( ( rule__LocalizedValue__LocaleAssignment_2 ) )
+            // InternalProjectGenerator.g:3264:2: ( rule__LocalizedValue__LocaleAssignment_2 )
             {
              before(grammarAccess.getLocalizedValueAccess().getLocaleAssignment_2()); 
-            // InternalProjectGenerator.g:3184:2: ( rule__LocalizedValue__LocaleAssignment_2 )
-            // InternalProjectGenerator.g:3184:3: rule__LocalizedValue__LocaleAssignment_2
+            // InternalProjectGenerator.g:3265:2: ( rule__LocalizedValue__LocaleAssignment_2 )
+            // InternalProjectGenerator.g:3265:3: rule__LocalizedValue__LocaleAssignment_2
             {
             pushFollow(FOLLOW_2);
             rule__LocalizedValue__LocaleAssignment_2();
@@ -9515,14 +9740,14 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__LocalizedValue__Group__3"
-    // InternalProjectGenerator.g:3192:1: rule__LocalizedValue__Group__3 : rule__LocalizedValue__Group__3__Impl rule__LocalizedValue__Group__4 ;
+    // InternalProjectGenerator.g:3273:1: rule__LocalizedValue__Group__3 : rule__LocalizedValue__Group__3__Impl rule__LocalizedValue__Group__4 ;
     public final void rule__LocalizedValue__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:3196:1: ( rule__LocalizedValue__Group__3__Impl rule__LocalizedValue__Group__4 )
-            // InternalProjectGenerator.g:3197:2: rule__LocalizedValue__Group__3__Impl rule__LocalizedValue__Group__4
+            // InternalProjectGenerator.g:3277:1: ( rule__LocalizedValue__Group__3__Impl rule__LocalizedValue__Group__4 )
+            // InternalProjectGenerator.g:3278:2: rule__LocalizedValue__Group__3__Impl rule__LocalizedValue__Group__4
             {
             pushFollow(FOLLOW_33);
             rule__LocalizedValue__Group__3__Impl();
@@ -9553,17 +9778,17 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__LocalizedValue__Group__3__Impl"
-    // InternalProjectGenerator.g:3204:1: rule__LocalizedValue__Group__3__Impl : ( ';' ) ;
+    // InternalProjectGenerator.g:3285:1: rule__LocalizedValue__Group__3__Impl : ( ';' ) ;
     public final void rule__LocalizedValue__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:3208:1: ( ( ';' ) )
-            // InternalProjectGenerator.g:3209:1: ( ';' )
+            // InternalProjectGenerator.g:3289:1: ( ( ';' ) )
+            // InternalProjectGenerator.g:3290:1: ( ';' )
             {
-            // InternalProjectGenerator.g:3209:1: ( ';' )
-            // InternalProjectGenerator.g:3210:2: ';'
+            // InternalProjectGenerator.g:3290:1: ( ';' )
+            // InternalProjectGenerator.g:3291:2: ';'
             {
              before(grammarAccess.getLocalizedValueAccess().getSemicolonKeyword_3()); 
             match(input,27,FOLLOW_2); 
@@ -9590,14 +9815,14 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__LocalizedValue__Group__4"
-    // InternalProjectGenerator.g:3219:1: rule__LocalizedValue__Group__4 : rule__LocalizedValue__Group__4__Impl rule__LocalizedValue__Group__5 ;
+    // InternalProjectGenerator.g:3300:1: rule__LocalizedValue__Group__4 : rule__LocalizedValue__Group__4__Impl rule__LocalizedValue__Group__5 ;
     public final void rule__LocalizedValue__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:3223:1: ( rule__LocalizedValue__Group__4__Impl rule__LocalizedValue__Group__5 )
-            // InternalProjectGenerator.g:3224:2: rule__LocalizedValue__Group__4__Impl rule__LocalizedValue__Group__5
+            // InternalProjectGenerator.g:3304:1: ( rule__LocalizedValue__Group__4__Impl rule__LocalizedValue__Group__5 )
+            // InternalProjectGenerator.g:3305:2: rule__LocalizedValue__Group__4__Impl rule__LocalizedValue__Group__5
             {
             pushFollow(FOLLOW_6);
             rule__LocalizedValue__Group__4__Impl();
@@ -9628,17 +9853,17 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__LocalizedValue__Group__4__Impl"
-    // InternalProjectGenerator.g:3231:1: rule__LocalizedValue__Group__4__Impl : ( 'value' ) ;
+    // InternalProjectGenerator.g:3312:1: rule__LocalizedValue__Group__4__Impl : ( 'value' ) ;
     public final void rule__LocalizedValue__Group__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:3235:1: ( ( 'value' ) )
-            // InternalProjectGenerator.g:3236:1: ( 'value' )
+            // InternalProjectGenerator.g:3316:1: ( ( 'value' ) )
+            // InternalProjectGenerator.g:3317:1: ( 'value' )
             {
-            // InternalProjectGenerator.g:3236:1: ( 'value' )
-            // InternalProjectGenerator.g:3237:2: 'value'
+            // InternalProjectGenerator.g:3317:1: ( 'value' )
+            // InternalProjectGenerator.g:3318:2: 'value'
             {
              before(grammarAccess.getLocalizedValueAccess().getValueKeyword_4()); 
             match(input,43,FOLLOW_2); 
@@ -9665,14 +9890,14 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__LocalizedValue__Group__5"
-    // InternalProjectGenerator.g:3246:1: rule__LocalizedValue__Group__5 : rule__LocalizedValue__Group__5__Impl rule__LocalizedValue__Group__6 ;
+    // InternalProjectGenerator.g:3327:1: rule__LocalizedValue__Group__5 : rule__LocalizedValue__Group__5__Impl rule__LocalizedValue__Group__6 ;
     public final void rule__LocalizedValue__Group__5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:3250:1: ( rule__LocalizedValue__Group__5__Impl rule__LocalizedValue__Group__6 )
-            // InternalProjectGenerator.g:3251:2: rule__LocalizedValue__Group__5__Impl rule__LocalizedValue__Group__6
+            // InternalProjectGenerator.g:3331:1: ( rule__LocalizedValue__Group__5__Impl rule__LocalizedValue__Group__6 )
+            // InternalProjectGenerator.g:3332:2: rule__LocalizedValue__Group__5__Impl rule__LocalizedValue__Group__6
             {
             pushFollow(FOLLOW_7);
             rule__LocalizedValue__Group__5__Impl();
@@ -9703,21 +9928,21 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__LocalizedValue__Group__5__Impl"
-    // InternalProjectGenerator.g:3258:1: rule__LocalizedValue__Group__5__Impl : ( ( rule__LocalizedValue__ValueAssignment_5 ) ) ;
+    // InternalProjectGenerator.g:3339:1: rule__LocalizedValue__Group__5__Impl : ( ( rule__LocalizedValue__ValueAssignment_5 ) ) ;
     public final void rule__LocalizedValue__Group__5__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:3262:1: ( ( ( rule__LocalizedValue__ValueAssignment_5 ) ) )
-            // InternalProjectGenerator.g:3263:1: ( ( rule__LocalizedValue__ValueAssignment_5 ) )
+            // InternalProjectGenerator.g:3343:1: ( ( ( rule__LocalizedValue__ValueAssignment_5 ) ) )
+            // InternalProjectGenerator.g:3344:1: ( ( rule__LocalizedValue__ValueAssignment_5 ) )
             {
-            // InternalProjectGenerator.g:3263:1: ( ( rule__LocalizedValue__ValueAssignment_5 ) )
-            // InternalProjectGenerator.g:3264:2: ( rule__LocalizedValue__ValueAssignment_5 )
+            // InternalProjectGenerator.g:3344:1: ( ( rule__LocalizedValue__ValueAssignment_5 ) )
+            // InternalProjectGenerator.g:3345:2: ( rule__LocalizedValue__ValueAssignment_5 )
             {
              before(grammarAccess.getLocalizedValueAccess().getValueAssignment_5()); 
-            // InternalProjectGenerator.g:3265:2: ( rule__LocalizedValue__ValueAssignment_5 )
-            // InternalProjectGenerator.g:3265:3: rule__LocalizedValue__ValueAssignment_5
+            // InternalProjectGenerator.g:3346:2: ( rule__LocalizedValue__ValueAssignment_5 )
+            // InternalProjectGenerator.g:3346:3: rule__LocalizedValue__ValueAssignment_5
             {
             pushFollow(FOLLOW_2);
             rule__LocalizedValue__ValueAssignment_5();
@@ -9750,14 +9975,14 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__LocalizedValue__Group__6"
-    // InternalProjectGenerator.g:3273:1: rule__LocalizedValue__Group__6 : rule__LocalizedValue__Group__6__Impl rule__LocalizedValue__Group__7 ;
+    // InternalProjectGenerator.g:3354:1: rule__LocalizedValue__Group__6 : rule__LocalizedValue__Group__6__Impl rule__LocalizedValue__Group__7 ;
     public final void rule__LocalizedValue__Group__6() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:3277:1: ( rule__LocalizedValue__Group__6__Impl rule__LocalizedValue__Group__7 )
-            // InternalProjectGenerator.g:3278:2: rule__LocalizedValue__Group__6__Impl rule__LocalizedValue__Group__7
+            // InternalProjectGenerator.g:3358:1: ( rule__LocalizedValue__Group__6__Impl rule__LocalizedValue__Group__7 )
+            // InternalProjectGenerator.g:3359:2: rule__LocalizedValue__Group__6__Impl rule__LocalizedValue__Group__7
             {
             pushFollow(FOLLOW_12);
             rule__LocalizedValue__Group__6__Impl();
@@ -9788,17 +10013,17 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__LocalizedValue__Group__6__Impl"
-    // InternalProjectGenerator.g:3285:1: rule__LocalizedValue__Group__6__Impl : ( ';' ) ;
+    // InternalProjectGenerator.g:3366:1: rule__LocalizedValue__Group__6__Impl : ( ';' ) ;
     public final void rule__LocalizedValue__Group__6__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:3289:1: ( ( ';' ) )
-            // InternalProjectGenerator.g:3290:1: ( ';' )
+            // InternalProjectGenerator.g:3370:1: ( ( ';' ) )
+            // InternalProjectGenerator.g:3371:1: ( ';' )
             {
-            // InternalProjectGenerator.g:3290:1: ( ';' )
-            // InternalProjectGenerator.g:3291:2: ';'
+            // InternalProjectGenerator.g:3371:1: ( ';' )
+            // InternalProjectGenerator.g:3372:2: ';'
             {
              before(grammarAccess.getLocalizedValueAccess().getSemicolonKeyword_6()); 
             match(input,27,FOLLOW_2); 
@@ -9825,14 +10050,14 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__LocalizedValue__Group__7"
-    // InternalProjectGenerator.g:3300:1: rule__LocalizedValue__Group__7 : rule__LocalizedValue__Group__7__Impl rule__LocalizedValue__Group__8 ;
+    // InternalProjectGenerator.g:3381:1: rule__LocalizedValue__Group__7 : rule__LocalizedValue__Group__7__Impl rule__LocalizedValue__Group__8 ;
     public final void rule__LocalizedValue__Group__7() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:3304:1: ( rule__LocalizedValue__Group__7__Impl rule__LocalizedValue__Group__8 )
-            // InternalProjectGenerator.g:3305:2: rule__LocalizedValue__Group__7__Impl rule__LocalizedValue__Group__8
+            // InternalProjectGenerator.g:3385:1: ( rule__LocalizedValue__Group__7__Impl rule__LocalizedValue__Group__8 )
+            // InternalProjectGenerator.g:3386:2: rule__LocalizedValue__Group__7__Impl rule__LocalizedValue__Group__8
             {
             pushFollow(FOLLOW_7);
             rule__LocalizedValue__Group__7__Impl();
@@ -9863,17 +10088,17 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__LocalizedValue__Group__7__Impl"
-    // InternalProjectGenerator.g:3312:1: rule__LocalizedValue__Group__7__Impl : ( '}' ) ;
+    // InternalProjectGenerator.g:3393:1: rule__LocalizedValue__Group__7__Impl : ( '}' ) ;
     public final void rule__LocalizedValue__Group__7__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:3316:1: ( ( '}' ) )
-            // InternalProjectGenerator.g:3317:1: ( '}' )
+            // InternalProjectGenerator.g:3397:1: ( ( '}' ) )
+            // InternalProjectGenerator.g:3398:1: ( '}' )
             {
-            // InternalProjectGenerator.g:3317:1: ( '}' )
-            // InternalProjectGenerator.g:3318:2: '}'
+            // InternalProjectGenerator.g:3398:1: ( '}' )
+            // InternalProjectGenerator.g:3399:2: '}'
             {
              before(grammarAccess.getLocalizedValueAccess().getRightCurlyBracketKeyword_7()); 
             match(input,31,FOLLOW_2); 
@@ -9900,14 +10125,14 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__LocalizedValue__Group__8"
-    // InternalProjectGenerator.g:3327:1: rule__LocalizedValue__Group__8 : rule__LocalizedValue__Group__8__Impl ;
+    // InternalProjectGenerator.g:3408:1: rule__LocalizedValue__Group__8 : rule__LocalizedValue__Group__8__Impl ;
     public final void rule__LocalizedValue__Group__8() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:3331:1: ( rule__LocalizedValue__Group__8__Impl )
-            // InternalProjectGenerator.g:3332:2: rule__LocalizedValue__Group__8__Impl
+            // InternalProjectGenerator.g:3412:1: ( rule__LocalizedValue__Group__8__Impl )
+            // InternalProjectGenerator.g:3413:2: rule__LocalizedValue__Group__8__Impl
             {
             pushFollow(FOLLOW_2);
             rule__LocalizedValue__Group__8__Impl();
@@ -9933,17 +10158,17 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__LocalizedValue__Group__8__Impl"
-    // InternalProjectGenerator.g:3338:1: rule__LocalizedValue__Group__8__Impl : ( ';' ) ;
+    // InternalProjectGenerator.g:3419:1: rule__LocalizedValue__Group__8__Impl : ( ';' ) ;
     public final void rule__LocalizedValue__Group__8__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:3342:1: ( ( ';' ) )
-            // InternalProjectGenerator.g:3343:1: ( ';' )
+            // InternalProjectGenerator.g:3423:1: ( ( ';' ) )
+            // InternalProjectGenerator.g:3424:1: ( ';' )
             {
-            // InternalProjectGenerator.g:3343:1: ( ';' )
-            // InternalProjectGenerator.g:3344:2: ';'
+            // InternalProjectGenerator.g:3424:1: ( ';' )
+            // InternalProjectGenerator.g:3425:2: ';'
             {
              before(grammarAccess.getLocalizedValueAccess().getSemicolonKeyword_8()); 
             match(input,27,FOLLOW_2); 
@@ -9970,17 +10195,17 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__Module__NameAssignment_1"
-    // InternalProjectGenerator.g:3354:1: rule__Module__NameAssignment_1 : ( RULE_ID ) ;
+    // InternalProjectGenerator.g:3435:1: rule__Module__NameAssignment_1 : ( RULE_ID ) ;
     public final void rule__Module__NameAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:3358:1: ( ( RULE_ID ) )
-            // InternalProjectGenerator.g:3359:2: ( RULE_ID )
+            // InternalProjectGenerator.g:3439:1: ( ( RULE_ID ) )
+            // InternalProjectGenerator.g:3440:2: ( RULE_ID )
             {
-            // InternalProjectGenerator.g:3359:2: ( RULE_ID )
-            // InternalProjectGenerator.g:3360:3: RULE_ID
+            // InternalProjectGenerator.g:3440:2: ( RULE_ID )
+            // InternalProjectGenerator.g:3441:3: RULE_ID
             {
              before(grammarAccess.getModuleAccess().getNameIDTerminalRuleCall_1_0()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -10007,17 +10232,17 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__Module__KeyAssignment_4"
-    // InternalProjectGenerator.g:3369:1: rule__Module__KeyAssignment_4 : ( RULE_STRING ) ;
+    // InternalProjectGenerator.g:3450:1: rule__Module__KeyAssignment_4 : ( RULE_STRING ) ;
     public final void rule__Module__KeyAssignment_4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:3373:1: ( ( RULE_STRING ) )
-            // InternalProjectGenerator.g:3374:2: ( RULE_STRING )
+            // InternalProjectGenerator.g:3454:1: ( ( RULE_STRING ) )
+            // InternalProjectGenerator.g:3455:2: ( RULE_STRING )
             {
-            // InternalProjectGenerator.g:3374:2: ( RULE_STRING )
-            // InternalProjectGenerator.g:3375:3: RULE_STRING
+            // InternalProjectGenerator.g:3455:2: ( RULE_STRING )
+            // InternalProjectGenerator.g:3456:3: RULE_STRING
             {
              before(grammarAccess.getModuleAccess().getKeySTRINGTerminalRuleCall_4_0()); 
             match(input,RULE_STRING,FOLLOW_2); 
@@ -10044,17 +10269,17 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__Module__CdiEnabledAssignment_7"
-    // InternalProjectGenerator.g:3384:1: rule__Module__CdiEnabledAssignment_7 : ( ruleBoolean ) ;
+    // InternalProjectGenerator.g:3465:1: rule__Module__CdiEnabledAssignment_7 : ( ruleBoolean ) ;
     public final void rule__Module__CdiEnabledAssignment_7() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:3388:1: ( ( ruleBoolean ) )
-            // InternalProjectGenerator.g:3389:2: ( ruleBoolean )
+            // InternalProjectGenerator.g:3469:1: ( ( ruleBoolean ) )
+            // InternalProjectGenerator.g:3470:2: ( ruleBoolean )
             {
-            // InternalProjectGenerator.g:3389:2: ( ruleBoolean )
-            // InternalProjectGenerator.g:3390:3: ruleBoolean
+            // InternalProjectGenerator.g:3470:2: ( ruleBoolean )
+            // InternalProjectGenerator.g:3471:3: ruleBoolean
             {
              before(grammarAccess.getModuleAccess().getCdiEnabledBooleanEnumRuleCall_7_0()); 
             pushFollow(FOLLOW_2);
@@ -10085,17 +10310,17 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__Module__MessageBundlesAssignment_9_2"
-    // InternalProjectGenerator.g:3399:1: rule__Module__MessageBundlesAssignment_9_2 : ( ruleLocalized ) ;
+    // InternalProjectGenerator.g:3480:1: rule__Module__MessageBundlesAssignment_9_2 : ( ruleLocalized ) ;
     public final void rule__Module__MessageBundlesAssignment_9_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:3403:1: ( ( ruleLocalized ) )
-            // InternalProjectGenerator.g:3404:2: ( ruleLocalized )
+            // InternalProjectGenerator.g:3484:1: ( ( ruleLocalized ) )
+            // InternalProjectGenerator.g:3485:2: ( ruleLocalized )
             {
-            // InternalProjectGenerator.g:3404:2: ( ruleLocalized )
-            // InternalProjectGenerator.g:3405:3: ruleLocalized
+            // InternalProjectGenerator.g:3485:2: ( ruleLocalized )
+            // InternalProjectGenerator.g:3486:3: ruleLocalized
             {
              before(grammarAccess.getModuleAccess().getMessageBundlesLocalizedParserRuleCall_9_2_0()); 
             pushFollow(FOLLOW_2);
@@ -10126,17 +10351,17 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__Module__ObserversAssignment_10_2"
-    // InternalProjectGenerator.g:3414:1: rule__Module__ObserversAssignment_10_2 : ( ruleObserver ) ;
+    // InternalProjectGenerator.g:3495:1: rule__Module__ObserversAssignment_10_2 : ( ruleObserver ) ;
     public final void rule__Module__ObserversAssignment_10_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:3418:1: ( ( ruleObserver ) )
-            // InternalProjectGenerator.g:3419:2: ( ruleObserver )
+            // InternalProjectGenerator.g:3499:1: ( ( ruleObserver ) )
+            // InternalProjectGenerator.g:3500:2: ( ruleObserver )
             {
-            // InternalProjectGenerator.g:3419:2: ( ruleObserver )
-            // InternalProjectGenerator.g:3420:3: ruleObserver
+            // InternalProjectGenerator.g:3500:2: ( ruleObserver )
+            // InternalProjectGenerator.g:3501:3: ruleObserver
             {
              before(grammarAccess.getModuleAccess().getObserversObserverParserRuleCall_10_2_0()); 
             pushFollow(FOLLOW_2);
@@ -10167,17 +10392,17 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__Module__JpaConfigAssignment_12"
-    // InternalProjectGenerator.g:3429:1: rule__Module__JpaConfigAssignment_12 : ( ruleJpaConfig ) ;
+    // InternalProjectGenerator.g:3510:1: rule__Module__JpaConfigAssignment_12 : ( ruleJpaConfig ) ;
     public final void rule__Module__JpaConfigAssignment_12() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:3433:1: ( ( ruleJpaConfig ) )
-            // InternalProjectGenerator.g:3434:2: ( ruleJpaConfig )
+            // InternalProjectGenerator.g:3514:1: ( ( ruleJpaConfig ) )
+            // InternalProjectGenerator.g:3515:2: ( ruleJpaConfig )
             {
-            // InternalProjectGenerator.g:3434:2: ( ruleJpaConfig )
-            // InternalProjectGenerator.g:3435:3: ruleJpaConfig
+            // InternalProjectGenerator.g:3515:2: ( ruleJpaConfig )
+            // InternalProjectGenerator.g:3516:3: ruleJpaConfig
             {
              before(grammarAccess.getModuleAccess().getJpaConfigJpaConfigParserRuleCall_12_0()); 
             pushFollow(FOLLOW_2);
@@ -10208,17 +10433,17 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__Module__ServiceConfigAssignment_15"
-    // InternalProjectGenerator.g:3444:1: rule__Module__ServiceConfigAssignment_15 : ( ruleServiceConfig ) ;
+    // InternalProjectGenerator.g:3525:1: rule__Module__ServiceConfigAssignment_15 : ( ruleServiceConfig ) ;
     public final void rule__Module__ServiceConfigAssignment_15() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:3448:1: ( ( ruleServiceConfig ) )
-            // InternalProjectGenerator.g:3449:2: ( ruleServiceConfig )
+            // InternalProjectGenerator.g:3529:1: ( ( ruleServiceConfig ) )
+            // InternalProjectGenerator.g:3530:2: ( ruleServiceConfig )
             {
-            // InternalProjectGenerator.g:3449:2: ( ruleServiceConfig )
-            // InternalProjectGenerator.g:3450:3: ruleServiceConfig
+            // InternalProjectGenerator.g:3530:2: ( ruleServiceConfig )
+            // InternalProjectGenerator.g:3531:3: ruleServiceConfig
             {
              before(grammarAccess.getModuleAccess().getServiceConfigServiceConfigParserRuleCall_15_0()); 
             pushFollow(FOLLOW_2);
@@ -10249,21 +10474,21 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__ServiceConfig__ObserversAssignment_1_2"
-    // InternalProjectGenerator.g:3459:1: rule__ServiceConfig__ObserversAssignment_1_2 : ( ( RULE_ID ) ) ;
+    // InternalProjectGenerator.g:3540:1: rule__ServiceConfig__ObserversAssignment_1_2 : ( ( RULE_ID ) ) ;
     public final void rule__ServiceConfig__ObserversAssignment_1_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:3463:1: ( ( ( RULE_ID ) ) )
-            // InternalProjectGenerator.g:3464:2: ( ( RULE_ID ) )
+            // InternalProjectGenerator.g:3544:1: ( ( ( RULE_ID ) ) )
+            // InternalProjectGenerator.g:3545:2: ( ( RULE_ID ) )
             {
-            // InternalProjectGenerator.g:3464:2: ( ( RULE_ID ) )
-            // InternalProjectGenerator.g:3465:3: ( RULE_ID )
+            // InternalProjectGenerator.g:3545:2: ( ( RULE_ID ) )
+            // InternalProjectGenerator.g:3546:3: ( RULE_ID )
             {
              before(grammarAccess.getServiceConfigAccess().getObserversObserverCrossReference_1_2_0()); 
-            // InternalProjectGenerator.g:3466:3: ( RULE_ID )
-            // InternalProjectGenerator.g:3467:4: RULE_ID
+            // InternalProjectGenerator.g:3547:3: ( RULE_ID )
+            // InternalProjectGenerator.g:3548:4: RULE_ID
             {
              before(grammarAccess.getServiceConfigAccess().getObserversObserverIDTerminalRuleCall_1_2_0_1()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -10294,21 +10519,21 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__ServiceConfig__MessageBundlesAssignment_2_2"
-    // InternalProjectGenerator.g:3478:1: rule__ServiceConfig__MessageBundlesAssignment_2_2 : ( ( RULE_ID ) ) ;
+    // InternalProjectGenerator.g:3559:1: rule__ServiceConfig__MessageBundlesAssignment_2_2 : ( ( RULE_ID ) ) ;
     public final void rule__ServiceConfig__MessageBundlesAssignment_2_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:3482:1: ( ( ( RULE_ID ) ) )
-            // InternalProjectGenerator.g:3483:2: ( ( RULE_ID ) )
+            // InternalProjectGenerator.g:3563:1: ( ( ( RULE_ID ) ) )
+            // InternalProjectGenerator.g:3564:2: ( ( RULE_ID ) )
             {
-            // InternalProjectGenerator.g:3483:2: ( ( RULE_ID ) )
-            // InternalProjectGenerator.g:3484:3: ( RULE_ID )
+            // InternalProjectGenerator.g:3564:2: ( ( RULE_ID ) )
+            // InternalProjectGenerator.g:3565:3: ( RULE_ID )
             {
              before(grammarAccess.getServiceConfigAccess().getMessageBundlesLocalizedCrossReference_2_2_0()); 
-            // InternalProjectGenerator.g:3485:3: ( RULE_ID )
-            // InternalProjectGenerator.g:3486:4: RULE_ID
+            // InternalProjectGenerator.g:3566:3: ( RULE_ID )
+            // InternalProjectGenerator.g:3567:4: RULE_ID
             {
              before(grammarAccess.getServiceConfigAccess().getMessageBundlesLocalizedIDTerminalRuleCall_2_2_0_1()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -10339,17 +10564,17 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__Observer__NameAssignment_0"
-    // InternalProjectGenerator.g:3497:1: rule__Observer__NameAssignment_0 : ( RULE_ID ) ;
+    // InternalProjectGenerator.g:3578:1: rule__Observer__NameAssignment_0 : ( RULE_ID ) ;
     public final void rule__Observer__NameAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:3501:1: ( ( RULE_ID ) )
-            // InternalProjectGenerator.g:3502:2: ( RULE_ID )
+            // InternalProjectGenerator.g:3582:1: ( ( RULE_ID ) )
+            // InternalProjectGenerator.g:3583:2: ( RULE_ID )
             {
-            // InternalProjectGenerator.g:3502:2: ( RULE_ID )
-            // InternalProjectGenerator.g:3503:3: RULE_ID
+            // InternalProjectGenerator.g:3583:2: ( RULE_ID )
+            // InternalProjectGenerator.g:3584:3: RULE_ID
             {
              before(grammarAccess.getObserverAccess().getNameIDTerminalRuleCall_0_0()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -10376,17 +10601,17 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__Observer__TypeAssignment_3"
-    // InternalProjectGenerator.g:3512:1: rule__Observer__TypeAssignment_3 : ( RULE_CLASSNAME ) ;
+    // InternalProjectGenerator.g:3593:1: rule__Observer__TypeAssignment_3 : ( RULE_CLASSNAME ) ;
     public final void rule__Observer__TypeAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:3516:1: ( ( RULE_CLASSNAME ) )
-            // InternalProjectGenerator.g:3517:2: ( RULE_CLASSNAME )
+            // InternalProjectGenerator.g:3597:1: ( ( RULE_CLASSNAME ) )
+            // InternalProjectGenerator.g:3598:2: ( RULE_CLASSNAME )
             {
-            // InternalProjectGenerator.g:3517:2: ( RULE_CLASSNAME )
-            // InternalProjectGenerator.g:3518:3: RULE_CLASSNAME
+            // InternalProjectGenerator.g:3598:2: ( RULE_CLASSNAME )
+            // InternalProjectGenerator.g:3599:3: RULE_CLASSNAME
             {
              before(grammarAccess.getObserverAccess().getTypeCLASSNAMETerminalRuleCall_3_0()); 
             match(input,RULE_CLASSNAME,FOLLOW_2); 
@@ -10413,17 +10638,17 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__Observer__DuringAssignment_6"
-    // InternalProjectGenerator.g:3527:1: rule__Observer__DuringAssignment_6 : ( ruleDuring ) ;
+    // InternalProjectGenerator.g:3608:1: rule__Observer__DuringAssignment_6 : ( ruleDuring ) ;
     public final void rule__Observer__DuringAssignment_6() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:3531:1: ( ( ruleDuring ) )
-            // InternalProjectGenerator.g:3532:2: ( ruleDuring )
+            // InternalProjectGenerator.g:3612:1: ( ( ruleDuring ) )
+            // InternalProjectGenerator.g:3613:2: ( ruleDuring )
             {
-            // InternalProjectGenerator.g:3532:2: ( ruleDuring )
-            // InternalProjectGenerator.g:3533:3: ruleDuring
+            // InternalProjectGenerator.g:3613:2: ( ruleDuring )
+            // InternalProjectGenerator.g:3614:3: ruleDuring
             {
              before(grammarAccess.getObserverAccess().getDuringDuringEnumRuleCall_6_0()); 
             pushFollow(FOLLOW_2);
@@ -10454,17 +10679,17 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__Observer__NotifyAssignment_9"
-    // InternalProjectGenerator.g:3542:1: rule__Observer__NotifyAssignment_9 : ( ruleNotify ) ;
+    // InternalProjectGenerator.g:3623:1: rule__Observer__NotifyAssignment_9 : ( ruleNotify ) ;
     public final void rule__Observer__NotifyAssignment_9() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:3546:1: ( ( ruleNotify ) )
-            // InternalProjectGenerator.g:3547:2: ( ruleNotify )
+            // InternalProjectGenerator.g:3627:1: ( ( ruleNotify ) )
+            // InternalProjectGenerator.g:3628:2: ( ruleNotify )
             {
-            // InternalProjectGenerator.g:3547:2: ( ruleNotify )
-            // InternalProjectGenerator.g:3548:3: ruleNotify
+            // InternalProjectGenerator.g:3628:2: ( ruleNotify )
+            // InternalProjectGenerator.g:3629:3: ruleNotify
             {
              before(grammarAccess.getObserverAccess().getNotifyNotifyEnumRuleCall_9_0()); 
             pushFollow(FOLLOW_2);
@@ -10495,17 +10720,17 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__Observer__ClassNameAssignment_12"
-    // InternalProjectGenerator.g:3557:1: rule__Observer__ClassNameAssignment_12 : ( RULE_CLASSNAME ) ;
+    // InternalProjectGenerator.g:3638:1: rule__Observer__ClassNameAssignment_12 : ( RULE_CLASSNAME ) ;
     public final void rule__Observer__ClassNameAssignment_12() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:3561:1: ( ( RULE_CLASSNAME ) )
-            // InternalProjectGenerator.g:3562:2: ( RULE_CLASSNAME )
+            // InternalProjectGenerator.g:3642:1: ( ( RULE_CLASSNAME ) )
+            // InternalProjectGenerator.g:3643:2: ( RULE_CLASSNAME )
             {
-            // InternalProjectGenerator.g:3562:2: ( RULE_CLASSNAME )
-            // InternalProjectGenerator.g:3563:3: RULE_CLASSNAME
+            // InternalProjectGenerator.g:3643:2: ( RULE_CLASSNAME )
+            // InternalProjectGenerator.g:3644:3: RULE_CLASSNAME
             {
              before(grammarAccess.getObserverAccess().getClassNameCLASSNAMETerminalRuleCall_12_0()); 
             match(input,RULE_CLASSNAME,FOLLOW_2); 
@@ -10532,17 +10757,17 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__Observer__QualifierAssignment_14_1"
-    // InternalProjectGenerator.g:3572:1: rule__Observer__QualifierAssignment_14_1 : ( RULE_CLASSNAME ) ;
+    // InternalProjectGenerator.g:3653:1: rule__Observer__QualifierAssignment_14_1 : ( RULE_CLASSNAME ) ;
     public final void rule__Observer__QualifierAssignment_14_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:3576:1: ( ( RULE_CLASSNAME ) )
-            // InternalProjectGenerator.g:3577:2: ( RULE_CLASSNAME )
+            // InternalProjectGenerator.g:3657:1: ( ( RULE_CLASSNAME ) )
+            // InternalProjectGenerator.g:3658:2: ( RULE_CLASSNAME )
             {
-            // InternalProjectGenerator.g:3577:2: ( RULE_CLASSNAME )
-            // InternalProjectGenerator.g:3578:3: RULE_CLASSNAME
+            // InternalProjectGenerator.g:3658:2: ( RULE_CLASSNAME )
+            // InternalProjectGenerator.g:3659:3: RULE_CLASSNAME
             {
              before(grammarAccess.getObserverAccess().getQualifierCLASSNAMETerminalRuleCall_14_1_0()); 
             match(input,RULE_CLASSNAME,FOLLOW_2); 
@@ -10569,21 +10794,21 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__JpaConfig__LocalizedEnumsAssignment_3"
-    // InternalProjectGenerator.g:3587:1: rule__JpaConfig__LocalizedEnumsAssignment_3 : ( ( RULE_ID ) ) ;
+    // InternalProjectGenerator.g:3668:1: rule__JpaConfig__LocalizedEnumsAssignment_3 : ( ( RULE_ID ) ) ;
     public final void rule__JpaConfig__LocalizedEnumsAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:3591:1: ( ( ( RULE_ID ) ) )
-            // InternalProjectGenerator.g:3592:2: ( ( RULE_ID ) )
+            // InternalProjectGenerator.g:3672:1: ( ( ( RULE_ID ) ) )
+            // InternalProjectGenerator.g:3673:2: ( ( RULE_ID ) )
             {
-            // InternalProjectGenerator.g:3592:2: ( ( RULE_ID ) )
-            // InternalProjectGenerator.g:3593:3: ( RULE_ID )
+            // InternalProjectGenerator.g:3673:2: ( ( RULE_ID ) )
+            // InternalProjectGenerator.g:3674:3: ( RULE_ID )
             {
              before(grammarAccess.getJpaConfigAccess().getLocalizedEnumsLocalizedCrossReference_3_0()); 
-            // InternalProjectGenerator.g:3594:3: ( RULE_ID )
-            // InternalProjectGenerator.g:3595:4: RULE_ID
+            // InternalProjectGenerator.g:3675:3: ( RULE_ID )
+            // InternalProjectGenerator.g:3676:4: RULE_ID
             {
              before(grammarAccess.getJpaConfigAccess().getLocalizedEnumsLocalizedIDTerminalRuleCall_3_0_1()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -10613,26 +10838,30 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
     // $ANTLR end "rule__JpaConfig__LocalizedEnumsAssignment_3"
 
 
-    // $ANTLR start "rule__JpaConfig__ObserversAssignment_6_1"
-    // InternalProjectGenerator.g:3606:1: rule__JpaConfig__ObserversAssignment_6_1 : ( ruleObserver ) ;
-    public final void rule__JpaConfig__ObserversAssignment_6_1() throws RecognitionException {
+    // $ANTLR start "rule__JpaConfig__ObserversAssignment_6_2"
+    // InternalProjectGenerator.g:3687:1: rule__JpaConfig__ObserversAssignment_6_2 : ( ( RULE_ID ) ) ;
+    public final void rule__JpaConfig__ObserversAssignment_6_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:3610:1: ( ( ruleObserver ) )
-            // InternalProjectGenerator.g:3611:2: ( ruleObserver )
+            // InternalProjectGenerator.g:3691:1: ( ( ( RULE_ID ) ) )
+            // InternalProjectGenerator.g:3692:2: ( ( RULE_ID ) )
             {
-            // InternalProjectGenerator.g:3611:2: ( ruleObserver )
-            // InternalProjectGenerator.g:3612:3: ruleObserver
+            // InternalProjectGenerator.g:3692:2: ( ( RULE_ID ) )
+            // InternalProjectGenerator.g:3693:3: ( RULE_ID )
             {
-             before(grammarAccess.getJpaConfigAccess().getObserversObserverParserRuleCall_6_1_0()); 
-            pushFollow(FOLLOW_2);
-            ruleObserver();
+             before(grammarAccess.getJpaConfigAccess().getObserversObserverCrossReference_6_2_0()); 
+            // InternalProjectGenerator.g:3694:3: ( RULE_ID )
+            // InternalProjectGenerator.g:3695:4: RULE_ID
+            {
+             before(grammarAccess.getJpaConfigAccess().getObserversObserverIDTerminalRuleCall_6_2_0_1()); 
+            match(input,RULE_ID,FOLLOW_2); 
+             after(grammarAccess.getJpaConfigAccess().getObserversObserverIDTerminalRuleCall_6_2_0_1()); 
 
-            state._fsp--;
+            }
 
-             after(grammarAccess.getJpaConfigAccess().getObserversObserverParserRuleCall_6_1_0()); 
+             after(grammarAccess.getJpaConfigAccess().getObserversObserverCrossReference_6_2_0()); 
 
             }
 
@@ -10651,21 +10880,21 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
         }
         return ;
     }
-    // $ANTLR end "rule__JpaConfig__ObserversAssignment_6_1"
+    // $ANTLR end "rule__JpaConfig__ObserversAssignment_6_2"
 
 
     // $ANTLR start "rule__Localized__NameAssignment_0"
-    // InternalProjectGenerator.g:3621:1: rule__Localized__NameAssignment_0 : ( RULE_ID ) ;
+    // InternalProjectGenerator.g:3706:1: rule__Localized__NameAssignment_0 : ( RULE_ID ) ;
     public final void rule__Localized__NameAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:3625:1: ( ( RULE_ID ) )
-            // InternalProjectGenerator.g:3626:2: ( RULE_ID )
+            // InternalProjectGenerator.g:3710:1: ( ( RULE_ID ) )
+            // InternalProjectGenerator.g:3711:2: ( RULE_ID )
             {
-            // InternalProjectGenerator.g:3626:2: ( RULE_ID )
-            // InternalProjectGenerator.g:3627:3: RULE_ID
+            // InternalProjectGenerator.g:3711:2: ( RULE_ID )
+            // InternalProjectGenerator.g:3712:3: RULE_ID
             {
              before(grammarAccess.getLocalizedAccess().getNameIDTerminalRuleCall_0_0()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -10692,17 +10921,17 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__Localized__ValuesAssignment_2_2"
-    // InternalProjectGenerator.g:3636:1: rule__Localized__ValuesAssignment_2_2 : ( ruleLocalizedEntry ) ;
+    // InternalProjectGenerator.g:3721:1: rule__Localized__ValuesAssignment_2_2 : ( ruleLocalizedEntry ) ;
     public final void rule__Localized__ValuesAssignment_2_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:3640:1: ( ( ruleLocalizedEntry ) )
-            // InternalProjectGenerator.g:3641:2: ( ruleLocalizedEntry )
+            // InternalProjectGenerator.g:3725:1: ( ( ruleLocalizedEntry ) )
+            // InternalProjectGenerator.g:3726:2: ( ruleLocalizedEntry )
             {
-            // InternalProjectGenerator.g:3641:2: ( ruleLocalizedEntry )
-            // InternalProjectGenerator.g:3642:3: ruleLocalizedEntry
+            // InternalProjectGenerator.g:3726:2: ( ruleLocalizedEntry )
+            // InternalProjectGenerator.g:3727:3: ruleLocalizedEntry
             {
              before(grammarAccess.getLocalizedAccess().getValuesLocalizedEntryParserRuleCall_2_2_0()); 
             pushFollow(FOLLOW_2);
@@ -10733,17 +10962,17 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__LocalizedEntry__LocalizedKeyAssignment_2"
-    // InternalProjectGenerator.g:3651:1: rule__LocalizedEntry__LocalizedKeyAssignment_2 : ( RULE_LOCALIZEDKEY ) ;
+    // InternalProjectGenerator.g:3736:1: rule__LocalizedEntry__LocalizedKeyAssignment_2 : ( RULE_LOCALIZEDKEY ) ;
     public final void rule__LocalizedEntry__LocalizedKeyAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:3655:1: ( ( RULE_LOCALIZEDKEY ) )
-            // InternalProjectGenerator.g:3656:2: ( RULE_LOCALIZEDKEY )
+            // InternalProjectGenerator.g:3740:1: ( ( RULE_LOCALIZEDKEY ) )
+            // InternalProjectGenerator.g:3741:2: ( RULE_LOCALIZEDKEY )
             {
-            // InternalProjectGenerator.g:3656:2: ( RULE_LOCALIZEDKEY )
-            // InternalProjectGenerator.g:3657:3: RULE_LOCALIZEDKEY
+            // InternalProjectGenerator.g:3741:2: ( RULE_LOCALIZEDKEY )
+            // InternalProjectGenerator.g:3742:3: RULE_LOCALIZEDKEY
             {
              before(grammarAccess.getLocalizedEntryAccess().getLocalizedKeyLOCALIZEDKEYTerminalRuleCall_2_0()); 
             match(input,RULE_LOCALIZEDKEY,FOLLOW_2); 
@@ -10770,17 +10999,17 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__LocalizedEntry__ValuesAssignment_6"
-    // InternalProjectGenerator.g:3666:1: rule__LocalizedEntry__ValuesAssignment_6 : ( ruleLocalizedValue ) ;
+    // InternalProjectGenerator.g:3751:1: rule__LocalizedEntry__ValuesAssignment_6 : ( ruleLocalizedValue ) ;
     public final void rule__LocalizedEntry__ValuesAssignment_6() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:3670:1: ( ( ruleLocalizedValue ) )
-            // InternalProjectGenerator.g:3671:2: ( ruleLocalizedValue )
+            // InternalProjectGenerator.g:3755:1: ( ( ruleLocalizedValue ) )
+            // InternalProjectGenerator.g:3756:2: ( ruleLocalizedValue )
             {
-            // InternalProjectGenerator.g:3671:2: ( ruleLocalizedValue )
-            // InternalProjectGenerator.g:3672:3: ruleLocalizedValue
+            // InternalProjectGenerator.g:3756:2: ( ruleLocalizedValue )
+            // InternalProjectGenerator.g:3757:3: ruleLocalizedValue
             {
              before(grammarAccess.getLocalizedEntryAccess().getValuesLocalizedValueParserRuleCall_6_0()); 
             pushFollow(FOLLOW_2);
@@ -10811,17 +11040,17 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__LocalizedEntry__ArgsAssignment_9_2"
-    // InternalProjectGenerator.g:3681:1: rule__LocalizedEntry__ArgsAssignment_9_2 : ( RULE_STRING ) ;
+    // InternalProjectGenerator.g:3766:1: rule__LocalizedEntry__ArgsAssignment_9_2 : ( RULE_STRING ) ;
     public final void rule__LocalizedEntry__ArgsAssignment_9_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:3685:1: ( ( RULE_STRING ) )
-            // InternalProjectGenerator.g:3686:2: ( RULE_STRING )
+            // InternalProjectGenerator.g:3770:1: ( ( RULE_STRING ) )
+            // InternalProjectGenerator.g:3771:2: ( RULE_STRING )
             {
-            // InternalProjectGenerator.g:3686:2: ( RULE_STRING )
-            // InternalProjectGenerator.g:3687:3: RULE_STRING
+            // InternalProjectGenerator.g:3771:2: ( RULE_STRING )
+            // InternalProjectGenerator.g:3772:3: RULE_STRING
             {
              before(grammarAccess.getLocalizedEntryAccess().getArgsSTRINGTerminalRuleCall_9_2_0()); 
             match(input,RULE_STRING,FOLLOW_2); 
@@ -10848,17 +11077,17 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__LocalizedValue__LocaleAssignment_2"
-    // InternalProjectGenerator.g:3696:1: rule__LocalizedValue__LocaleAssignment_2 : ( ruleLocale ) ;
+    // InternalProjectGenerator.g:3781:1: rule__LocalizedValue__LocaleAssignment_2 : ( ruleLocale ) ;
     public final void rule__LocalizedValue__LocaleAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:3700:1: ( ( ruleLocale ) )
-            // InternalProjectGenerator.g:3701:2: ( ruleLocale )
+            // InternalProjectGenerator.g:3785:1: ( ( ruleLocale ) )
+            // InternalProjectGenerator.g:3786:2: ( ruleLocale )
             {
-            // InternalProjectGenerator.g:3701:2: ( ruleLocale )
-            // InternalProjectGenerator.g:3702:3: ruleLocale
+            // InternalProjectGenerator.g:3786:2: ( ruleLocale )
+            // InternalProjectGenerator.g:3787:3: ruleLocale
             {
              before(grammarAccess.getLocalizedValueAccess().getLocaleLocaleEnumRuleCall_2_0()); 
             pushFollow(FOLLOW_2);
@@ -10889,17 +11118,17 @@ public class InternalProjectGeneratorParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__LocalizedValue__ValueAssignment_5"
-    // InternalProjectGenerator.g:3711:1: rule__LocalizedValue__ValueAssignment_5 : ( RULE_STRING ) ;
+    // InternalProjectGenerator.g:3796:1: rule__LocalizedValue__ValueAssignment_5 : ( RULE_STRING ) ;
     public final void rule__LocalizedValue__ValueAssignment_5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalProjectGenerator.g:3715:1: ( ( RULE_STRING ) )
-            // InternalProjectGenerator.g:3716:2: ( RULE_STRING )
+            // InternalProjectGenerator.g:3800:1: ( ( RULE_STRING ) )
+            // InternalProjectGenerator.g:3801:2: ( RULE_STRING )
             {
-            // InternalProjectGenerator.g:3716:2: ( RULE_STRING )
-            // InternalProjectGenerator.g:3717:3: RULE_STRING
+            // InternalProjectGenerator.g:3801:2: ( RULE_STRING )
+            // InternalProjectGenerator.g:3802:3: RULE_STRING
             {
              before(grammarAccess.getLocalizedValueAccess().getValueSTRINGTerminalRuleCall_5_0()); 
             match(input,RULE_STRING,FOLLOW_2); 

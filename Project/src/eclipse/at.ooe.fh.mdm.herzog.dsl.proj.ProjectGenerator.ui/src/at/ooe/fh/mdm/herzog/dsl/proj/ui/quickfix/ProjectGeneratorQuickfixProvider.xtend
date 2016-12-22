@@ -20,6 +20,8 @@ import org.eclipse.xtext.ui.editor.quickfix.DefaultQuickfixProvider
 import org.eclipse.xtext.ui.editor.quickfix.Fix
 import org.eclipse.xtext.ui.editor.quickfix.IssueResolutionAcceptor
 import org.eclipse.xtext.validation.Issue
+import static java.util.stream.Collectors.*
+import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.LocalizedEntry
 
 /**
  * Custom quickfixes.	
@@ -61,7 +63,7 @@ class ProjectGeneratorQuickfixProvider extends DefaultQuickfixProvider {
 
 			localizedErrorEntry.values.add(localizedErrorValue);
 			localizedError.values.add(localizedErrorEntry);
-  
+
 			// Default Observer
 			val observer = ProjectGeneratorFactory.eINSTANCE.createObserver;
 			observer.name = "YourObserverName";
@@ -94,6 +96,31 @@ class ProjectGeneratorQuickfixProvider extends DefaultQuickfixProvider {
 		acceptor.accept(issue, 'Convert to upper case', 'Convert to upper case', '') [ element, context |
 			val module = (element as Module);
 			module.key = module.key.toUpperCase;
+		]
+	}
+
+	/**
+	 * Module: Observers unused
+	 */
+	@Fix(ValidatorId.MODULE_OBSERVER_UNUSED)
+	def fixUnusedObservers(Issue issue, IssueResolutionAcceptor acceptor) {
+		acceptor.accept(issue, 'Remove unused observers', 'Remove unused observers (' + issue.data.join(",") + ')', '') [ element, context |
+			val module = (element as Module);
+			val observerNames = newArrayList(issue.data);
+			module.observers.removeAll(module.observers.stream.filter[observerNames.contains(name)].collect(toList));
+		]
+	}
+
+	/**
+	 * Module: Localized unused
+	 */
+	@Fix(ValidatorId.MODULE_LOCALIZED_UNUSED)
+	def fixUnusedLocalized(Issue issue, IssueResolutionAcceptor acceptor) {
+		acceptor.accept(issue, 'Remove unused message bundles', 'Remove unused message bundles (' + issue.data.join(",") + ')', '') [ element, context |
+			val module = (element as Module);
+			val bundleNames = newArrayList(issue.data);
+			module.messageBundles.removeAll(
+				module.observers.stream.filter[!bundleNames.contains(name)].collect(toList));
 		]
 	}
 
@@ -161,6 +188,27 @@ class ProjectGeneratorQuickfixProvider extends DefaultQuickfixProvider {
 			}
 		]
 	}
+	
+	/**
+	 * Localized: Remove or rename duplicate LocalizedEntry locale. 
+	 */
+	@Fix(ValidatorId.LOCALIZED_ENTRY_LOCALE_DUPLICATE)
+	def fixLocalizedEntryLocaleDuplicates(Issue issue, IssueResolutionAcceptor acceptor) {
+		// Remove entry
+		acceptor.accept(issue, 'Remove', 'Remove', '') [ element, context |
+			val localized = (element as LocalizedEntry);
+			Objects.requireNonNull(localized, "Element should be Localized instance");
+
+			if ((issue.data != null) && (issue.data.length > 0)) {
+				for (_key : issue.data) {
+					val optionalDuplicate = localized.values.stream.filter[locale.toString.equals(_key)].findFirst;
+					if (optionalDuplicate.isPresent) {
+						localized.values.remove(optionalDuplicate.get);
+					} 
+				}
+			}
+		]
+	}
 
 	/**
 	 * Observer: Remove or rename duplicate Observer matched by their name. 
@@ -213,6 +261,28 @@ class ProjectGeneratorQuickfixProvider extends DefaultQuickfixProvider {
 	}
 
 	/**
+	 * ServiceConfig: Remove duplicate mapped message bundle matched by their name 
+	 */
+	@Fix(ValidatorId.SERVICE_CONFIG_OBSERVERS_DUPLICATE)
+	def fixServiceConfigDuplicateObservers(Issue issue, IssueResolutionAcceptor acceptor) {
+		// Remove entry
+		acceptor.accept(issue, 'Remove', 'Remove', '') [ element, context |
+			val config = (element as ServiceConfig);
+			Objects.requireNonNull(config, "Element should be ServiceConfig instance");
+
+			if ((issue.data != null) && (issue.data.length > 0)) {
+				for (_name : issue.data) {
+					val optionalDuplicate = config.observers.stream.filter[name.equals(_name)].findFirst;
+					if (optionalDuplicate.isPresent) {
+						config.observers.remove(optionalDuplicate.get);
+					}
+				}
+			}
+		]
+	}
+	
+
+	/**
 	 * JpaConfig: Remove duplicate mapped message bundles mapped by their name.
 	 */
 	@Fix(ValidatorId.JPA_LOCALIZED_ENUMS_DUPLICATE)
@@ -227,6 +297,27 @@ class ProjectGeneratorQuickfixProvider extends DefaultQuickfixProvider {
 					val optionalDuplicate = config.localizedEnums.stream.filter[name.equals(_name)].findFirst;
 					if (optionalDuplicate.isPresent) {
 						config.localizedEnums.remove(optionalDuplicate.get);
+					}
+				}
+			}
+		]
+	}
+
+	/**
+	 * JpaConfig: Remove duplicate mapped observers mapped by their name.
+	 */
+	@Fix(ValidatorId.JPA_OBSERVERS_DUPLICATE)
+	def fixJpaConfigDuplicateObservers(Issue issue, IssueResolutionAcceptor acceptor) {
+		// Remove entry
+		acceptor.accept(issue, 'Remove', 'Remove', '') [ element, context |
+			val config = (element as JpaConfig);
+			Objects.requireNonNull(config, "Element should be JpaConfig instance");
+
+			if ((issue.data != null) && (issue.data.length > 0)) {
+				for (_name : issue.data) {
+					val optionalDuplicate = config.observers.stream.filter[name.equals(_name)].findFirst;
+					if (optionalDuplicate.isPresent) {
+						config.observers.remove(optionalDuplicate.get);
 					}
 				}
 			}

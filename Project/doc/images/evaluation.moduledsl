@@ -1,0 +1,69 @@
+module Evaluation{
+	key 'EVAL';
+	cdiEnabled true;
+	messageBundles {
+        OrderState{
+			values {
+			{
+				key CONFIRMED;
+				values {
+					{
+						locale de_DE;
+						value 'Confirmed';
+					};
+					{
+						locale en_US;
+						value 'Confirmed';
+					};
+				};
+	        };
+			{
+				key CANCLED;
+				values {
+					{
+						locale en_US;
+						value 'Cancled';
+					};
+				}; 
+	        };
+			};
+		}; 
+        ErrorMessage{
+			values {
+				{
+					key UNKNOWN;  
+					values {
+						{
+							locale en_US;
+							value 'E00002: Unhandled error detected';
+						};
+					}; 
+	        	};
+			};  
+		};   
+	}; 
+	observers {
+        LoginObserver{
+			type com.clevercure.event.LoginEvent;
+			during InProgress;
+			notifyObserver Always;
+			delegate com.clevercure.evaluation.observer.LoginEventObserver;
+		};    
+    }; 
+    jpaConfig {    
+    	  localizedEnums {
+          	OrderState 
+          }; 
+          observers {
+          	LoginObserver
+          };
+    };     
+	serviceConfig { 
+    	observers {
+      		LoginObserver
+      	};       
+    	messageBundles {              
+    		OrderState ErrorMessage 
+        }; 
+    };
+}

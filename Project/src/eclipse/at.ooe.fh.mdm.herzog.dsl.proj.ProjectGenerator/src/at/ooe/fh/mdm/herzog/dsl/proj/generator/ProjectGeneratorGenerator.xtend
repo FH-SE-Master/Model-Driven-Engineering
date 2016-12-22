@@ -20,7 +20,12 @@ import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Observer
 class ProjectGeneratorGenerator extends AbstractGenerator {
 
 	static val PARENT_ARTIFACT = "parent";
-	static val PARENT_GROUP = "com.clevercure";
+	static val PARENT_GROUP = "com.app";
+	static val PACKAGE_PREFIX = "com.app.";
+
+	static val DIR_PACKAGE_PREFIX = "com/app/";
+	static val SRC_MAIN_JAVA = "src/main/java/";
+	static val SRC_MAIN_RES = "src/main/resources/";
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
 		for (e : resource.allContents.toIterable.filter(typeof(Module))) {
@@ -47,10 +52,13 @@ class ProjectGeneratorGenerator extends AbstractGenerator {
 	 * Generate the message project
 	 */
 	def generateProjectMessage(Module _module, Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
+		if (_module.messageBundles.isEmpty) {
+			return;
+		}
 		val projectDir = _module.key.toLowerCase + "/message/";
-		fsa.generateFile(projectDir + "/pom.xml", _module.pomParentModule);
+		fsa.generateFile(projectDir + "/pom.xml", _module.pomMessage);
 		if (at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Boolean.TRUE.equals(_module.cdiEnabled)) {
-			fsa.generateFile(projectDir + "/src/main/resources/META-INF/beans.xml", beansXml(null));
+			fsa.generateFile(projectDir + SRC_MAIN_RES + "META-INF/beans.xml", beansXml(null));
 		}
 		for (bundle : _module.messageBundles) {
 			val localeToKeyValueMap = newHashMap();
@@ -66,10 +74,11 @@ class ProjectGeneratorGenerator extends AbstractGenerator {
 			}
 			for (entry : localeToKeyValueMap.entrySet) {
 				fsa.generateFile(
-					projectDir + "/src/main/resources/META-INF/resource-bundles/" + bundle.name.toLowerCase + "_" +
+					projectDir + SRC_MAIN_RES + "META-INF/resource-bundles/" + bundle.name.toLowerCase + "_" +
 						entry.key.toString + ".properties", messageBundleProperties(entry.value));
 				fsa.generateFile(
-					projectDir + "/src/main/java/com/clevercure/" + _module.key + "/message/" + bundle.name + ".java",
+					projectDir + SRC_MAIN_JAVA + DIR_PACKAGE_PREFIX + _module.key.toLowerCase + "/message/" +
+						bundle.name + ".java",
 					messageBundleEnum((PARENT_GROUP + "." + _module.key.toLowerCase + ".message"), bundle.name,
 						newArrayList(entry.value.keySet)));
 			}
@@ -89,10 +98,20 @@ class ProjectGeneratorGenerator extends AbstractGenerator {
 	 * Generate the jpa project
 	 */
 	def generateProjectJpa(Module _module, Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
+		if (_module.jpaConfig == null) {
+			return;
+		}
 		val projectDir = _module.key.toLowerCase + "/model/jpa/";
 		fsa.generateFile(projectDir + "/pom.xml", _module.pomJpa);
 		if (at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Boolean.TRUE.equals(_module.cdiEnabled)) {
-			fsa.generateFile(projectDir + "/src/main/resources/META-INF/beans.xml", beansXml(null));
+			fsa.generateFile(projectDir + SRC_MAIN_RES + "META-INF/beans.xml", beansXml(null));
+			fsa.generateFile(projectDir + SRC_MAIN_RES + "META-INF/" + _module.key.toLowerCase + "Orm.xml",
+				beansXml(null));
+			if (!_module.jpaConfig.observers.isEmpty) {
+				fsa.generateFile(projectDir + SRC_MAIN_JAVA + DIR_PACKAGE_PREFIX + _module.key.toLowerCase +
+					"/model/jpa/observer/Observer.java",
+					observerClass(PACKAGE_PREFIX + _module.key.toLowerCase + ".observer", _module.jpaConfig.observers));
+			}
 		}
 	}
 
@@ -101,6 +120,9 @@ class ProjectGeneratorGenerator extends AbstractGenerator {
 	 */
 	def generateParentProjectService(Module _module, Resource resource, IFileSystemAccess2 fsa,
 		IGeneratorContext context) {
+		if (_module.serviceConfig == null) {
+			return;
+		}
 		val projectDir = _module.key.toLowerCase + "/service/";
 		fsa.generateFile(projectDir + "/pom.xml", _module.pomServiceParent);
 	}
@@ -110,10 +132,13 @@ class ProjectGeneratorGenerator extends AbstractGenerator {
 	 */
 	def generateProjectServiceApi(Module _module, Resource resource, IFileSystemAccess2 fsa,
 		IGeneratorContext context) {
+		if (_module.serviceConfig == null) {
+			return;
+		}
 		val projectDir = _module.key.toLowerCase + "/service/api/";
 		fsa.generateFile(projectDir + "/pom.xml", _module.pomServiceApi);
 		if (at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Boolean.TRUE.equals(_module.cdiEnabled)) {
-			fsa.generateFile(projectDir + "/src/main/resources/META-INF/beans.xml", beansXml(null));
+			fsa.generateFile(projectDir + SRC_MAIN_RES + "META-INF/beans.xml", beansXml(null));
 		}
 	}
 
@@ -122,31 +147,55 @@ class ProjectGeneratorGenerator extends AbstractGenerator {
 	 */
 	def generateProjectServiceImpl(Module _module, Resource resource, IFileSystemAccess2 fsa,
 		IGeneratorContext context) {
+		if (_module.serviceConfig == null) {
+			return;
+		}
 		val projectDir = _module.key.toLowerCase + "/service/impl/";
 		fsa.generateFile(projectDir + "/pom.xml", _module.pomServiceImpl);
 		// TODO: extract decorators
 		if (at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Boolean.TRUE.equals(_module.cdiEnabled)) {
-			fsa.generateFile(projectDir + "/src/main/resources/META-INF/beans.xml", beansXml(null));
-			fsa.generateFile(projectDir + "/src/main/java/com/clevercure/" + _module.key + "/observer/Observer.java",
-				observerClass("com.clevercure." + _module.key + ".observer", _module.serviceConfig.observers));
+			fsa.generateFile(projectDir + SRC_MAIN_RES + "META-INF/beans.xml", beansXml(null));
+			if (!_module.serviceConfig.observers.isEmpty) {
+				fsa.generateFile(projectDir + SRC_MAIN_JAVA + DIR_PACKAGE_PREFIX + _module.key.toLowerCase +
+					"/service/impl/observer/Observer.java",
+					observerClass(PACKAGE_PREFIX + _module.key.toLowerCase + ".observer",
+						_module.serviceConfig.observers));
+			}
 		}
 	}
 
+	/**
+	 * Template for the beans xml.
+	 */
 	def beansXml(List<Observer> observers) '''
 		<?xml version="1.0" encoding="UTF-8"?>
 			<beans xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/beans_1_0.xsd">
-		«IF observers != null && !observers.isEmpty»
-			«FOR decorator: observers»
-				<class>«decorator»</class>
-			«ENDFOR»
-		«ENDIF»
+		
+			
+			<!-- Add decorators, interceptors, .. here -->
 		</beans>
 	'''
 
+	/**
+	 * Template for the beans xml.
+	 */
+	def ormXml() '''
+		<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm"
+			xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+			xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_2_0.xsd"
+			version="2.0">
+			
+			<!-- Add your first entity here -->
+			</entity-mappings>
+	'''
+
+	/**
+	 * Template for the observer class.
+	 */
 	def observerClass(String packageName, List<Observer> observers) '''
 		package «packageName»;
 		
-		import javax.inject.Event;
+		import javax.enterprise.event.*;
 		
 		@Dependent
 		public class Observer {
@@ -158,27 +207,36 @@ class ProjectGeneratorGenerator extends AbstractGenerator {
 			   private «observer.className» delegateEvent«observers.indexOf(observer)»;   				
 		«ENDFOR»
 		«FOR observer : observers»
-			public void observerEvent_«observers.indexOf(observer)»(@Observes «observer.type» evt) {
+			public void observerEvent_«observers.indexOf(observer)»(@Observes(during=TransactionPhase.«observer.during.toString», notifyObserver = Reception.«observer.getNotify().toString()») «observer.type» evt) {
 				delegateEvent«observers.indexOf(observer)».observe(evt);
 			}
 		«ENDFOR»
 		}
 	'''
 
+	/**
+	 * Template for the message bundle properties file.
+	 */
 	def messageBundleProperties(Map<String, String> _keyTovalueMap) '''
 		«FOR entry : _keyTovalueMap.entrySet»
 			«entry.key»=«entry.value»
 		«ENDFOR»
 	'''
 
+	/**
+	 * Template for the message bundle enumeration for the keys.
+	 */
 	def messageBundleEnum(String packageName, String bundleName, List<String> _keys) '''
 		package «packageName».message;
 		  
-		public enum «bundleName» {
+		public enum «bundleName»MessageBundle {
 			«_keys.join(',\n,')»;
 		}
 	'''
 
+	/**
+	 * Template for the pom.xml of the module parent project
+	 */
 	def pomParentModule(Module _module) '''
 		<?xml version="1.0" encoding="UTF-8"?>
 		<project xmlns="http://maven.apache.org/POM/4.0.0"
@@ -204,6 +262,9 @@ class ProjectGeneratorGenerator extends AbstractGenerator {
 		</project>
 	'''
 
+	/**
+	 * Template for the pom.xml of the message project
+	 */
 	def pomMessage(Module _module) '''
 		<?xml version="1.0" encoding="UTF-8"?>
 		<project xmlns="http://maven.apache.org/POM/4.0.0"
@@ -223,6 +284,9 @@ class ProjectGeneratorGenerator extends AbstractGenerator {
 		</project>
 	'''
 
+	/**
+	 * Template for the pom.xml of the model parent project
+	 */
 	def pomParentModel(Module _module) '''
 		<?xml version="1.0" encoding="UTF-8"?>
 		<project xmlns="http://maven.apache.org/POM/4.0.0"
@@ -246,6 +310,9 @@ class ProjectGeneratorGenerator extends AbstractGenerator {
 		</project>
 	'''
 
+	/**
+	 * Template for the pom.xml of the model jpa project
+	 */
 	def pomJpa(Module _module) '''
 		<?xml version="1.0" encoding="UTF-8"?>
 		<project xmlns="http://maven.apache.org/POM/4.0.0"
@@ -272,6 +339,9 @@ class ProjectGeneratorGenerator extends AbstractGenerator {
 		</project>
 	'''
 
+	/**
+	 * Template for the pom.xml of the service parent project
+	 */
 	def pomServiceParent(Module _module) '''
 		<?xml version="1.0" encoding="UTF-8"?>
 		<project xmlns="http://maven.apache.org/POM/4.0.0"
@@ -293,9 +363,17 @@ class ProjectGeneratorGenerator extends AbstractGenerator {
 		    <name>«_module.key.toLowerCase»-service</name>
 		    <description>The parent project for all service projects</description>
 		
+			
+		    <modules>
+		        <module>api</module>
+		        <module>impl</module>
+		    </modules>
 		</project>
 	'''
 
+	/**
+	 * Template for the pom.xml of the service api project
+	 */
 	def pomServiceApi(Module _module) '''
 		<?xml version="1.0" encoding="UTF-8"?>
 		<project xmlns="http://maven.apache.org/POM/4.0.0"
@@ -323,6 +401,9 @@ class ProjectGeneratorGenerator extends AbstractGenerator {
 		</project>
 	'''
 
+	/**
+	 * Template for the pom.xml of the service impl project
+	 */
 	def pomServiceImpl(Module _module) '''
 		<?xml version="1.0" encoding="UTF-8"?>
 		<project xmlns="http://maven.apache.org/POM/4.0.0"

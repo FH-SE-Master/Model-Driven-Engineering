@@ -270,7 +270,7 @@ public interface ProjectGeneratorPackage extends EPackage
   int JPA_CONFIG__LOCALIZED_ENUMS = 0;
 
   /**
-   * The feature id for the '<em><b>Observers</b></em>' containment reference list.
+   * The feature id for the '<em><b>Observers</b></em>' reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -665,10 +665,10 @@ public interface ProjectGeneratorPackage extends EPackage
   EReference getJpaConfig_LocalizedEnums();
 
   /**
-   * Returns the meta object for the containment reference list '{@link at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.JpaConfig#getObservers <em>Observers</em>}'.
+   * Returns the meta object for the reference list '{@link at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.JpaConfig#getObservers <em>Observers</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Observers</em>'.
+   * @return the meta object for the reference list '<em>Observers</em>'.
    * @see at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.JpaConfig#getObservers()
    * @see #getJpaConfig()
    * @generated
@@ -1014,7 +1014,7 @@ public interface ProjectGeneratorPackage extends EPackage
     EReference JPA_CONFIG__LOCALIZED_ENUMS = eINSTANCE.getJpaConfig_LocalizedEnums();
 
     /**
-     * The meta object literal for the '<em><b>Observers</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Observers</b></em>' reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated

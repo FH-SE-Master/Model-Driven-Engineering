@@ -4,8 +4,10 @@
 package at.ooe.fh.mdm.herzog.dsl.proj.validation;
 
 import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.JpaConfig;
+import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Locale;
 import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Localized;
 import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.LocalizedEntry;
+import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.LocalizedValue;
 import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Module;
 import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Observer;
 import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.ProjectGeneratorPackage;
@@ -16,6 +18,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.function.Function;
+import java.util.function.IntFunction;
 import java.util.function.Predicate;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -25,6 +28,8 @@ import java.util.stream.Stream;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.validation.Check;
+import org.eclipse.xtext.xbase.lib.CollectionLiterals;
+import org.eclipse.xtext.xbase.lib.Conversions;
 
 /**
  * This class contains custom validation rules.
@@ -43,6 +48,10 @@ public class ProjectGeneratorValidator extends AbstractProjectGeneratorValidator
     
     public final static String MODULE_KEY_UPPER_CASE = "MODULE_KEY_UPPER_CASE";
     
+    public final static String MODULE_OBSERVER_UNUSED = "MODULE_OBSERVER_UNUSED";
+    
+    public final static String MODULE_LOCALIZED_UNUSED = "MODULE_LOCALIZED_UNUSED";
+    
     public final static String OBSERVER_NAME_CAMEL_CASE = "OBSERVER_NAME_CAMEL_CASE";
     
     public final static String OBSERVER_NAME_DUPLICATE = "OBSERVER_NAME_UNIQUE";
@@ -53,11 +62,17 @@ public class ProjectGeneratorValidator extends AbstractProjectGeneratorValidator
     
     public final static String LOCALIZED_ENTRY_DUPLICATE = "LOCALIZED_ENTRY_DUPLICATE";
     
+    public final static String LOCALIZED_ENTRY_LOCALE_DUPLICATE = "LOCALIZED_ENTRY_LOCALE_DUPLICATE";
+    
     public final static String LOCALIZED_ENTRY_UNDEFINED = "LOCALIZED_ENTRY_UNDEFINED";
     
     public final static String SERVICE_CONFIG_MESSAGE_BUNDLE_DUPLICATE = "SERVICE_CONFIG_MESSAGE_BUNDLE_DUPLICATE";
     
+    public final static String SERVICE_CONFIG_OBSERVERS_DUPLICATE = "SERVICE_CONFIG_OBSERVERS_DUPLICATE";
+    
     public final static String JPA_LOCALIZED_ENUMS_DUPLICATE = "JPA_LOCALIZED_ENUMS_DUPLICATE";
+    
+    public final static String JPA_OBSERVERS_DUPLICATE = "JPA_OBSERVERS_DUPLICATE";
   }
   
   private static Pattern CAMEL_CASE_PATTERN = Pattern.compile("([A-Z]{1}[a-z0-9]+)+");
@@ -98,6 +113,76 @@ public class ProjectGeneratorValidator extends AbstractProjectGeneratorValidator
   }
   
   @Check
+  public void checkForUnusedObserver(final Module _module) {
+    EList<Observer> _observers = _module.getObservers();
+    final List<Observer> observers = CollectionLiterals.<Observer>newArrayList(((Observer[])Conversions.unwrapArray(_observers, Observer.class)));
+    ServiceConfig _serviceConfig = _module.getServiceConfig();
+    boolean _notEquals = (!Objects.equal(_serviceConfig, null));
+    if (_notEquals) {
+      ServiceConfig _serviceConfig_1 = _module.getServiceConfig();
+      EList<Observer> _observers_1 = _serviceConfig_1.getObservers();
+      observers.removeAll(_observers_1);
+    }
+    JpaConfig _jpaConfig = _module.getJpaConfig();
+    boolean _notEquals_1 = (!Objects.equal(_jpaConfig, null));
+    if (_notEquals_1) {
+      JpaConfig _jpaConfig_1 = _module.getJpaConfig();
+      EList<Observer> _observers_2 = _jpaConfig_1.getObservers();
+      observers.removeAll(_observers_2);
+    }
+    boolean _isEmpty = observers.isEmpty();
+    boolean _not = (!_isEmpty);
+    if (_not) {
+      final String warnMsg = "Some observers are unused";
+      Stream<Observer> _stream = observers.stream();
+      final Function<Observer, String> _function = (Observer it) -> {
+        return it.getName();
+      };
+      Stream<String> _map = _stream.<String>map(_function);
+      final IntFunction<String[]> _function_1 = (int size) -> {
+        return new String[size];
+      };
+      String[] _array = _map.<String>toArray(_function_1);
+      this.warning(warnMsg, ProjectGeneratorPackage.Literals.MODULE__OBSERVERS, ProjectGeneratorValidator.ValidatorId.MODULE_OBSERVER_UNUSED, _array);
+    }
+  }
+  
+  @Check
+  public void checkForUnusedMessageBundle(final Module _module) {
+    EList<Localized> _messageBundles = _module.getMessageBundles();
+    final List<Localized> localized = CollectionLiterals.<Localized>newArrayList(((Localized[])Conversions.unwrapArray(_messageBundles, Localized.class)));
+    ServiceConfig _serviceConfig = _module.getServiceConfig();
+    boolean _notEquals = (!Objects.equal(_serviceConfig, null));
+    if (_notEquals) {
+      ServiceConfig _serviceConfig_1 = _module.getServiceConfig();
+      EList<Localized> _messageBundles_1 = _serviceConfig_1.getMessageBundles();
+      localized.removeAll(_messageBundles_1);
+    }
+    JpaConfig _jpaConfig = _module.getJpaConfig();
+    boolean _notEquals_1 = (!Objects.equal(_jpaConfig, null));
+    if (_notEquals_1) {
+      JpaConfig _jpaConfig_1 = _module.getJpaConfig();
+      EList<Localized> _localizedEnums = _jpaConfig_1.getLocalizedEnums();
+      localized.removeAll(_localizedEnums);
+    }
+    boolean _isEmpty = localized.isEmpty();
+    boolean _not = (!_isEmpty);
+    if (_not) {
+      final String warnMsg = "Some message bundles are unused";
+      Stream<Localized> _stream = localized.stream();
+      final Function<Localized, String> _function = (Localized it) -> {
+        return it.getName();
+      };
+      Stream<String> _map = _stream.<String>map(_function);
+      final IntFunction<String[]> _function_1 = (int size) -> {
+        return new String[size];
+      };
+      String[] _array = _map.<String>toArray(_function_1);
+      this.warning(warnMsg, ProjectGeneratorPackage.Literals.MODULE__MESSAGE_BUNDLES, ProjectGeneratorValidator.ValidatorId.MODULE_LOCALIZED_UNUSED, _array);
+    }
+  }
+  
+  @Check
   public void checkForCamelCaseLocalizedName(final Localized _localized) {
     String _name = _localized.getName();
     Matcher _matcher = ProjectGeneratorValidator.CAMEL_CASE_PATTERN.matcher(_name);
@@ -105,7 +190,7 @@ public class ProjectGeneratorValidator extends AbstractProjectGeneratorValidator
     boolean _not = (!_matches);
     if (_not) {
       final String errorMsg = "Localized name must be a camel case string (e.g.: MyLocalizedName)";
-      this.error(errorMsg, ProjectGeneratorPackage.Literals.LOCALIZED__NAME, ProjectGeneratorValidator.ValidatorId.LOCALIZED_NAME_DUPLICATE);
+      this.error(errorMsg, ProjectGeneratorPackage.Literals.LOCALIZED__NAME, ProjectGeneratorValidator.ValidatorId.LOCALIZED_NAME_CAMEL_CASE);
     }
   }
   
@@ -126,7 +211,7 @@ public class ProjectGeneratorValidator extends AbstractProjectGeneratorValidator
     final long count = _distinct.count();
     if ((count > 1)) {
       final String errorMsg = (("Localized name is used by \'" + Long.valueOf((count - 1))) + "\' other Localized instances");
-      this.error(errorMsg, ProjectGeneratorPackage.Literals.LOCALIZED__NAME, ProjectGeneratorValidator.ValidatorId.LOCALIZED_NAME_CAMEL_CASE);
+      this.error(errorMsg, ProjectGeneratorPackage.Literals.LOCALIZED__NAME, ProjectGeneratorValidator.ValidatorId.LOCALIZED_ENTRY_DUPLICATE);
     }
   }
   
@@ -179,6 +264,45 @@ public class ProjectGeneratorValidator extends AbstractProjectGeneratorValidator
   }
   
   @Check
+  public void checkForDuplicateLocaleEntriesLocales(final LocalizedEntry _localized) {
+    EList<LocalizedValue> _values = _localized.getValues();
+    Stream<LocalizedValue> _stream = _values.stream();
+    final Function<LocalizedValue, String> _function = (LocalizedValue it) -> {
+      Locale _locale = it.getLocale();
+      return _locale.toString();
+    };
+    Collector<LocalizedValue, ?, Map<String, List<LocalizedValue>>> _groupingBy = Collectors.<LocalizedValue, String>groupingBy(_function);
+    Map<String, List<LocalizedValue>> _collect = _stream.collect(_groupingBy);
+    Set<Map.Entry<String, List<LocalizedValue>>> _entrySet = _collect.entrySet();
+    Stream<Map.Entry<String, List<LocalizedValue>>> _stream_1 = _entrySet.stream();
+    final Predicate<Map.Entry<String, List<LocalizedValue>>> _function_1 = (Map.Entry<String, List<LocalizedValue>> it) -> {
+      List<LocalizedValue> _value = it.getValue();
+      int _size = _value.size();
+      return (_size > 1);
+    };
+    Stream<Map.Entry<String, List<LocalizedValue>>> _filter = _stream_1.filter(_function_1);
+    final Function<Map.Entry<String, List<LocalizedValue>>, String> _function_2 = (Map.Entry<String, List<LocalizedValue>> it) -> {
+      return it.getKey();
+    };
+    Stream<String> _map = _filter.<String>map(_function_2);
+    Stream<String> _distinct = _map.distinct();
+    Collector<String, ?, List<String>> _list = Collectors.<String>toList();
+    final List<String> duplicateLocales = _distinct.collect(_list);
+    boolean _isEmpty = duplicateLocales.isEmpty();
+    boolean _not = (!_isEmpty);
+    if (_not) {
+      Stream<String> _stream_2 = duplicateLocales.stream();
+      Collector<CharSequence, ?, String> _joining = Collectors.joining(",", "[", "]");
+      String _collect_1 = _stream_2.collect(_joining);
+      final String errorMsg = ("Duplicate locale found. " + _collect_1);
+      int _size = duplicateLocales.size();
+      String[] _newArrayOfSize = new String[_size];
+      String[] _array = duplicateLocales.<String>toArray(_newArrayOfSize);
+      this.error(errorMsg, ProjectGeneratorPackage.Literals.LOCALIZED_ENTRY__VALUES, ProjectGeneratorValidator.ValidatorId.LOCALIZED_ENTRY_LOCALE_DUPLICATE, _array);
+    }
+  }
+  
+  @Check
   public void checkForCamelCaseObserverName(final Observer _observer) {
     String _name = _observer.getName();
     Matcher _matcher = ProjectGeneratorValidator.CAMEL_CASE_PATTERN.matcher(_name);
@@ -212,7 +336,7 @@ public class ProjectGeneratorValidator extends AbstractProjectGeneratorValidator
   }
   
   @Check
-  public void checkForUniqueServiceConfigMessagebundles(final ServiceConfig _serviceConfig) {
+  public void checkForUniqueServiceConfigMessageBundles(final ServiceConfig _serviceConfig) {
     EList<Localized> _messageBundles = _serviceConfig.getMessageBundles();
     Stream<Localized> _stream = _messageBundles.stream();
     final Function<Localized, String> _function = (Localized it) -> {
@@ -247,6 +371,45 @@ public class ProjectGeneratorValidator extends AbstractProjectGeneratorValidator
       String[] _array = duplciateBundles.<String>toArray(_newArrayOfSize);
       this.error(errorMsg, ProjectGeneratorPackage.Literals.SERVICE_CONFIG__MESSAGE_BUNDLES, 
         ProjectGeneratorValidator.ValidatorId.SERVICE_CONFIG_MESSAGE_BUNDLE_DUPLICATE, _array);
+    }
+  }
+  
+  @Check
+  public void checkForUniqueServiceConfigObservers(final ServiceConfig _serviceConfig) {
+    EList<Observer> _observers = _serviceConfig.getObservers();
+    Stream<Observer> _stream = _observers.stream();
+    final Function<Observer, String> _function = (Observer it) -> {
+      return it.getName();
+    };
+    Collector<Observer, ?, Map<String, List<Observer>>> _groupingBy = Collectors.<Observer, String>groupingBy(_function);
+    Map<String, List<Observer>> _collect = _stream.collect(_groupingBy);
+    Set<Map.Entry<String, List<Observer>>> _entrySet = _collect.entrySet();
+    Stream<Map.Entry<String, List<Observer>>> _stream_1 = _entrySet.stream();
+    final Predicate<Map.Entry<String, List<Observer>>> _function_1 = (Map.Entry<String, List<Observer>> it) -> {
+      List<Observer> _value = it.getValue();
+      int _size = _value.size();
+      return (_size > 1);
+    };
+    Stream<Map.Entry<String, List<Observer>>> _filter = _stream_1.filter(_function_1);
+    final Function<Map.Entry<String, List<Observer>>, String> _function_2 = (Map.Entry<String, List<Observer>> it) -> {
+      return it.getKey();
+    };
+    Stream<String> _map = _filter.<String>map(_function_2);
+    Stream<String> _distinct = _map.distinct();
+    Collector<String, ?, List<String>> _list = Collectors.<String>toList();
+    final List<String> duplciateBundles = _distinct.collect(_list);
+    boolean _isEmpty = duplciateBundles.isEmpty();
+    boolean _not = (!_isEmpty);
+    if (_not) {
+      Stream<String> _stream_2 = duplciateBundles.stream();
+      Collector<CharSequence, ?, String> _joining = Collectors.joining(",", "[", "]");
+      String _collect_1 = _stream_2.collect(_joining);
+      final String errorMsg = ("Duplicate observers found. " + _collect_1);
+      int _size = duplciateBundles.size();
+      String[] _newArrayOfSize = new String[_size];
+      String[] _array = duplciateBundles.<String>toArray(_newArrayOfSize);
+      this.error(errorMsg, ProjectGeneratorPackage.Literals.SERVICE_CONFIG__OBSERVERS, 
+        ProjectGeneratorValidator.ValidatorId.SERVICE_CONFIG_OBSERVERS_DUPLICATE, _array);
     }
   }
   
@@ -286,6 +449,45 @@ public class ProjectGeneratorValidator extends AbstractProjectGeneratorValidator
       String[] _array = duplciateBundles.<String>toArray(_newArrayOfSize);
       this.error(errorMsg, ProjectGeneratorPackage.Literals.JPA_CONFIG__LOCALIZED_ENUMS, 
         ProjectGeneratorValidator.ValidatorId.JPA_LOCALIZED_ENUMS_DUPLICATE, _array);
+    }
+  }
+  
+  @Check
+  public void checkForUniqueJpaConfigObserverName(final JpaConfig _jpaConfig) {
+    EList<Observer> _observers = _jpaConfig.getObservers();
+    Stream<Observer> _stream = _observers.stream();
+    final Function<Observer, String> _function = (Observer it) -> {
+      return it.getName();
+    };
+    Collector<Observer, ?, Map<String, List<Observer>>> _groupingBy = Collectors.<Observer, String>groupingBy(_function);
+    Map<String, List<Observer>> _collect = _stream.collect(_groupingBy);
+    Set<Map.Entry<String, List<Observer>>> _entrySet = _collect.entrySet();
+    Stream<Map.Entry<String, List<Observer>>> _stream_1 = _entrySet.stream();
+    final Predicate<Map.Entry<String, List<Observer>>> _function_1 = (Map.Entry<String, List<Observer>> it) -> {
+      List<Observer> _value = it.getValue();
+      int _size = _value.size();
+      return (_size > 1);
+    };
+    Stream<Map.Entry<String, List<Observer>>> _filter = _stream_1.filter(_function_1);
+    final Function<Map.Entry<String, List<Observer>>, String> _function_2 = (Map.Entry<String, List<Observer>> it) -> {
+      return it.getKey();
+    };
+    Stream<String> _map = _filter.<String>map(_function_2);
+    Stream<String> _distinct = _map.distinct();
+    Collector<String, ?, List<String>> _list = Collectors.<String>toList();
+    final List<String> duplciateBundles = _distinct.collect(_list);
+    boolean _isEmpty = duplciateBundles.isEmpty();
+    boolean _not = (!_isEmpty);
+    if (_not) {
+      Stream<String> _stream_2 = duplciateBundles.stream();
+      Collector<CharSequence, ?, String> _joining = Collectors.joining(",", "[", "]");
+      String _collect_1 = _stream_2.collect(_joining);
+      final String errorMsg = ("Duplicate observers found. " + _collect_1);
+      int _size = duplciateBundles.size();
+      String[] _newArrayOfSize = new String[_size];
+      String[] _array = duplciateBundles.<String>toArray(_newArrayOfSize);
+      this.error(errorMsg, ProjectGeneratorPackage.Literals.JPA_CONFIG__OBSERVERS, 
+        ProjectGeneratorValidator.ValidatorId.JPA_OBSERVERS_DUPLICATE, _array);
     }
   }
 }

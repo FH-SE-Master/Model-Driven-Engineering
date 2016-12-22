@@ -1,0 +1,71 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{module} \PYG{n}{Evaluation}\PYG{o}{\PYGZob{}}
+	\PYG{n}{key} \PYG{err}{\PYGZsq{}}\PYG{n}{EVAL}\PYG{err}{\PYGZsq{}}\PYG{o}{;}
+	\PYG{n}{cdiEnabled} \PYG{k+kc}{true}\PYG{o}{;}
+	\PYG{n}{messageBundles} \PYG{o}{\PYGZob{}}
+        \PYG{n}{OrderState}\PYG{o}{\PYGZob{}}
+			\PYG{n}{values} \PYG{o}{\PYGZob{}}
+			\PYG{o}{\PYGZob{}}
+				\PYG{n}{key} \PYG{n}{CONFIRMED}\PYG{o}{;}
+				\PYG{n}{values} \PYG{o}{\PYGZob{}}
+					\PYG{o}{\PYGZob{}}
+						\PYG{n}{locale} \PYG{n}{de\PYGZus{}DE}\PYG{o}{;}
+						\PYG{n}{value} \PYG{err}{\PYGZsq{}}\PYG{n}{Confirmed}\PYG{err}{\PYGZsq{}}\PYG{o}{;}
+					\PYG{o}{\PYGZcb{};}
+					\PYG{o}{\PYGZob{}}
+						\PYG{n}{locale} \PYG{n}{en\PYGZus{}US}\PYG{o}{;}
+						\PYG{n}{value} \PYG{err}{\PYGZsq{}}\PYG{n}{Confirmed}\PYG{err}{\PYGZsq{}}\PYG{o}{;}
+					\PYG{o}{\PYGZcb{};}
+				\PYG{o}{\PYGZcb{};}
+	        \PYG{o}{\PYGZcb{};}
+			\PYG{o}{\PYGZob{}}
+				\PYG{n}{key} \PYG{n}{CANCLED}\PYG{o}{;}
+				\PYG{n}{values} \PYG{o}{\PYGZob{}}
+					\PYG{o}{\PYGZob{}}
+						\PYG{n}{locale} \PYG{n}{en\PYGZus{}US}\PYG{o}{;}
+						\PYG{n}{value} \PYG{err}{\PYGZsq{}}\PYG{n}{Cancled}\PYG{err}{\PYGZsq{}}\PYG{o}{;}
+					\PYG{o}{\PYGZcb{};}
+				\PYG{o}{\PYGZcb{};} 
+	        \PYG{o}{\PYGZcb{};}
+			\PYG{o}{\PYGZcb{};}
+		\PYG{o}{\PYGZcb{};} 
+        \PYG{n}{ErrorMessage}\PYG{o}{\PYGZob{}}
+			\PYG{n}{values} \PYG{o}{\PYGZob{}}
+				\PYG{o}{\PYGZob{}}
+					\PYG{n}{key} \PYG{n}{UNKNOWN}\PYG{o}{;}  
+					\PYG{n}{values} \PYG{o}{\PYGZob{}}
+						\PYG{o}{\PYGZob{}}
+							\PYG{n}{locale} \PYG{n}{en\PYGZus{}US}\PYG{o}{;}
+							\PYG{n}{value} \PYG{err}{\PYGZsq{}}\PYG{n}{E00002}\PYG{o}{:} \PYG{n}{Unhandled} \PYG{n}{error} \PYG{n}{detected}\PYG{err}{\PYGZsq{}}\PYG{o}{;}
+						\PYG{o}{\PYGZcb{};}
+					\PYG{o}{\PYGZcb{};} 
+	        	\PYG{o}{\PYGZcb{};}
+			\PYG{o}{\PYGZcb{};}  
+		\PYG{o}{\PYGZcb{};}   
+	\PYG{o}{\PYGZcb{};} 
+	\PYG{n}{observers} \PYG{o}{\PYGZob{}}
+        \PYG{n}{LoginObserver}\PYG{o}{\PYGZob{}}
+			\PYG{n}{type} \PYG{n}{com}\PYG{o}{.}\PYG{n+na}{clevercure}\PYG{o}{.}\PYG{n+na}{event}\PYG{o}{.}\PYG{n+na}{LoginEvent}\PYG{o}{;}
+			\PYG{n}{during} \PYG{n}{InProgress}\PYG{o}{;}
+			\PYG{n}{notifyObserver} \PYG{n}{Always}\PYG{o}{;}
+			\PYG{n}{delegate} \PYG{n}{com}\PYG{o}{.}\PYG{n+na}{clevercure}\PYG{o}{.}\PYG{n+na}{evaluation}\PYG{o}{.}\PYG{n+na}{observer}\PYG{o}{.}\PYG{n+na}{LoginEventObserver}\PYG{o}{;}
+		\PYG{o}{\PYGZcb{};}    
+    \PYG{o}{\PYGZcb{};} 
+    \PYG{n}{jpaConfig} \PYG{o}{\PYGZob{}}    
+    	  \PYG{n}{localizedEnums} \PYG{o}{\PYGZob{}}
+          	\PYG{n}{OrderState} 
+          \PYG{o}{\PYGZcb{};} 
+          \PYG{n}{observers} \PYG{o}{\PYGZob{}}
+          	\PYG{n}{LoginObserver}
+          \PYG{o}{\PYGZcb{};}
+    \PYG{o}{\PYGZcb{};}     
+	\PYG{n}{serviceConfig} \PYG{o}{\PYGZob{}} 
+    	\PYG{n}{observers} \PYG{o}{\PYGZob{}}
+      		\PYG{n}{LoginObserver}
+      	\PYG{o}{\PYGZcb{};}       
+    	\PYG{n}{messageBundles} \PYG{o}{\PYGZob{}}              
+    		\PYG{n}{OrderState} \PYG{n}{ErrorMessage} 
+        \PYG{o}{\PYGZcb{};} 
+    \PYG{o}{\PYGZcb{};}
+\PYG{o}{\PYGZcb{}}
+\end{Verbatim}

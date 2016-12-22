@@ -70,7 +70,7 @@ public class ProjectGeneratorParser extends AbstractContentAssistParser {
 					put(grammarAccess.getObserverAccess().getClassNameAssignment_12(), "rule__Observer__ClassNameAssignment_12");
 					put(grammarAccess.getObserverAccess().getQualifierAssignment_14_1(), "rule__Observer__QualifierAssignment_14_1");
 					put(grammarAccess.getJpaConfigAccess().getLocalizedEnumsAssignment_3(), "rule__JpaConfig__LocalizedEnumsAssignment_3");
-					put(grammarAccess.getJpaConfigAccess().getObserversAssignment_6_1(), "rule__JpaConfig__ObserversAssignment_6_1");
+					put(grammarAccess.getJpaConfigAccess().getObserversAssignment_6_2(), "rule__JpaConfig__ObserversAssignment_6_2");
 					put(grammarAccess.getLocalizedAccess().getNameAssignment_0(), "rule__Localized__NameAssignment_0");
 					put(grammarAccess.getLocalizedAccess().getValuesAssignment_2_2(), "rule__Localized__ValuesAssignment_2_2");
 					put(grammarAccess.getLocalizedEntryAccess().getLocalizedKeyAssignment_2(), "rule__LocalizedEntry__LocalizedKeyAssignment_2");
