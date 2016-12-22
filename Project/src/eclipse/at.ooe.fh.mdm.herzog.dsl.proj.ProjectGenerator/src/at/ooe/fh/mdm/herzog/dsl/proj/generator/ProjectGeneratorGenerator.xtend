@@ -10,6 +10,7 @@ import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
+import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Observer
 
 /**
  * Generates code from your model files on save.
@@ -48,6 +49,9 @@ class ProjectGeneratorGenerator extends AbstractGenerator {
 	def generateProjectMessage(Module _module, Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
 		val projectDir = _module.key.toLowerCase + "/message/";
 		fsa.generateFile(projectDir + "/pom.xml", _module.pomParentModule);
+		if (at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Boolean.TRUE.equals(_module.cdiEnabled)) {
+			fsa.generateFile(projectDir + "/src/main/resources/META-INF/beans.xml", beansXml(null));
+		}
 		for (bundle : _module.messageBundles) {
 			val localeToKeyValueMap = newHashMap();
 			for (entry : bundle.values) {
@@ -87,6 +91,9 @@ class ProjectGeneratorGenerator extends AbstractGenerator {
 	def generateProjectJpa(Module _module, Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
 		val projectDir = _module.key.toLowerCase + "/model/jpa/";
 		fsa.generateFile(projectDir + "/pom.xml", _module.pomJpa);
+		if (at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Boolean.TRUE.equals(_module.cdiEnabled)) {
+			fsa.generateFile(projectDir + "/src/main/resources/META-INF/beans.xml", beansXml(null));
+		}
 	}
 
 	/**
@@ -105,6 +112,9 @@ class ProjectGeneratorGenerator extends AbstractGenerator {
 		IGeneratorContext context) {
 		val projectDir = _module.key.toLowerCase + "/service/api/";
 		fsa.generateFile(projectDir + "/pom.xml", _module.pomServiceApi);
+		if (at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Boolean.TRUE.equals(_module.cdiEnabled)) {
+			fsa.generateFile(projectDir + "/src/main/resources/META-INF/beans.xml", beansXml(null));
+		}
 	}
 
 	/**
@@ -114,7 +124,46 @@ class ProjectGeneratorGenerator extends AbstractGenerator {
 		IGeneratorContext context) {
 		val projectDir = _module.key.toLowerCase + "/service/impl/";
 		fsa.generateFile(projectDir + "/pom.xml", _module.pomServiceImpl);
+		// TODO: extract decorators
+		if (at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Boolean.TRUE.equals(_module.cdiEnabled)) {
+			fsa.generateFile(projectDir + "/src/main/resources/META-INF/beans.xml", beansXml(null));
+			fsa.generateFile(projectDir + "/src/main/java/com/clevercure/" + _module.key + "/observer/Observer.java",
+				observerClass("com.clevercure." + _module.key + ".observer", _module.serviceConfig.observers));
+		}
 	}
+
+	def beansXml(List<Observer> observers) '''
+		<?xml version="1.0" encoding="UTF-8"?>
+			<beans xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/beans_1_0.xsd">
+		«IF observers != null && !observers.isEmpty»
+			«FOR decorator: observers»
+				<class>«decorator»</class>
+			«ENDFOR»
+		«ENDIF»
+		</beans>
+	'''
+
+	def observerClass(String packageName, List<Observer> observers) '''
+		package «packageName»;
+		
+		import javax.inject.Event;
+		
+		@Dependent
+		public class Observer {
+		
+		«FOR observer : observers»
+			@Inject
+			   private Event<«observer.type»> event«observers.indexOf(observer)»;
+			   @Inject
+			   private «observer.className» delegateEvent«observers.indexOf(observer)»;   				
+		«ENDFOR»
+		«FOR observer : observers»
+			public void observerEvent_«observers.indexOf(observer)»(@Observes «observer.type» evt) {
+				delegateEvent«observers.indexOf(observer)».observe(evt);
+			}
+		«ENDFOR»
+		}
+	'''
 
 	def messageBundleProperties(Map<String, String> _keyTovalueMap) '''
 		«FOR entry : _keyTovalueMap.entrySet»

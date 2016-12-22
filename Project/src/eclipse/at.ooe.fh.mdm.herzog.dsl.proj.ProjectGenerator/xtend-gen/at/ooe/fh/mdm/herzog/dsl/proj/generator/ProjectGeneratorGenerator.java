@@ -8,6 +8,8 @@ import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Localized;
 import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.LocalizedEntry;
 import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.LocalizedValue;
 import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Module;
+import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Observer;
+import at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.ServiceConfig;
 import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
 import java.util.ArrayList;
@@ -77,6 +79,12 @@ public class ProjectGeneratorGenerator extends AbstractGenerator {
     final String projectDir = (_lowerCase + "/message/");
     CharSequence _pomParentModule = this.pomParentModule(_module);
     fsa.generateFile((projectDir + "/pom.xml"), _pomParentModule);
+    at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Boolean _cdiEnabled = _module.getCdiEnabled();
+    boolean _equals = at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Boolean.TRUE.equals(_cdiEnabled);
+    if (_equals) {
+      CharSequence _beansXml = this.beansXml(null);
+      fsa.generateFile((projectDir + "/src/main/resources/META-INF/beans.xml"), _beansXml);
+    }
     EList<Localized> _messageBundles = _module.getMessageBundles();
     for (final Localized bundle : _messageBundles) {
       {
@@ -88,8 +96,8 @@ public class ProjectGeneratorGenerator extends AbstractGenerator {
             {
               Locale _locale = value.getLocale();
               HashMap<String, String> keyToValueMap = localeToKeyValueMap.get(_locale);
-              boolean _equals = Objects.equal(keyToValueMap, null);
-              if (_equals) {
+              boolean _equals_1 = Objects.equal(keyToValueMap, null);
+              if (_equals_1) {
                 Locale _locale_1 = value.getLocale();
                 HashMap<String, String> _newHashMap = CollectionLiterals.<String, String>newHashMap();
                 localeToKeyValueMap.put(_locale_1, _newHashMap);
@@ -159,6 +167,12 @@ public class ProjectGeneratorGenerator extends AbstractGenerator {
     final String projectDir = (_lowerCase + "/model/jpa/");
     CharSequence _pomJpa = this.pomJpa(_module);
     fsa.generateFile((projectDir + "/pom.xml"), _pomJpa);
+    at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Boolean _cdiEnabled = _module.getCdiEnabled();
+    boolean _equals = at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Boolean.TRUE.equals(_cdiEnabled);
+    if (_equals) {
+      CharSequence _beansXml = this.beansXml(null);
+      fsa.generateFile((projectDir + "/src/main/resources/META-INF/beans.xml"), _beansXml);
+    }
   }
   
   /**
@@ -181,6 +195,12 @@ public class ProjectGeneratorGenerator extends AbstractGenerator {
     final String projectDir = (_lowerCase + "/service/api/");
     CharSequence _pomServiceApi = this.pomServiceApi(_module);
     fsa.generateFile((projectDir + "/pom.xml"), _pomServiceApi);
+    at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Boolean _cdiEnabled = _module.getCdiEnabled();
+    boolean _equals = at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Boolean.TRUE.equals(_cdiEnabled);
+    if (_equals) {
+      CharSequence _beansXml = this.beansXml(null);
+      fsa.generateFile((projectDir + "/src/main/resources/META-INF/beans.xml"), _beansXml);
+    }
   }
   
   /**
@@ -192,6 +212,113 @@ public class ProjectGeneratorGenerator extends AbstractGenerator {
     final String projectDir = (_lowerCase + "/service/impl/");
     CharSequence _pomServiceImpl = this.pomServiceImpl(_module);
     fsa.generateFile((projectDir + "/pom.xml"), _pomServiceImpl);
+    at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Boolean _cdiEnabled = _module.getCdiEnabled();
+    boolean _equals = at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Boolean.TRUE.equals(_cdiEnabled);
+    if (_equals) {
+      CharSequence _beansXml = this.beansXml(null);
+      fsa.generateFile((projectDir + "/src/main/resources/META-INF/beans.xml"), _beansXml);
+      String _key_1 = _module.getKey();
+      String _plus = ((projectDir + "/src/main/java/com/clevercure/") + _key_1);
+      String _plus_1 = (_plus + "/observer/Observer.java");
+      String _key_2 = _module.getKey();
+      String _plus_2 = ("com.clevercure." + _key_2);
+      String _plus_3 = (_plus_2 + ".observer");
+      ServiceConfig _serviceConfig = _module.getServiceConfig();
+      EList<Observer> _observers = _serviceConfig.getObservers();
+      CharSequence _observerClass = this.observerClass(_plus_3, _observers);
+      fsa.generateFile(_plus_1, _observerClass);
+    }
+  }
+  
+  public CharSequence beansXml(final List<Observer> observers) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("<beans xmlns=\"http://java.sun.com/xml/ns/javaee\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/beans_1_0.xsd\">");
+    _builder.newLine();
+    {
+      if (((!Objects.equal(observers, null)) && (!observers.isEmpty()))) {
+        {
+          for(final Observer decorator : observers) {
+            _builder.append("<class>");
+            _builder.append(decorator, "");
+            _builder.append("</class>");
+            _builder.newLineIfNotEmpty();
+          }
+        }
+      }
+    }
+    _builder.append("</beans>");
+    _builder.newLine();
+    return _builder;
+  }
+  
+  public CharSequence observerClass(final String packageName, final List<Observer> observers) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("package ");
+    _builder.append(packageName, "");
+    _builder.append(";");
+    _builder.newLineIfNotEmpty();
+    _builder.newLine();
+    _builder.append("import javax.inject.Event;");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("@Dependent");
+    _builder.newLine();
+    _builder.append("public class Observer {");
+    _builder.newLine();
+    _builder.newLine();
+    {
+      for(final Observer observer : observers) {
+        _builder.append("@Inject");
+        _builder.newLine();
+        _builder.append("   ");
+        _builder.append("private Event<");
+        String _type = observer.getType();
+        _builder.append(_type, "   ");
+        _builder.append("> event");
+        int _indexOf = observers.indexOf(observer);
+        _builder.append(_indexOf, "   ");
+        _builder.append(";");
+        _builder.newLineIfNotEmpty();
+        _builder.append("   ");
+        _builder.append("@Inject");
+        _builder.newLine();
+        _builder.append("   ");
+        _builder.append("private ");
+        String _className = observer.getClassName();
+        _builder.append(_className, "   ");
+        _builder.append(" delegateEvent");
+        int _indexOf_1 = observers.indexOf(observer);
+        _builder.append(_indexOf_1, "   ");
+        _builder.append(";   \t\t\t\t");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    {
+      for(final Observer observer_1 : observers) {
+        _builder.append("public void observerEvent_");
+        int _indexOf_2 = observers.indexOf(observer_1);
+        _builder.append(_indexOf_2, "");
+        _builder.append("(@Observes ");
+        String _type_1 = observer_1.getType();
+        _builder.append(_type_1, "");
+        _builder.append(" evt) {");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t");
+        _builder.append("delegateEvent");
+        int _indexOf_3 = observers.indexOf(observer_1);
+        _builder.append(_indexOf_3, "\t");
+        _builder.append(".observe(evt);");
+        _builder.newLineIfNotEmpty();
+        _builder.append("}");
+        _builder.newLine();
+      }
+    }
+    _builder.append("}");
+    _builder.newLine();
+    return _builder;
   }
   
   public CharSequence messageBundleProperties(final Map<String, String> _keyTovalueMap) {

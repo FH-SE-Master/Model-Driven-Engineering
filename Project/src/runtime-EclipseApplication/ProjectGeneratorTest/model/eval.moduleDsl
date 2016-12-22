@@ -10,24 +10,24 @@ module Evaluation {
                         {
                             locale de_DE;
                             value 'Confirmed';
-                        }
+                        };
                         {
                             locale en_US;
                             value 'Confirmed';
-                        }
+                        };
                     };
-                }
+                };
                 {
                     key CANCLED;
                     values {
                         {
                             locale en_US;
-                            value 'Cancled';
-                        }
+                            value 'Canceled';
+                        };
                     };
-                }
+                };
             };
-        }
+        };
         ErrorMessage {
             values {
                 {
@@ -36,19 +36,19 @@ module Evaluation {
                         {
                             locale en_US;
                             value 'E00002: Unhandled error detected';
-                        }
+                        };
                     };
-                }
+                };
             };
-        }
-    };
-    observers {
+        };
+    }; 
+    observers {  
         Obs {
             type com.clevercure.event.LoginEvent;
             during InProgress;
             notify Always;
             delegate com.clevercure.evaluation.observer.LoginEventObserver;
-        }
+        };
     };
     jpaConfig {
         localizedEnums {
@@ -60,5 +60,4 @@ module Evaluation {
             OrderState ErrorMessage
         };
     };
-
 }
