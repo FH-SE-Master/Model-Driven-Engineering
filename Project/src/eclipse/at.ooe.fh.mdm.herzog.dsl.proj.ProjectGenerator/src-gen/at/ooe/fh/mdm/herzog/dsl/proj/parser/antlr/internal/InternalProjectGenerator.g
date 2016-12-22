@@ -316,34 +316,9 @@ ruleServiceConfig returns [EObject current=null]
 			{
 				newLeafNode(otherlv_1, grammarAccess.getServiceConfigAccess().getObserversKeyword_1_0());
 			}
-			(
-				(
-					{
-						newCompositeNode(grammarAccess.getServiceConfigAccess().getObserversObserverParserRuleCall_1_1_0());
-					}
-					lv_observers_2_0=ruleObserver
-					{
-						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getServiceConfigRule());
-						}
-						add(
-							$current,
-							"observers",
-							lv_observers_2_0,
-							"at.ooe.fh.mdm.herzog.dsl.proj.ProjectGenerator.Observer");
-						afterParserOrEnumRuleCall();
-					}
-				)
-			)+
-		)?
-		(
-			otherlv_3='messageBundles'
+			otherlv_2='{'
 			{
-				newLeafNode(otherlv_3, grammarAccess.getServiceConfigAccess().getMessageBundlesKeyword_2_0());
-			}
-			otherlv_4='{'
-			{
-				newLeafNode(otherlv_4, grammarAccess.getServiceConfigAccess().getLeftCurlyBracketKeyword_2_1());
+				newLeafNode(otherlv_2, grammarAccess.getServiceConfigAccess().getLeftCurlyBracketKeyword_1_1());
 			}
 			(
 				(
@@ -352,24 +327,55 @@ ruleServiceConfig returns [EObject current=null]
 							$current = createModelElement(grammarAccess.getServiceConfigRule());
 						}
 					}
-					otherlv_5=RULE_ID
+					otherlv_3=RULE_ID
 					{
-						newLeafNode(otherlv_5, grammarAccess.getServiceConfigAccess().getMessageBundlesLocalizedCrossReference_2_2_0());
+						newLeafNode(otherlv_3, grammarAccess.getServiceConfigAccess().getObserversObserverCrossReference_1_2_0());
 					}
 				)
 			)+
-			otherlv_6='}'
+			otherlv_4='}'
 			{
-				newLeafNode(otherlv_6, grammarAccess.getServiceConfigAccess().getRightCurlyBracketKeyword_2_3());
+				newLeafNode(otherlv_4, grammarAccess.getServiceConfigAccess().getRightCurlyBracketKeyword_1_3());
 			}
-			otherlv_7=';'
+			otherlv_5=';'
 			{
-				newLeafNode(otherlv_7, grammarAccess.getServiceConfigAccess().getSemicolonKeyword_2_4());
+				newLeafNode(otherlv_5, grammarAccess.getServiceConfigAccess().getSemicolonKeyword_1_4());
+			}
+		)?
+		(
+			otherlv_6='messageBundles'
+			{
+				newLeafNode(otherlv_6, grammarAccess.getServiceConfigAccess().getMessageBundlesKeyword_2_0());
+			}
+			otherlv_7='{'
+			{
+				newLeafNode(otherlv_7, grammarAccess.getServiceConfigAccess().getLeftCurlyBracketKeyword_2_1());
+			}
+			(
+				(
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getServiceConfigRule());
+						}
+					}
+					otherlv_8=RULE_ID
+					{
+						newLeafNode(otherlv_8, grammarAccess.getServiceConfigAccess().getMessageBundlesLocalizedCrossReference_2_2_0());
+					}
+				)
+			)+
+			otherlv_9='}'
+			{
+				newLeafNode(otherlv_9, grammarAccess.getServiceConfigAccess().getRightCurlyBracketKeyword_2_3());
+			}
+			otherlv_10=';'
+			{
+				newLeafNode(otherlv_10, grammarAccess.getServiceConfigAccess().getSemicolonKeyword_2_4());
 			}
 		)
-		otherlv_8='}'
+		otherlv_11='}'
 		{
-			newLeafNode(otherlv_8, grammarAccess.getServiceConfigAccess().getRightCurlyBracketKeyword_3());
+			newLeafNode(otherlv_11, grammarAccess.getServiceConfigAccess().getRightCurlyBracketKeyword_3());
 		}
 	)
 ;

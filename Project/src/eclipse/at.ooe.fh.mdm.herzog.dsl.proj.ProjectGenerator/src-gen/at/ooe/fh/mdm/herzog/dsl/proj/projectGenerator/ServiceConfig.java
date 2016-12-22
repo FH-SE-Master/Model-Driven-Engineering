@@ -27,17 +27,17 @@ import org.eclipse.emf.ecore.EObject;
 public interface ServiceConfig extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Observers</b></em>' containment reference list.
+   * Returns the value of the '<em><b>Observers</b></em>' reference list.
    * The list contents are of type {@link at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.Observer}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Observers</em>' containment reference list isn't clear,
+   * If the meaning of the '<em>Observers</em>' reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Observers</em>' containment reference list.
+   * @return the value of the '<em>Observers</em>' reference list.
    * @see at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.ProjectGeneratorPackage#getServiceConfig_Observers()
-   * @model containment="true"
+   * @model
    * @generated
    */
   EList<Observer> getObservers();

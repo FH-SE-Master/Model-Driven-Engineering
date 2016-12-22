@@ -61,7 +61,7 @@ public class ProjectGeneratorParser extends AbstractContentAssistParser {
 					put(grammarAccess.getModuleAccess().getObserversAssignment_10_2(), "rule__Module__ObserversAssignment_10_2");
 					put(grammarAccess.getModuleAccess().getJpaConfigAssignment_12(), "rule__Module__JpaConfigAssignment_12");
 					put(grammarAccess.getModuleAccess().getServiceConfigAssignment_15(), "rule__Module__ServiceConfigAssignment_15");
-					put(grammarAccess.getServiceConfigAccess().getObserversAssignment_1_1(), "rule__ServiceConfig__ObserversAssignment_1_1");
+					put(grammarAccess.getServiceConfigAccess().getObserversAssignment_1_2(), "rule__ServiceConfig__ObserversAssignment_1_2");
 					put(grammarAccess.getServiceConfigAccess().getMessageBundlesAssignment_2_2(), "rule__ServiceConfig__MessageBundlesAssignment_2_2");
 					put(grammarAccess.getObserverAccess().getNameAssignment_0(), "rule__Observer__NameAssignment_0");
 					put(grammarAccess.getObserverAccess().getTypeAssignment_3(), "rule__Observer__TypeAssignment_3");

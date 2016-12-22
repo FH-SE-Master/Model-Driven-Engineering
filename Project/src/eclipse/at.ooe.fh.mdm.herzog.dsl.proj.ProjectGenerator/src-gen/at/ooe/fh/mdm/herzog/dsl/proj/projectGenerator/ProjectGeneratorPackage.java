@@ -151,7 +151,7 @@ public interface ProjectGeneratorPackage extends EPackage
   int SERVICE_CONFIG = 1;
 
   /**
-   * The feature id for the '<em><b>Observers</b></em>' containment reference list.
+   * The feature id for the '<em><b>Observers</b></em>' reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -546,10 +546,10 @@ public interface ProjectGeneratorPackage extends EPackage
   EClass getServiceConfig();
 
   /**
-   * Returns the meta object for the containment reference list '{@link at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.ServiceConfig#getObservers <em>Observers</em>}'.
+   * Returns the meta object for the reference list '{@link at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.ServiceConfig#getObservers <em>Observers</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Observers</em>'.
+   * @return the meta object for the reference list '<em>Observers</em>'.
    * @see at.ooe.fh.mdm.herzog.dsl.proj.projectGenerator.ServiceConfig#getObservers()
    * @see #getServiceConfig()
    * @generated
@@ -922,7 +922,7 @@ public interface ProjectGeneratorPackage extends EPackage
     EClass SERVICE_CONFIG = eINSTANCE.getServiceConfig();
 
     /**
-     * The meta object literal for the '<em><b>Observers</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Observers</b></em>' reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated

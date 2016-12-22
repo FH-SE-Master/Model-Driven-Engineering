@@ -50,14 +50,17 @@ module Evaluation {
             delegate com.clevercure.evaluation.observer.LoginEventObserver;
         };
     };
-    jpaConfig {
+    jpaConfig { 
         localizedEnums {
             OrderState
         };
     };
     serviceConfig {
+    	observers {  
+    		Obs
+    	};
         messageBundles {
             OrderState ErrorMessage
-        };
+        };       
     };
 }

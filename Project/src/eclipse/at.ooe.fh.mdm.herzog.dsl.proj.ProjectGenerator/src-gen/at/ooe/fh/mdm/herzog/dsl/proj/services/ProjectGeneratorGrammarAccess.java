@@ -191,8 +191,12 @@ public class ProjectGeneratorGrammarAccess extends AbstractGrammarElementFinder 
 		private final Keyword cLeftCurlyBracketKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
 		private final Keyword cObserversKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
-		private final Assignment cObserversAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
-		private final RuleCall cObserversObserverParserRuleCall_1_1_0 = (RuleCall)cObserversAssignment_1_1.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
+		private final Assignment cObserversAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
+		private final CrossReference cObserversObserverCrossReference_1_2_0 = (CrossReference)cObserversAssignment_1_2.eContents().get(0);
+		private final RuleCall cObserversObserverIDTerminalRuleCall_1_2_0_1 = (RuleCall)cObserversObserverCrossReference_1_2_0.eContents().get(1);
+		private final Keyword cRightCurlyBracketKeyword_1_3 = (Keyword)cGroup_1.eContents().get(3);
+		private final Keyword cSemicolonKeyword_1_4 = (Keyword)cGroup_1.eContents().get(4);
 		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
 		private final Keyword cMessageBundlesKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
 		private final Keyword cLeftCurlyBracketKeyword_2_1 = (Keyword)cGroup_2.eContents().get(1);
@@ -205,27 +209,39 @@ public class ProjectGeneratorGrammarAccess extends AbstractGrammarElementFinder 
 		
 		//// Service configuration
 		//ServiceConfig:
-		//	'{' ('observers' observers+=Observer+)? ('messageBundles' '{' messageBundles+=[Localized]+ '}' ';')
+		//	'{' ('observers' '{' observers+=[Observer]+ '}' ';')? ('messageBundles' '{' messageBundles+=[Localized]+ '}' ';')
 		//	'}';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'{' ('observers' observers+=Observer+)? ('messageBundles' '{' messageBundles+=[Localized]+ '}' ';') '}'
+		//'{' ('observers' '{' observers+=[Observer]+ '}' ';')? ('messageBundles' '{' messageBundles+=[Localized]+ '}' ';') '}'
 		public Group getGroup() { return cGroup; }
 		
 		//'{'
 		public Keyword getLeftCurlyBracketKeyword_0() { return cLeftCurlyBracketKeyword_0; }
 		
-		//('observers' observers+=Observer+)?
+		//('observers' '{' observers+=[Observer]+ '}' ';')?
 		public Group getGroup_1() { return cGroup_1; }
 		
 		//'observers'
 		public Keyword getObserversKeyword_1_0() { return cObserversKeyword_1_0; }
 		
-		//observers+=Observer+
-		public Assignment getObserversAssignment_1_1() { return cObserversAssignment_1_1; }
+		//'{'
+		public Keyword getLeftCurlyBracketKeyword_1_1() { return cLeftCurlyBracketKeyword_1_1; }
 		
-		//Observer
-		public RuleCall getObserversObserverParserRuleCall_1_1_0() { return cObserversObserverParserRuleCall_1_1_0; }
+		//observers+=[Observer]+
+		public Assignment getObserversAssignment_1_2() { return cObserversAssignment_1_2; }
+		
+		//[Observer]
+		public CrossReference getObserversObserverCrossReference_1_2_0() { return cObserversObserverCrossReference_1_2_0; }
+		
+		//ID
+		public RuleCall getObserversObserverIDTerminalRuleCall_1_2_0_1() { return cObserversObserverIDTerminalRuleCall_1_2_0_1; }
+		
+		//'}'
+		public Keyword getRightCurlyBracketKeyword_1_3() { return cRightCurlyBracketKeyword_1_3; }
+		
+		//';'
+		public Keyword getSemicolonKeyword_1_4() { return cSemicolonKeyword_1_4; }
 		
 		//('messageBundles' '{' messageBundles+=[Localized]+ '}' ';')
 		public Group getGroup_2() { return cGroup_2; }
@@ -854,7 +870,7 @@ public class ProjectGeneratorGrammarAccess extends AbstractGrammarElementFinder 
 	
 	//// Service configuration
 	//ServiceConfig:
-	//	'{' ('observers' observers+=Observer+)? ('messageBundles' '{' messageBundles+=[Localized]+ '}' ';')
+	//	'{' ('observers' '{' observers+=[Observer]+ '}' ';')? ('messageBundles' '{' messageBundles+=[Localized]+ '}' ';')
 	//	'}';
 	public ServiceConfigElements getServiceConfigAccess() {
 		return pServiceConfig;

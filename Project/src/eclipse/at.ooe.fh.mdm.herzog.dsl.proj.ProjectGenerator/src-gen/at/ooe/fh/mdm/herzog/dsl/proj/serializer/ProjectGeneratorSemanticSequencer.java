@@ -165,7 +165,7 @@ public class ProjectGeneratorSemanticSequencer extends AbstractDelegatingSemanti
 	 *     ServiceConfig returns ServiceConfig
 	 *
 	 * Constraint:
-	 *     (observers+=Observer* messageBundles+=[Localized|ID]+)
+	 *     (observers+=[Observer|ID]* messageBundles+=[Localized|ID]+)
 	 */
 	protected void sequence_ServiceConfig(ISerializationContext context, ServiceConfig semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

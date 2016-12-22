@@ -14,7 +14,7 @@ Module:
 
 // Service configuration
 ServiceConfig: '{'
-    ('observers' observers+=Observer+)?
+    ('observers' '{' (observers+=[Observer]+) '}' ';')?
     ('messageBundles' '{' (messageBundles+=[Localized]+) '}' ';')
     '}';
 
